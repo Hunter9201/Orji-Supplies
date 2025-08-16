@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +6,13 @@
   <title>Orji Supplies – Laundry & Home Cleaning</title>
   <meta name="description" content="Orji Supplies: Quality laundry and home-cleaning products. Retail & Wholesale. Order quickly via WhatsApp." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>  
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- Favicon (tab icon) -->
-<link rel="icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=2" type="image/jpeg" sizes="any">
-<link rel="apple-touch-icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=2">
-  <link rel="icon" href="favicon.png?v=1" type="image/png" sizes="32x32">
-<!-- or if you put it in images.html/ -->
-<link rel="icon" href="images.html/favicon.png?v=1" type="image/png" sizes="32x32">
 
+  <!-- Favicon (tab icon) – single source + cache buster -->
+  <link rel="icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=6" type="image/jpeg" sizes="any">
+  <link rel="shortcut icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=6" type="image/jpeg">
+  <link rel="apple-touch-icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=6">
 
   <style>
     body {font-family: Inter, sans-serif; margin:0; background:#f8fafc; color:#0f172a;}
@@ -68,7 +65,6 @@
       <p>Retail & Wholesale supplies. Brooms, insect killers, toilet cleaners, polishes, and more. Quick delivery in Kampala & beyond.</p>
       <a href="#catalog" class="button primary">Shop Now</a>
     </div>
-    <!-- Use your local hero image -->
     <img src="images.html/brooms.jpg" alt="Orji Supplies product hero" loading="eager">
   </section>
 
@@ -103,22 +99,16 @@
   <script>
     const WHATSAPP_NUMBER = '256700000000';
 
-    // Folder where images live (must be a folder named exactly images.html/)
+    // Images folder
     const IMG_BASE = 'images.html';
     function withBase(path){
-      // If it's already an absolute URL (http/https), use as-is
-      if (/^https?:\/\//i.test(path)) return path;
-      const base = IMG_BASE ? (IMG_BASE.endsWith('/') ? IMG_BASE : IMG_BASE + '/') : '';
-      // encodeURIComponent each path segment to safely handle spaces
+      if (/^https?:\/\//i.test(path)) return path; // absolute URL
+      const base = IMG_BASE.endsWith('/') ? IMG_BASE : IMG_BASE + '/';
       return base + path.split('/').map(encodeURIComponent).join('/');
     }
 
-    // TIP: Use direct image links only. If you uploaded to ImgBB, use links like:
-    //   https://i.ibb.co/XXXX/filename.jpg  (NOT https://ibb.co/XXXX)
     const PRODUCTS = [
-      // FIXED: Use your local image file (works with GitHub Pages)
-      {id:'pBroom', name:'Assorted Color Broom Head', retailPrice:15000, wholesalePrice:12000, moq:10, category:'accessories', unit:'piece', img:'https://i.postimg.cc/TwjsBpHm/Brooms.jpg', desc:'Heavy-duty broom head in multiple colors. Fits standard handles.'},
-
+      {id:'pBroom', name:'Assorted Color Broom Head', retailPrice:15000, wholesalePrice:12000, moq:10, category:'accessories', unit:'piece',  img:'https://i.postimg.cc/TwjsBpHm/Brooms.jpg', desc:'Heavy-duty broom head in multiple colors. Fits standard handles.'},
       {id:'pDurakill', name:'Durakill Multi Insect Killer 600ml', retailPrice:18000, wholesalePrice:15000, moq:12, category:'home', unit:'can', img:'durakill.jpg', desc:'Rapid knock-down insecticide for flying & crawling insects.'},
       {id:'pHarpic', name:'Harpic Power Plus 10X (750ml)', retailPrice:16000, wholesalePrice:14000, moq:12, category:'home', unit:'bottle', img:'harpic.jpg', desc:'Powerful toilet cleaner for tough stains and germs.'},
       {id:'pMop', name:'Microfiber Floor Mop (Squeeze Type)', retailPrice:45000, wholesalePrice:40000, moq:4, category:'accessories', unit:'set', img:'mop-and-cleaner.jpg', desc:'High-absorbency microfiber mop with extendable handle.'},
@@ -127,7 +117,6 @@
       {id:'pPledge', name:'Pledge Furniture Polish 300ml', retailPrice:23000, wholesalePrice:20000, moq:12, category:'home', unit:'can', img:'vim-and-pledge.jpg', desc:'Shines and protects wooden furniture.'},
       {id:'pVim', name:'Vim Scouring Powder 500g', retailPrice:8000, wholesalePrice:7000, moq:24, category:'home', unit:'tin', img:'vim-and-pledge.jpg', desc:'Classic lemon scouring powder for pots, pans & sinks.'},
 
-      // External stock photos (already direct URLs)
       {id:'pSoftener', name:'Fabric Softener 2L', retailPrice:26000, wholesalePrice:23000, moq:8, category:'laundry', unit:'bottle', img:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop', desc:'Keeps clothes soft and reduces static.'},
       {id:'pFloorCleaner', name:'Disinfectant Floor Cleaner 5L', retailPrice:42000, wholesalePrice:38000, moq:6, category:'home', unit:'jerrycan', img:'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1200&auto=format&fit=crop', desc:'Long-lasting freshness, kills 99.9% germs.'}
     ];
@@ -143,7 +132,7 @@
     const cartMode = document.getElementById('cartMode');
 
     let mode = 'retail';
-    let cart = new Map(); // key: productId:mode
+    let cart = new Map();
 
     const fmtUGX = v => new Intl.NumberFormat('en-UG', {style:'currency', currency:'UGX', maximumFractionDigits:0}).format(v);
     const priceOf = (p) => mode==='retail' ? p.retailPrice : p.wholesalePrice;
@@ -228,4 +217,3 @@
   </script>
 </body>
 </html>
-```
