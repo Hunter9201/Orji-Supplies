@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+# Create an updated index.html that points to IMG_BASE = 'images.html'
+updated_html = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -91,8 +92,8 @@
 
   <script>
     const WHATSAPP_NUMBER = '256700000000';
-    // If your images are inside a folder, set the base path here, e.g. 'images/'
-    const IMG_BASE = 'images';
+    // Point to the folder you named **images.html** (it's okay for a folder to have a dot in the name)
+    const IMG_BASE = 'images.html';
     function withBase(path){
       if (/^https?:\/\//i.test(path)) return path; // absolute URL
       const base = IMG_BASE ? (IMG_BASE.endsWith('/') ? IMG_BASE : IMG_BASE + '/') : '';
@@ -209,3 +210,9 @@
   </script>
 </body>
 </html>
+"""
+out_path = "/mnt/data/index-for-images-dot-html.html"
+with open(out_path, "w", encoding="utf-8") as f:
+    f.write(updated_html)
+
+out_path
