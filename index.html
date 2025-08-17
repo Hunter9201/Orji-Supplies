@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Favicon (tab icon) – single source + cache buster -->
+  <!-- Favicon -->
   <link rel="icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=6" type="image/jpeg" sizes="any">
   <link rel="shortcut icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=6" type="image/jpeg">
   <link rel="apple-touch-icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=6">
@@ -44,7 +44,26 @@
     .drawer.open{right:0;}
     .drawer header{padding:12px; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between;}
     .drawer main{flex:1; overflow:auto; padding:12px;}
-    .drawer footer{padding:12px; border-top:1px solid #e2e8f0;}
+    .drawer footer{padding:12px; border-top:1px solid #e2e8f0; position:relative;}
+    /* Floating WhatsApp checkout button */
+    .fab {
+      position: fixed;
+      right: 16px;
+      bottom: 16px;               /* updated dynamically to sit above the footer */
+      display: none;              /* shown when cart has items + drawer is open */
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background:#25D366;         /* WhatsApp green */
+      color:#fff;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow:0 10px 20px rgba(2,6,23,.18);
+      z-index:120;
+    }
+    .fab:hover { filter:brightness(.96); }
+    .fab svg { width:20px; height:20px; }
     @media (max-width: 860px){ .hero{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -65,7 +84,6 @@
       <p>Retail & Wholesale supplies. Brooms, insect killers, toilet cleaners, polishes, and more. Quick delivery in Kampala & beyond.</p>
       <a href="#catalog" class="button primary">Shop Now</a>
     </div>
-    <!-- FIXED hero image tag (was broken) -->
     <img src="https://i.postimg.cc/MHkXsZrh/profile.png" alt="Orji Supplies team" loading="eager" width="1200" height="700">
   </section>
 
@@ -92,18 +110,25 @@
     <main id="cartLines"></main>
     <footer>
       <div id="grandTotal">Total: UGX 0</div>
-      <a id="checkoutBtn" href="#" class="button primary" target="_blank">Checkout on WhatsApp</a>
+      <!-- Keep original button as hidden fallback (updated via JS anyway) -->
+      <a id="checkoutBtn" href="#" class="button primary" target="_blank" style="display:none">Checkout on WhatsApp</a>
       <div class="muted">Mode: <span id="cartMode">Retail</span></div>
     </footer>
   </aside>
 
+  <!-- Floating WhatsApp Checkout -->
+  <a id="checkoutFab" class="fab" href="#" target="_blank" aria-label="Checkout on WhatsApp">
+    <!-- WhatsApp icon -->
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.56c-.26-.13-1.52-.75-1.76-.84s-.41-.13-.58.13-.66.84-.81 1.01-.3.19-.56.06a8.94 8.94 0 0 1-2.64-1.63 9.9 9.9 0 0 1-1.84-2.28c-.19-.32 0-.49.13-.62.13-.13.26-.32.39-.45.13-.13.19-.26.32-.45.13-.19.06-.36 0-.49-.06-.13-.58-1.39-.8-1.89-.21-.51-.43-.44-.58-.45h-.5a.96.96 0 0 0-.69.32c-.24.26-.9.88-.9 2.14s.92 2.49 1.05 2.66c.13.17 1.81 2.76 4.39 3.87.61.26 1.08.41 1.45.52.61.19 1.16.16 1.6.1.49-.07 1.52-.62 1.74-1.22.21-.58.21-1.08.15-1.22-.06-.13-.24-.2-.5-.33zM16 3C9.37 3 4 8.37 4 15c0 2.12.55 4.1 1.52 5.83L4 29l8.33-1.46A12.95 12.95 0 0 0 16 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.33c-1.84 0-3.55-.54-4.98-1.46l-.36-.23-4.94.86.86-4.81-.24-.39A9.36 9.36 0 1 1 25.36 20a9.33 9.33 0 0 1-9.36 5.33z"/></svg>
+    <span>Checkout</span>
+  </a>
+
   <script>
     const WHATSAPP_NUMBER = '256700000000';
 
-    // Images folder
     const IMG_BASE = 'images.html';
     function withBase(path){
-      if (/^https?:\/\//i.test(path)) return path; // absolute URL
+      if (/^https?:\/\//i.test(path)) return path;
       const base = IMG_BASE.endsWith('/') ? IMG_BASE : IMG_BASE + '/';
       return base + path.split('/').map(encodeURIComponent).join('/');
     }
@@ -117,7 +142,6 @@
       {id:'pToiletBrush', name:'Toilet Brush & Holder Set (805)', retailPrice:20000, wholesalePrice:17000, moq:6, category:'accessories', unit:'set', img:'toilet-cleaner.jpg', desc:'Durable toilet brush with drip-catching holder.'},
       {id:'pPledge', name:'Pledge Furniture Polish 300ml', retailPrice:23000, wholesalePrice:20000, moq:12, category:'home', unit:'can', img:'vim-and-pledge.jpg', desc:'Shines and protects wooden furniture.'},
       {id:'pVim', name:'Vim Scouring Powder 500g', retailPrice:8000, wholesalePrice:7000, moq:24, category:'home', unit:'tin', img:'vim-and-pledge.jpg', desc:'Classic lemon scouring powder for pots, pans & sinks.'},
-
       {id:'pSoftener', name:'Fabric Softener 2L', retailPrice:26000, wholesalePrice:23000, moq:8, category:'laundry', unit:'bottle', img:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop', desc:'Keeps clothes soft and reduces static.'},
       {id:'pFloorCleaner', name:'Disinfectant Floor Cleaner 5L', retailPrice:42000, wholesalePrice:38000, moq:6, category:'home', unit:'jerrycan', img:'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1200&auto=format&fit=crop', desc:'Long-lasting freshness, kills 99.9% germs.'}
     ];
@@ -128,9 +152,11 @@
     const closeDrawer = document.getElementById('closeDrawer');
     const cartLines = document.getElementById('cartLines');
     const grandTotal = document.getElementById('grandTotal');
-    const checkoutBtn = document.getElementById('checkoutBtn');
+    const checkoutBtn = document.getElementById('checkoutBtn'); // hidden fallback
+    const checkoutFab = document.getElementById('checkoutFab');
     const cartCount = document.getElementById('cartCount');
     const cartMode = document.getElementById('cartMode');
+    const drawerFooter = document.querySelector('#drawer footer');
 
     let mode = 'retail';
     let cart = new Map();
@@ -138,6 +164,19 @@
     const fmtUGX = v => new Intl.NumberFormat('en-UG', {style:'currency', currency:'UGX', maximumFractionDigits:0}).format(v);
     const priceOf = (p) => mode==='retail' ? p.retailPrice : p.wholesalePrice;
     const minQty  = (p) => mode==='retail' ? 1 : (p.moq||1);
+
+    function positionFab(){
+      // Place the FAB just above the drawer footer so it never covers the total
+      if(!drawer.classList.contains('open')) { checkoutFab.style.bottom = '16px'; return; }
+      const h = drawerFooter.getBoundingClientRect().height || 72;
+      checkoutFab.style.bottom = (h + 16) + 'px';
+    }
+
+    function updateFabVisibility(){
+      const visible = cart.size > 0 && drawer.classList.contains('open');
+      checkoutFab.style.display = visible ? 'flex' : 'none';
+      if (visible) positionFab();
+    }
 
     function render(){
       cartMode.textContent = mode==='retail'? 'Retail':'Wholesale';
@@ -186,7 +225,12 @@
       grandTotal.textContent = 'Total: '+fmtUGX(total);
       cartCount.style.display = count>0? 'inline-block':'none';
       cartCount.textContent = count;
-      checkoutBtn.href = cartToWhatsApp();
+
+      const href = cartToWhatsApp();
+      checkoutFab.href = href;
+      if (checkoutBtn) checkoutBtn.href = href; // fallback
+
+      updateFabVisibility();
     }
 
     function cartToWhatsApp(){
@@ -200,9 +244,19 @@
       return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
     }
 
-    function openDrawer(){drawer.classList.add('open');}
-    closeDrawer.onclick=()=>drawer.classList.remove('open');
-    cartBtn.onclick=()=>drawer.classList.toggle('open');
+    function openDrawer(){
+      drawer.classList.add('open');
+      positionFab();
+      updateFabVisibility();
+    }
+    closeDrawer.onclick=()=>{
+      drawer.classList.remove('open');
+      updateFabVisibility();
+    };
+    cartBtn.onclick=()=>{
+      drawer.classList.toggle('open');
+      updateFabVisibility();
+    };
 
     document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -213,6 +267,8 @@
       document.querySelectorAll('#modeTabs button').forEach(btn=>btn.classList.toggle('active', btn.dataset.mode===mode));
       render();
     });
+
+    window.addEventListener('resize', positionFab);
 
     render();
   </script>
