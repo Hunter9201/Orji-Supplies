@@ -15,47 +15,77 @@
   <link rel="apple-touch-icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=6">
 
   <style>
-    body {font-family: Inter, sans-serif; margin:0; background:#f8fafc; color:#0f172a;}
-    header {position:sticky; top:0; background:#fff; border-bottom:1px solid #e2e8f0; z-index:50;}
+    :root{
+      --brand:#0ea5e9;
+      --brand-d:#0284c7;
+      --ink:#0f172a;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --bg:#f8fafc;
+      --wa:#25D366;
+    }
+    *{box-sizing:border-box}
+    body {font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin:0; background:var(--bg); color:var(--ink);}
+    header {position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); z-index:50;}
     .nav {display:flex; justify-content:space-between; align-items:center; padding:12px 18px;}
     .brand {font-weight:800; font-size:20px; display:flex; align-items:center; gap:10px;}
-    .brand .logo {width:36px;height:36px;background:#0ea5e9;display:grid;place-items:center;color:#fff;border-radius:8px;}
+    .brand .logo {width:36px;height:36px;background:var(--brand);display:grid;place-items:center;color:#fff;border-radius:8px;}
     .nav-actions {display:flex; gap:10px;}
-    .button {padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:600; border:1px solid #e2e8f0; cursor:pointer; background:#fff;}
-    .primary {background:#0ea5e9; color:#fff; border-color:#0ea5e9}
-    .primary:hover{background:#0284c7; border-color:#0284c7}
+    .button {padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:600; border:1px solid var(--line); cursor:pointer; background:#fff; color:var(--ink);}
+    .primary {background:var(--brand); color:#fff; border-color:var(--brand)}
+    .primary:hover{background:var(--brand-d); border-color:var(--brand-d)}
     .hero {display:grid; grid-template-columns:1fr 1fr; gap:20px; align-items:center; padding:20px;}
     .hero img{border-radius:12px; width:100%; height:100%; object-fit:cover;}
     .controls{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:0 20px}
-    .mode-tabs{display:flex; background:#fff; border:1px solid #e2e8f0; border-radius:999px; overflow:hidden}
-    .mode-tabs button{border:0; padding:8px 14px; font-weight:700; cursor:pointer; background:transparent}
-    .mode-tabs .active{background:#f59e0b22}
+    .muted{color:var(--muted); font-size:12px}
     .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; padding:20px;}
-    .card{background:#fff; border:1px solid #e2e8f0; border-radius:12px; display:flex; flex-direction:column; overflow:hidden; transition:transform .2s;}
+    .card{background:#fff; border:1px solid var(--line); border-radius:12px; display:flex; flex-direction:column; overflow:hidden; transition:transform .2s;}
     .card:hover{transform:translateY(-3px);}
     .card img{width:100%; height:200px; object-fit:cover; background:#f1f5f9}
     .card .body{padding:12px;}
     .price{font-weight:800; margin:6px 0;}
-    .muted{color:#64748b; font-size:12px}
     .qty{margin:8px 0;}
     .moq{display:inline-block; font-size:11px; background:#d1fae5; color:#065f46; border:1px solid #a7f3d0; border-radius:999px; padding:2px 8px; margin-left:6px}
-    footer{margin-top:40px; border-top:1px solid #e2e8f0; padding:20px; background:#fff;}
-    .drawer{position:fixed; top:0; right:-400px; width:360px; max-width:90vw; height:100vh; background:#fff; border-left:1px solid #e2e8f0; transition:right .2s; z-index:100; display:flex; flex-direction:column;}
+    footer{margin-top:40px; border-top:1px solid var(--line); padding:20px; background:#fff;}
+
+    /* Drawer (cart) */
+    .drawer{position:fixed; top:0; right:-400px; width:360px; max-width:90vw; height:100vh; background:#fff; border-left:1px solid var(--line); transition:right .2s; z-index:100; display:flex; flex-direction:column;}
     .drawer.open{right:0;}
-    .drawer header{padding:12px; border-bottom:1px solid #e2e8f0; display:flex; justify-content:space-between;}
+    .drawer header{padding:12px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between;}
     .drawer main{flex:1; overflow:auto; padding:12px;}
-    .drawer footer{padding:12px; border-top:1px solid #e2e8f0; position:relative;}
+    .drawer footer{padding:12px; border-top:1px solid var(--line); position:relative; background:#fff;}
+
+    /* Mode toggle – clearer and more accessible */
+    .mode-tabs{
+      position:relative; display:inline-flex; align-items:center; gap:6px;
+      background:#0f172a0d; border:1px solid #cbd5e1; padding:6px; border-radius:999px;
+    }
+    .mode-tabs .thumb{
+      position:absolute; top:6px; bottom:6px; width:50%;
+      border-radius:999px; background:var(--brand); z-index:0;
+      transition:transform .25s ease, background-color .25s ease;
+    }
+    [data-mode="retail"]    .mode-tabs .thumb{ transform:translateX(0%);   background:var(--brand); }
+    [data-mode="wholesale"] .mode-tabs .thumb{ transform:translateX(100%); background:#16a34a; }
+    .mode-tabs button{
+      position:relative; z-index:1; border:0; background:transparent;
+      padding:10px 18px; border-radius:999px; font-weight:800; font-size:15px;
+      color:var(--ink); display:inline-flex; align-items:center; gap:8px; cursor:pointer;
+    }
+    .mode-tabs button[aria-pressed="true"]{ color:#fff; }
+    .mode-tabs button:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(14,165,233,.45); }
+
     /* Floating WhatsApp checkout button */
     .fab {
       position: fixed;
       right: 16px;
-      bottom: 16px;               /* updated dynamically to sit above the footer */
+      bottom: 16px;               /* updated dynamically to sit above the drawer footer */
       display: none;              /* shown when cart has items + drawer is open */
       align-items: center;
       gap: 8px;
       padding: 12px 16px;
       border-radius: 999px;
-      background:#25D366;         /* WhatsApp green */
+      background:var(--wa);
       color:#fff;
       font-weight:800;
       text-decoration:none;
@@ -67,7 +97,7 @@
     @media (max-width: 860px){ .hero{grid-template-columns:1fr;}}
   </style>
 </head>
-<body>
+<body data-mode="retail">
   <header>
     <div class="nav">
       <div class="brand"><div class="logo">O</div> Orji Supplies</div>
@@ -84,17 +114,34 @@
       <p>Retail & Wholesale supplies. Brooms, insect killers, toilet cleaners, polishes, and more. Quick delivery in Kampala & beyond.</p>
       <a href="#catalog" class="button primary">Shop Now</a>
     </div>
+    <!-- Hero image -->
     <img src="https://i.postimg.cc/MHkXsZrh/profile.png" alt="Orji Supplies team" loading="eager" width="1200" height="700">
   </section>
 
   <section id="catalog">
     <div class="controls">
       <div><strong>Catalog</strong> <span class="muted">– choose buying mode</span></div>
-      <div class="mode-tabs" id="modeTabs">
-        <button data-mode="retail" class="active">Retail</button>
-        <button data-mode="wholesale">Wholesale</button>
+
+      <!-- Improved Retail / Wholesale toggle -->
+      <div class="mode-tabs" id="modeTabs" aria-label="Buying mode" role="group">
+        <span class="thumb" aria-hidden="true"></span>
+
+        <button type="button" data-mode="retail" aria-pressed="true" title="Buy single units at retail price">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d="M7 7V6a5 5 0 0110 0v1h2a1 1 0 011 1v11a2 2 0 01-2 2H6a2 2 0 01-2-2V8a1 1 0 011-1h2zm2 0h6V6a3 3 0 00-6 0v1z"/>
+          </svg>
+          Retail
+        </button>
+
+        <button type="button" data-mode="wholesale" aria-pressed="false" title="Buy in bulk at wholesale price">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d="M3 8l9-5 9 5-9 5-9-5zm9 7l9-5v9l-9 5-9-5v-9l9 5z"/>
+          </svg>
+          Wholesale
+        </button>
       </div>
     </div>
+
     <div class="grid" id="grid"></div>
   </section>
 
@@ -110,7 +157,7 @@
     <main id="cartLines"></main>
     <footer>
       <div id="grandTotal">Total: UGX 0</div>
-      <!-- Keep original button as hidden fallback (updated via JS anyway) -->
+      <!-- Hidden fallback button (we use the floating FAB instead) -->
       <a id="checkoutBtn" href="#" class="button primary" target="_blank" style="display:none">Checkout on WhatsApp</a>
       <div class="muted">Mode: <span id="cartMode">Retail</span></div>
     </footer>
@@ -118,7 +165,6 @@
 
   <!-- Floating WhatsApp Checkout -->
   <a id="checkoutFab" class="fab" href="#" target="_blank" aria-label="Checkout on WhatsApp">
-    <!-- WhatsApp icon -->
     <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.56c-.26-.13-1.52-.75-1.76-.84s-.41-.13-.58.13-.66.84-.81 1.01-.3.19-.56.06a8.94 8.94 0 0 1-2.64-1.63 9.9 9.9 0 0 1-1.84-2.28c-.19-.32 0-.49.13-.62.13-.13.26-.32.39-.45.13-.13.19-.26.32-.45.13-.19.06-.36 0-.49-.06-.13-.58-1.39-.8-1.89-.21-.51-.43-.44-.58-.45h-.5a.96.96 0 0 0-.69.32c-.24.26-.9.88-.9 2.14s.92 2.49 1.05 2.66c.13.17 1.81 2.76 4.39 3.87.61.26 1.08.41 1.45.52.61.19 1.16.16 1.6.1.49-.07 1.52-.62 1.74-1.22.21-.58.21-1.08.15-1.22-.06-.13-.24-.2-.5-.33zM16 3C9.37 3 4 8.37 4 15c0 2.12.55 4.1 1.52 5.83L4 29l8.33-1.46A12.95 12.95 0 0 0 16 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.33c-1.84 0-3.55-.54-4.98-1.46l-.36-.23-4.94.86.86-4.81-.24-.39A9.36 9.36 0 1 1 25.36 20a9.33 9.33 0 0 1-9.36 5.33z"/></svg>
     <span>Checkout</span>
   </a>
@@ -126,9 +172,10 @@
   <script>
     const WHATSAPP_NUMBER = '256700000000';
 
+    // Base folder for local images
     const IMG_BASE = 'images.html';
     function withBase(path){
-      if (/^https?:\/\//i.test(path)) return path;
+      if (/^https?:\/\//i.test(path)) return path; // absolute URL stays
       const base = IMG_BASE.endsWith('/') ? IMG_BASE : IMG_BASE + '/';
       return base + path.split('/').map(encodeURIComponent).join('/');
     }
@@ -146,6 +193,7 @@
       {id:'pFloorCleaner', name:'Disinfectant Floor Cleaner 5L', retailPrice:42000, wholesalePrice:38000, moq:6, category:'home', unit:'jerrycan', img:'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1200&auto=format&fit=crop', desc:'Long-lasting freshness, kills 99.9% germs.'}
     ];
 
+    // Elements
     const grid = document.getElementById('grid');
     const cartBtn = document.getElementById('cartBtn');
     const drawer = document.getElementById('drawer');
@@ -157,29 +205,35 @@
     const cartCount = document.getElementById('cartCount');
     const cartMode = document.getElementById('cartMode');
     const drawerFooter = document.querySelector('#drawer footer');
+    const modeTabs = document.getElementById('modeTabs');
 
+    // State
     let mode = 'retail';
     let cart = new Map();
 
+    // Utils
     const fmtUGX = v => new Intl.NumberFormat('en-UG', {style:'currency', currency:'UGX', maximumFractionDigits:0}).format(v);
     const priceOf = (p) => mode==='retail' ? p.retailPrice : p.wholesalePrice;
     const minQty  = (p) => mode==='retail' ? 1 : (p.moq||1);
 
-    function positionFab(){
-      // Place the FAB just above the drawer footer so it never covers the total
-      if(!drawer.classList.contains('open')) { checkoutFab.style.bottom = '16px'; return; }
-      const h = drawerFooter.getBoundingClientRect().height || 72;
-      checkoutFab.style.bottom = (h + 16) + 'px';
+    // Toggle behaviour
+    function setMode(newMode){
+      mode = newMode;
+      document.body.setAttribute('data-mode', mode);
+      modeTabs.querySelectorAll('button[data-mode]').forEach(btn=>{
+        btn.setAttribute('aria-pressed', btn.dataset.mode === mode ? 'true' : 'false');
+      });
+      cartMode.textContent = mode==='retail' ? 'Retail' : 'Wholesale';
+      render();
     }
+    modeTabs.addEventListener('click', (e)=>{
+      const b = e.target.closest('button[data-mode]');
+      if (!b) return;
+      setMode(b.dataset.mode);
+    });
 
-    function updateFabVisibility(){
-      const visible = cart.size > 0 && drawer.classList.contains('open');
-      checkoutFab.style.display = visible ? 'flex' : 'none';
-      if (visible) positionFab();
-    }
-
+    // Render products
     function render(){
-      cartMode.textContent = mode==='retail'? 'Retail':'Wholesale';
       grid.innerHTML = PRODUCTS.map(p=>{
         const pr = priceOf(p);
         const imgSrc = withBase(p.img);
@@ -197,6 +251,7 @@
       }).join('');
     }
 
+    // Cart ops
     function addToCart(id){
       const product = PRODUCTS.find(x=>x.id===id);
       const qtyInput = document.getElementById(`qty-${id}`);
@@ -217,7 +272,7 @@
         const lineTotal = unitPrice*qty;
         total+=lineTotal; count+=qty;
         const div = document.createElement('div');
-        div.style.borderBottom='1px dashed #e2e8f0';
+        div.style.borderBottom='1px dashed var(--line)';
         div.style.padding='6px 0';
         div.innerHTML = `<strong>${product.name}</strong><br><span class="muted">${mode==='retail'?'Retail':'Wholesale'} • ${fmtUGX(unitPrice)} × ${qty} = </span> <strong>${fmtUGX(lineTotal)}</strong>`;
         cartLines.appendChild(div);
@@ -228,7 +283,7 @@
 
       const href = cartToWhatsApp();
       checkoutFab.href = href;
-      if (checkoutBtn) checkoutBtn.href = href; // fallback
+      checkoutBtn.href = href; // fallback
 
       updateFabVisibility();
     }
@@ -244,6 +299,17 @@
       return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
     }
 
+    // Drawer + FAB
+    function positionFab(){
+      if(!drawer.classList.contains('open')) { checkoutFab.style.bottom = '16px'; return; }
+      const h = drawerFooter.getBoundingClientRect().height || 72;
+      checkoutFab.style.bottom = (h + 16) + 'px';
+    }
+    function updateFabVisibility(){
+      const visible = cart.size > 0 && drawer.classList.contains('open');
+      checkoutFab.style.display = visible ? 'flex' : 'none';
+      if (visible) positionFab();
+    }
     function openDrawer(){
       drawer.classList.add('open');
       positionFab();
@@ -258,19 +324,10 @@
       updateFabVisibility();
     };
 
+    // Init
     document.getElementById('year').textContent = new Date().getFullYear();
-
-    document.getElementById('modeTabs').addEventListener('click', (e)=>{
-      const b = e.target.closest('button');
-      if(!b) return;
-      mode = b.dataset.mode;
-      document.querySelectorAll('#modeTabs button').forEach(btn=>btn.classList.toggle('active', btn.dataset.mode===mode));
-      render();
-    });
-
     window.addEventListener('resize', positionFab);
-
-    render();
+    render(); // initial render
   </script>
 </body>
 </html>
