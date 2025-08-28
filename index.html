@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +56,17 @@
     /* Hero */
     .hero-wrap{background:conic-gradient(from 180deg at 50% 50%, #e0f2fe 0deg, #dcfce7 180deg, #e0f2fe 360deg)}
     .hero {display:grid; grid-template-columns:1.05fr .95fr; gap:24px; align-items:center; padding:24px 16px; max-width:1200px; margin:0 auto}
-    .hero img{border-radius:16px; width:100%; aspect-ratio: 4/3; object-fit:cover; box-shadow:0 20px 50px rgba(2,6,23,.18)}
+    /* Maintain original image ratio & clarity (no forced aspect/cropping) */
+    .hero img{
+      border-radius:16px;
+      width:100%;
+      height:auto;           /* keep natural ratio */
+      max-width:100%;
+      display:block;
+      image-rendering:auto;  /* best browser scaling */
+      object-fit:contain;    /* show full image if container tighter */
+      box-shadow:0 20px 50px rgba(2,6,23,.18)
+    }
     .hero h1{font-size:clamp(26px, 5.2vw, 44px); margin:0 0 8px 0}
     .hero p{color:var(--muted); margin:0 0 14px 0; font-size:clamp(14px, 3.5vw, 16px)}
     .badges{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 14px}
@@ -216,7 +227,12 @@
           <a class="button" target="_blank" href="https://wa.me/256700000000?text=Hi%20Orji%20Supplies%2C%20I%20want%20to%20place%20an%20order%20(Cash%20on%20Delivery).">WhatsApp Us</a>
         </div>
       </div>
-      <img src="https://i.postimg.cc/MHkXsZrh/profile.png" alt="Orji Supplies team with products" loading="eager" width="1200" height="700">
+      <!-- HERO IMAGE — natural ratio preserved, no cropping -->
+      <img
+        src="https://i.postimg.cc/MHkXsZrh/profile.png"
+        alt="Orji Supplies team with products"
+        loading="eager"
+        width="1200" height="700">
     </section>
   </div>
 
@@ -565,7 +581,6 @@
         const retailHint = `Retail: ${fmtUGX(p.retailPrice)}`;
         const save = p.retailPrice - p.wholesalePrice;
         const hint = mode==='retail' ? wholesaleHint : `${retailHint} • Save ${save>0?fmtUGX(save):'UGX 0'} / unit`;
-        const stars = ratingStars(p.rating||4.5);
         return `<div class="card">
           <div style="position:relative">
             ${p.tag?`<span class="tag">${p.tag}</span>`:''}
