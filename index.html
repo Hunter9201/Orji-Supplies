@@ -134,6 +134,34 @@
 
     /* Responsive */
     @media (max-width: 940px){ .hero{grid-template-columns:1fr} .controls{top:60px} }
+  /* --- Mobile & small-screen enhancements --- */
+    .card h3{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:40px}
+    @media (max-width: 940px){
+      .controls-inner{flex-wrap:wrap}
+    }
+    @media (max-width: 640px){
+      .nav{padding:10px 12px}
+      .hero{padding:16px}
+      .hero img{border-radius:12px}
+      .controls{top:56px}
+      .controls-inner{gap:8px}
+      .search{flex:1; width:100%}
+      .chips{width:100%; overflow:auto; -webkit-overflow-scrolling:touch}
+      .mode-tabs{width:100%; justify-content:space-between}
+      .mode-badge{width:100%; text-align:center}
+      .grid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:12px}
+      .card img{height:150px}
+      .card .stack{flex-direction:column}
+      .qty input{width:100%}
+      .drawer{width:100vw}
+      .sheet{width:100vw; max-height:90vh}
+      .sheet main{max-height:calc(90vh - 120px); overflow:auto}
+    }
+    @media (max-width: 380px){
+      .grid{grid-template-columns:1fr}
+      .card img{height:160px}
+      .button{width:100%}
+    }
   </style>
 </head>
 <body data-mode="retail">
@@ -404,6 +432,16 @@
       {id:'pTowels', name:'Kitchen Paper Towels (6‑Pack)', retailPrice:24000, wholesalePrice:21000, moq:10, category:'home', unit:'pack', img:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop', desc:'Super‑absorbent rolls for spills.', rating:4.4}
     ];
 
+    /* Extra products for fuller mobile catalog */
+    PRODUCTS.push(
+      {id:'pMicroCloth', name:'Microfiber Cleaning Cloths (5pcs)', retailPrice:12000, wholesalePrice:9000, moq:12, category:'accessories', unit:'pack', img:'https://images.unsplash.com/photo-1581579188871-45ea61f2a0bb?q=80&w=1200&auto=format&fit=crop', desc:'Lint‑free cloths for streak‑free cleaning.', rating:4.5},
+      {id:'pFloorWiper', name:'Floor Wiper 45cm', retailPrice:24000, wholesalePrice:20000, moq:10, category:'accessories', unit:'piece', img:'https://images.unsplash.com/photo-1488805990569-3c9e1d76d51c?q=80&w=1200&auto=format&fit=crop', desc:'Wide head wiper for quick drying floors.', rating:4.2},
+      {id:'pLiquidDetergent5L', name:'Liquid Detergent 5L (Blue)', retailPrice:38000, wholesalePrice:34000, moq:6, category:'laundry', unit:'jerrycan', img:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop', desc:'High‑foam formula for clothes and floors.', rating:4.6},
+      {id:'pTileCleaner', name:'Tile & Grout Cleaner 1L', retailPrice:26000, wholesalePrice:23000, moq:8, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1200&auto=format&fit=crop', desc:'Removes stubborn stains and limescale.', rating:4.4},
+      {id:'pShoePolishSet', name:'Shoe Polish Set (Black & Brown)', retailPrice:16000, wholesalePrice:13000, moq:20, category:'home', unit:'set', img:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop', desc:'Shine kit for leather shoes.', rating:4.3},
+      {id:'pLaundryBasket', name:'Laundry Basket 50L', retailPrice:45000, wholesalePrice:40000, moq:6, category:'accessories', unit:'piece', img:'https://images.unsplash.com/photo-1602143407151-7111542de8bb?q=80&w=1200&auto=format&fit=crop', desc:'Lightweight ventilated basket.', rating:4.2}
+    );
+
     const CATEGORIES = [
       {id:'all', label:'All'},
       {id:'laundry', label:'Laundry'},
@@ -466,6 +504,12 @@
       const half = r - full >= 0.5 ? 1 : 0;
       const empty = 5 - full - half;
       return '★'.repeat(full) + (half?'½':'') + '☆'.repeat(empty);
+    }
+    function tuneQtyInputs(){
+      document.querySelectorAll('input[id^="qty-"]').forEach(el=>{
+        el.setAttribute('inputmode','numeric');
+        el.setAttribute('pattern','[0-9]*');
+      });
     }
 
     // ====== Filters / Chips ======
@@ -539,6 +583,7 @@
           </div>
         </div>`;
       }).join('');
+      if (typeof tuneQtyInputs==='function') tuneQtyInputs();
     }
 
     // ====== Cart ops ======
