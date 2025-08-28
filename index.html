@@ -2,72 +2,79 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Orji Supplies – Laundry & Home Cleaning (Cash on Delivery)</title>
-  <meta name="description" content="Orji Supplies: Premium laundry & home-cleaning products in Kampala. Retail & wholesale. Cash on Delivery. Fast same‑day delivery." />
+  <meta name="description" content="Orji Supplies: Premium laundry & home-cleaning products in Kampala. Retail & wholesale. Cash on Delivery. Fast same-day delivery." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Favicon -->
   <link rel="icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=6" type="image/jpeg" sizes="any">
   <link rel="apple-touch-icon" href="https://i.postimg.cc/9fwKYW53/Orjii-Supplies.jpg?v=6">
 
   <style>
     :root{
-      --brand:#0ea5e9;
-      --brand-d:#0284c7;
-      --ink:#0f172a;
-      --muted:#64748b;
-      --line:#e2e8f0;
-      --bg:#f8fafc;
-      --ok:#16a34a;
-      --bad:#ef4444;
-      --wa:#25D366;
-      --gold:#f59e0b;
-      --rose:#fb7185;
-      --card:#ffffff;
+      --brand:#0ea5e9; --brand-d:#0284c7; --ink:#0f172a; --muted:#64748b;
+      --line:#e2e8f0; --bg:#f8fafc; --ok:#16a34a; --bad:#ef4444; --wa:#25D366;
+      --gold:#f59e0b; --rose:#fb7185; --card:#ffffff;
+      --safe-top: env(safe-area-inset-top, 0px);
+      --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
-    body {font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin:0; background:var(--bg); color:var(--ink);}
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      margin:0; background:var(--bg); color:var(--ink);
+      -webkit-tap-highlight-color: transparent;
+      overflow-x:hidden;
+    }
 
     /* Top promo bar */
-    .topbar{background:linear-gradient(90deg, var(--brand), #22c55e); color:#fff; padding:6px 14px; font-weight:600; display:flex; gap:12px; justify-content:center; align-items:center; font-size:14px}
-    .topbar svg{width:16px;height:16px}
+    .topbar{
+      background:linear-gradient(90deg, var(--brand), #22c55e);
+      color:#fff; padding:8px 14px; padding-top:calc(8px + var(--safe-top));
+      font-weight:700; display:flex; gap:10px; justify-content:center; align-items:center; font-size:14px; text-align:center
+    }
+    .topbar svg{width:16px;height:16px; flex:0 0 16px}
 
-    header {position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); z-index:50; backdrop-filter:saturate(190%) blur(6px)}
-    .nav {display:flex; justify-content:space-between; align-items:center; padding:12px 16px; max-width:1200px; margin:0 auto}
-    .brand {font-weight:800; font-size:20px; display:flex; align-items:center; gap:10px; letter-spacing:.1px}
-    .brand .logo {width:36px;height:36px;background:var(--brand);display:grid;place-items:center;color:#fff;border-radius:8px; box-shadow:0 6px 14px rgba(14,165,233,.25)}
-    .nav-actions {display:flex; gap:8px; align-items:center}
-    .button {padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700; border:1px solid var(--line); cursor:pointer; background:#fff; color:var(--ink)}
+    /* Header / Nav */
+    header {position:sticky; top:0; background:#fff; border-bottom:1px solid var(--line); z-index:50; backdrop-filter:saturate(180%) blur(6px)}
+    .nav {display:flex; justify-content:space-between; align-items:center; padding:12px 16px; max-width:1200px; margin:0 auto; gap:10px}
+    .brand {font-weight:800; font-size:18px; display:flex; align-items:center; gap:10px; letter-spacing:.1px}
+    .brand .logo {width:34px;height:34px;background:var(--brand);display:grid;place-items:center;color:#fff;border-radius:8px; box-shadow:0 6px 14px rgba(14,165,233,.25); font-weight:900}
+    .nav-actions {display:flex; gap:8px; align-items:center; flex-wrap:wrap}
+    .button {padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:700; border:1px solid var(--line); cursor:pointer; background:#fff; color:var(--ink); line-height:1.2; font-size:16px}
     .button:hover{filter:brightness(.98)}
     .primary {background:var(--brand); color:#fff; border-color:var(--brand)}
     .primary:hover{background:var(--brand-d); border-color:var(--brand-d)}
     .ghost{background:transparent}
-    .call{display:inline-flex; gap:8px; align-items:center}
+    .call{display:inline-flex; gap:8px; align-items:center; white-space:nowrap}
 
     /* Hero */
     .hero-wrap{background:conic-gradient(from 180deg at 50% 50%, #e0f2fe 0deg, #dcfce7 180deg, #e0f2fe 360deg)}
-    .hero {display:grid; grid-template-columns:1.1fr .9fr; gap:24px; align-items:center; padding:28px 16px; max-width:1200px; margin:0 auto}
-    .hero img{border-radius:16px; width:100%; height:100%; object-fit:cover; box-shadow:0 20px 50px rgba(2,6,23,.18)}
-    .hero h1{font-size:clamp(28px, 3.6vw, 44px); margin:0 0 8px 0}
-    .hero p{color:var(--muted); margin:0 0 14px 0; font-size:clamp(14px, 1.6vw, 16px)}
+    .hero {display:grid; grid-template-columns:1.05fr .95fr; gap:24px; align-items:center; padding:24px 16px; max-width:1200px; margin:0 auto}
+    .hero img{border-radius:16px; width:100%; aspect-ratio: 4/3; object-fit:cover; box-shadow:0 20px 50px rgba(2,6,23,.18)}
+    .hero h1{font-size:clamp(26px, 5.2vw, 44px); margin:0 0 8px 0}
+    .hero p{color:var(--muted); margin:0 0 14px 0; font-size:clamp(14px, 3.5vw, 16px)}
     .badges{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 14px}
     .badge{background:#fff; border:1px solid var(--line); border-radius:999px; padding:6px 10px; font-weight:700; font-size:12px}
 
     /* Controls */
-    .controls{position:sticky; top:68px; background:#ffffffd9; backdrop-filter:blur(6px); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
-    .controls-inner{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 16px; max-width:1200px; margin:0 auto}
-    .muted{color:var(--muted); font-size:12px}
-    .search{display:flex; gap:8px; align-items:center; padding:8px 10px; border:1px solid var(--line); border-radius:10px; background:#fff}
-    .search input{border:0; outline:none; min-width:180px}
-    .chips{display:flex; flex-wrap:wrap; gap:6px}
-    .chip{padding:8px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; cursor:pointer; font-weight:700; font-size:12px}
+    .controls{
+      position:sticky; top:64px; background:#ffffffee; backdrop-filter:blur(6px);
+      border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    }
+    .controls-inner{display:flex; justify-content:space-between; align-items:center; gap:12px; padding:10px 16px; max-width:1200px; margin:0 auto; flex-wrap:wrap}
+    .muted{color:var(--muted); font-size:13px}
+    .search{display:flex; gap:8px; align-items:center; padding:10px 12px; border:1px solid var(--line); border-radius:10px; background:#fff; flex:1 1 260px}
+    .search input{border:0; outline:none; width:100%; font-size:16px; background:transparent}
+    .chips{display:flex; flex-wrap:wrap; gap:6px; max-width:100%}
+    .chip{padding:9px 12px; border-radius:999px; border:1px solid var(--line); background:#fff; cursor:pointer; font-weight:700; font-size:13px; user-select:none}
     .chip[aria-pressed="true"]{background:var(--ink); color:#fff}
 
-    .select{padding:9px 12px; border-radius:10px; border:1px solid var(--line); background:#fff; font-weight:700}
+    .select{padding:10px 12px; border-radius:10px; border:1px solid var(--line); background:#fff; font-weight:700; font-size:16px}
 
     .mode-badge{padding:8px 12px; border-radius:999px; font-weight:800}
     [data-mode="retail"] .mode-badge{background:#e0f2fe; color:#075985}
@@ -77,6 +84,7 @@
     .mode-tabs{
       position:relative; display:inline-flex; align-items:center; gap:6px;
       background:#0f172a0d; border:1px solid #cbd5e1; padding:6px; border-radius:999px;
+      width:auto; flex:0 0 auto
     }
     .mode-tabs .thumb{position:absolute; top:6px; bottom:6px; width:50%; border-radius:999px; background:var(--brand); z-index:0; transition:transform .25s ease, background-color .25s ease}
     [data-mode="retail"]    .mode-tabs .thumb{ transform:translateX(0%);   background:var(--brand)}
@@ -86,42 +94,48 @@
     .mode-tabs button:focus-visible{ outline:none; box-shadow:0 0 0 3px rgba(14,165,233,.45) }
 
     /* Grid */
-    .grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; padding:18px 16px; max-width:1200px; margin:0 auto}
+    .grid{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+      gap:14px; padding:16px; max-width:1200px; margin:0 auto
+    }
     .card{background:var(--card); border:1px solid var(--line); border-radius:14px; display:flex; flex-direction:column; overflow:hidden; transition:transform .18s, box-shadow .18s}
-    .card:hover{transform:translateY(-4px); box-shadow:0 14px 30px rgba(2,6,23,.12)}
+    .card:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(2,6,23,.10)}
     .card .tag{position:absolute; top:10px; left:10px; background:#ffffffea; border:1px solid var(--line); font-weight:800; font-size:11px; border-radius:999px; padding:4px 8px}
     .card .rating{position:absolute; top:10px; right:10px; background:#fff; border:1px solid var(--line); border-radius:999px; padding:4px 8px; font-size:12px; display:flex; align-items:center; gap:4px}
-    .card img{width:100%; height:200px; object-fit:cover; background:#f1f5f9}
+    .card img{width:100%; height:auto; aspect-ratio: 23/16; object-fit:cover; background:#f1f5f9}
     .card .body{padding:12px}
-    .card h3{margin:0 0 6px; font-size:16px}
+    .card h3{margin:0 0 6px; font-size:16px; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:40px}
     .price{font-weight:800; margin:6px 0}
     .moq{display:inline-block; font-size:11px; background:#d1fae5; color:#065f46; border:1px solid #a7f3d0; border-radius:999px; padding:2px 8px; margin-left:6px}
     .qty{margin:8px 0; display:flex; align-items:center; gap:8px}
-    .qty input{width:96px; padding:8px 10px; border-radius:10px; border:1px solid var(--line)}
+    .qty input{width:110px; padding:10px 12px; border-radius:10px; border:1px solid var(--line); font-size:16px}
     .stack{display:flex; gap:8px; flex-wrap:wrap}
-    .buyNow{background:#10b981; color:#fff; border-color:#10b981}
 
     /* Drawer (cart) */
-    .drawer{position:fixed; top:0; right:-420px; width:380px; max-width:92vw; height:100vh; background:#fff; border-left:1px solid var(--line); transition:right .22s; z-index:100; display:flex; flex-direction:column}
+    .drawer{
+      position:fixed; top:0; right:-420px; width:380px; max-width:92vw; height:100vh;
+      background:#fff; border-left:1px solid var(--line); transition:right .22s; z-index:100; display:flex; flex-direction:column
+    }
     .drawer.open{right:0}
     .drawer header{padding:12px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center}
     .drawer main{flex:1; overflow:auto; padding:12px}
-    .drawer footer{padding:12px; border-top:1px solid var(--line); position:relative; background:#fff}
+    .drawer footer{padding:12px; border-top:1px solid var(--line); position:relative; background:#fff; padding-bottom:calc(12px + var(--safe-bottom))}
+    .cart-line{border-bottom:1px dashed var(--line); padding:8px 0}
 
     /* Checkout form (modal) */
-    .modal{position:fixed; inset:0; display:none; place-items:center; background:rgba(2,6,23,.5); z-index:120}
+    .modal{position:fixed; inset:0; display:none; place-items:center; background:rgba(2,6,23,.5); z-index:120; padding:16px}
     .modal.open{display:grid}
-    .sheet{width:min(640px,94vw); background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:0 30px 60px rgba(2,6,23,.35)}
+    .sheet{width:min(640px,100%); background:#fff; border:1px solid var(--line); border-radius:16px; box-shadow:0 30px 60px rgba(2,6,23,.35); max-height:92vh; display:flex; flex-direction:column}
     .sheet header, .sheet footer{padding:12px 16px; border-bottom:1px solid var(--line)}
     .sheet footer{border-top:1px solid var(--line); border-bottom:0; display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap}
-    .sheet main{padding:12px 16px}
+    .sheet main{padding:12px 16px; overflow:auto}
     .row{display:grid; grid-template-columns:1fr 1fr; gap:10px}
     .field{display:flex; flex-direction:column; gap:6px}
-    .field input, .field select, .field textarea{padding:10px 12px; border:1px solid var(--line); border-radius:10px}
+    .field input, .field select, .field textarea{padding:12px 12px; border:1px solid var(--line); border-radius:10px; font-size:16px}
     .note{font-size:12px; color:var(--muted)}
 
     /* Floating WhatsApp checkout button */
-    .fab {position: fixed; right: 16px; bottom: 16px; display: none; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 999px; background:var(--wa); color:#fff; font-weight:800; text-decoration:none; box-shadow:0 10px 20px rgba(2,6,23,.18); z-index:120}
+    .fab {position: fixed; right: 16px; bottom: calc(16px + var(--safe-bottom)); display: none; align-items: center; gap: 8px; padding: 12px 16px; border-radius: 999px; background:var(--wa); color:#fff; font-weight:800; text-decoration:none; box-shadow:0 10px 20px rgba(2,6,23,.18); z-index:120}
     .fab:hover { filter:brightness(.96) }
     .fab svg { width:20px; height:20px }
 
@@ -132,34 +146,36 @@
     /* Footer */
     footer.site{margin-top:20px; border-top:1px solid var(--line); padding:18px 16px; background:#fff}
 
-    /* Responsive */
-    @media (max-width: 940px){ .hero{grid-template-columns:1fr} .controls{top:60px} }
-  /* --- Mobile & small-screen enhancements --- */
-    .card h3{display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; min-height:40px}
-    @media (max-width: 940px){
-      .controls-inner{flex-wrap:wrap}
+    /* --- Mobile & small-screen enhancements --- */
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .controls{top:60px}
     }
-    @media (max-width: 640px){
+    @media (max-width: 860px){
       .nav{padding:10px 12px}
+      .brand{font-size:17px}
       .hero{padding:16px}
       .hero img{border-radius:12px}
-      .controls{top:56px}
       .controls-inner{gap:8px}
-      .search{flex:1; width:100%}
-      .chips{width:100%; overflow:auto; -webkit-overflow-scrolling:touch}
-      .mode-tabs{width:100%; justify-content:space-between}
-      .mode-badge{width:100%; text-align:center}
+      .search{order:3}
+      .chips{order:4; width:100%; overflow:auto; -webkit-overflow-scrolling:touch}
+      .mode-tabs{order:5; width:100%; justify-content:space-between}
+      .mode-badge{order:2; width:auto}
+      .select{order:6}
+    }
+    @media (max-width: 640px){
       .grid{grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:12px}
-      .card img{height:150px}
+      .card img{aspect-ratio: 1/1; }
       .card .stack{flex-direction:column}
       .qty input{width:100%}
       .drawer{width:100vw}
-      .sheet{width:100vw; max-height:90vh}
-      .sheet main{max-height:calc(90vh - 120px); overflow:auto}
+      .sheet main{max-height:calc(92vh - 120px); overflow:auto}
+      .row{grid-template-columns:1fr}
+      .nav-actions .button{flex:1 1 auto}
+      .call{display:none} /* keep header tidy on very small screens */
     }
     @media (max-width: 380px){
       .grid{grid-template-columns:1fr}
-      .card img{height:160px}
       .button{width:100%}
     }
   </style>
@@ -168,7 +184,7 @@
   <!-- Promo bar -->
   <div class="topbar" role="status" aria-live="polite">
     <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2 1 21h22L12 2zm0 4.84L19.53 19H4.47L12 6.84zM11 10h2v5h-2v-5zm0 6h2v2h-2v-2z"/></svg>
-    <span>Pay on Delivery (Cash) • Same‑day delivery in Kampala before 4pm • Free delivery on orders UGX 250,000+</span>
+    <span>Pay on Delivery (Cash) • Same-day delivery in Kampala before 4pm • Free delivery on orders UGX 250,000+</span>
   </div>
 
   <header>
@@ -204,7 +220,7 @@
     </section>
   </div>
 
-  <!-- Controls: Search, filters, sort, retail/wholesale toggle -->
+  <!-- Controls -->
   <div class="controls">
     <div class="controls-inner">
       <div class="stack" style="align-items:center">
@@ -251,14 +267,14 @@
     <div class="tcard">
       <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2H3V6zm2 5h14v11H5V11zm3 2v7h2v-7H8zm6 0v7h2v-7h-2z"/></svg>
       <div>
-        <strong>Same‑Day Delivery</strong>
+        <strong>Same-Day Delivery</strong>
         <div class="muted">Kampala orders before 4pm delivered the same day.</div>
       </div>
     </div>
     <div class="tcard">
       <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
       <div>
-        <strong>Top‑Rated Brands</strong>
+        <strong>Top-Rated Brands</strong>
         <div class="muted">Harpic, Vim, Pledge, Durakill, and more favourites.</div>
       </div>
     </div>
@@ -266,7 +282,7 @@
       <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M12 4a8 8 0 00-8 8v4h2v-4a6 6 0 1112 0v4h2v-4a8 8 0 00-8-8zM6 18h12v2H6v-2z"/></svg>
       <div>
         <strong>Wholesale Ready</strong>
-        <div class="muted">Bulk discounts & easy re‑order for businesses.</div>
+        <div class="muted">Bulk discounts & easy re-order for businesses.</div>
       </div>
     </div>
     <div class="tcard">
@@ -275,7 +291,6 @@
         <strong>Free Delivery 250k+ UGX</strong>
         <div class="muted">Automatic at checkout when your cart reaches UGX 250,000.</div>
       </div>
-    </div>
     </div>
   </section>
 
@@ -296,13 +311,13 @@
     <footer>
       <div id="grandTotal" style="font-weight:800">Total: UGX 0</div>
       <div class="muted" style="margin:6px 0">Payment: <strong>Cash on Delivery</strong></div>
-      <div class="muted" style="margin:6px 0">Delivery area: <select id="areaSel" class="select" style="padding:6px 8px">
+      <div class="muted" style="margin:6px 0">Delivery area: <select id="areaSel" class="select" style="padding:8px 10px">
         <option value="Kampala Central">Kampala Central</option>
         <option value="Wakiso">Wakiso</option>
         <option value="Entebbe">Entebbe</option>
         <option value="Upcountry">Upcountry</option>
       </select></div>
-      <div id="deliveryNote" class="muted">Same‑day in Kampala for orders before 4pm. Estimated fee shown at checkout.</div>
+      <div id="deliveryNote" class="muted">Same-day in Kampala for orders before 4pm. Estimated fee shown at checkout.</div>
       <div id="freeNote" class="muted" style="margin:6px 0"></div>
       <div id="freeProgress" style="height:8px; background:#f1f5f9; border-radius:999px; overflow:hidden;">
         <div id="freeFill" style="height:100%; width:0; background:var(--ok)"></div>
@@ -313,9 +328,9 @@
     </footer>
   </aside>
 
-  <!-- Floating WhatsApp Checkout (appears only when drawer open & items present) -->
+  <!-- Floating WhatsApp Checkout -->
   <a id="checkoutFab" class="fab" href="#" target="_blank" aria-label="Checkout on WhatsApp (COD)">
-    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.56c-.26-.13-1.52-.75-1.76-.84s-.41-.13-.58.13-.66.84-.81 1.01-.3.19-.56.06a8.94 8.94 0 0 1-2.64-1.63 9.9 9.9 0 0 1-1.84-2.28c-.19-.32 0-.49.13-.62.13-.13.26-.32.39-.45.13-.13.19-.26.32-.45.13-.19.06-.36 0-.49-.06-.13-.58-1.39-.8-1.89-.21-.51-.43-.44-.58-.45h-.5a.96.96 0 0 0-.69.32c-.24.26-.9.88-.9 2.14s.92 2.49 1.05 2.66c.13.17 1.81 2.76 4.39 3.87.61.26 1.08.41 1.45.52.61.19 1.16.16 1.6.1.49-.07 1.52-.62 1.74-1.22.21-.58.21-1.08.15-1.22-.06-.13-.24-.2-.5-.33zM16 3C9.37 3 4 8.37 4 15c0 2.12.55 4.1 1.52 5.83L4 29l8.33-1.46A12.95 12.95 0 0 0 16 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.33c-1.84 0-3.55-.54-4.98-1.46l-.36-.23-4.94.86.86-4.81-.24-.39A9.36 9.36 0 1 1 25.36 20a9.33 9.33 0 0 1-9.36 5.33z"/></svg>
+    <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.56c-.26-.13-1.52-.75-1.76-.84s-.41-.13-.58.13-.66.84-.81 1.01-.3.19-.56.06a8.94 8.94 0 0 1-2.64-1.63 9.9 9.9 0 0 1-1.84-2.28c-.19-.32 0-.49.13-.62.13-.13.26-.32.39-.45.13-.13.19-.26.32-.45.13-.19.06-.36 0-.49-.06-.13-.58-1.39-.8-1.89-.21-.51-.43-.44-.58-.45h-.5a.96.96 0 0 0-.69.32c-.24.26-.9.88-.9 2.14s.92 2.49 1.05 2.66c.13.17 1.81 2.76 4.39 3.87.61 .26 1.08 .41 1.45 .52.61 .19 1.16 .16 1.6 .1.49 -.07 1.52 -.62 1.74 -1.22.21 -.58.21 -1.08.15 -1.22-.06 -.13-.24 -.2-.5 -.33zM16 3C9.37 3 4 8.37 4 15c0 2.12.55 4.1 1.52 5.83L4 29l8.33-1.46A12.95 12.95 0 0 0 16 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.33c-1.84 0-3.55-.54-4.98-1.46l-.36-.23-4.94.86.86-4.81-.24-.39A9.36 9.36 0 1 1 25.36 20a9.33 9.33 0 0 1-9.36 5.33z"/></svg>
     <span>Checkout</span>
   </a>
 
@@ -343,7 +358,7 @@
               <option>Entebbe</option>
               <option>Upcountry</option>
             </select>
-            <div class="note">Kampala same‑day for orders before 4pm.</div>
+            <div class="note">Kampala same-day for orders before 4pm.</div>
           </div>
           <div class="field">
             <label for="custTime">Preferred Time</label>
@@ -387,8 +402,6 @@
     }
 
     // ====== Catalog Data ======
-    // categories: 'laundry', 'home', 'accessories', 'pest'
-    // rating: 3.5 - 5 (visual only)
     const PRODUCTS = [
       {id:'pBroom', name:'Assorted Color Broom Head', retailPrice:15000, wholesalePrice:12000, moq:10, category:'accessories', unit:'piece',  img:'https://i.postimg.cc/TwjsBpHm/Brooms.jpg', desc:'Heavy-duty broom head in multiple colors. Fits standard handles.', rating:4.7, tag:'Bestseller'},
       {id:'pDurakill', name:'Durakill Multi Insect Killer 600ml', retailPrice:18000, wholesalePrice:15000, moq:12, category:'pest', unit:'can', img:'https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=1200&auto=format&fit=crop', desc:'Rapid knock-down insecticide for flying & crawling insects.', rating:4.6},
@@ -404,43 +417,39 @@
       {id:'pBleach', name:'Oxygen Bleach 1kg', retailPrice:24000, wholesalePrice:21000, moq:10, category:'laundry', unit:'tub', img:'https://images.unsplash.com/photo-1556228578-8fbf4d0d85d9?q=80&w=1200&auto=format&fit=crop', desc:'Whitening booster for fabrics. Chlorine-free.', rating:4.4},
       {id:'pDetergentPowder', name:'Ultra Wash Detergent Powder 3kg', retailPrice:36000, wholesalePrice:32000, moq:6, category:'laundry', unit:'bag', img:'https://images.unsplash.com/photo-1581579188871-45ea61f2a0bb?q=80&w=1200&auto=format&fit=crop', desc:'Powerful stain removal, fresh fragrance.', rating:4.8, tag:'Bestseller'},
       {id:'pSpongePack', name:'Kitchen Sponge Pack (6pcs)', retailPrice:9000, wholesalePrice:7000, moq:12, category:'accessories', unit:'pack', img:'https://images.unsplash.com/photo-1596967741295-7d4b1a9da8d3?q=80&w=1200&auto=format&fit=crop', desc:'Non-scratch foam scrub sponges.', rating:4.2},
-      {id:'pGarbageBags', name:'Heavy Duty Garbage Bags (30pcs)', retailPrice:18000, wholesalePrice:15000, moq:10, category:'home', unit:'roll', img:'https://images.unsplash.com/photo-1603796846097-bee99e4a601f?q=80&w=1200&auto=format&fit=crop', desc:'Extra‑thick trash liners for home & office.', rating:4.4},
+      {id:'pGarbageBags', name:'Heavy Duty Garbage Bags (30pcs)', retailPrice:18000, wholesalePrice:15000, moq:10, category:'home', unit:'roll', img:'https://images.unsplash.com/photo-1603796846097-bee99e4a601f?q=80&w=1200&auto=format&fit=crop', desc:'Extra-thick trash liners for home & office.', rating:4.4},
       {id:'pAirFresh', name:'Air Freshener Spray 300ml', retailPrice:15000, wholesalePrice:12000, moq:12, category:'home', unit:'can', img:'https://images.unsplash.com/photo-1556228453-efd1b4c4373c?q=80&w=1200&auto=format&fit=crop', desc:'Instant room refresh – multiple scents.', rating:4.3},
-      {id:'pGloves', name:'Reusable Latex Gloves (L)', retailPrice:12000, wholesalePrice:9000, moq:20, category:'accessories', unit:'pair', img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop', desc:'Tough, non‑slip cleaning gloves.', rating:4.5},
-      {id:'pSqueegee', name:'Window Squeegee 35cm', retailPrice:18000, wholesalePrice:15000, moq:8, category:'accessories', unit:'piece', img:'https://images.unsplash.com/photo-1583947215259-38c97076f0d8?q=80&w=1200&auto=format&fit=crop', desc:'Streak‑free glass cleaning tool.', rating:4.1},
+      {id:'pGloves', name:'Reusable Latex Gloves (L)', retailPrice:12000, wholesalePrice:9000, moq:20, category:'accessories', unit:'pair', img:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85d?q=80&w=1200&auto=format&fit=crop', desc:'Tough, non-slip cleaning gloves.', rating:4.5},
+      {id:'pSqueegee', name:'Window Squeegee 35cm', retailPrice:18000, wholesalePrice:15000, moq:8, category:'accessories', unit:'piece', img:'https://images.unsplash.com/photo-1583947215259-38c97076f0d8?q=80&w=1200&auto=format&fit=crop', desc:'Streak-free glass cleaning tool.', rating:4.1},
       {id:'pDishBrush', name:'Dish Brush with Soap Dispenser', retailPrice:16000, wholesalePrice:13000, moq:12, category:'accessories', unit:'piece', img:'https://images.unsplash.com/photo-1607619056574-7ab35c0f11a3?q=80&w=1200&auto=format&fit=crop', desc:'Push to release soap while scrubbing.', rating:4.4},
       {id:'pToiletGel', name:'Toilet Cleaning Gel 750ml', retailPrice:17000, wholesalePrice:14000, moq:12, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1595407754044-4da7a6d4fcac?q=80&w=1200&auto=format&fit=crop', desc:'Clings to bowl for deep clean.', rating:4.6},
       {id:'pStainRemover', name:'Fabric Stain Remover 500ml', retailPrice:22000, wholesalePrice:19000, moq:10, category:'laundry', unit:'bottle', img:'https://images.unsplash.com/photo-1628648844220-4a7e7d70c2b2?q=80&w=1200&auto=format&fit=crop', desc:'Targets grease, mud and ink stains.', rating:4.5},
-      {id:'pCarpetCleaner', name:'Carpet & Upholstery Shampoo 1L', retailPrice:28000, wholesalePrice:24000, moq:8, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1558449028-b53a39d116ec?q=80&w=1200&auto=format&fit=crop', desc:'Foaming deep‑clean for fabric surfaces.', rating:4.2},
-      {id:'pSteelWool', name:'Steel Wool Pads (16pcs)', retailPrice:9000, wholesalePrice:7000, moq:12, category:'accessories', unit:'pack', img:'https://images.unsplash.com/photo-1599058944790-48c4c002d070?q=80&w=1200&auto=format&fit=crop', desc:'Cuts through burnt‑on grime.', rating:4.3},
+      {id:'pCarpetCleaner', name:'Carpet & Upholstery Shampoo 1L', retailPrice:28000, wholesalePrice:24000, moq:8, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1558449028-b53a39d116ec?q=80&w=1200&auto=format&fit=crop', desc:'Foaming deep-clean for fabric surfaces.', rating:4.2},
+      {id:'pSteelWool', name:'Steel Wool Pads (16pcs)', retailPrice:9000, wholesalePrice:7000, moq:12, category:'accessories', unit:'pack', img:'https://images.unsplash.com/photo-1599058944790-48c4c002d070?q=80&w=1200&auto=format&fit=crop', desc:'Cuts through burnt-on grime.', rating:4.3},
       {id:'pHandSan', name:'Hand Sanitizer 500ml', retailPrice:18000, wholesalePrice:15000, moq:12, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1583947215259-38c97076f0d8?q=80&w=1200&auto=format&fit=crop', desc:'70% alcohol, moisturising formula.', rating:4.6},
-      {id:'pBuckets', name:'Multi‑purpose Bucket 20L', retailPrice:26000, wholesalePrice:22000, moq:6, category:'accessories', unit:'piece', img:'https://images.unsplash.com/photo-1602143407151-7111542de8bb?q=80&w=1200&auto=format&fit=crop', desc:'Strong handle, durable plastic.', rating:4.1},
-      {id:'pClothPeg', name:'Clothes Pegs (50pcs)', retailPrice:12000, wholesalePrice:9000, moq:10, category:'accessories', unit:'pack', img:'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop', desc:'Non‑slip pegs for outdoor lines.', rating:4.0},
+      {id:'pBuckets', name:'Multi-purpose Bucket 20L', retailPrice:26000, wholesalePrice:22000, moq:6, category:'accessories', unit:'piece', img:'https://images.unsplash.com/photo-1602143407151-7111542de8bb?q=80&w=1200&auto=format&fit=crop', desc:'Strong handle, durable plastic.', rating:4.1},
+      {id:'pClothPeg', name:'Clothes Pegs (50pcs)', retailPrice:12000, wholesalePrice:9000, moq:10, category:'accessories', unit:'pack', img:'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop', desc:'Non-slip pegs for outdoor lines.', rating:4.0},
       {id:'pDishLiquid', name:'Dishwashing Liquid 1L (Lemon)', retailPrice:14000, wholesalePrice:12000, moq:12, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1604335399105-a0fcc0d04d2e?q=80&w=1200&auto=format&fit=crop', desc:'Degreasing power with lemon scent.', rating:4.5},
       {id:'pJik', name:'Jik Bleach 1L', retailPrice:16000, wholesalePrice:14000, moq:12, category:'laundry', unit:'bottle', img:'https://images.unsplash.com/photo-1556228578-8fbf4d0d85d9?q=80&w=1200&auto=format&fit=crop', desc:'Trusted household bleach for whitening & hygiene.', rating:4.6},
-      {id:'pDettol', name:'Dettol Antiseptic 500ml', retailPrice:28000, wholesalePrice:25000, moq:8, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1583947215259-38c97076f0d8?q=80&w=1200&auto=format&fit=crop', desc:'Multi‑purpose antiseptic liquid.', rating:4.8},
+      {id:'pDettol', name:'Dettol Antiseptic 500ml', retailPrice:28000, wholesalePrice:25000, moq:8, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1583947215259-38c97076f0d8?q=80&w=1200&auto=format&fit=crop', desc:'Multi-purpose antiseptic liquid.', rating:4.8},
       {id:'pOmo', name:'Omo Washing Powder 2kg', retailPrice:31000, wholesalePrice:28000, moq:8, category:'laundry', unit:'bag', img:'https://images.unsplash.com/photo-1581579188871-45ea61f2a0bb?q=80&w=1200&auto=format&fit=crop', desc:'Deep clean washing powder.', rating:4.7},
       {id:'pSunlight', name:'Sunlight Liquid Detergent 1.5L', retailPrice:26000, wholesalePrice:23000, moq:10, category:'laundry', unit:'bottle', img:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop', desc:'Gentle on hands, tough on grease.', rating:4.6},
-      {id:'pGlass', name:'Glass Cleaner 500ml', retailPrice:14000, wholesalePrice:12000, moq:12, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1200&auto=format&fit=crop', desc:'Crystal‑clear, streak‑free shine.', rating:4.5},
+      {id:'pGlass', name:'Glass Cleaner 500ml', retailPrice:14000, wholesalePrice:12000, moq:12, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1200&auto=format&fit=crop', desc:'Crystal-clear, streak-free shine.', rating:4.5},
       {id:'pDrain', name:'Drain Cleaner Gel 1L', retailPrice:24000, wholesalePrice:21000, moq:6, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1595407754044-4da7a6d4fcac?q=80&w=1200&auto=format&fit=crop', desc:'Unclogs sinks & drains fast.', rating:4.2},
-      {id:'pCoils', name:'Mosquito Coils (10pcs)', retailPrice:8000, wholesalePrice:6000, moq:20, category:'pest', unit:'box', img:'https://images.unsplash.com/photo-1505575972945-280c5cf51129?q=80&w=1200&auto=format&fit=crop', desc:'Long‑lasting protection from mosquitoes.', rating:4.1},
+      {id:'pCoils', name:'Mosquito Coils (10pcs)', retailPrice:8000, wholesalePrice:6000, moq:20, category:'pest', unit:'box', img:'https://images.unsplash.com/photo-1505575972945-280c5cf51129?q=80&w=1200&auto=format&fit=crop', desc:'Long-lasting protection from mosquitoes.', rating:4.1},
       {id:'pRatGlue', name:'Rat Glue Traps (5pcs)', retailPrice:12000, wholesalePrice:9000, moq:20, category:'pest', unit:'pack', img:'https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1200&auto=format&fit=crop', desc:'Strong adhesive boards for rodents.', rating:4.0},
-      {id:'pOven', name:'Oven Cleaner Spray 650ml', retailPrice:26000, wholesalePrice:23000, moq:8, category:'home', unit:'can', img:'https://images.unsplash.com/photo-1599058944790-48c4c002d070?q=80&w=1200&auto=format&fit=crop', desc:'Cuts through baked‑on grease.', rating:4.3},
+      {id:'pOven', name:'Oven Cleaner Spray 650ml', retailPrice:26000, wholesalePrice:23000, moq:8, category:'home', unit:'can', img:'https://images.unsplash.com/photo-1599058944790-48c4c002d070?q=80&w=1200&auto=format&fit=crop', desc:'Cuts through baked-on grease.', rating:4.3},
       {id:'pDescaler', name:'Bathroom Limescale Remover 1L', retailPrice:24000, wholesalePrice:21000, moq:6, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1558449028-b53a39d116ec?q=80&w=1200&auto=format&fit=crop', desc:'Dissolves limescale & soap scum.', rating:4.2},
       {id:'pNaph', name:'Naphthalene Balls 200g', retailPrice:10000, wholesalePrice:8000, moq:20, category:'home', unit:'pack', img:'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1200&auto=format&fit=crop', desc:'Protect clothes from moths & odor.', rating:4.1},
-      {id:'pTP', name:'Toilet Paper (10‑Pack)', retailPrice:18000, wholesalePrice:16000, moq:12, category:'home', unit:'pack', img:'https://images.unsplash.com/photo-1584556812952-905ffd0c611f?q=80&w=1200&auto=format&fit=crop', desc:'Soft, strong household essential.', rating:4.6},
-      {id:'pTowels', name:'Kitchen Paper Towels (6‑Pack)', retailPrice:24000, wholesalePrice:21000, moq:10, category:'home', unit:'pack', img:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop', desc:'Super‑absorbent rolls for spills.', rating:4.4}
-    ];
-
-    /* Extra products for fuller mobile catalog */
-    PRODUCTS.push(
-      {id:'pMicroCloth', name:'Microfiber Cleaning Cloths (5pcs)', retailPrice:12000, wholesalePrice:9000, moq:12, category:'accessories', unit:'pack', img:'https://images.unsplash.com/photo-1581579188871-45ea61f2a0bb?q=80&w=1200&auto=format&fit=crop', desc:'Lint‑free cloths for streak‑free cleaning.', rating:4.5},
+      {id:'pTP', name:'Toilet Paper (10-Pack)', retailPrice:18000, wholesalePrice:16000, moq:12, category:'home', unit:'pack', img:'https://images.unsplash.com/photo-1584556812952-905ffd0c611f?q=80&w=1200&auto=format&fit=crop', desc:'Soft, strong household essential.', rating:4.6},
+      {id:'pTowels', name:'Kitchen Paper Towels (6-Pack)', retailPrice:24000, wholesalePrice:21000, moq:10, category:'home', unit:'pack', img:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop', desc:'Super-absorbent rolls for spills.', rating:4.4},
+      {id:'pMicroCloth', name:'Microfiber Cleaning Cloths (5pcs)', retailPrice:12000, wholesalePrice:9000, moq:12, category:'accessories', unit:'pack', img:'https://images.unsplash.com/photo-1581579188871-45ea61f2a0bb?q=80&w=1200&auto=format&fit=crop', desc:'Lint-free cloths for streak-free cleaning.', rating:4.5},
       {id:'pFloorWiper', name:'Floor Wiper 45cm', retailPrice:24000, wholesalePrice:20000, moq:10, category:'accessories', unit:'piece', img:'https://images.unsplash.com/photo-1488805990569-3c9e1d76d51c?q=80&w=1200&auto=format&fit=crop', desc:'Wide head wiper for quick drying floors.', rating:4.2},
-      {id:'pLiquidDetergent5L', name:'Liquid Detergent 5L (Blue)', retailPrice:38000, wholesalePrice:34000, moq:6, category:'laundry', unit:'jerrycan', img:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop', desc:'High‑foam formula for clothes and floors.', rating:4.6},
+      {id:'pLiquidDetergent5L', name:'Liquid Detergent 5L (Blue)', retailPrice:38000, wholesalePrice:34000, moq:6, category:'laundry', unit:'jerrycan', img:'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop', desc:'High-foam formula for clothes and floors.', rating:4.6},
       {id:'pTileCleaner', name:'Tile & Grout Cleaner 1L', retailPrice:26000, wholesalePrice:23000, moq:8, category:'home', unit:'bottle', img:'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?q=80&w=1200&auto=format&fit=crop', desc:'Removes stubborn stains and limescale.', rating:4.4},
       {id:'pShoePolishSet', name:'Shoe Polish Set (Black & Brown)', retailPrice:16000, wholesalePrice:13000, moq:20, category:'home', unit:'set', img:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop', desc:'Shine kit for leather shoes.', rating:4.3},
       {id:'pLaundryBasket', name:'Laundry Basket 50L', retailPrice:45000, wholesalePrice:40000, moq:6, category:'accessories', unit:'piece', img:'https://images.unsplash.com/photo-1602143407151-7111542de8bb?q=80&w=1200&auto=format&fit=crop', desc:'Lightweight ventilated basket.', rating:4.2}
-    );
+    ];
 
     const CATEGORIES = [
       {id:'all', label:'All'},
@@ -491,12 +500,11 @@
     const minQty  = (p) => mode==='retail' ? 1 : (p.moq||1);
 
     function estDeliveryFee(area, subtotal){
-      // Free delivery anywhere if subtotal meets threshold
       if(subtotal >= FREE_THRESHOLD) return 0;
       if(area.includes('Kampala')) return 5000;
       if(area.includes('Wakiso')) return 8000;
       if(area.includes('Entebbe')) return 10000;
-      return 15000; // Upcountry baseline
+      return 15000;
     }
 
     function ratingStars(r){
@@ -548,7 +556,6 @@
       if(sort==='priceAsc') items.sort((a,b)=>priceOf(a)-priceOf(b));
       if(sort==='priceDesc') items.sort((a,b)=>priceOf(b)-priceOf(a));
       if(sort==='name') items.sort((a,b)=>a.name.localeCompare(b.name));
-      // default pop: keep original order but bump tag items
       if(sort==='pop') items.sort((a,b)=> (b.tag?1:0)-(a.tag?1:0));
 
       grid.innerHTML = items.map(p=>{
@@ -558,27 +565,28 @@
         const retailHint = `Retail: ${fmtUGX(p.retailPrice)}`;
         const save = p.retailPrice - p.wholesalePrice;
         const hint = mode==='retail' ? wholesaleHint : `${retailHint} • Save ${save>0?fmtUGX(save):'UGX 0'} / unit`;
-        return `<div class=\"card\">
-          <div style=\"position:relative\">
-            ${p.tag?`<span class=\\"tag\\">${p.tag}</span>`:''}
-            <span class=\"rating\" title=\"${p.rating||4.5} out of 5\">${(p.rating||4.5).toFixed(1)} ★</span>
-            <img src=\"${imgSrc}\" alt=\"${p.name}\" loading=\"lazy\"
-                 onerror=\"this.onerror=null; this.src='https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop';\">
+        const stars = ratingStars(p.rating||4.5);
+        return `<div class="card">
+          <div style="position:relative">
+            ${p.tag?`<span class="tag">${p.tag}</span>`:''}
+            <span class="rating" title="${(p.rating||4.5).toFixed(1)} out of 5">${(p.rating||4.5).toFixed(1)} ★</span>
+            <img src="${imgSrc}" alt="${p.name}" loading="lazy"
+                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop';">
           </div>
-          <div class=\"body\">
-            <h3>${p.name} ${mode==='wholesale'? `<span class=\\"moq\\" title=\\"Minimum order quantity\\">MOQ ${minQty(p)}</span>`:''}</h3>
-            <p class=\"muted\" style=\"min-height:34px\">${p.desc}</p>
-            <div class=\"price\">${fmtUGX(pr)} ${mode==='retail'? '(Retail)':'(Wholesale)'} ${mode==='wholesale'? `<span class=\\"moq\\">MOQ ${minQty(p)}</span>`:''}</div>
-            <div class=\"muted\" style=\"font-size:12px; margin-top:-4px\">${hint}</div>
-            <div class=\"qty\">
+          <div class="body">
+            <h3>${p.name} ${mode==='wholesale'? `<span class="moq" title="Minimum order quantity">MOQ ${minQty(p)}</span>`:''}</h3>
+            <p class="muted" style="min-height:34px">${p.desc}</p>
+            <div class="price">${fmtUGX(pr)} ${mode==='retail'? '(Retail)':'(Wholesale)'} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</div>
+            <div class="muted" style="font-size:12px; margin-top:-4px">${hint}</div>
+            <div class="qty">
               <label>Qty:
-                <input type=\"number\" id=\"qty-${p.id}\" value=\"${minQty(p)}\" min=\"${minQty(p)}\" step=\"${minQty(p)}\" aria-label=\"Quantity for ${p.name}\">
+                <input type="number" id="qty-${p.id}" value="${minQty(p)}" min="${minQty(p)}" step="${minQty(p)}" aria-label="Quantity for ${p.name}">
               </label>
-              <span class=\"muted\">/ ${p.unit}</span>
+              <span class="muted">/ ${p.unit}</span>
             </div>
-            <div class=\"stack\">
-              <button class=\"button\" onclick=\"addToCart('${p.id}')\">Add to Cart</button>
-              <button class=\"button buyNow\" onclick=\"buyNow('${p.id}')\">Buy Now (COD)</button>
+            <div class="stack">
+              <button class="button" onclick="addToCart('${p.id}')">Add to Cart</button>
+              <button class="button primary" style="background:#10b981; border-color:#10b981" onclick="buyNow('${p.id}')">Buy Now (COD)</button>
             </div>
           </div>
         </div>`;
@@ -618,11 +626,10 @@
         const lineTotal = unitPrice*qty;
         subtotal+=lineTotal; count+=qty;
         const div = document.createElement('div');
-        div.style.borderBottom='1px dashed var(--line)';
-        div.style.padding='8px 0';
+        div.className='cart-line';
         div.innerHTML = `<div style="display:flex; justify-content:space-between; gap:8px; align-items:center">
             <div><strong>${product.name}</strong><br><span class="muted">${mode==='retail'?'Retail':'Wholesale'} • ${fmtUGX(unitPrice)} × ${qty}</span></div>
-            <div><strong>${fmtUGX(lineTotal)}</strong><br><button class="button" style="padding:6px 8px; font-size:12px" onclick="removeLine('${product.id}','${mode}')">Remove</button></div>
+            <div style="text-align:right"><strong>${fmtUGX(lineTotal)}</strong><br><button class="button" style="padding:6px 8px; font-size:13px" onclick="removeLine('${product.id}','${mode}')">Remove</button></div>
           </div>`;
         cartLines.appendChild(div);
       });
@@ -666,16 +673,14 @@
     function updateFabVisibility(){
       const visible = cart.size > 0 && drawer.classList.contains('open');
       checkoutFab.style.display = visible ? 'flex' : 'none';
-      if (visible) checkoutFab.style.bottom = '16px';
     }
     function openDrawer(){ drawer.classList.add('open'); updateFabVisibility(); }
     closeDrawer.onclick=()=>{ drawer.classList.remove('open'); updateFabVisibility(); };
     cartBtn.onclick=()=>{ drawer.classList.toggle('open'); updateFabVisibility(); };
 
-    // ====== Checkout Modal (Cash on Delivery details) ======
+    // ====== Checkout Modal ======
     openCheckout.addEventListener('click', ()=>{
       if(cart.size===0){ alert('Your cart is empty. Please add items first.'); return; }
-      // preset area from drawer
       custArea.value = areaSel.value;
       checkoutModal.classList.add('open');
     });
@@ -683,7 +688,6 @@
     checkoutModal.addEventListener('click', (e)=>{ if(e.target===checkoutModal) checkoutModal.classList.remove('open'); });
 
     placeOrderBtn.addEventListener('click', (e)=>{
-      // validate minimal details
       const name = (custName.value||'').trim();
       const phone = (custPhone.value||'').trim();
       if(!name || !phone){ alert('Please enter your name and phone so our rider can reach you.'); e.preventDefault(); return; }
@@ -695,7 +699,7 @@
       const fee = estDeliveryFee(custArea.value, subtotal);
       const text = `Order Request – CASH ON DELIVERY\n\nCustomer: ${name}\nPhone: ${phone}\nArea: ${custArea.value}\nTime: ${custTime.value}\nAddress: ${custAddr.value||'-'}\nNote: ${custNote.value||'-'}\n\nItems:\n${lines.join('\n')}\nSubtotal: ${fmtUGX(subtotal)}\nEst. Delivery: ${fmtUGX(fee)}\nTotal (est): ${fmtUGX(subtotal+fee)}\n\nPlease confirm availability & delivery time.`;
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
-      placeOrderBtn.href = url; // follow link
+      placeOrderBtn.href = url;
     });
 
     // ====== Init ======
