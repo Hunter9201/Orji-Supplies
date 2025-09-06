@@ -1,1 +1,24 @@
-fetch('products.json')
+[
+  {
+    "id": "pBroom",
+    "name": "Assorted Color Broom Head",
+    "retailPrice": 15000,
+    "wholesalePrice": 12000,
+    "moq": 10,
+    "category": "accessories",
+    "unit": "piece",
+    "desc": "Heavy-duty broom head in multiple colors.",
+    "imgs": ["images/broom-sample.jpg"]
+  },
+  {
+    "id": "pHarpic",
+    "name": "Harpic Power Plus 10X (750ml)",
+    "retailPrice": 16000,
+    "wholesalePrice": 14000,
+    "moq": 12,
+    "category": "home",
+    "unit": "bottle",
+    "desc": "Powerful toilet cleaner for tough stains.",
+    "imgs": ["https://images.unsplash.com/photo-1615486363873-5cc9c13ccd3d?q=80&w=800&auto=format&fit=crop"]
+  }
+]
