@@ -102,5 +102,18 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/olden-1757193052965-1.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/olden-1757193052965-2.jpg"
     ]
+  },
+  {
+    "id": "good-life-1757193404666",
+    "name": "Good life",
+    "category": "laundry",
+    "retailPrice": 1000000000000000000,
+    "wholesalePrice": 1000000000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/good-life-1757193404666-1.png"
+    ]
   }
 ]
