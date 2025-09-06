@@ -193,5 +193,21 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/in-the-waat-1757195032855-1.heic"
     ]
+  },
+  {
+    "id": "appic-1757196551561",
+    "name": "Appic",
+    "category": "laundry",
+    "retailPrice": 16000,
+    "wholesalePrice": 15000,
+    "unit": "piece",
+    "moq": 9,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/appic-1757196551561-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/appic-1757196551561-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/appic-1757196551561-3.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/appic-1757196551561-4.jpg"
+    ]
   }
 ]
