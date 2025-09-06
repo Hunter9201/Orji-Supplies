@@ -8,13 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
-    :root{
-      --brand:#0ea5e9; --brand-d:#0284c7; --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc;
-      --ok:#16a34a; --bad:#ef4444; --wa:#25D366; --rose:#fb7185; --card:#ffffff;
-    }
+    :root{--brand:#0ea5e9;--brand-d:#0284c7;--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--bg:#f8fafc;--wa:#25D366;--rose:#fb7185;--card:#fff}
     *{box-sizing:border-box} html,body{height:100%}
     body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+
     .topbar{background:linear-gradient(90deg,var(--brand),#22c55e);color:#fff;padding:6px 14px;font-weight:700;display:flex;gap:12px;justify-content:center;align-items:center;font-size:14px}
     header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50;backdrop-filter:saturate(190%) blur(6px)}
     .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;max-width:1200px;margin:0 auto}
@@ -22,13 +21,28 @@
     .brand .logo{width:36px;height:36px;background:var(--brand);color:#fff;border-radius:8px;display:grid;place-items:center;box-shadow:0 6px 14px rgba(14,165,233,.25)}
     .nav-actions{display:flex;gap:8px;align-items:center}
     .button{padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:800;border:1px solid var(--line);cursor:pointer;background:#fff;color:var(--ink)}
-    .button:hover{filter:brightness(.98)} .primary{background:var(--brand);color:#fff;border-color:var(--brand)} .primary:hover{background:var(--brand-d)}
+    .button:hover{filter:brightness(.98)}
+    .primary{background:var(--brand);color:#fff;border-color:var(--brand)}
+    .primary:hover{background:var(--brand-d)}
+
+    /* Hero (with carousel) */
     .hero-wrap{background:conic-gradient(from 180deg at 50% 50%, #e0f2fe 0deg, #dcfce7 180deg, #e0f2fe 360deg)}
     .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;padding:28px 16px;max-width:1200px;margin:0 auto}
-    .hero img{border-radius:16px;width:100%;height:100%;object-fit:cover;box-shadow:0 20px 50px rgba(2,6,23,.18)}
-    .hero h1{font-size:clamp(28px,3.6vw,44px);margin:0 0 8px} .hero p{color:var(--muted);margin:0 0 14px}
+    .hero h1{font-size:clamp(28px,3.6vw,44px);margin:0 0 8px}
+    .hero p{color:var(--muted);margin:0 0 14px}
     .badges{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 14px}
     .badge{background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-weight:700;font-size:12px}
+
+    .hero-gallery{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;box-shadow:0 20px 50px rgba(2,6,23,.18);background:#eef2f7}
+    .hslide{position:absolute;inset:0;opacity:0;transition:opacity .45s ease}
+    .hslide.active{opacity:1}
+    .hslide img{width:100%;height:100%;object-fit:cover}
+    .hg-arrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+    .hg-arrows button{pointer-events:auto;border:0;background:rgba(0,0,0,.35);color:#fff;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;cursor:pointer}
+    .hg-dots{position:absolute;left:0;right:0;bottom:8px;display:flex;justify-content:center;gap:6px}
+    .hg-dots .dot{width:8px;height:8px;border-radius:50%;background:rgba(15,23,42,.35);box-shadow:0 0 0 1px rgba(255,255,255,.6) inset}
+    .hg-dots .dot.active{background:#fff}
+
     .controls{position:sticky;top:68px;background:#ffffffd9;backdrop-filter:blur(6px);border-block:1px solid var(--line)}
     .controls-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;max-width:1200px;margin:0 auto}
     .muted{color:var(--muted);font-size:12px}
@@ -40,22 +54,26 @@
     .select{padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:700}
     .mode-tabs{position:relative;display:inline-flex;align-items:center;gap:6px;background:#0f172a0d;border:1px solid #cbd5e1;padding:6px;border-radius:999px}
     .mode-tabs .thumb{position:absolute;top:6px;bottom:6px;width:50%;border-radius:999px;background:var(--brand);z-index:0;transition:transform .25s ease,background-color .25s ease}
-    [data-mode="retail"] .mode-tabs .thumb{transform:translateX(0)} [data-mode="wholesale"] .mode-tabs .thumb{transform:translateX(100%);background:#16a34a}
+    [data-mode="retail"] .mode-tabs .thumb{transform:translateX(0)}
+    [data-mode="wholesale"] .mode-tabs .thumb{transform:translateX(100%);background:#16a34a}
     .mode-tabs button{position:relative;z-index:1;border:0;background:transparent;padding:10px 18px;border-radius:999px;font-weight:800;font-size:15px;color:var(--ink);cursor:pointer}
     .mode-tabs button[aria-pressed="true"]{color:#fff}
+
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;padding:18px 16px;max-width:1200px;margin:0 auto}
     .card{background:var(--card);border:1px solid var(--line);border-radius:14px;display:flex;flex-direction:column;overflow:hidden;transition:transform .18s,box-shadow .18s}
     .card:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(2,6,23,.12)}
     .card .tag{position:absolute;top:10px;left:10px;background:#ffffffea;border:1px solid var(--line);font-weight:800;font-size:11px;border-radius:999px;padding:4px 8px;z-index:5}
     .card .rating{position:absolute;top:10px;right:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:12px;z-index:5}
-    .card .body{padding:12px} .card h3{margin:0 0 6px;font-size:16px}
+    .card .body{padding:12px}
+    .card h3{margin:0 0 6px;font-size:16px}
     .price{font-weight:800;margin:6px 0}
     .moq{display:inline-block;font-size:11px;background:#d1fae5;color:#065f46;border:1px solid #a7f3d0;border-radius:999px;padding:2px 8px;margin-left:6px}
     .qty{margin:8px 0;display:flex;align-items:center;gap:8px}
     .qty input{width:96px;padding:8px 10px;border-radius:10px;border:1px solid var(--line)}
     .stack{display:flex;gap:8px;flex-wrap:wrap}
     .buyNow{background:#10b981;color:#fff;border-color:#10b981}
-    /* Gallery */
+
+    /* Product gallery (1–4 per item) */
     .gallery{display:flex;flex-direction:column;background:#f1f5f9}
     .gallery-main{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;border-bottom:1px solid var(--line)}
     .gslide{position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
@@ -70,13 +88,13 @@
     .gthumb{position:relative;width:100%;aspect-ratio:1/1;border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:#eef2f7}
     .gthumb.active{border-color:var(--brand)}
     .gthumb img{width:100%;height:100%;object-fit:cover}
-    /* Drawer */
+
     .drawer{position:fixed;top:0;right:-420px;width:380px;max-width:92vw;height:100vh;background:#fff;border-left:1px solid var(--line);transition:right .22s;z-index:100;display:flex;flex-direction:column}
     .drawer.open{right:0}
     .drawer header{padding:12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
     .drawer main{flex:1;overflow:auto;padding:12px}
     .drawer footer{padding:12px;border-top:1px solid var(--line)}
-    /* Modal */
+
     .modal{position:fixed;inset:0;display:none;place-items:center;background:rgba(2,6,23,.5);z-index:120}
     .modal.open{display:grid}
     .sheet{width:min(640px,94vw);background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 30px 60px rgba(2,6,23,.35)}
@@ -86,11 +104,13 @@
     .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
     .field{display:flex;flex-direction:column;gap:6px}
     .field input,.field select,.field textarea{padding:10px 12px;border:1px solid var(--line);border-radius:10px}
+
     .fab{position:fixed;right:16px;bottom:16px;display:none;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;background:var(--wa);color:#fff;font-weight:800;text-decoration:none;box-shadow:0 10px 20px rgba(2,6,23,.18);z-index:120}
     .fab:hover{filter:brightness(.96)}
     .trust{max-width:1200px;margin:8px auto 20px;padding:0 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
     .tcard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;align-items:start;gap:10px}
     footer.site{margin-top:20px;border-top:1px solid var(--line);padding:18px 16px;background:#fff}
+
     @media (max-width:940px){.hero{grid-template-columns:1fr}.controls{top:60px}}
     @media (max-width:480px){.search input{min-width:120px}}
   </style>
@@ -111,11 +131,12 @@
     </div>
   </header>
 
+  <!-- HERO with auto-loading images -->
   <div class="hero-wrap">
     <section class="hero">
       <div>
         <h1>Premium Laundry & Home Cleaning Products</h1>
-        <p>Retail & Wholesale • Kampala & Surrounds • Cash on Delivery. Brooms, insect killers, toilet cleaners, polishes, and more.</p>
+        <p>Retail & Wholesale • Kampala & Surrounds • Cash on Delivery.</p>
         <div class="badges">
           <span class="badge">Trusted by 500+ homes</span>
           <span class="badge">Fast Kampala delivery</span>
@@ -126,24 +147,24 @@
           <a class="button" id="waHello">WhatsApp Us</a>
         </div>
       </div>
-      <img src="https://i.postimg.cc/MHkXsZrh/profile.png" alt="Orji Supplies" loading="eager" width="1200" height="700">
+      <div class="hero-gallery" id="heroGallery" aria-label="Featured images">
+        <!-- slides injected by JS -->
+        <div class="hg-arrows"><button id="hPrev" aria-label="Previous">‹</button><button id="hNext" aria-label="Next">›</button></div>
+        <div class="hg-dots" id="hDots"></div>
+      </div>
     </section>
   </div>
 
+  <!-- Controls -->
   <div class="controls">
     <div class="controls-inner">
       <div class="stack" style="align-items:center"><strong>Catalog</strong> <span class="muted">– find what you need fast</span></div>
-      <div class="search" role="search">
-        <input id="searchInput" placeholder="Search soap, insecticide, mop…" aria-label="Search products" />
-      </div>
+      <div class="search" role="search"><input id="searchInput" placeholder="Search soap, insecticide, mop…" aria-label="Search products" /></div>
       <div class="chips" id="chips" role="group" aria-label="Filter by category"></div>
       <select id="sortSel" class="select" aria-label="Sort">
-        <option value="pop">Popular</option>
-        <option value="priceAsc">Price: Low → High</option>
-        <option value="priceDesc">Price: High → Low</option>
-        <option value="name">Name A → Z</option>
+        <option value="pop">Popular</option><option value="priceAsc">Price: Low → High</option><option value="priceDesc">Price: High → Low</option><option value="name">Name A → Z</option>
       </select>
-      <div class="mode-tabs" id="modeTabs" aria-label="Buying mode" role="group">
+      <div class="mode-tabs" id="modeTabs" role="group" aria-label="Buying mode">
         <span class="thumb" aria-hidden="true"></span>
         <button type="button" data-mode="retail" aria-pressed="true">Retail</button>
         <button type="button" data-mode="wholesale" aria-pressed="false">Wholesale</button>
@@ -151,8 +172,10 @@
     </div>
   </div>
 
+  <!-- Product grid -->
   <section id="catalog"><div class="grid" id="grid"></div></section>
 
+  <!-- Trust -->
   <section class="trust" aria-label="Why shop with Orji">
     <div class="tcard"><strong>Cash on Delivery</strong><div class="muted">Pay only when your items arrive.</div></div>
     <div class="tcard"><strong>Same-Day Delivery</strong><div class="muted">Order before 4pm in Kampala.</div></div>
@@ -167,7 +190,7 @@
     </div>
   </footer>
 
-  <!-- Drawer -->
+  <!-- Cart Drawer -->
   <aside id="drawer" class="drawer" aria-label="Cart drawer" aria-live="polite">
     <header><strong>Your Cart</strong><button id="closeDrawer" class="button">Close</button></header>
     <main id="cartLines"></main>
@@ -176,10 +199,7 @@
       <div class="muted" style="margin:6px 0">Payment: <strong>Cash on Delivery</strong></div>
       <div class="muted" style="margin:6px 0">Delivery area:
         <select id="areaSel" class="select" style="padding:6px 8px">
-          <option value="Kampala Central">Kampala Central</option>
-          <option value="Wakiso">Wakiso</option>
-          <option value="Entebbe">Entebbe</option>
-          <option value="Upcountry">Upcountry</option>
+          <option value="Kampala Central">Kampala Central</option><option value="Wakiso">Wakiso</option><option value="Entebbe">Entebbe</option><option value="Upcountry">Upcountry</option>
         </select>
       </div>
       <div class="stack" style="margin-top:10px"><button id="openCheckout" class="button primary">Proceed to Checkout</button></div>
@@ -221,89 +241,94 @@
   </div>
 
   <script>
-    // ===== Your number (local 0783501222 -> international for wa.me) =====
-    const LOCAL_NUMBER = '0783501222';
-    const WHATSAPP_NUMBER = '256783501222'; // UG format without '+'
+    // ========= SETTINGS (your Admin repo) =========
+    const ADMIN_BASE = 'https://hunter9201.github.io/Admin.Html-Orjisupplies/';
+    const PRODUCTS_URL = ADMIN_BASE + 'products.json';
+    // WhatsApp/Call number (0783501222 -> +256783501222)
+    const WHATSAPP_NUMBER = '256783501222';
     const CALL_NUMBER = '+256783501222';
 
-    // Hook up header/footer links
-    document.getElementById('callBtn').href = `tel:${CALL_NUMBER}`;
+    // --------- Common elements/links ----------
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('callBtn').href  = `tel:${CALL_NUMBER}`;
     document.getElementById('callLink').href = `tel:${CALL_NUMBER}`;
-    document.getElementById('waHello').href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Orji Supplies, I want to place an order (Cash on Delivery).')}`;
-    document.getElementById('waLink').href = `https://wa.me/${WHATSAPP_NUMBER}`;
+    document.getElementById('waHello').href  = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Orji Supplies, I want to place an order (Cash on Delivery).')}`;
+    document.getElementById('waLink').href   = `https://wa.me/${WHATSAPP_NUMBER}`;
 
-    // ===== Images: allow any published URL OR local /images files =====
-    const IMG_BASE = 'images/'; // optional local folder
-    function withBase(path){
-      if(!path) return '';
-      if(/^https?:\/\//i.test(path) || /^data:/i.test(path)) return path; // already a URL
-      return (IMG_BASE.endsWith('/')?IMG_BASE:IMG_BASE+'/') + path.split('/').map(encodeURIComponent).join('/');
+    // ========= HERO IMAGES =========
+    const heroEl = document.getElementById('heroGallery');
+    const hDots  = document.getElementById('hDots');
+    const hPrev  = document.getElementById('hPrev');
+    const hNext  = document.getElementById('hNext');
+    let HERO = []; let hIndex = 0; let hTimer = null; const HERO_MS = 3500;
+
+    function absFromAdmin(path){
+      if (!path) return '';
+      if (/^https?:\/\//i.test(path)) return path; // absolute allowed
+      return ADMIN_BASE + path.replace(/^\/+/, '');
     }
 
-    // ===== Catalog (use img for single or imgs[] for gallery up to 4) =====
-    // Replace image links with your published links (Postimg, GitHub raw, Cloudinary, etc.)
-    const PRODUCTS = [
-      {
-        id:'pBroom',
-        name:'Assorted Color Broom Head',
-        retailPrice:15000, wholesalePrice:12000, moq:10, category:'accessories', unit:'piece',
-        imgs:[
-          'https://i.postimg.cc/TwjsBpHm/Brooms.jpg',
-          'https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=800&auto=format&fit=crop'
-        ],
-        desc:'Heavy-duty broom head in multiple colors. Fits standard handles.',
-        rating:4.7, tag:'Bestseller'
-      },
-      {
-        id:'pInsect',
-        name:'Durakill Multi Insect Killer 600ml',
-        retailPrice:18000, wholesalePrice:15000, moq:12, category:'pest', unit:'can',
-        img:'https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=1200&auto=format&fit=crop',
-        desc:'Rapid knock-down insecticide for flying & crawling insects.',
-        rating:4.6
-      },
-      {
-        id:'pHarpic',
-        name:'Harpic Power Plus 10X (750ml)',
-        retailPrice:16000, wholesalePrice:14000, moq:12, category:'home', unit:'bottle',
-        imgs:[
-          'https://images.unsplash.com/photo-1615486363873-5cc9c13ccd3d?q=80&w=1200&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop'
-        ],
-        desc:'Powerful toilet cleaner for tough stains and germs.',
-        rating:4.8, tag:'Top Brand'
-      },
-      {
-        id:'pMop',
-        name:'Microfiber Floor Mop (Squeeze Type)',
-        retailPrice:45000, wholesalePrice:40000, moq:4, category:'accessories', unit:'set',
-        img:'https://images.unsplash.com/photo-1488805990569-3c9e1d76d51c?q=80&w=1200&auto=format&fit=crop',
-        desc:'High-absorbency microfiber mop with extendable handle.',
-        rating:4.5
-      },
-      {
-        id:'pDetergent',
-        name:'Ultra Wash Detergent Powder 3kg',
-        retailPrice:36000, wholesalePrice:32000, moq:6, category:'laundry', unit:'bag',
-        imgs:[
-          'https://images.unsplash.com/photo-1581579188871-45ea61f2a0bb?q=80&w=1200&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop',
-          'https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=1200&auto=format&fit=crop'
-        ],
-        desc:'Powerful stain removal, fresh fragrance.',
-        rating:4.8, tag:'Bestseller'
+    async function probe(url){
+      try { const r = await fetch(url, { method:'HEAD' }); return r.ok; } catch { return false; }
+    }
+
+    async function loadHero(){
+      // Try hero.json first
+      try{
+        const res = await fetch(ADMIN_BASE + 'hero.json', { cache:'no-store' });
+        if (res.ok) {
+          const arr = await res.json();
+          if (Array.isArray(arr)) HERO = arr.map(absFromAdmin).filter(Boolean);
+        }
+      }catch{}
+      // If no hero.json, probe common filenames in root and /images
+      if (!HERO.length){
+        const candidates = [
+          'hero.jpg','hero1.jpg','hero2.jpg','hero3.jpg','hero4.jpg',
+          'images/hero.jpg','images/hero1.jpg','images/hero2.jpg','images/hero3.jpg','images/hero4.jpg'
+        ].map(absFromAdmin);
+        for (const u of candidates){
+          /* eslint no-await-in-loop: 0 */
+          if (await probe(u)) HERO.push(u);
+        }
       }
-    ];
+      // If still nothing, stop.
+      if (!HERO.length){
+        heroEl.style.display = 'none';
+        return;
+      }
+      renderHero();
+      startHero();
+      heroEl.addEventListener('mouseenter', stopHero, {passive:true});
+      heroEl.addEventListener('mouseleave', startHero, {passive:true});
+      hPrev.addEventListener('click', ()=>{ stopHero(); showHero(hIndex-1); startHero(); });
+      hNext.addEventListener('click', ()=>{ stopHero(); showHero(hIndex+1); startHero(); });
+    }
 
-    const CATEGORIES=[
-      {id:'all',label:'All'},
-      {id:'laundry',label:'Laundry'},
-      {id:'home',label:'Home Care'},
-      {id:'accessories',label:'Accessories'},
-      {id:'pest',label:'Pest Control'}
-    ];
+    function renderHero(){
+      heroEl.querySelectorAll('.hslide').forEach(n=>n.remove());
+      hDots.innerHTML = '';
+      HERO.forEach((src,i)=>{
+        const s = document.createElement('div'); s.className = 'hslide' + (i===0?' active':'');
+        s.innerHTML = `<img src="${src}" alt="Featured ${i+1}" loading="${i===0?'eager':'lazy'}" onerror="this.style.display='none'">`;
+        heroEl.appendChild(s);
+        const d = document.createElement('span'); d.className = 'dot' + (i===0?' active':''); d.dataset.i=i;
+        d.addEventListener('click', ()=>{ stopHero(); showHero(i); startHero(); });
+        hDots.appendChild(d);
+      });
+    }
+    function showHero(n){
+      const slides = heroEl.querySelectorAll('.hslide');
+      const dots   = hDots.querySelectorAll('.dot');
+      if (!slides.length) return;
+      hIndex = ( (n%slides.length) + slides.length ) % slides.length;
+      slides.forEach((s,i)=> s.classList.toggle('active', i===hIndex));
+      dots.forEach((d,i)=> d.classList.toggle('active', i===hIndex));
+    }
+    function startHero(){ if (!hTimer && HERO.length>1) hTimer = setInterval(()=>showHero(hIndex+1), HERO_MS); }
+    function stopHero(){ if (hTimer){ clearInterval(hTimer); hTimer = null; } }
 
-    // ===== Elements =====
+    // ========= CATALOG =========
     const grid=document.getElementById('grid');
     const cartBtn=document.getElementById('cartBtn');
     const drawer=document.getElementById('drawer');
@@ -318,8 +343,6 @@
     const chips=document.getElementById('chips');
     const sortSel=document.getElementById('sortSel');
     const openCheckout=document.getElementById('openCheckout');
-
-    // Modal
     const checkoutModal=document.getElementById('checkoutModal');
     const closeModal=document.getElementById('closeModal');
     const placeOrderBtn=document.getElementById('placeOrderBtn');
@@ -330,13 +353,18 @@
     const custAddr=document.getElementById('custAddr');
     const custNote=document.getElementById('custNote');
 
-    // ===== State =====
+    let PRODUCTS = []; // fetched
+    const CATEGORIES = [
+      {id:'all',label:'All'},
+      {id:'laundry',label:'Laundry'},
+      {id:'home',label:'Home Care'},
+      {id:'accessories',label:'Accessories'},
+      {id:'pest',label:'Pest Control'}
+    ];
     let mode='retail';
     let cart=new Map();
     let activeCat='all';
 
-    // ===== Utils =====
-    document.getElementById('year').textContent=new Date().getFullYear();
     const fmtUGX=v=>new Intl.NumberFormat('en-UG',{style:'currency',currency:'UGX',maximumFractionDigits:0}).format(v);
     const priceOf=p=>mode==='retail'?p.retailPrice:p.wholesalePrice;
     const minQty=p=>mode==='retail'?1:(p.moq||1);
@@ -347,47 +375,40 @@
       return 15000;
     }
 
-    // ===== Chips / Filters =====
-    function renderChips(){
-      chips.innerHTML=CATEGORIES.map(c=>`<button class="chip" data-cat="${c.id}" aria-pressed="${c.id===activeCat}">${c.label}</button>`).join('');
+    function normalizeImgs(p){
+      // Supports p.imgs (array) or p.img (single). Accepts absolute URLs (anywhere) or relative (resolved under ADMIN_BASE)
+      let arr = Array.isArray(p.imgs) && p.imgs.length ? p.imgs : (p.img?[p.img]:[]);
+      arr = arr.map(u => (/^https?:\/\//i.test(u) ? u : ADMIN_BASE + u.replace(/^\/+/,'') )).filter(Boolean);
+      if(!arr.length) arr=['']; // placeholder path -> will show fallback
+      return arr.slice(0,4);
     }
-    chips.addEventListener('click',e=>{
-      const b=e.target.closest('[data-cat]'); if(!b) return;
-      activeCat=b.dataset.cat; render(); renderChips();
-    });
-    searchInput.addEventListener('input',render);
-    sortSel.addEventListener('change',render);
 
-    // ===== Mode toggle =====
+    function renderChips(){
+      chips.innerHTML = CATEGORIES.map(c => `<button class="chip" data-cat="${c.id}" aria-pressed="${c.id===activeCat}">${c.label}</button>`).join('');
+    }
+    chips.addEventListener('click', (e)=>{ const b=e.target.closest('[data-cat]'); if(!b) return; activeCat=b.dataset.cat; render(); renderChips(); });
+    searchInput.addEventListener('input', render);
+    sortSel.addEventListener('change', render);
+
     function setMode(newMode){
-      mode=newMode; document.body.setAttribute('data-mode',mode);
-      modeTabs.querySelectorAll('button[data-mode]').forEach(btn=>{
-        btn.setAttribute('aria-pressed', btn.dataset.mode===mode ? 'true':'false');
-      });
+      mode=newMode; document.body.setAttribute('data-mode', mode);
+      modeTabs.querySelectorAll('button').forEach(btn=>btn.setAttribute('aria-pressed', (btn.dataset.mode||btn.textContent.toLowerCase())===mode ? 'true':'false'));
       render();
     }
-    modeTabs.addEventListener('click',e=>{
-      const b=e.target.closest('button'); if(!b||!b.dataset.mode) return;
-      setMode(b.dataset.mode || (b.textContent.toLowerCase()));
-    });
+    modeTabs.addEventListener('click', (e)=>{ const b=e.target.closest('button'); if(!b) return; const m=b.dataset.mode||b.textContent.toLowerCase(); setMode(m); });
 
-    // ===== Gallery helpers =====
+    // Product gallery per card
     const SLIDE_MS=3000;
-    function normalizeImgs(p){
-      const arr = Array.isArray(p.imgs)&&p.imgs.length ? p.imgs : (p.img?[p.img]:[]);
-      const safe = arr.length?arr:[
-        'https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop'
-      ];
-      return safe.slice(0,4).map(withBase);
-    }
     function renderGalleryHTML(imgs,pid,name,tag,rating){
+      const fallback=ADMIN_BASE + 'placeholder.jpg';
       const slides=imgs.map((src,i)=>`
         <div class="gslide ${i===0?'active':''}">
-          <img src="${src}" alt="${name} image ${i+1}" loading="${i===0?'eager':'lazy'}"
-            onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop';">
+          <img src="${src||fallback}" alt="${name} image ${i+1}" loading="${i===0?'eager':'lazy'}"
+               onerror="this.onerror=null;this.src='${fallback}'">
         </div>`).join('');
       const dots=imgs.map((_,i)=>`<span class="dot ${i===0?'active':''}" data-i="${i}"></span>`).join('');
-      const thumbs=imgs.map((src,i)=>`<button class="gthumb ${i===0?'active':''}" data-i="${i}" aria-label="Show image ${i+1}"><img src="${src}" alt=""></button>`).join('');
+      const thumbs=imgs.map((src,i)=>`<button class="gthumb ${i===0?'active':''}" data-i="${i}" aria-label="Show image ${i+1}">
+        <img src="${src||fallback}" alt=""></button>`).join('');
       return `
         <div style="position:relative">
           ${tag?`<span class="tag">${tag}</span>`:''}
@@ -395,16 +416,14 @@
           <div class="gallery" data-pid="${pid}">
             <div class="gallery-main">
               ${slides}
-              <div class="garrows">
-                <button class="gprev" aria-label="Previous image">‹</button>
-                <button class="gnext" aria-label="Next image">›</button>
-              </div>
+              <div class="garrows"><button class="gprev" aria-label="Previous image">‹</button><button class="gnext" aria-label="Next image">›</button></div>
               <div class="gdots">${dots}</div>
             </div>
             <div class="gthumbs">${thumbs}</div>
           </div>
         </div>`;
     }
+
     function initAllGalleries(){
       document.querySelectorAll('.gallery').forEach(gal=>{
         const slides=[...gal.querySelectorAll('.gslide')];
@@ -426,8 +445,8 @@
         thumbs.forEach(btn=>btn.addEventListener('click',()=>{stop();show(+btn.dataset.i||0);start();}));
         gal.addEventListener('mouseenter',stop);
         gal.addEventListener('mouseleave',start);
-        // swipe
-        let sx=0,sy=0,dx=0,dy=0, touching=false;
+        // touch swipe
+        let sx=0,sy=0,dx=0,dy=0,touching=false;
         gal.addEventListener('touchstart',e=>{ if(!e.touches[0])return; touching=true;sx=e.touches[0].clientX;sy=e.touches[0].clientY;dx=dy=0;stop(); },{passive:true});
         gal.addEventListener('touchmove',e=>{ if(!touching||!e.touches[0])return; dx=e.touches[0].clientX-sx; dy=e.touches[0].clientY-sy; },{passive:true});
         gal.addEventListener('touchend',()=>{ if(!touching)return; touching=false; if(Math.abs(dx)>40 && Math.abs(dx)>Math.abs(dy)){ dx<0?show(i+1):show(i-1);} start(); });
@@ -436,7 +455,6 @@
       });
     }
 
-    // ===== Render products =====
     function render(){
       const q=(searchInput.value||'').trim().toLowerCase();
       let items=PRODUCTS.filter(p=>(activeCat==='all'||p.category===activeCat) && (!q || (p.name+' '+(p.desc||'')).toLowerCase().includes(q)));
@@ -456,9 +474,7 @@
             <p class="muted" style="min-height:34px">${p.desc||''}</p>
             <div class="price">${fmtUGX(pr)} ${mode==='retail'?'(Retail)':'(Wholesale)'} ${mode==='wholesale'?`<span class="moq">MOQ ${minQty(p)}</span>`:''}</div>
             <div class="qty">
-              <label>Qty:
-                <input type="number" id="qty-${p.id}" value="${minQty(p)}" min="${minQty(p)}" step="${minQty(p)}" aria-label="Quantity for ${p.name}">
-              </label>
+              <label>Qty: <input type="number" id="qty-${p.id}" value="${minQty(p)}" min="${minQty(p)}" step="${minQty(p)}" aria-label="Quantity for ${p.name}"></label>
               <span class="muted">/ ${p.unit||'piece'}</span>
             </div>
             <div class="stack">
@@ -471,7 +487,7 @@
       initAllGalleries();
     }
 
-    // ===== Cart + Checkout =====
+    // ===== Cart & Checkout =====
     function addToCart(id){
       const p=PRODUCTS.find(x=>x.id===id); if(!p) return;
       const qtyInput=document.getElementById(`qty-${id}`);
@@ -510,23 +526,20 @@
       const msg=`Hello Orji Supplies, here is my order (Cash on Delivery):\n${lines.join('\n')}\nSubtotal: ${fmtUGX(subtotal)}\nEst. Delivery: ${fmtUGX(fee)}\nTotal (est): ${fmtUGX(subtotal+fee)}`;
       return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
     }
-    function updateFabVisibility(){
-      const visible=cart.size>0 && drawer.classList.contains('open');
-      checkoutFab.style.display = visible ? 'flex':'none';
-    }
+    function updateFabVisibility(){ const visible=cart.size>0 && drawer.classList.contains('open'); checkoutFab.style.display = visible ? 'flex':'none'; }
     function openDrawer(){ drawer.classList.add('open'); updateFabVisibility(); }
     closeDrawer.onclick=()=>{ drawer.classList.remove('open'); updateFabVisibility(); };
     cartBtn.onclick=()=>{ drawer.classList.toggle('open'); updateFabVisibility(); };
 
-    // Checkout modal
+    // Checkout
     openCheckout.addEventListener('click', ()=>{
       if(cart.size===0){ alert('Your cart is empty. Please add items first.'); return; }
       custArea.value = areaSel.value;
       checkoutModal.classList.add('open');
     });
     closeModal.addEventListener('click', ()=> checkoutModal.classList.remove('open'));
-    checkoutModal.addEventListener('click', e=>{ if(e.target===checkoutModal) checkoutModal.classList.remove('open'); });
-    placeOrderBtn.addEventListener('click', e=>{
+    checkoutModal.addEventListener('click', (e)=>{ if(e.target===checkoutModal) checkoutModal.classList.remove('open'); });
+    placeOrderBtn.addEventListener('click', (e)=>{
       const name=(custName.value||'').trim(), phone=(custPhone.value||'').trim();
       if(!name||!phone){ alert('Please enter your name and phone.'); e.preventDefault(); return; }
       let subtotal=0, lines=[]; cart.forEach(({product,qty,unitPrice,mode})=>{ subtotal+=unitPrice*qty; lines.push(`• ${product.name} x${qty} @ ${fmtUGX(unitPrice)} (${mode})`); });
@@ -535,9 +548,39 @@
       placeOrderBtn.href=`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
     });
 
+    // ========= Fetch products =========
+    async function loadProducts(){
+      try{
+        const res = await fetch(PRODUCTS_URL, { cache:'no-store' });
+        if(!res.ok) throw new Error(`Failed to load products.json (${res.status})`);
+        const data = await res.json();
+        if(!Array.isArray(data)) throw new Error('products.json must be an array');
+
+        PRODUCTS = data.map(p=>{
+          const copy = {...p};
+          if(Array.isArray(copy.imgs)) copy.imgs = copy.imgs.map(absFromAdmin);
+          if(copy.img) copy.img = absFromAdmin(copy.img);
+          return copy;
+        });
+
+        renderChips(); render();
+      }catch(err){
+        grid.innerHTML = `
+          <div style="grid-column:1/-1;background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px">
+            <strong>Couldn’t load catalog.</strong>
+            <div class="muted" style="margin-top:6px">
+              Make sure <code>products.json</code> is published at
+              <a href="${PRODUCTS_URL}" target="_blank">${PRODUCTS_URL}</a>.
+            </div>
+            <div class="muted" style="margin-top:8px">Error: ${err.message}</div>
+          </div>`;
+        renderChips();
+      }
+    }
+
     // Init
-    function renderChipsAndInit(){ renderChips(); render(); }
-    document.addEventListener('DOMContentLoaded', renderChipsAndInit);
+    loadHero();
+    loadProducts();
   </script>
 </body>
 </html>
