@@ -154,5 +154,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/rasta-1757193844935-1.png"
     ]
+  },
+  {
+    "id": "fungga-1757194284099",
+    "name": "Fungga",
+    "category": "home",
+    "retailPrice": 10000000,
+    "wholesalePrice": 100000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/fungga-1757194284099-1.jpeg"
+    ]
   }
 ]
