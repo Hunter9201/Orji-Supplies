@@ -74,5 +74,19 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/tam1-1757192876651-1.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/tam1-1757192876651-2.jpg"
     ]
+  },
+  {
+    "id": "tam12-1757192942319",
+    "name": "TAM12",
+    "category": "laundry",
+    "retailPrice": 16891,
+    "wholesalePrice": 150000,
+    "unit": "piece",
+    "moq": 10,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/tam12-1757192942319-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/tam12-1757192942319-2.jpg"
+    ]
   }
 ]
