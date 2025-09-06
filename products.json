@@ -141,5 +141,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/united-1757193685338-1.png"
     ]
+  },
+  {
+    "id": "rasta-1757193844935",
+    "name": "rasta",
+    "category": "home",
+    "retailPrice": 1188888,
+    "wholesalePrice": 18999,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/rasta-1757193844935-1.png"
+    ]
   }
 ]
