@@ -1,78 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Orji Supplies – Laundry & Home Cleaning (Cash on Delivery)</title>
-<meta name="description" content="Premium laundry & home-cleaning products in Kampala. Retail & wholesale. Cash on Delivery. Fast same-day delivery." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{--brand:#0ea5e9;--brand-d:#0284c7;--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--bg:#f8fafc;--wa:#25D366;--card:#fff;--rose:#fb7185}
-  *{box-sizing:border-box} html,body{height:100%}
-  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
-  /* header + hero + controls styles trimmed for brevity, same as earlier */
-  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
-  .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;max-width:1200px;margin:0 auto}
-  .brand{font-weight:800;display:flex;align-items:center;gap:10px}
-  .logo{width:34px;height:34px;background:var(--brand);display:grid;place-items:center;color:#fff;border-radius:8px;box-shadow:0 6px 14px rgba(14,165,233,.25);font-weight:900}
-  .button{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}
-  .primary{background:var(--brand);border-color:var(--brand);color:#fff}
-  .controls{position:sticky;top:64px;background:#ffffffee;border-top:1px solid var(--line);border-bottom:1px solid var(--line);backdrop-filter:blur(6px)}
-  .controls-inner{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 16px;max-width:1200px;margin:0 auto;flex-wrap:wrap}
-  .search{display:flex;gap:8px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;flex:1 1 260px}
-  .search input{border:0;outline:none;width:100%;font-size:16px;background:transparent}
-  .chips{display:flex;flex-wrap:wrap;gap:6px}.chip{padding:9px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;padding:18px 16px;max-width:1200px;margin:0 auto}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden}
-  .card .body{padding:12px}.price{font-weight:800;margin:6px 0}.moq{display:inline-block;font-size:11px;background:#d1fae5;color:#065f46;border:1px solid #a7f3d0;border-radius:999px;padding:2px 8px;margin-left:6px}
-  .qty input{width:110px;padding:10px 12px;border:1px solid var(--line);border-radius:10px}
-  .slider{position:relative;width:100%;aspect-ratio:23/16;background:#f1f5f9;overflow:hidden}
-  .slide{position:absolute;inset:0;opacity:0;transition:opacity .4s ease}
-  .slide.active{opacity:1}
-  .slide img{width:100%;height:100%;object-fit:cover;display:block;background:#eef2f7}
-  .dots{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;gap:6px;pointer-events:none}
-  .dot{width:7px;height:7px;border-radius:50%;background:rgba(15,23,42,.35);box-shadow:0 0 0 1px rgba(255,255,255,.5) inset}
-  .dot.active{background:#fff}
-  .drawer{position:fixed;top:0;right:-420px;width:380px;max-width:92vw;height:100vh;background:#fff;border-left:1px solid var(--line);transition:right .22s;z-index:100;display:flex;flex-direction:column}
-  .drawer.open{right:0}.drawer header,.drawer footer{padding:12px;border-bottom:1px solid var(--line)}.drawer main{flex:1;overflow:auto;padding:12px}
-  .fab{position:fixed;right:16px;bottom:16px;display:none;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;background:var(--wa);color:#fff;font-weight:800;text-decoration:none;box-shadow:0 10px 20px rgba(2,6,23,.18);z-index:120}
-</style>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Orji Supplies – Laundry & Home Cleaning (Cash on Delivery)</title>
+  <meta name="description" content="Orji Supplies: Premium laundry & home-cleaning products in Kampala. Retail & wholesale. Cash on Delivery. Fast same-day delivery." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --brand:#0ea5e9; --brand-d:#0284c7; --ink:#0f172a; --muted:#64748b;
+      --line:#e2e8f0; --bg:#f8fafc; --wa:#25D366; --card:#fff;
+      --rose:#fb7185;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+    header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
+    .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;max-width:1200px;margin:0 auto}
+    .brand{font-weight:800;display:flex;gap:10px;align-items:center}
+    .brand .logo{width:34px;height:34px;background:var(--brand);color:#fff;border-radius:8px;display:grid;place-items:center;font-weight:900;box-shadow:0 6px 14px rgba(14,165,233,.25)}
+    .button{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}
+    .primary{background:var(--brand);border-color:var(--brand);color:#fff}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;padding:16px;max-width:1200px;margin:0 auto}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .18s, box-shadow .18s}
+    .card:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(2,6,23,.10)}
+    .card .body{padding:12px}
+    .moq{display:inline-block;font-size:11px;background:#d1fae5;color:#065f46;border:1px solid #a7f3d0;border-radius:999px;padding:2px 8px;margin-left:6px}
+    .muted{color:var(--muted)}
+    .price{font-weight:800;margin:6px 0}
+    /* slider */
+    .slider{position:relative;width:100%;aspect-ratio:1/1;background:#f1f5f9;overflow:hidden}
+    .slide{position:absolute;inset:0;opacity:0;transition:opacity .4s ease}
+    .slide.active{opacity:1}
+    .slide img{width:100%;height:100%;object-fit:cover;display:block;background:#eef2f7}
+    .dots{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;gap:6px;pointer-events:none}
+    .dot{width:7px;height:7px;border-radius:50%;background:rgba(15,23,42,.35);box-shadow:0 0 0 1px rgba(255,255,255,.5) inset}
+    .dot.active{background:#fff}
+    /* drawer */
+    .drawer{position:fixed;top:0;right:-420px;width:380px;max-width:92vw;height:100vh;background:#fff;border-left:1px solid var(--line);transition:right .22s;z-index:100;display:flex;flex-direction:column}
+    .drawer.open{right:0}
+    .drawer header{padding:12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+    .drawer main{flex:1;overflow:auto;padding:12px}
+    .drawer footer{padding:12px;border-top:1px solid var(--line)}
+    /* FAB */
+    .fab{position:fixed;right:16px;bottom:16px;display:none;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;background:var(--wa);color:#fff;font-weight:800;text-decoration:none;box-shadow:0 10px 20px rgba(2,6,23,.18);z-index:120}
+    .fab svg{width:20px;height:20px}
+    @media (max-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))} .drawer{width:100vw}}
+  </style>
 </head>
 <body data-mode="retail">
 <header>
   <div class="nav">
     <div class="brand"><div class="logo">O</div> Orji Supplies</div>
     <div class="stack">
-      <a href="#catalog" class="button primary">Browse Products</a>
-      <button id="cartBtn" class="button">Cart <span id="cartCount" style="background:var(--rose);color:#fff;border-radius:50%;padding:2px 6px;font-size:12px;display:none">0</span></button>
+      <a href="#catalog" class="button primary">Browse</a>
+      <button id="cartBtn" class="button">Cart <span id="cartCount" style="background:var(--rose);color:#fff;border-radius:999px;padding:2px 6px;font-size:12px;display:none">0</span></button>
     </div>
   </div>
 </header>
-
-<div class="controls">
-  <div class="controls-inner">
-    <div class="search" role="search">
-      <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M10 2a8 8 0 105.3 14.1l4.3 4.3 1.4-1.4-4.3-4.3A8 8 0 0010 2zm0 2a6 6 0 110 12 6 6 0 010-12z"/></svg>
-      <input id="searchInput" placeholder="Search soap, insecticide, mop…" aria-label="Search products" />
-    </div>
-    <div class="chips" id="chips"></div>
-    <select id="sortSel" class="button">
-      <option value="pop">Popular</option>
-      <option value="priceAsc">Price: Low → High</option>
-      <option value="priceDesc">Price: High → Low</option>
-      <option value="name">Name A → Z</option>
-    </select>
-  </div>
-</div>
 
 <section id="catalog">
   <div class="grid" id="grid"></div>
 </section>
 
+<!-- Cart Drawer -->
 <aside id="drawer" class="drawer" aria-label="Cart drawer">
-  <header style="display:flex;justify-content:space-between;align-items:center">
+  <header>
     <strong>Your Cart</strong>
     <button id="closeDrawer" class="button">Close</button>
   </header>
@@ -83,98 +79,89 @@
   </footer>
 </aside>
 
-<a id="checkoutFab" class="fab" href="#" target="_blank" aria-label="Checkout on WhatsApp">
-  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.56c-.26-.13-1.52-.75-1.76-.84s-.41-.13-.58.13-.66.84-.81 1.01-.3.19-.56.06a8.94 8.94 0 0 1-2.64-1.63 9.9 9.9 0 0 1-1.84-2.28c-.19-.32 0-.49.13-.62.13-.13.26-.32.39-.45.13-.13.19-.26.32-.45.13-.19.06-.36 0-.49-.06-.13-.58-1.39-.8-1.89-.21-.51-.43-.44-.58-.45h-.5a.96.96 0 0 0-.69.32c-.24.26-.9.88-.9 2.14s.92 2.49 1.05 2.66c.13.17 1.81 2.76 4.39 3.87.61 .26 1.08 .41 1.45 .52.61 .19 1.16 .16 1.6 .1.49 -.07 1.52 -.62 1.74 -1.22.21 -.58.21 -1.08.15 -1.22-.06 -.13-.24 -.2-.5 -.33zM16 3C9.37 3 4 8.37 4 15c0 2.12.55 4.1 1.52 5.83L4 29l8.33-1.46A12.95 12.95 0 0 0 16 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.33c-1.84 0-3.55-.54-4.98-1.46l-.36-.23-4.94.86.86-4.81-.24-.39A9.36 9.36 0 1 1 25.36 20a9.33 9.33 0  0 1-9.36 5.33z"/></svg>
-  <span>Checkout</span>
+<!-- WhatsApp  -->
+<a id="Order" class="fab" href="#" target="_blank" aria-label="Checkout on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.56c-.26-.13-1.52-.75-1.76-.84s-.41-.13-.58.13-.66.84-.81 1.01-.3.19-.56.06a8.94 8.94 0 0 1-2.64-1.63 9.9 9.9 0 0 1-1.84-2.28c-.19-.32 0-.49.13-.62.13-.13.26-.32.39-.45.13-.13.19-.26.32-.45.13-.19.06-.36 0-.49-.06-.13-.58-1.39-.8-1.89-.21-.51-.43-.44-.58-.45h-.5a.96.96 0 0 0-.69.32c-.24.26-.9.88-.9 2.14s.92 2.49 1.05 2.66c.13.17 1.81 2.76 4.39 3.87.61 .26 1.08 .41 1.45 .52.61 .19 1.16 .16 1.6 .1.49 -.07 1.52 -.62 1.74 -1.22.21 -.58.21 -1.08.15 -1.22-.06 -.13-.24 -.2-.5 -.33zM16 3C9.37 3 4 8.37 4 15c0 2.12.55 4.1 1.52 5.83L4 29l8.33-1.46A12.95 12.95 0 0 0 16 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.33c-1.84 0-3.55-.54-4.98-1.46l-.36-.23-4.94.86.86-4.81-.24-.39A9.36 9.36 0 1 1 25.36 20a9.33 9.33 0 0 1-9.36 5.33z"/></svg>
+  <span>Order</span>
 </a>
 
 <script>
-  // ====== CONFIG ======
-  const OWNER  = 'Hunter9201';           // <-- change to your username/org (e.g., 'hunter9201')
-  const REPO   = 'Orji-Supplies';            // <-- change to 'Orji-Supplies'
-  const BRANCH = 'main';            // <-- change if your default branch differs
-  const PRODUCTS_JSON_URL = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/products.json`;
-  const IMG_BASE = 'images'; // for relative image paths saved by Admin
+  /* ===== CONFIG: set your GitHub file URL ===== */
+  const PRODUCTS_URL = 'https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/products.json';
   const WHATSAPP_NUMBER = '256783501222';
 
-  // ====== UTILS ======
-  function withBase(path){
-    if (/^(https?:|data:|blob:)/i.test(path)) return path;
-    const base = IMG_BASE.endsWith('/') ? IMG_BASE : IMG_BASE + '/';
-    return base + String(path||'').replace(/^images\//,'').split('/').map(encodeURIComponent).join('/');
-  }
+  /* ===== Elements ===== */
+  const grid = document.getElementById('grid');
+  const drawer = document.getElementById('drawer');
+  const cartBtn = document.getElementById('cartBtn');
+  const closeDrawer = document.getElementById('closeDrawer');
+  const cartLines = document.getElementById('cartLines');
+  const grandTotal = document.getElementById('grandTotal');
+  const checkoutFab = document.getElementById('checkoutFab');
+  const cartCount = document.getElementById('cartCount');
+
+  /* ===== State & utils ===== */
+  let mode = 'retail';
+  let cart = new Map();
   const fmtUGX = v => new Intl.NumberFormat('en-UG',{style:'currency',currency:'UGX',maximumFractionDigits:0}).format(v);
-  let mode='retail'; const priceOf = p => mode==='retail' ? p.retailPrice : p.wholesalePrice;
-  const minQty = p => mode==='retail' ? 1 : (p.moq||1);
-
-  // ====== ELEMENTS ======
-  const grid=document.getElementById('grid'), searchInput=document.getElementById('searchInput'), sortSel=document.getElementById('sortSel');
-  const drawer=document.getElementById('drawer'), cartBtn=document.getElementById('cartBtn'), closeDrawer=document.getElementById('closeDrawer');
-  const cartLines=document.getElementById('cartLines'), grandTotal=document.getElementById('grandTotal'), cartCount=document.getElementById('cartCount'), checkoutFab=document.getElementById('checkoutFab');
-
-  // ====== DATA ======
-  let PRODUCTS=[];
-  let cart=new Map();
-
-  async function loadProducts(){
-    try{
-      const r = await fetch(PRODUCTS_JSON_URL, {cache:'no-store'});
-      if(!r.ok) throw new Error('not ok');
-      const arr = await r.json();
-      PRODUCTS = Array.isArray(arr)? arr : [];
-    }catch(e){
-      PRODUCTS=[{id:'pSample',name:'Sample Product',retailPrice:10000,wholesalePrice:8000,moq:10,category:'home',unit:'piece',imgs:['https://images.unsplash.com/photo-1581579188871-45ea61f2a0bb?q=80&w=800&auto=format&fit=crop'],desc:'products.json not found yet.'}];
-    }
-  }
+  const priceOf = (p) => mode==='retail' ? p.retailPrice : p.wholesalePrice;
+  const minQty  = (p) => mode==='retail' ? 1 : (p.moq||1);
+  const withBase = (path) => /^(https?:|data:|blob:)/i.test(path) ? path : ('images/' + String(path||'').split('/').map(encodeURIComponent).join('/'));
 
   function sanitizeImgs(p){
-    let arr = Array.isArray(p.imgs) && p.imgs.length ? p.imgs : (p.img?[p.img]:[]);
-    arr = arr.slice(0,4);
-    if(!arr.length) arr=[''];
+    let arr = Array.isArray(p.imgs) && p.imgs.length ? p.imgs.slice(0,4) : (p.img ? [p.img] : []);
+    while(arr.length < 4){ arr.push(arr[0] || ''); }
     return arr.map(u=>withBase(u));
   }
 
-  function renderSliderHTML(imgs){
+  function sliderHTML(imgs, pid){
     const slides = imgs.map((src,i)=>`
       <div class="slide ${i===0?'active':''}">
         <img src="${src}" alt="" loading="${i===0?'eager':'lazy'}"
-             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop';">
+          onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop';">
       </div>`).join('');
-    const dots = imgs.length>1 ? `<div class="dots">${imgs.map((_,i)=>`<span class="dot ${i===0?'active':''}" data-i="${i}"></span>`).join('')}</div>` : '';
-    return `<div class="slider">${slides}${dots}</div>`;
+    const dots = imgs.map((_,i)=>`<span class="dot ${i===0?'active':''}" data-i="${i}"></span>`).join('');
+    return `<div class="slider" data-pid="${pid}">${slides}<div class="dots">${dots}</div></div>`;
   }
 
-  function initSliders(){
-    document.querySelectorAll('.slider').forEach(slider=>{
-      const slides=[...slider.querySelectorAll('.slide')]; if(!slides.length) return;
-      const dots=[...slider.querySelectorAll('.dot')]; let i=0; let t=null;
-      function show(n){ i=(n+slides.length)%slides.length; slides.forEach((s,idx)=>s.classList.toggle('active',idx===i)); dots.forEach((d,idx)=>d.classList.toggle('active',idx===i)); }
-      if(slides.length>1){ t=setInterval(()=>show(i+1),3000); slider.addEventListener('mouseenter',()=>{clearInterval(t);t=null;}); slider.addEventListener('mouseleave',()=>{ if(!t) t=setInterval(()=>show(i+1),3000);}); }
-    });
+  function showEmptyState(msg){
+    grid.innerHTML = `
+      <div style="grid-column:1/-1;background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:16px">
+        <strong>Nothing to show</strong>
+        <div style="color:#64748b;margin-top:6px">${msg}</div>
+        <div style="margin-top:10px;font-size:12px;color:#64748b">
+          Expected URL: <code>${PRODUCTS_URL}</code>
+        </div>
+      </div>`;
   }
 
-  function render(){
-    const q = (searchInput.value||'').trim().toLowerCase();
-    let items = PRODUCTS.filter(p=> !q || ((p.name||'')+' '+(p.desc||'')).toLowerCase().includes(q));
-    const sort=sortSel.value;
-    if(sort==='priceAsc') items.sort((a,b)=>priceOf(a)-priceOf(b));
-    if(sort==='priceDesc') items.sort((a,b)=>priceOf(b)-priceOf(a));
-    if(sort==='name') items.sort((a,b)=>(a.name||'').localeCompare(b.name||''));
-    if(sort==='pop') items.sort((a,b)=>((b.tag?1:0)-(a.tag?1:0)));
+  async function fetchProducts(){
+    try{
+      const res = await fetch(PRODUCTS_URL, { cache: 'no-store' });
+      if(!res.ok) throw new Error(`HTTP ${res.status} fetching products.json`);
+      const data = await res.json();
+      if(!Array.isArray(data)) throw new Error('products.json must be an array');
+      return data;
+    }catch(err){
+      console.error('Failed to load products.json', err);
+      showEmptyState('Could not load products. Make sure products.json exists in the repo root and is valid JSON.');
+      return [];
+    }
+  }
 
-    grid.innerHTML = items.map(p=>{
-      const imgs = sanitizeImgs(p);
+  function render(PRODUCTS){
+    grid.innerHTML = PRODUCTS.map(p=>{
       const pr = priceOf(p);
+      const imgs = sanitizeImgs(p);
       return `<div class="card">
-        ${renderSliderHTML(imgs)}
+        ${sliderHTML(imgs, p.id)}
         <div class="body">
-          <h3 style="margin:0 0 6px">${p.name||''} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</h3>
+          <h3 style="margin:0 0 6px">${p.name} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</h3>
           <p class="muted" style="min-height:32px">${p.desc||''}</p>
           <div class="price">${fmtUGX(pr)} ${mode==='retail'?'(Retail)':'(Wholesale)'} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</div>
-          <div class="muted" style="font-size:12px;margin-top:-4px">${mode==='retail'? `Wholesale: ${fmtUGX(p.wholesalePrice||0)} (MOQ ${minQty(p)})` : `Retail: ${fmtUGX(p.retailPrice||0)}`}</div>
           <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
             <label class="muted">Qty:
-              <input type="number" id="qty-${p.id}" value="${minQty(p)}" min="${minQty(p)}" step="${minQty(p)}" style="width:110px">
+              <input type="number" id="qty-${p.id}" value="${minQty(p)}" min="${minQty(p)}" step="${minQty(p)}" style="width:110px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:16px">
             </label>
             <span class="muted">/ ${p.unit||'piece'}</span>
           </div>
@@ -185,31 +172,49 @@
         </div>
       </div>`;
     }).join('');
-    initSliders();
+
+    // autoplay
+    document.querySelectorAll('.slider').forEach(slider=>{
+      let i=0; const slides=[...slider.querySelectorAll('.slide')];
+      const dots=[...slider.querySelectorAll('.dot')];
+      const show=n=>{ i=(n+slides.length)%slides.length; slides.forEach((s,idx)=>s.classList.toggle('active',idx===i)); dots.forEach((d,idx)=>d.classList.toggle('active',idx===i)); };
+      let t=setInterval(()=>show(i+1),3000);
+      slider.addEventListener('mouseenter',()=>{clearInterval(t);t=null;});
+      slider.addEventListener('mouseleave',()=>{if(!t) t=setInterval(()=>show(i+1),3000);});
+    });
   }
 
-  // Cart
+  // Cart + WhatsApp
   function addToCart(id){
+    const PRODUCTS = window.__PRODUCTS || [];
     const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
-    let qty = parseInt(document.getElementById(`qty-${id}`)?.value)||minQty(p);
-    if(qty<minQty(p)) qty=minQty(p);
-    const unitPrice=priceOf(p); const key=id+':'+mode; const existing=cart.get(key);
+    const qtyInput = document.getElementById(`qty-${id}`);
+    let qty = parseInt(qtyInput?.value)||minQty(p);
+    if(qty < minQty(p)) qty = minQty(p);
+    const unitPrice = priceOf(p);
+    const key = id+':'+mode;
+    const existing = cart.get(key);
     cart.set(key,{product:p,qty:(existing?existing.qty:0)+qty,unitPrice,mode});
-    updateCartUI(); drawer.classList.add('open'); updateFabVisibility();
+    updateCartUI();
+    openDrawer();
   }
   function buyNow(id){
+    const PRODUCTS = window.__PRODUCTS || [];
     const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
-    let qty = parseInt(document.getElementById(`qty-${id}`)?.value)||minQty(p);
-    if(qty<minQty(p)) qty=minQty(p);
-    const unitPrice=priceOf(p);
+    const qtyInput = document.getElementById(`qty-${id}`);
+    let qty = parseInt(qtyInput?.value)||minQty(p);
+    if(qty < minQty(p)) qty = minQty(p);
+    const unitPrice = priceOf(p);
     const msg = `Hi Orji Supplies, I want to order:\n• ${p.name} x${qty} @ ${fmtUGX(unitPrice)} (${mode})`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`,'_blank');
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+    window.open(url,'_blank');
   }
   function updateCartUI(){
     cartLines.innerHTML=''; let total=0; let count=0;
     cart.forEach(({product,qty,unitPrice,mode})=>{
       const lineTotal=unitPrice*qty; total+=lineTotal; count+=qty;
-      const div=document.createElement('div'); div.style.borderBottom='1px dashed var(--line)'; div.style.padding='6px 0';
+      const div=document.createElement('div');
+      div.style.borderBottom='1px dashed var(--line)'; div.style.padding='6px 0';
       div.innerHTML = `<strong>${product.name}</strong><br><span class="muted">${mode==='retail'?'Retail':'Wholesale'} • ${fmtUGX(unitPrice)} × ${qty}</span> — <strong>${fmtUGX(lineTotal)}</strong>`;
       cartLines.appendChild(div);
     });
@@ -217,24 +222,31 @@
     cartCount.style.display = count>0? 'inline-block':'none';
     cartCount.textContent = count;
     checkoutFab.href = cartToWhatsApp(total);
+    updateFabVisibility();
   }
   function cartToWhatsApp(total=0){
     if(cart.size===0) return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Orji Supplies')}`;
-    const lines=[]; cart.forEach(({product,qty,unitPrice,mode})=>lines.push(`• ${product.name} x${qty} @ ${fmtUGX(unitPrice)} (${mode})`));
-    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Order (Cash on Delivery):\n${lines.join('\n')}\nTotal: ${fmtUGX(total)}`)}`;
+    let lines=[];
+    cart.forEach(({product,qty,unitPrice,mode})=>{
+      lines.push(`• ${product.name} x${qty} @ ${fmtUGX(unitPrice)} (${mode})`);
+    });
+    const msg = `Order (Cash on Delivery):\n${lines.join('\n')}\nTotal: ${fmtUGX(total)}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
   }
-  function updateFabVisibility(){ checkoutFab.style.display = cart.size>0 && drawer.classList.contains('open') ? 'flex' : 'none'; }
-  cartBtn.onclick=()=>{ drawer.classList.toggle('open'); updateFabVisibility(); };
+  function updateFabVisibility(){
+    const visible = cart.size>0 && drawer.classList.contains('open');
+    checkoutFab.style.display = visible ? 'flex' : 'none';
+  }
+  function openDrawer(){ drawer.classList.add('open'); updateFabVisibility(); }
   closeDrawer.onclick=()=>{ drawer.classList.remove('open'); updateFabVisibility(); };
+  cartBtn.onclick=()=>{ drawer.classList.toggle('open'); updateFabVisibility(); };
 
-  // Events
-  searchInput.addEventListener('input',render);
-  sortSel.addEventListener('change',render);
-
-  // Go
-  (async function init(){
-    await loadProducts();
-    render();
+  // Init
+  (async () => {
+    const products = await fetchProducts();
+    if(!products.length) return;
+    window.__PRODUCTS = products;
+    render(products);
   })();
 </script>
 </body>
