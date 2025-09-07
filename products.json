@@ -1,20 +1,5 @@
 [
   {
-    "id": "annn-1757191482795",
-    "name": "ANNN",
-    "category": "laundry",
-    "retailPrice": 17000,
-    "wholesalePrice": 15600,
-    "unit": "piece",
-    "moq": 12,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/annn-1757191482795-1.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/annn-1757191482795-2.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/annn-1757191482795-3.jpg"
-    ]
-  },
-  {
     "id": "bin-1757191648732",
     "name": "BIN",
     "category": "laundry",
