@@ -9,62 +9,153 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-  :root{--brand:#0ea5e9;--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--bg:#f8fafc;--wa:#25D366;--card:#fff}
+  :root{
+    --brand:#0ea5e9; --brand-d:#0284c7;
+    --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc;
+    --wa:#25D366; --card:#fff; --rose:#fb7185
+  }
   *{box-sizing:border-box}
-  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
-  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
-  .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;max-width:1200px;margin:0 auto}
-  .brand{font-weight:800}
-  .button{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}
-  .primary{background:var(--brand);border-color:var(--brand);color:#fff}
-  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;padding:16px;max-width:1200px;margin:0 auto}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
-  .card .body{padding:12px}
-  .moq{display:inline-block;font-size:11px;background:#d1fae5;color:#065f46;border:1px solid #a7f3d0;border-radius:999px;padding:2px 8px;margin-left:6px}
-  .muted{color:var(--muted)}
-  .price{font-weight:800;margin:6px 0}
+  html,body{height:100%}
+  body{
+    font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    margin:0; background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased
+  }
 
-  /* ===== Gallery (main + thumbs) ===== */
+  /* Header / Nav */
+  header{
+    position:sticky; top:0; z-index:50; background:#ffffffd9;
+    border-bottom:1px solid var(--line); backdrop-filter:saturate(180%) blur(6px)
+  }
+  .nav{
+    max-width:1200px; margin:0 auto; padding:10px 16px;
+    display:flex; align-items:center; justify-content:space-between; gap:10px
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px
+  }
+  .brand-badge{
+    width:34px; height:34px; border-radius:10px; background:var(--brand);
+    color:#fff; display:grid; place-items:center; font-weight:800; box-shadow:0 6px 16px rgba(14,165,233,.25)
+  }
+  .button{
+    padding:10px 14px; border-radius:12px; border:1px solid var(--line);
+    background:#fff; font-weight:700; cursor:pointer; line-height:1; text-decoration:none; color:var(--ink)
+  }
+  .button:focus-visible{outline:3px solid rgba(14,165,233,.45)}
+  .primary{background:var(--brand); border-color:var(--brand); color:#fff}
+  .primary:hover{background:var(--brand-d); border-color:var(--brand-d)}
+  .nav .stack{display:flex; gap:8px; align-items:center}
+
+  /* Catalog grid */
+  .wrap{max-width:1200px; margin:0 auto; padding:8px 12px 18px}
+  .title-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 4px}
+  .title-row h1{font-size:clamp(18px,4vw,22px); margin:0}
+  .grid{
+    display:grid; gap:14px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+  @media (min-width:520px){ .grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
+  @media (min-width:900px){ .grid{grid-template-columns:repeat(4,minmax(0,1fr))} }
+
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden;
+    display:flex; flex-direction:column; transition:transform .18s, box-shadow .18s
+  }
+  .card:hover{transform:translateY(-2px); box-shadow:0 12px 26px rgba(2,6,23,.10)}
+  .card .body{padding:12px}
+  .card h3{margin:0 0 6px; font-size:15px}
+  .muted{color:var(--muted)}
+  .price{font-weight:800; margin:6px 0 2px}
+  .moq{
+    display:inline-block; font-size:11px; background:#d1fae5; color:#065f46;
+    border:1px solid #a7f3d0; border-radius:999px; padding:2px 8px; margin-left:6px
+  }
+
+  /* Gallery (1–4 images slider) */
   .gallery{display:flex;flex-direction:column;gap:8px;background:#f1f5f9}
   .gallery-main{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;border-bottom:1px solid var(--line)}
   .gslide{position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
   .gslide.active{opacity:1}
   .gslide img{width:100%;height:100%;object-fit:cover;display:block;background:#eef2f7}
-  .garrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
-  .garrows button{pointer-events:auto;border:0;background:rgba(0,0,0,.35);color:#fff;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;cursor:pointer}
-  .garrows button:focus-visible{outline:3px solid rgba(14,165,233,.6)}
+  .garrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none;padding:6px}
+  .garrows button{
+    pointer-events:auto;border:0;background:rgba(0,0,0,.38);color:#fff;
+    width:36px;height:36px;border-radius:999px;display:grid;place-items:center;cursor:pointer
+  }
   .gdots{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;gap:6px;pointer-events:none}
-  .gdots .dot{width:7px;height:7px;border-radius:50%;background:rgba(15,23,42,.35);box-shadow:0 0 0 1px rgba(255,255,255,.5) inset}
+  .gdots .dot{width:7px;height:7px;border-radius:50%;background:rgba(15,23,42,.35);box-shadow:0 0 0 1px rgba(255,255,255,.6) inset}
   .gdots .dot.active{background:#fff}
   .gthumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px}
   .gthumb{position:relative;width:100%;aspect-ratio:1/1;border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:#eef2f7}
   .gthumb.active{border-color:var(--brand)}
   .gthumb img{width:100%;height:100%;object-fit:cover;display:block}
 
-  /* drawer */
-  .drawer{position:fixed;top:0;right:-420px;width:380px;max-width:92vw;height:100vh;background:#fff;border-left:1px solid var(--line);transition:right .22s;z-index:100;display:flex;flex-direction:column}
+  /* Inputs & actions */
+  .qtyrow{margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+  .qtyrow input{
+    width:114px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:16px
+  }
+  .actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .actions .button{flex:1; text-align:center}
+
+  /* Drawer (cart) */
+  .drawer{
+    position:fixed; top:0; right:-420px; width:380px; max-width:100vw; height:100vh;
+    background:#fff; border-left:1px solid var(--line); transition:right .22s; z-index:100;
+    display:flex; flex-direction:column
+  }
   .drawer.open{right:0}
   .drawer header{padding:12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
   .drawer main{flex:1;overflow:auto;padding:12px}
   .drawer footer{padding:12px;border-top:1px solid var(--line)}
-  .fab{position:fixed;right:16px;bottom:16px;display:none;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;background:var(--wa);color:#fff;font-weight:800;text-decoration:none;box-shadow:0 10px 20px rgba(2,6,23,.18);z-index:120}
-  @media (max-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))} .drawer{width:100vw}}
+  .line{border-bottom:1px dashed var(--line);padding:8px 0}
+
+  /* WhatsApp FAB */
+  .fab{
+    position:fixed; right:16px; bottom:16px; display:none; align-items:center; gap:8px;
+    padding:12px 16px; border-radius:999px; background:var(--wa); color:#fff; font-weight:800;
+    text-decoration:none; box-shadow:0 10px 20px rgba(2,6,23,.18); z-index:120
+  }
+  .badgeCount{
+    background:var(--rose); color:#fff; border-radius:999px; padding:2px 6px; font-size:12px; display:none
+  }
+
+  /* Mobile niceties */
+  @media (max-width:480px){
+    .nav{padding:8px 12px}
+    .button{padding:10px 12px}
+    .card h3{font-size:14px}
+    .qtyrow input{width:100px}
+  }
+
+  /* Reduce motion (accessibility) */
+  @media (prefers-reduced-motion:reduce){
+    .gslide{transition:none}
+    .card{transition:none}
+  }
 </style>
 </head>
 <body data-mode="retail">
 <header>
   <div class="nav">
-    <div class="brand">Orji Supplies</div>
+    <div class="brand"><span class="brand-badge">O</span> Orji Supplies</div>
     <div class="stack">
       <a href="#catalog" class="button primary">Browse</a>
-      <button id="cartBtn" class="button">Cart <span id="cartCount" style="background:#fb7185;color:#fff;border-radius:999px;padding:2px 6px;font-size:12px;display:none">0</span></button>
+      <button id="cartBtn" class="button">
+        Cart <span id="cartCount" class="badgeCount">0</span>
+      </button>
     </div>
   </div>
 </header>
 
-<section id="catalog">
-  <div class="grid" id="grid"></div>
-</section>
+<main class="wrap">
+  <div class="title-row">
+    <h1>Catalog</h1>
+  </div>
+  <section id="catalog">
+    <div class="grid" id="grid" aria-live="polite"></div>
+  </section>
+</main>
 
 <!-- Cart Drawer -->
 <aside id="drawer" class="drawer" aria-label="Cart drawer">
@@ -75,19 +166,19 @@
   <main id="cartLines"></main>
   <footer>
     <div id="grandTotal" style="font-weight:800">Total: UGX 0</div>
-    <div class="muted">Payment: Cash on Delivery</div>
+    <div class="muted" style="margin-top:4px">Payment: Cash on Delivery</div>
   </footer>
 </aside>
 
 <!-- WhatsApp checkout -->
 <a id="checkoutFab" class="fab" href="#" target="_blank" aria-label="Checkout on WhatsApp">
-  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.56c-.26-.13-1.52-.75-1.76-.84s-.41-.13-.58.13-.66.84-.81 1.01-.3.19-.56.06a8.94 8.94 0 0 1-2.64-1.63 9.9 9.9 0 0 1-1.84-2.28c-.19-.32 0-.49.13-.62.13-.13.26-.32.39-.45.13-.13.19-.26.32-.45.13-.19.06-.36 0-.49-.06-.13-.58-1.39-.8-1.89-.21-.51-.43-.44-.58-.45h-.5a.96.96 0 0 0-.69.32c-.24.26-.9.88-.9 2.14s.92 2.49 1.05 2.66c.13.17 1.81 2.76 4.39 3.87.61 .26 1.08 .41 1.45 .52.61 .19 1.16 .16 1.6 .1.49 -.07 1.52 -.62 1.74 -1.22.21 -.58.21 -1.08.15 -1.22-.06 -.13-.24 -.2-.5 -.33zM16 3C9.37 3 4 8.37 4 15c0 2.12.55 4.1 1.52 5.83L4 29l8.33-1.46A12.95 12.95 0 0 0 16 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.33c-1.84 0-3.55-.54-4.98-1.46l-.36-.23-4.94.86.86-4.81-.24-.39A9.36 9.36 0 1 1 25.36 20a9.33 9.33 0 0 1-9.36 5.33z"/></svg>
+  <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M19.11 17.56c-.26-.13-1.52-.75-1.76-.84s-.41-.13-.58.13-.66.84-.81 1.01-.3.19-.56.06a8.94 8.94 0 0 1-2.64-1.63 9.9 9.9 0  0 1-1.84-2.28c-.19-.32 0-.49.13-.62.13-.13.26-.32.39-.45.13-.13.19-.26.32-.45.13-.19.06-.36 0-.49-.06-.13-.58-1.39-.8-1.89-.21-.51-.43-.44-.58-.45h-.5a.96.96 0 0 0-.69.32c-.24.26-.9.88-.9 2.14s.92 2.49 1.05 2.66c.13.17 1.81 2.76 4.39 3.87.61 .26 1.08 .41 1.45 .52.61 .19 1.16 .16 1.6 .1.49 -.07 1.52 -.62 1.74 -1.22.21 -.58.21 -1.08.15 -1.22-.06 -.13-.24 -.2-.5 -.33zM16 3C9.37 3 4 8.37 4 15c0 2.12.55 4.1 1.52 5.83L4 29l8.33-1.46A12.95 12.95 0  0 0 16 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.33c-1.84 0-3.55-.54-4.98-1.46l-.36-.23-4.94.86.86-4.81-.24-.39A9.36 9.36 0 1 1 25.36 20a9.33 9.33 0 0 1-9.36 5.33z"/></svg>
   <span>Checkout</span>
 </a>
 
 <script>
   // ===== Config =====
-  const WHATSAPP_NUMBER = '256700000000';     // your number (no +)
+  const WHATSAPP_NUMBER = '256700000000'; // keep as-is; change to your number (no +) when needed
 
   // Elements
   const grid = document.getElementById('grid');
@@ -99,18 +190,18 @@
   const checkoutFab = document.getElementById('checkoutFab');
   const cartCount = document.getElementById('cartCount');
 
-  // State
+  // State (functionality unchanged)
   let mode = 'retail';
   let cart = new Map();
 
-  // Normalize images: use p.imgs (1–4) or fallback; accept any URL (http/https/data/blob/raw GitHub)
+  // Normalize product images to an array of up to 4
   function normalizeImgs(p){
     let arr = Array.isArray(p.imgs) && p.imgs.length ? p.imgs : (p.img ? [p.img] : []);
     if (!arr.length) arr = ['https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop'];
     return arr.slice(0,4);
   }
 
-  // Load products.json (same repo / root)
+  // Load products.json from the same site (unchanged behavior)
   async function loadProducts(){
     try{
       const res = await fetch('products.json', {cache:'no-store'});
@@ -118,40 +209,37 @@
       const arr = await res.json();
       if(Array.isArray(arr) && arr.length) return arr;
     }catch(e){}
-    // fallback sample (only shows if file missing/empty)
+    // fallback sample if file missing/empty
     return [
       {id:'pSample', name:'Sample Product', retailPrice:10000, wholesalePrice:8000, moq:10, category:'home', unit:'piece',
        imgs:['https://images.unsplash.com/photo-1581579188871-45ea61f2a0bb?q=80&w=800&auto=format&fit=crop'],
-       desc:'Use admin.html to add real products.'}
+       desc:'Use your admin to add real products.'}
     ];
   }
 
   const fmtUGX = v => new Intl.NumberFormat('en-UG',{style:'currency',currency:'UGX',maximumFractionDigits:0}).format(v);
-  const priceOf = (p) => mode==='retail' ? p.retailPrice : p.wholesalePrice;
-  const minQty  = (p) => mode==='retail' ? 1 : (p.moq||1);
+  const priceOf = p => mode==='retail' ? p.retailPrice : p.wholesalePrice;
+  const minQty  = p => mode==='retail' ? 1 : (p.moq||1);
 
-  // ===== Gallery HTML (main + thumbnails) =====
+  // ===== Gallery markup =====
   function renderGalleryHTML(imgs, pid){
     const slides = imgs.map((src,i)=>`
       <div class="gslide ${i===0?'active':''}">
         <img src="${src}" alt="" loading="${i===0?'eager':'lazy'}"
              onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop';">
       </div>`).join('');
-
     const dots = imgs.map((_,i)=>`<span class="dot ${i===0?'active':''}" data-i="${i}"></span>`).join('');
-
     const thumbs = imgs.map((src,i)=>`
       <button class="gthumb ${i===0?'active':''}" data-i="${i}" aria-label="Show image ${i+1}">
         <img src="${src}" alt="">
       </button>`).join('');
-
     return `
       <div class="gallery" data-pid="${pid}">
         <div class="gallery-main">
           ${slides}
           <div class="garrows">
-            <button class="gprev" aria-label="Previous slide">‹</button>
-            <button class="gnext" aria-label="Next slide">›</button>
+            <button class="gprev" aria-label="Previous image">‹</button>
+            <button class="gnext" aria-label="Next image">›</button>
           </div>
           <div class="gdots">${dots}</div>
         </div>
@@ -160,37 +248,44 @@
     `;
   }
 
-  // ===== Render all products =====
+  // ===== Render products (unchanged logic, improved layout) =====
   async function render(){
     const PRODUCTS = await loadProducts();
     grid.innerHTML = PRODUCTS.map(p=>{
-      const pr = priceOf(p);
       const imgs = normalizeImgs(p);
-      return `<div class="card">
-        ${renderGalleryHTML(imgs, p.id)}
-        <div class="body">
-          <h3 style="margin:0 0 6px">${p.name} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</h3>
-          <p class="muted" style="min-height:32px">${p.desc||''}</p>
-          <div class="price">${fmtUGX(pr)} ${mode==='retail'?'(Retail)':'(Wholesale)'} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</div>
-          <div class="muted" style="font-size:12px;margin-top:-4px">${mode==='retail'? `Wholesale: ${fmtUGX(p.wholesalePrice)} (MOQ ${minQty(p)})` : `Retail: ${fmtUGX(p.retailPrice)}`}</div>
-          <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
-            <label class="muted">Qty:
-              <input type="number" id="qty-${p.id}" value="${minQty(p)}" min="${minQty(p)}" step="${minQty(p)}" style="width:110px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:16px">
-            </label>
-            <span class="muted">/ ${p.unit||'piece'}</span>
+      const pr = priceOf(p);
+      return `
+        <article class="card">
+          ${renderGalleryHTML(imgs, p.id)}
+          <div class="body">
+            <h3>${p.name} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</h3>
+            <p class="muted" style="min-height:32px">${p.desc||''}</p>
+            <div class="price">${fmtUGX(pr)} ${mode==='retail'?'(Retail)':'(Wholesale)'} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</div>
+            <div class="muted" style="font-size:12px;margin-top:-2px">
+              ${mode==='retail'
+                ? `Wholesale: ${fmtUGX(p.wholesalePrice)} (MOQ ${minQty(p)})`
+                : `Retail: ${fmtUGX(p.retailPrice)}`
+              }
+            </div>
+            <div class="qtyrow">
+              <label class="muted">Qty:
+                <input type="number" id="qty-${p.id}" value="${minQty(p)}" min="${minQty(p)}" step="${minQty(p)}" aria-label="Quantity for ${p.name}">
+              </label>
+              <span class="muted">/ ${p.unit||'piece'}</span>
+            </div>
+            <div class="actions">
+              <button class="button" onclick="addToCart('${p.id}')">Add to Cart</button>
+              <button class="button primary" onclick="buyNow('${p.id}')">Buy Now</button>
+            </div>
           </div>
-          <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
-            <button class="button" onclick="addToCart('${p.id}')">Add to Cart</button>
-            <button class="button primary" onclick="buyNow('${p.id}')">Buy Now</button>
-          </div>
-        </div>
-      </div>`;
+        </article>
+      `;
     }).join('');
     initAllGalleries();
   }
 
-  // ===== Gallery logic: auto slide, arrows, thumbnails, hover pause, touch swipe =====
-  const SLIDE_MS = 3000;
+  // ===== Gallery behavior (auto-slide, arrows, dot/thumb control, touch swipe) =====
+  const SLIDE_MS = 3200;
 
   function initAllGalleries(){
     document.querySelectorAll('.gallery').forEach(gal=>{
@@ -199,8 +294,7 @@
       const thumbs = [...gal.querySelectorAll('.gthumb')];
       const prevBtn = gal.querySelector('.gprev');
       const nextBtn = gal.querySelector('.gnext');
-      let i = 0;
-      let timer = null;
+      let i = 0, timer = null;
 
       function show(n){
         i = (n + slides.length) % slides.length;
@@ -211,20 +305,13 @@
       function start(){ if(slides.length>1 && !timer) timer = setInterval(()=>show(i+1), SLIDE_MS); }
       function stop(){ if(timer){ clearInterval(timer); timer = null; } }
 
-      // arrows
       prevBtn.addEventListener('click', ()=>{ stop(); show(i-1); start(); });
       nextBtn.addEventListener('click', ()=>{ stop(); show(i+1); start(); });
-
-      // thumbs
-      thumbs.forEach(btn=>{
-        btn.addEventListener('click', ()=>{ stop(); show(parseInt(btn.dataset.i,10)||0); start(); });
-      });
-
-      // hover pause
+      thumbs.forEach(btn=> btn.addEventListener('click', ()=>{ stop(); show(+btn.dataset.i||0); start(); }));
       gal.addEventListener('mouseenter', stop);
       gal.addEventListener('mouseleave', start);
 
-      // touch swipe
+      // Touch swipe
       let sx=0, sy=0, dx=0, dy=0, touching=false;
       gal.addEventListener('touchstart', e=>{
         if(!e.touches[0]) return;
@@ -236,15 +323,11 @@
         dy = e.touches[0].clientY - sy;
       }, {passive:true});
       gal.addEventListener('touchend', ()=>{
-        if(!touching) return;
-        touching=false;
-        if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)){
-          if(dx < 0) show(i+1); else show(i-1);
-        }
+        if(!touching) return; touching=false;
+        if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) (dx < 0) ? show(i+1) : show(i-1);
         start();
       });
 
-      // if only 1 image, hide arrows/dots/thumbs visuals
       if (slides.length <= 1){
         prevBtn.style.display='none';
         nextBtn.style.display='none';
@@ -252,12 +335,11 @@
         gal.querySelector('.gthumbs').style.display='none';
       }
 
-      show(0);
-      start();
+      show(0); start();
     });
   }
 
-  // ===== Cart =====
+  // ===== Cart (same behavior, better visuals) =====
   function addToCart(id){
     const qtyEl = document.getElementById(`qty-${id}`);
     loadProducts().then(PRODUCTS=>{
@@ -268,8 +350,7 @@
       const key = id+':'+mode;
       const existing = cart.get(key);
       cart.set(key,{product:p,qty:(existing?existing.qty:0)+qty,unitPrice,mode});
-      updateCartUI();
-      openDrawer();
+      updateCartUI(); openDrawer();
     });
   }
   function buyNow(id){
@@ -289,8 +370,10 @@
     cart.forEach(({product,qty,unitPrice,mode})=>{
       const lineTotal=unitPrice*qty; total+=lineTotal; count+=qty;
       const div=document.createElement('div');
-      div.style.borderBottom='1px dashed var(--line)'; div.style.padding='6px 0';
-      div.innerHTML = `<strong>${product.name}</strong><br><span class="muted">${mode==='retail'?'Retail':'Wholesale'} • ${fmtUGX(unitPrice)} × ${qty}</span> — <strong>${fmtUGX(lineTotal)}</strong>`;
+      div.className='line';
+      div.innerHTML = `<strong>${product.name}</strong><br>
+        <span class="muted">${mode==='retail'?'Retail':'Wholesale'} • ${fmtUGX(unitPrice)} × ${qty}</span>
+        — <strong>${fmtUGX(lineTotal)}</strong>`;
       cartLines.appendChild(div);
     });
     grandTotal.textContent='Total: '+fmtUGX(total);
