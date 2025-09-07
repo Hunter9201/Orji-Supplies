@@ -216,21 +216,5 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plusb-1757202836490-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plusb-1757202836490-4.jpg"
     ]
-  },
-  {
-    "id": "harpic-plusb-1757203790987",
-    "name": "harpic Plusb",
-    "category": "laundry",
-    "retailPrice": 18000,
-    "wholesalePrice": 17000,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plusb-1757203790987-1.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plusb-1757203790987-2.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plusb-1757203790987-3.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plusb-1757203790987-4.jpg"
-    ]
   }
 ]
