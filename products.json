@@ -467,22 +467,6 @@
     ]
   },
   {
-    "id": "car-engine-1757244229890",
-    "name": "Car Engine",
-    "category": "accessories",
-    "retailPrice": 1000000,
-    "wholesalePrice": 90000000,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/car-engine-1757244229890-1.jpeg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/car-engine-1757244229890-2.heic",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/car-engine-1757244229890-3.heic",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/car-engine-1757244229890-4.heic"
-    ]
-  },
-  {
     "id": "gloves-1757254784213",
     "name": "GLOVES",
     "category": "laundry",
