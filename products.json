@@ -349,18 +349,5 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/x7t889-1757206054651-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/x7t889-1757206054651-4.jpg"
     ]
-  },
-  {
-    "id": "all-housea-1757207445150",
-    "name": "All housea",
-    "category": "pest",
-    "retailPrice": 300000,
-    "wholesalePrice": 2950000,
-    "unit": "-1",
-    "moq": 30,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/all-housea-1757207445150-1.png"
-    ]
   }
 ]
