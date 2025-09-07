@@ -1,541 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Orji Supplies – Shop</title>
-<meta name="description" content="Laundry & home-cleaning products. Retail & wholesale. Cash on delivery." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<title>Orji Supplies — Admin (Upload to GitHub)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-:root{
-  --brand:#0ea5e9; --brand-d:#0284c7;
-  --ink:#0f172a; --muted:#64748b; --line:#e2e8f0; --bg:#f8fafc;
-  --wa:#25D366; --card:#fff; --rose:#fb7185; --ok:#16a34a;
-}
-*{box-sizing:border-box}
-html,body{height:100%}
-body{
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-  margin:0; background:var(--bg); color:var(--ink); -webkit-font-smoothing:antialiased
-}
-
-/* Header / Nav */
-header{
-  position:sticky; top:0; z-index:60; background:#ffffffd9;
-  border-bottom:1px solid var(--line); backdrop-filter:saturate(180%) blur(6px)
-}
-.nav{
-  max-width:1200px; margin:0 auto; padding:10px 16px;
-  display:flex; align-items:center; justify-content:space-between; gap:10px
-}
-.brand{
-  display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.2px
-}
-.brand-badge{
-  width:34px; height:34px; border-radius:10px; background:var(--brand);
-  color:#fff; display:grid; place-items:center; font-weight:800; box-shadow:0 6px 16px rgba(14,165,233,.25)
-}
-.button{
-  padding:10px 14px; border-radius:12px; border:1px solid var(--line);
-  background:#fff; font-weight:700; cursor:pointer; line-height:1; text-decoration:none; color:var(--ink)
-}
-.button:focus-visible{outline:3px solid rgba(14,165,233,.45)}
-.primary{background:var(--brand); border-color:var(--brand); color:#fff}
-.primary:hover{background:var(--brand-d); border-color:var(--brand-d)}
-.nav .stack{display:flex; gap:8px; align-items:center}
-
-/* HERO (added) */
-.hero{
-  padding:24px 16px; max-width:1100px; margin:0 auto; text-align:center;
-  background:conic-gradient(from 180deg at 50% 50%, #e0f2fe 0deg, #dcfce7 180deg, #e0f2fe 360deg)
-}
-.hero h1{font-size:clamp(22px,6vw,36px); margin:0 0 8px}
-.hero p{color:var(--muted); margin:0 0 12px; font-size:clamp(14px,4vw,16px)}
-.badges{display:flex; flex-wrap:wrap; gap:8px; justify-content:center; margin:10px 0 14px}
-.badge{background:#fff; border:1px solid var(--line); border-radius:999px; padding:6px 10px; font-weight:700; font-size:12px}
-.hero-cta{display:flex; justify-content:center; gap:10px; flex-wrap:wrap}
-
-/* CONTROLS BAR (added) */
-.controls{
-  position:sticky; top:62px; z-index:55;
-  background:#ffffffd9; backdrop-filter:blur(6px); border-block:1px solid var(--line)
-}
-.controls-inner{
-  max-width:1200px; margin:0 auto; padding:10px 16px;
-  display:flex; flex-direction:column; gap:10px
-}
-.tagline{font-weight:800; text-align:center}
-.search{
-  display:flex; gap:8px; align-items:center; padding:8px 10px; border:1px solid var(--line);
-  border-radius:10px; background:#fff; width:100%; max-width:720px; margin:0 auto
-}
-.search input{border:0; outline:none; width:100%; font-size:14px}
-.chips{display:flex; gap:6px; overflow:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; justify-content:center}
-.chip{
-  padding:8px 12px; border-radius:999px; border:1px solid var(--line); background:#fff;
-  cursor:pointer; font-weight:700; font-size:12px; white-space:nowrap
-}
-.chip[aria-pressed="true"]{background:var(--ink); color:#fff}
-
-.mode-tabs{position:relative; display:inline-flex; align-items:center; gap:6px; background:#0f172a0d; border:1px solid #cbd5e1; padding:6px; border-radius:999px}
-.mode-tabs .thumb{position:absolute; top:6px; bottom:6px; width:50%; border-radius:999px; background:var(--brand); z-index:0; transition:transform .25s ease,background-color .25s ease}
-[data-mode="retail"] .mode-tabs .thumb{transform:translateX(0)}
-[data-mode="wholesale"] .mode-tabs .thumb{transform:translateX(100%); background:#16a34a}
-.mode-tabs button{position:relative; z-index:1; border:0; background:transparent; padding:10px 18px; border-radius:999px; font-weight:800; font-size:15px; color:var(--ink); cursor:pointer}
-.mode-tabs button[aria-pressed="true"]{color:#fff}
-
-/* Catalog grid */
-.wrap{max-width:1200px; margin:0 auto; padding:8px 12px 18px}
-.title-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:8px 4px}
-.title-row h1{font-size:clamp(18px,4vw,22px); margin:0}
-.grid{
-  display:grid; gap:14px;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-}
-@media (min-width:520px){ .grid{grid-template-columns:repeat(3,minmax(0,1fr))} }
-@media (min-width:900px){ .grid{grid-template-columns:repeat(4,minmax(0,1fr))} }
-
-.card{
-  background:var(--card); border:1px solid var(--line); border-radius:14px; overflow:hidden;
-  display:flex; flex-direction:column; transition:transform .18s, box-shadow .18s
-}
-.card:hover{transform:translateY(-2px); box-shadow:0 12px 26px rgba(2,6,23,.10)}
-.card .body{padding:12px}
-.card h3{margin:0 0 6px; font-size:15px}
-.muted{color:var(--muted)}
-.price{font-weight:800; margin:6px 0 2px}
-.moq{
-  display:inline-block; font-size:11px; background:#d1fae5; color:#065f46;
-  border:1px solid #a7f3d0; border-radius:999px; padding:2px 8px; margin-left:6px
-}
-
-/* Gallery (1–4 images slider) */
-.gallery{display:flex;flex-direction:column;gap:8px;background:#f1f5f9}
-.gallery-main{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;border-bottom:1px solid var(--line)}
-.gslide{position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
-.gslide.active{opacity:1}
-.gslide img{width:100%;height:100%;object-fit:cover;display:block;background:#eef2f7}
-.garrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none;padding:6px}
-.garrows button{
-  pointer-events:auto;border:0;background:rgba(0,0,0,.38);color:#fff;
-  width:36px;height:36px;border-radius:999px;display:grid;place-items:center;cursor:pointer
-}
-.gdots{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;gap:6px;pointer-events:none}
-.gdots .dot{width:7px;height:7px;border-radius:50%;background:rgba(15,23,42,.35);box-shadow:0 0 0 1px rgba(255,255,255,.6) inset}
-.gdots .dot.active{background:#fff}
-.gthumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px}
-.gthumb{position:relative;width:100%;aspect-ratio:1/1;border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:#eef2f7}
-.gthumb.active{border-color:var(--brand)}
-.gthumb img{width:100%;height:100%;object-fit:cover;display:block}
-
-/* Inputs & actions */
-.qtyrow{margin-top:8px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.qtyrow input{
-  width:114px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:16px
-}
-.actions{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
-.actions .button{flex:1; text-align:center}
-
-/* Drawer (cart) */
-.drawer{
-  position:fixed; top:0; right:-420px; width:380px; max-width:100vw; height:100vh;
-  background:#fff; border-left:1px solid var(--line); transition:right .22s; z-index:100;
-  display:flex; flex-direction:column
-}
-.drawer.open{right:0}
-.drawer header{padding:12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
-.drawer main{flex:1;overflow:auto;padding:12px}
-.drawer footer{padding:12px;border-top:1px solid var(--line)}
-.line{border-bottom:1px dashed var(--line);padding:8px 0}
-
-/* WhatsApp FAB */
-.fab{
-  position:fixed; right:16px; bottom:16px; display:none; align-items:center; gap:8px;
-  padding:12px 16px; border-radius:999px; background:var(--wa); color:#fff; font-weight:800;
-  text-decoration:none; box-shadow:0 10px 20px rgba(2,6,23,.18); z-index:120
-}
-.badgeCount{
-  background:var(--rose); color:#fff; border-radius:999px; padding:2px 6px; font-size:12px; display:none
-}
-
-/* Mobile niceties */
-@media (max-width:600px){
-  .nav{padding:8px 12px; flex-wrap:wrap}
-  .button{padding:10px 12px; min-height:44px}
-  .card h3{font-size:14px}
-  .qtyrow input{width:100px}
-  .controls-inner{gap:12px}
-}
-@media (prefers-reduced-motion:reduce){
-  .gslide{transition:none}
-  .card{transition:none}
-}
+  :root{--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--brand:#0ea5e9;--ok:#16a34a;--bad:#ef4444;--card:#fff;--bg:#f8fafc}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);padding:12px 16px;z-index:10}
+  .wrap{max-width:1100px;margin:0 auto;padding:16px}
+  .grid{display:grid;grid-template-columns:2fr 3fr;gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  .card .body{padding:14px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  label{font-weight:700;font-size:14px}
+  input,select,textarea{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:16px}
+  .muted{color:var(--muted)}
+  .button{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}
+  .primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .ok{background:var(--ok);border-color:var(--ok);color:#fff}
+  .bad{background:var(--bad);border-color:var(--bad);color:#fff}
+  .images{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px}
+  .images .preview{position:relative;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#f8fafc}
+  .images img{width:100%;height:160px;object-fit:cover;display:block;background:#f1f5f9}
+  .images .rm{position:absolute;top:6px;right:6px}
+  .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .tag{display:inline-block;background:#0ea5e90f;border:1px solid #bae6fd;color:#0369a1;font-weight:800;padding:3px 8px;border-radius:999px}
+  .small{font-size:12px}
+  .list{display:grid;gap:8px}
+  .list .item{border:1px dashed var(--line);border-radius:10px;padding:10px}
+  .code{white-space:pre-wrap;word-break:break-word;background:#f8fafc;border:1px solid var(--line);padding:10px;border-radius:10px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
 </style>
 </head>
-<body data-mode="retail">
+<body>
 <header>
-  <div class="nav">
-    <div class="brand"><span class="brand-badge">O</span> Orji Supplies</div>
-    <div class="stack">
-      <a href="#catalog" class="button primary">Browse</a>
-      <button id="cartBtn" class="button">
-        Cart <span id="cartCount" class="badgeCount">0</span>
-      </button>
+  <div class="wrap" style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+    <strong>Orji Supplies — Admin</strong>
+    <div class="bar">
+      <button id="setTokenBtn" class="button">Set GitHub Token</button>
+      <button id="clearTokenBtn" class="button bad">Clear Token</button>
+      <span id="tokenState" class="tag">No token</span>
     </div>
   </div>
 </header>
 
-<!-- HERO (added) -->
-<section class="hero">
-  <h1>Premium Laundry & Home Cleaning Products</h1>
-  <p>Retail &amp; Wholesale • Kampala &amp; Surrounds • Cash on Delivery.</p>
-  <div class="badges">
-    <span class="badge">Trusted by 1000+ homes</span>
-    <span class="badge">Fast delivery</span>
-    <span class="badge">Bulk discounts</span>
-  </div>
-  <div class="hero-cta">
-    <a class="button primary" href="#catalog">Shop Now</a>
-    <a class="button" id="heroWhatsApp" href="#" target="_blank" rel="noopener">WhatsApp Us</a>
-  </div>
-</section>
+<div class="wrap">
+  <div class="grid">
+    <!-- Left: Form -->
+    <div class="card">
+      <div class="body">
+        <h2 style="margin:0 0 10px">New Product</h2>
+        <div class="row">
+          <div>
+            <label>Product Name</label>
+            <input id="pName" placeholder="e.g., Harpic Power Plus 10X">
+          </div>
+          <div>
+            <label>Category</label>
+            <select id="pCat">
+              <option value="laundry">Laundry</option>
+              <option value="home">Home</option>
+              <option value="accessories">Accessories</option>
+              <option value="pest">Pest Control</option>
+            </select>
+          </div>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <div>
+            <label>Retail Price (UGX)</label>
+            <input id="pRetail" type="number" placeholder="16000">
+          </div>
+          <div>
+            <label>Wholesale Price (UGX)</label>
+            <input id="pWholesale" type="number" placeholder="14000">
+          </div>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <div>
+            <label>Unit</label>
+            <input id="pUnit" placeholder="bottle / bag / pack">
+          </div>
+          <div>
+            <label>MOQ (wholesale)</label>
+            <input id="pMoq" type="number" placeholder="12" value="1">
+          </div>
+        </div>
+        <div style="margin-top:8px">
+          <label>Description</label>
+          <textarea id="pDesc" rows="3" placeholder="Short description..."></textarea>
+        </div>
+        <div style="margin-top:12px">
+          <label>Images (up to 4)</label>
+          <div class="bar" style="margin:6px 0">
+            <input id="fileInput" type="file" accept="image/*" multiple>
+            <button class="button" onclick="document.getElementById('fileInput').click()">Choose Files</button>
+            <span class="muted small">Files will be uploaded to your repo’s <code>/images/</code> folder.</span>
+          </div>
+          <div id="imgGrid" class="images"></div>
+        </div>
+        <div class="bar" style="margin-top:14px">
+          <button id="publishBtn" class="button primary">Publish to GitHub</button>
+          <button id="resetBtn" class="button">Reset Form</button>
+        </div>
+        <div id="status" class="muted small" style="margin-top:8px"></div>
+      </div>
+    </div>
 
-<!-- CONTROLS (added) -->
-<div class="controls" id="controls">
-  <div class="controls-inner">
-    <div class="tagline">Catalog – find what you need fast</div>
-    <div class="search" role="search">
-      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M10 2a8 8 0 0 1 6.32 12.9l4.39 4.39l-1.41 1.41l-4.39-4.39A8 8 0 1 1 10 2m0 2a6 6 0 1 0 0 12A6 6 0 0 0 10 4"/></svg>
-      <input id="q" type="search" placeholder="Search soap, insecticide, mop…" aria-label="Search products" />
-    </div>
-    <div class="chips" id="cats" role="tablist" aria-label="Categories">
-      <button class="chip" data-cat="all" aria-pressed="true">All</button>
-      <button class="chip" data-cat="laundry">Laundry</button>
-      <button class="chip" data-cat="home">Home Care</button>
-      <button class="chip" data-cat="accessories">Accessories</button>
-      <button class="chip" data-cat="pest">Pest Control</button>
-    </div>
-    <div class="chips" aria-label="Quick filters">
-      <button class="chip" id="popularBtn" aria-pressed="false">Popular</button>
-      <div class="mode-tabs" role="tablist" aria-label="Mode">
-        <div class="thumb" aria-hidden="true"></div>
-        <button id="retailBtn" class="mode" data-mode="retail" aria-pressed="true">Retail</button>
-        <button id="wholesaleBtn" class="mode" data-mode="wholesale" aria-pressed="false">Wholesale</button>
+    <!-- Right: Manage + preview + log -->
+    <div class="card">
+      <div class="body">
+        <h3 style="margin:0 0 10px">Manage Products (GitHub)</h3>
+        <div class="bar" style="margin-bottom:8px">
+          <button id="refreshBtn" class="button">Refresh List</button>
+          <label class="small" title="If checked, deleting a product will also remove its images from /images/">
+            <input type="checkbox" id="delImagesToggle"> also delete images
+          </label>
+        </div>
+        <div id="prodList" class="list"></div>
+
+        <h3 style="margin:16px 0 10px">Last Published Product (local preview)</h3>
+        <div id="preview" class="list"></div>
+
+        <h4 style="margin:14px 0 6px">Debug Log</h4>
+        <div id="log" class="code"></div>
       </div>
     </div>
   </div>
 </div>
 
-<main class="wrap">
-  <div class="title-row">
-    <h1>Catalog</h1>
-  </div>
-  <section id="catalog">
-    <div class="grid" id="grid" aria-live="polite"></div>
-  </section>
-</main>
-
-<!-- Cart Drawer -->
-<aside id="drawer" class="drawer" aria-label="Cart drawer">
-  <header>
-    <strong>Your Cart</strong>
-    <button id="closeDrawer" class="button">Close</button>
-  </header>
-  <main id="cartLines"></main>
-  <footer>
-    <div id="grandTotal" style="font-weight:800">Total: UGX 0</div>
-    <div class="muted" style="margin-top:4px">Payment: Cash on Delivery</div>
-  </footer>
-</aside>
-
-<!-- WhatsApp checkout -->
-<a id="checkoutFab" class="fab" href="#" target="_blank" aria-label="Checkout on WhatsApp">
-  <svg viewBox="0 0 32 32" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M19.11 17.56c-.26-.13-1.52-.75-1.76-.84s-.41-.13-.58.13-.66.84-.81 1.01-.3.19-.56.06a8.94 8.94 0 0 1-2.64-1.63 9.9 9.9 0 0 1-1.84-2.28c-.19-.32 0-.49.13-.62.13-.13.26-.32.39-.45.13-.13.19-.26.32-.45.13-.19.06-.36 0-.49-.06-.13-.58-1.39-.8-1.89-.21-.51-.43-.44-.58-.45h-.5a.96.96 0 0 0-.69.32c-.24.26-.9.88-.9 2.14s.92 2.49 1.05 2.66c.13.17 1.81 2.76 4.39 3.87.61 .26 1.08 .41 1.45 .52.61 .19 1.16 .16 1.6 .1.49 -.07 1.52 -.62 1.74 -1.22.21 -.58.21 -1.08.15 -1.22-.06 -.13-.24 -.2-.5 -.33zM16 3C9.37 3 4 8.37 4 15c0 2.12.55 4.1 1.52 5.83L4 29l8.33-1.46A12.95 12.95 0 0 0 16 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.33c-1.84 0-3.55-.54-4.98-1.46l-.36-.23-4.94.86.86-4.81-.24-.39A9.36 9.36 0 1 1 25.36 20a9.33 9.33 0 0 1-9.36 5.33z"/></svg>
-  <span>Checkout</span>
-</a>
-
 <script>
-// ===== Config =====
-const WHATSAPP_NUMBER = '256700000000'; // keep as-is; change to your number (no +) when needed
+/* ======== EDIT THESE 5 LINES TO MATCH YOUR REPO ======== */
+const GH_OWNER = "hunter9201";
+const GH_REPO = "Orji-Supplies";
+const GH_BRANCH = "main";
+const GH_IMAGES_DIR = "images";          // folder in repo
+const GH_PRODUCTS_PATH = "products.json"; // file in repo root (or "data/products.json")
+/* ======================================================= */
 
-// Elements
-const grid = document.getElementById('grid');
-const drawer = document.getElementById('drawer');
-const cartBtn = document.getElementById('cartBtn');
-const closeDrawer = document.getElementById('closeDrawer');
-const cartLines = document.getElementById('cartLines');
-const grandTotal = document.getElementById('grandTotal');
-const checkoutFab = document.getElementById('checkoutFab');
-const cartCount = document.getElementById('cartCount');
+// Token storage key
+const TOKEN_KEY = "ORJI_GH_TOKEN_V1";
 
-// NEW controls elements
-const qInput = document.getElementById('q');
-const cats = document.getElementById('cats');
-const popularBtn = document.getElementById('popularBtn');
-const retailBtn = document.getElementById('retailBtn');
-const wholesaleBtn = document.getElementById('wholesaleBtn');
-const heroWhatsApp = document.getElementById('heroWhatsApp');
+// UI refs
+const tokenState = document.getElementById('tokenState');
+const setTokenBtn = document.getElementById('setTokenBtn');
+const clearTokenBtn = document.getElementById('clearTokenBtn');
+const fileInput = document.getElementById('fileInput');
+const imgGrid = document.getElementById('imgGrid');
+const publishBtn = document.getElementById('publishBtn');
+const resetBtn = document.getElementById('resetBtn');
+const statusEl = document.getElementById('status');
+const logEl = document.getElementById('log');
+const previewEl = document.getElementById('preview');
 
-// State
-let mode = 'retail';
-let cart = new Map();
-let currentCat = 'all';
-let currentQuery = '';
-let popularOnly = false;
+const refreshBtn = document.getElementById('refreshBtn');
+const prodList = document.getElementById('prodList');
+const delImagesToggle = document.getElementById('delImagesToggle');
 
-// Normalize product images to an array of up to 4
-function normalizeImgs(p){
-  let arr = Array.isArray(p.imgs) && p.imgs.length ? p.imgs : (p.img ? [p.img] : []);
-  if (!arr.length) arr = ['https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop'];
-  return arr.slice(0,4);
+// Form refs
+const pName = document.getElementById('pName');
+const pCat = document.getElementById('pCat');
+const pRetail = document.getElementById('pRetail');
+const pWholesale = document.getElementById('pWholesale');
+const pUnit = document.getElementById('pUnit');
+const pMoq = document.getElementById('pMoq');
+const pDesc = document.getElementById('pDesc');
+
+let files = []; // selected images
+
+function log(msg){ logEl.textContent += msg + "\n"; logEl.scrollTop = logEl.scrollHeight; }
+function setStatus(msg){ statusEl.textContent = msg; }
+function token(){ return localStorage.getItem(TOKEN_KEY) || ""; }
+function tokenOk(){ const t = token(); tokenState.textContent = t ? "Token set" : "No token"; tokenState.style.background = t ? "#dcfce7" : "#0ea5e90f"; }
+setTokenBtn.onclick = ()=>{ const t = prompt("Paste your GitHub Personal Access Token (fine-grained, contents: read/write):"); if (t) localStorage.setItem(TOKEN_KEY,t.trim()); tokenOk(); };
+clearTokenBtn.onclick = ()=>{ localStorage.removeItem(TOKEN_KEY); tokenOk(); };
+
+// file selection
+fileInput.addEventListener('change', (e)=>{
+  files = Array.from(e.target.files||[]).slice(0,4);
+  renderFiles();
+});
+function renderFiles(){
+  imgGrid.innerHTML = files.map((f,i)=>`
+    <div class="preview">
+      <img src="${URL.createObjectURL(f)}" alt="">
+      <button class="button bad rm small" onclick="removeFile(${i})">x</button>
+    </div>
+  `).join('') || '<span class="muted small">No files selected.</span>';
+}
+window.removeFile = (i)=>{ files.splice(i,1); renderFiles(); };
+
+// GitHub helpers
+const API_BASE = "https://api.github.com";
+function ghHeaders(){ return { "Authorization":"Bearer "+token(), "Accept":"application/vnd.github+json" }; }
+
+async function ghGetContents(path){
+  const url = `${API_BASE}/repos/${GH_OWNER}/${GH_REPO}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(GH_BRANCH)}`;
+  const r = await fetch(url, {headers: ghHeaders()});
+  if (r.status === 404) return {status:404};
+  if (!r.ok) throw new Error(`GET ${path} failed: ${r.status} ${await r.text()}`);
+  return await r.json(); // includes .sha, .content (base64) for files
 }
 
-// Load products.json from the same site (UNCHANGED)
-async function loadProducts(){
+async function ghPutContents(path, base64Content, message, sha=null){
+  const url = `${API_BASE}/repos/${GH_OWNER}/${GH_REPO}/contents/${encodeURIComponent(path)}`;
+  const body = { message, content: base64Content, branch: GH_BRANCH };
+  if (sha) body.sha = sha;
+  const r = await fetch(url, {
+    method: "PUT",
+    headers: {...ghHeaders(), "Content-Type":"application/json"},
+    body: JSON.stringify(body)
+  });
+  if (!r.ok) throw new Error(`PUT ${path} failed: ${r.status} ${await r.text()}`);
+  return await r.json();
+}
+
+// NEW: delete a file at path (needs current file SHA)
+async function ghDeleteContents(path, message, sha){
+  const url = `${API_BASE}/repos/${GH_OWNER}/${GH_REPO}/contents/${encodeURIComponent(path)}`;
+  const r = await fetch(url, {
+    method: "DELETE",
+    headers: {...ghHeaders(), "Content-Type":"application/json"},
+    body: JSON.stringify({ message, sha, branch: GH_BRANCH })
+  });
+  if (!r.ok) throw new Error(`DELETE ${path} failed: ${r.status} ${await r.text()}`);
+  return await r.json();
+}
+
+function toBase64Utf8(str){
+  return btoa(unescape(encodeURIComponent(str)));
+}
+function fileToBase64(file){
+  return new Promise((res,rej)=>{
+    const fr = new FileReader();
+    fr.onload = ()=>{
+      const arr = new Uint8Array(fr.result);
+      let bin = "";
+      for (let i=0;i<arr.length;i++) bin += String.fromCharCode(arr[i]);
+      res(btoa(bin));
+    };
+    fr.onerror = ()=>rej(fr.error);
+    fr.readAsArrayBuffer(file);
+  });
+}
+
+function slugify(s){ return String(s||"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"").slice(0,50) || "item"; }
+
+// ===== PUBLISH flow (unchanged) =====
+publishBtn.onclick = async ()=>{
   try{
-    const res = await fetch('products.json', {cache:'no-store'});
-    if(!res.ok) throw new Error('products.json missing');
-    const arr = await res.json();
-    if(Array.isArray(arr) && arr.length) return arr;
-  }catch(e){}
-  // fallback sample if file missing/empty
-  return [
-    {id:'pSample', name:'Sample Product', retailPrice:10000, wholesalePrice:8000, moq:10, category:'home', unit:'piece',
-     imgs:['https://images.unsplash.com/photo-1581579188871-45ea61f2a0bb?q=80&w=800&auto=format&fit=crop'],
-     desc:'Use your admin to add real products.', popular:true}
-  ];
-}
+    if (!token()){ alert("Set your GitHub token first."); return; }
+    const name = pName.value.trim();
+    if (!name){ alert("Enter product name."); return; }
+    if (!pRetail.value){ alert("Enter retail price."); return; }
 
-const fmtUGX = v => new Intl.NumberFormat('en-UG',{style:'currency',currency:'UGX',maximumFractionDigits:0}).format(v);
-const priceOf = p => mode==='retail' ? p.retailPrice : p.wholesalePrice;
-const minQty  = p => mode==='retail' ? 1 : (p.moq||1);
+    setStatus("Uploading images...");
+    log("== Start publish ==");
+    const ts = Date.now();
+    const baseSlug = `${slugify(name)}-${ts}`;
+    const rawUrls = [];
 
-// ===== Filters (added) =====
-function applyFilters(list){
-  return list.filter(p=>{
-    if (popularOnly && !p.popular) return false;
-    if (currentCat !== 'all' && (p.category||'').toLowerCase() !== currentCat) return false;
-    if (currentQuery){
-      const q = currentQuery.toLowerCase();
-      const hay = `${p.name} ${p.desc||''} ${p.category||''}`.toLowerCase();
-      if (!hay.includes(q)) return false;
+    for (let i=0;i<files.length;i++){
+      const f = files[i];
+      const ext = (f.name.split('.').pop()||'bin').toLowerCase().replace(/[^a-z0-9]/g,'') || "bin";
+      const fname = `${baseSlug}-${i+1}.${ext}`;
+      const path = `${GH_IMAGES_DIR}/${fname}`;
+      const b64 = await fileToBase64(f);
+      await ghPutContents(path, b64, `Upload image ${fname}`);
+      const url = `https://raw.githubusercontent.com/${GH_OWNER}/${GH_REPO}/${GH_BRANCH}/${encodeURIComponent(GH_IMAGES_DIR)}/${encodeURIComponent(fname)}`;
+      rawUrls.push(url);
+      log(`Uploaded ${path}`);
     }
-    return true;
-  });
+    if (rawUrls.length === 0){ log("No images selected; continuing."); }
+
+    setStatus("Updating products.json...");
+    let arr = [];
+    let sha = null;
+    const got = await ghGetContents(GH_PRODUCTS_PATH);
+    if (got.status !== 404){
+      sha = got.sha;
+      const content = atob(got.content.replace(/\n/g,''));
+      const text = decodeURIComponent(escape(content));
+      try{ arr = JSON.parse(text); if (!Array.isArray(arr)) arr = []; } catch(e){ arr = []; }
+      log("Loaded existing products.json");
+    } else {
+      log("products.json does not exist; will create.");
+    }
+
+    const product = {
+      id: baseSlug,
+      name,
+      category: pCat.value,
+      retailPrice: Number(pRetail.value)||0,
+      wholesalePrice: Number(pWholesale.value)||0,
+      unit: pUnit.value.trim()||"piece",
+      moq: Number(pMoq.value)||1,
+      desc: pDesc.value.trim(),
+      imgs: rawUrls
+    };
+    arr.push(product);
+
+    const jsonStr = JSON.stringify(arr, null, 2);
+    const b64 = toBase64Utf8(jsonStr);
+    await ghPutContents(GH_PRODUCTS_PATH, b64, `Add product ${product.id}`, sha||undefined);
+    log("products.json updated.");
+
+    setStatus("Done! Product published to GitHub.");
+    previewEl.innerHTML = `
+      <div class="item">
+        <div><strong>${product.name}</strong> — UGX ${product.retailPrice.toLocaleString('en-UG')}</div>
+        <div class="muted small">${product.desc||''}</div>
+        <div class="muted small">Images: ${product.imgs.length}</div>
+      </div>`;
+    alert("Published! Open your shop (index.html). If it’s already open, refresh it.");
+    // Refresh product list after publish
+    await refreshProductsList();
+  }catch(err){
+    console.error(err);
+    log(String(err));
+    setStatus("Error: " + err.message);
+    alert("Publish failed:\n" + err.message);
+  }
+};
+
+resetBtn.onclick = ()=>{
+  pName.value = ""; pRetail.value=""; pWholesale.value=""; pUnit.value=""; pMoq.value="1"; pDesc.value="";
+  files = []; renderFiles(); setStatus("");
+};
+
+// ===== MANAGE (Delete) =====
+function filenameFromRawUrl(u){
+  try{
+    const url = new URL(u);
+    const name = url.pathname.split('/').pop() || "";
+    return decodeURIComponent(name);
+  }catch{ return ""; }
 }
 
-// ===== Gallery markup =====
-function renderGalleryHTML(imgs, pid){
-  const slides = imgs.map((src,i)=>`
-    <div class="gslide ${i===0?'active':''}">
-      <img src="${src}" alt="" loading="${i===0?'eager':'lazy'}"
-           onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop';">
-    </div>`).join('');
-  const dots = imgs.map((_,i)=>`<span class="dot ${i===0?'active':''}" data-i="${i}"></span>`).join('');
-  const thumbs = imgs.map((src,i)=>`
-    <button class="gthumb ${i===0?'active':''}" data-i="${i}" aria-label="Show image ${i+1}">
-      <img src="${src}" alt="">
-    </button>`).join('');
-  return `
-    <div class="gallery" data-pid="${pid}">
-      <div class="gallery-main">
-        ${slides}
-        <div class="garrows">
-          <button class="gprev" aria-label="Previous image">‹</button>
-          <button class="gnext" aria-label="Next image">›</button>
+function renderProductsAdmin(arr){
+  if (!Array.isArray(arr) || !arr.length){
+    prodList.innerHTML = '<div class="muted small">No products found in products.json.</div>';
+    return;
+  }
+  prodList.innerHTML = arr.map(p=>`
+    <div class="item" data-id="${p.id}">
+      <div class="bar" style="justify-content:space-between;align-items:flex-start">
+        <div>
+          <div><strong>${p.name}</strong> <span class="muted small">(${p.id})</span></div>
+          <div class="muted small">Cat: ${p.category||'-'} • Retail: UGX ${(p.retailPrice||0).toLocaleString('en-UG')} • Images: ${(p.imgs||[]).length}</div>
+          <div class="muted small">${p.desc ? p.desc.slice(0,120) : ''}</div>
         </div>
-        <div class="gdots">${dots}</div>
+        <div class="bar">
+          <button class="button bad" data-action="delete" data-id="${p.id}">Delete</button>
+        </div>
       </div>
-      <div class="gthumbs">${thumbs}</div>
     </div>
-  `;
+  `).join('');
 }
 
-// ===== Render products (same core, with filters + mode) =====
-async function render(){
-  const ALL = await loadProducts();
-  const PRODUCTS = applyFilters(ALL);
+async function loadProductsJson(){
+  const got = await ghGetContents(GH_PRODUCTS_PATH);
+  if (got.status === 404) return { arr: [], sha: null };
+  const sha = got.sha;
+  const content = atob(got.content.replace(/\n/g,''));
+  const text = decodeURIComponent(escape(content));
+  let arr = [];
+  try{ arr = JSON.parse(text); if (!Array.isArray(arr)) arr = []; } catch(e){ arr = []; }
+  return { arr, sha };
+}
 
-  grid.innerHTML = PRODUCTS.map(p=>{
-    const imgs = normalizeImgs(p);
-    const pr = priceOf(p);
-    return `
-<article class="card">
-  ${p.popular ? `<span class="badge" style="position:absolute;top:10px;left:10px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 8px;font-size:11px;font-weight:800">Popular</span>` : ``}
-  ${renderGalleryHTML(imgs, p.id)}
-  <div class="body">
-    <h3>${p.name} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</h3>
-    <p class="muted" style="min-height:32px">${p.desc||''}</p>
-    <div class="price">${fmtUGX(pr)} ${mode==='retail'?'(Retail)':'(Wholesale)'} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</div>
-    <div class="muted" style="font-size:12px;margin-top:-2px">
-      ${mode==='retail'
-        ? `Wholesale: ${fmtUGX(p.wholesalePrice)} (MOQ ${minQty(p)})`
-        : `Retail: ${fmtUGX(p.retailPrice)}`
+async function refreshProductsList(){
+  try{
+    setStatus("Loading products from GitHub…");
+    const { arr } = await loadProductsJson();
+    renderProductsAdmin(arr);
+    setStatus("Ready.");
+  }catch(err){
+    log("Load list error: " + err.message);
+    setStatus("Error loading list.");
+  }
+}
+
+async function deleteProduct(productId, alsoDeleteImages){
+  if (!token()){ alert("Set your GitHub token first."); return; }
+  if (!confirm(`Delete product "${productId}"${alsoDeleteImages ? " and its images" : ""}? This cannot be undone.`)) return;
+
+  setStatus("Deleting…");
+  log(`== Delete ${productId} ==`);
+  const { arr, sha } = await loadProductsJson();
+  const idx = arr.findIndex(p => p.id === productId);
+  if (idx === -1){ alert("Product not found."); return; }
+  const product = arr[idx];
+
+  // Optionally delete images
+  if (alsoDeleteImages && Array.isArray(product.imgs)){
+    for (const u of product.imgs){
+      const fname = filenameFromRawUrl(u);
+      if (!fname) { log(`Skip image (no filename): ${u}`); continue; }
+      const path = `${GH_IMAGES_DIR}/${fname}`;
+      try{
+        const got = await ghGetContents(path);
+        if (got.status === 404){ log(`Image not found in repo: ${path}`); continue; }
+        await ghDeleteContents(path, `Delete image ${fname} (product ${productId})`, got.sha);
+        log(`Deleted image: ${path}`);
+      }catch(e){
+        log(`Failed to delete image ${path}: ${e.message}`);
       }
-    </div>
-    <div class="qtyrow">
-      <label class="muted">Qty:
-        <input type="number" id="qty-${p.id}" value="${minQty(p)}" min="${minQty(p)}" step="${minQty(p)}" aria-label="Quantity for ${p.name}">
-      </label>
-      <span class="muted">/ ${p.unit||'piece'}</span>
-    </div>
-    <div class="actions">
-      <button class="button" onclick="addToCart('${p.id}')">Add to Cart</button>
-      <button class="button primary" onclick="buyNow('${p.id}')">Buy Now</button>
-    </div>
-  </div>
-</article>`;
-  }).join('');
-  initAllGalleries();
-}
-
-// ===== Gallery behavior =====
-const SLIDE_MS = 3200;
-function initAllGalleries(){
-  document.querySelectorAll('.gallery').forEach(gal=>{
-    const slides = [...gal.querySelectorAll('.gslide')];
-    const dots   = [...gal.querySelectorAll('.gdots .dot')];
-    const thumbs = [...gal.querySelectorAll('.gthumb')];
-    const prevBtn = gal.querySelector('.gprev');
-    const nextBtn = gal.querySelector('.gnext');
-    let i = 0, timer = null;
-
-    function show(n){
-      i = (n + slides.length) % slides.length;
-      slides.forEach((s,idx)=>s.classList.toggle('active', idx===i));
-      dots.forEach((d,idx)=>d.classList.toggle('active', idx===i));
-      thumbs.forEach((t,idx)=>t.classList.toggle('active', idx===i));
     }
-    function start(){ if(slides.length>1 && !timer) timer = setInterval(()=>show(i+1), SLIDE_MS); }
-    function stop(){ if(timer){ clearInterval(timer); timer = null; } }
+  }
 
-    prevBtn.addEventListener('click', ()=>{ stop(); show(i-1); start(); });
-    nextBtn.addEventListener('click', ()=>{ stop(); show(i+1); start(); });
-    thumbs.forEach(btn=> btn.addEventListener('click', ()=>{ stop(); show(+btn.dataset.i||0); start(); }));
-    gal.addEventListener('mouseenter', stop);
-    gal.addEventListener('mouseleave', start);
+  // Remove product from array and write back
+  const newArr = arr.filter(p => p.id !== productId);
+  const jsonStr = JSON.stringify(newArr, null, 2);
+  const b64 = toBase64Utf8(jsonStr);
+  await ghPutContents(GH_PRODUCTS_PATH, b64, `Delete product ${productId}`, sha||undefined);
+  log(`Removed ${productId} from products.json`);
+  setStatus("Deleted.");
 
-    // Touch swipe
-    let sx=0, sy=0, dx=0, dy=0, touching=false;
-    gal.addEventListener('touchstart', e=>{
-      if(!e.touches[0]) return;
-      touching=true; sx=e.touches[0].clientX; sy=e.touches[0].clientY; dx=dy=0; stop();
-    }, {passive:true});
-    gal.addEventListener('touchmove', e=>{
-      if(!touching||!e.touches[0]) return;
-      dx = e.touches[0].clientX - sx;
-      dy = e.touches[0].clientY - sy;
-    }, {passive:true});
-    gal.addEventListener('touchend', ()=>{
-      if(!touching) return; touching=false;
-      if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) (dx < 0) ? show(i+1) : show(i-1);
-      start();
-    });
-
-    if (slides.length <= 1){
-      prevBtn.style.display='none';
-      nextBtn.style.display='none';
-      gal.querySelector('.gdots').style.display='none';
-      gal.querySelector('.gthumbs').style.display='none';
-    }
-
-    show(0); start();
-  });
+  await refreshProductsList();
 }
 
-// ===== Cart (unchanged behavior) =====
-function addToCart(id){
-  const qtyEl = document.getElementById(`qty-${id}`);
-  loadProducts().then(PRODUCTS=>{
-    const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
-    let qty = parseInt(qtyEl?.value)||minQty(p);
-    if(qty < minQty(p)) qty = minQty(p);
-    const unitPrice = priceOf(p);
-    const key = id+':'+mode;
-    const existing = cart.get(key);
-    cart.set(key,{product:p,qty:(existing?existing.qty:0)+qty,unitPrice,mode});
-    updateCartUI(); openDrawer();
-  });
-}
-function buyNow(id){
-  loadProducts().then(PRODUCTS=>{
-    const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
-    const qtyInput = document.getElementById(`qty-${id}`);
-    let qty = parseInt(qtyInput?.value)||minQty(p);
-    if(qty < minQty(p)) qty = minQty(p);
-    const unitPrice = priceOf(p);
-    const msg = `Hi Orji Supplies, I want to order:\n• ${p.name} x${qty} @ ${fmtUGX(unitPrice)} (${mode})`;
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
-    window.open(url,'_blank');
-  });
-}
-function updateCartUI(){
-  cartLines.innerHTML=''; let total=0; let count=0;
-  cart.forEach(({product,qty,unitPrice,mode})=>{
-    const lineTotal=unitPrice*qty; total+=lineTotal; count+=qty;
-    const div=document.createElement('div');
-    div.className='line';
-    div.innerHTML = `<strong>${product.name}</strong><br>
-      <span class="muted">${mode==='retail'?'Retail':'Wholesale'} • ${fmtUGX(unitPrice)} × ${qty}</span>
-      — <strong>${fmtUGX(lineTotal)}</strong>`;
-    cartLines.appendChild(div);
-  });
-  grandTotal.textContent='Total: '+fmtUGX(total);
-  cartCount.style.display = count>0? 'inline-block':'none';
-  cartCount.textContent = count;
-  checkoutFab.href = cartToWhatsApp(total);
-  updateFabVisibility();
-}
-function cartToWhatsApp(total=0){
-  if(cart.size===0) return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Orji Supplies')}`;
-  let lines=[];
-  cart.forEach(({product,qty,unitPrice,mode})=>{
-    lines.push(`• ${product.name} x${qty} @ ${fmtUGX(unitPrice)} (${mode})`);
-  });
-  const msg = `Order (Cash on Delivery):\n${lines.join('\n')}\nTotal: ${fmtUGX(total)}`;
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
-}
-function updateFabVisibility(){
-  const visible = cart.size>0 && drawer.classList.contains('open');
-  checkoutFab.style.display = visible ? 'flex' : 'none';
-}
-function openDrawer(){ drawer.classList.add('open'); updateFabVisibility(); }
-closeDrawer.onclick=()=>{ drawer.classList.remove('open'); updateFabVisibility(); };
-cartBtn.onclick=()=>{ drawer.classList.toggle('open'); updateFabVisibility(); };
-
-// ===== Controls wiring (added) =====
-qInput.addEventListener('input', ()=>{ currentQuery = qInput.value.trim(); render(); });
-
-cats.addEventListener('click', (e)=>{
-  const btn = e.target.closest('.chip'); if(!btn) return;
-  currentCat = btn.dataset.cat;
-  [...cats.querySelectorAll('.chip')].forEach(c=>c.setAttribute('aria-pressed', String(c===btn)));
-  render();
+// Wire up UI
+refreshBtn.addEventListener('click', refreshProductsList);
+prodList.addEventListener('click', async (e)=>{
+  const btn = e.target.closest('button[data-action="delete"]');
+  if (!btn) return;
+  const id = btn.dataset.id;
+  const also = !!delImagesToggle.checked;
+  try{
+    await deleteProduct(id, also);
+  }catch(err){
+    log("Delete error: " + err.message);
+    alert("Delete failed:\n" + err.message);
+  }
 });
 
-popularBtn.addEventListener('click', ()=>{
-  popularOnly = !popularOnly;
-  popularBtn.setAttribute('aria-pressed', String(popularOnly));
-  render();
-});
-
-function setMode(newMode){
-  mode = newMode;
-  document.body.setAttribute('data-mode', mode);
-  retailBtn.setAttribute('aria-pressed', String(mode==='retail'));
-  wholesaleBtn.setAttribute('aria-pressed', String(mode==='wholesale'));
-  render();
-}
-retailBtn.addEventListener('click', ()=> setMode('retail'));
-wholesaleBtn.addEventListener('click', ()=> setMode('wholesale'));
-
-// WhatsApp hero button
-heroWhatsApp.href = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Orji Supplies, I need help placing an order.')}`;
-
-// Init
-render();
+tokenOk();
+renderFiles();
+refreshProductsList(); // load list on open
 </script>
 </body>
 </html>
