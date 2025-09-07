@@ -1,295 +1,323 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Orji Supplies – Live Catalog (from Admin)</title>
-  <meta name="description" content="Auto-updating shop that reads published products and hero banners from the Admin site." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --brand:#0f3057; --accent:#00bcd4; --ink:#0f172a; --muted:#64748b; --line:#e5e7eb; --bg:#f8fafc; --ok:#16a34a; --warn:#f59e0b;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;color:var(--ink);background:var(--bg)}
-    a{color:inherit}
-    .container{max-width:1100px;margin:0 auto;padding:16px}
-    header{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
-    .topbar{display:flex;align-items:center;gap:12px;justify-content:space-between;padding:10px 16px}
-    .brand{display:flex;align-items:center;gap:10px}
-    .brand .logo{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--brand),#134b77);box-shadow:0 6px 20px rgba(15,48,87,.25)}
-    .brand h1{font-size:18px;margin:0;font-weight:800;letter-spacing:.2px}
-    .cta-row{display:flex;gap:8px;align-items:center}
-    .btn{padding:10px 14px;border:1px solid var(--line);border-radius:12px;background:#fff;font-weight:600;cursor:pointer}
-    .btn.primary{background:var(--brand);color:#fff;border-color:var(--brand)}
-    .btn.ghost{background:#fff}
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Orji Supplies – Shop</title>
+<meta name="description" content="Laundry & home-cleaning products. Retail & wholesale. Cash on delivery." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{--brand:#0ea5e9;--ink:#0f172a;--muted:#64748b;--line:#e2e8f0;--bg:#f8fafc;--wa:#25D366;--card:#fff}
+  *{box-sizing:border-box}
+  body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:50}
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;max-width:1200px;margin:0 auto}
+  .brand{font-weight:800}
+  .button{padding:10px 14px;border-radius:10px;border:1px solid var(--line);background:#fff;font-weight:700;cursor:pointer}
+  .primary{background:var(--brand);border-color:var(--brand);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;padding:16px;max-width:1200px;margin:0 auto}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+  .card .body{padding:12px}
+  .moq{display:inline-block;font-size:11px;background:#d1fae5;color:#065f46;border:1px solid #a7f3d0;border-radius:999px;padding:2px 8px;margin-left:6px}
+  .muted{color:var(--muted)}
+  .price{font-weight:800;margin:6px 0}
 
-    /* Hero */
-    .hero{position:relative;border-radius:16px;overflow:hidden;background:#0b1220;color:#fff;margin:16px 0}
-    .hero-slide{position:relative;display:none;min-height:210px}
-    .hero-slide.active{display:block}
-    .hero img{width:100%;height:320px;object-fit:cover;display:block;filter:saturate(1.05)}
-    .hero .overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.65))}
-    .hero .content{position:absolute;left:16px;bottom:16px;right:16px}
-    .hero h2{margin:0 0 6px;font-size:22px;font-weight:800}
-    .hero p{margin:0 0 10px;color:#e5e7eb}
-    .hero .hero-cta{display:flex;gap:8px;flex-wrap:wrap}
+  /* ===== Gallery (main + thumbs) ===== */
+  .gallery{display:flex;flex-direction:column;gap:8px;background:#f1f5f9}
+  .gallery-main{position:relative;width:100%;aspect-ratio:1/1;overflow:hidden;border-bottom:1px solid var(--line)}
+  .gslide{position:absolute;inset:0;opacity:0;transition:opacity .35s ease}
+  .gslide.active{opacity:1}
+  .gslide img{width:100%;height:100%;object-fit:cover;display:block;background:#eef2f7}
+  .garrows{position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+  .garrows button{pointer-events:auto;border:0;background:rgba(0,0,0,.35);color:#fff;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;cursor:pointer}
+  .garrows button:focus-visible{outline:3px solid rgba(14,165,233,.6)}
+  .gdots{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;gap:6px;pointer-events:none}
+  .gdots .dot{width:7px;height:7px;border-radius:50%;background:rgba(15,23,42,.35);box-shadow:0 0 0 1px rgba(255,255,255,.5) inset}
+  .gdots .dot.active{background:#fff}
+  .gthumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px}
+  .gthumb{position:relative;width:100%;aspect-ratio:1/1;border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;background:#eef2f7}
+  .gthumb.active{border-color:var(--brand)}
+  .gthumb img{width:100%;height:100%;object-fit:cover;display:block}
 
-    /* Controls */
-    .toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:12px 0}
-    .chip{padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:#fff;font-weight:600;cursor:pointer}
-    .chip.active{background:var(--ink);border-color:var(--ink);color:#fff}
-    .search{flex:1;display:flex;align-items:center;gap:8px;border:1px solid var(--line);border-radius:12px;background:#fff;padding:8px 10px}
-    .search input{border:0;outline:0;flex:1;font-size:15px}
-    .switch{display:inline-flex;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-    .switch button{padding:8px 12px;border:0;background:#fff;font-weight:700;cursor:pointer}
-    .switch button.active{background:var(--brand);color:#fff}
-
-    /* Grid */
-    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    @media(min-width:720px){ .grid{grid-template-columns:repeat(3,1fr);} }
-    @media(min-width:1024px){ .grid{grid-template-columns:repeat(4,1fr);} }
-    .card{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column}
-    .thumb{position:relative;background:#f3f4f6}
-    .thumb img{width:100%;height:160px;object-fit:cover;display:block}
-    .badge{position:absolute;left:10px;top:10px;background:rgba(15,48,87,.95);color:#fff;font-size:12px;font-weight:800;padding:6px 8px;border-radius:999px}
-    .body{padding:12px;display:flex;flex-direction:column;gap:8px}
-    .title{font-weight:800;line-height:1.25}
-    .meta{font-size:13px;color:var(--muted)}
-    .prices{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
-    .price{font-weight:800}
-    .strike{text-decoration:line-through;color:var(--muted);font-weight:600}
-    .actions{margin-top:auto;display:flex;gap:8px}
-
-    .notice{padding:12px 14px;border:1px dashed var(--line);border-radius:12px;background:#fff}
-    footer{margin:40px 0 24px;color:var(--muted);text-align:center}
-  </style>
+  /* drawer */
+  .drawer{position:fixed;top:0;right:-420px;width:380px;max-width:92vw;height:100vh;background:#fff;border-left:1px solid var(--line);transition:right .22s;z-index:100;display:flex;flex-direction:column}
+  .drawer.open{right:0}
+  .drawer header{padding:12px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center}
+  .drawer main{flex:1;overflow:auto;padding:12px}
+  .drawer footer{padding:12px;border-top:1px solid var(--line)}
+  .fab{position:fixed;right:16px;bottom:16px;display:none;align-items:center;gap:8px;padding:12px 16px;border-radius:999px;background:var(--wa);color:#fff;font-weight:800;text-decoration:none;box-shadow:0 10px 20px rgba(2,6,23,.18);z-index:120}
+  @media (max-width:640px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))} .drawer{width:100vw}}
+</style>
 </head>
-<body>
+<body data-mode="retail">
+<header>
+  <div class="nav">
+    <div class="brand">Orji Supplies</div>
+    <div class="stack">
+      <a href="#catalog" class="button primary">Browse</a>
+      <button id="cartBtn" class="button">Cart <span id="cartCount" style="background:#fb7185;color:#fff;border-radius:999px;padding:2px 6px;font-size:12px;display:none">0</span></button>
+    </div>
+  </div>
+</header>
+
+<section id="catalog">
+  <div class="grid" id="grid"></div>
+</section>
+
+<!-- Cart Drawer -->
+<aside id="drawer" class="drawer" aria-label="Cart drawer">
   <header>
-    <div class="topbar container">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <div>
-          <h1>Orji Supplies</h1>
-          <div style="font-size:12px;color:var(--muted);font-weight:600;">Retail • Wholesale • Cash on Delivery</div>
-        </div>
-      </div>
-      <div class="cta-row">
-        <a class="btn ghost" href="#catalog">Catalog</a>
-        <a class="btn primary" href="https://wa.me/256783501222?text=Hi%20Orji%20Supplies%2C%20I%20want%20to%20order" rel="noopener">WhatsApp: 0783501222</a>
-      </div>
-    </div>
+    <strong>Your Cart</strong>
+    <button id="closeDrawer" class="button">Close</button>
   </header>
-
-  <main class="container">
-    <!-- Hero Slider (auto from Admin) -->
-    <section class="hero" id="hero"></section>
-
-    <!-- Controls -->
-    <section class="toolbar" id="controls">
-      <div class="switch" id="priceSwitch" role="tablist" aria-label="Price mode">
-        <button id="retailTab" class="active" data-mode="retail" role="tab" aria-selected="true">Retail</button>
-        <button id="wholesaleTab" data-mode="wholesale" role="tab" aria-selected="false">Wholesale</button>
-      </div>
-      <div class="search">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 21L16.65 16.65M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <input id="q" placeholder="Search products... (e.g. Ariel, 20L, bleach)" />
-      </div>
-      <div id="categories" style="display:flex;gap:8px;flex-wrap:wrap"></div>
-    </section>
-
-    <section id="alerts"></section>
-
-    <!-- Catalog Grid -->
-    <section id="catalog" class="grid" aria-live="polite"></section>
-
-    <div id="emptyState" class="notice" style="display:none;margin-top:12px">No products match your filters. Try clearing search or switching price mode.</div>
-  </main>
-
+  <main id="cartLines"></main>
   <footer>
-    <div class="container">
-      © <span id="year"></span> Orji Supplies • Orders: <a href="tel:+256783501222">0783501222</a> • Free delivery over UGX 250,000 in Kampala
-    </div>
+    <div id="grandTotal" style="font-weight:800">Total: UGX 0</div>
+    <div class="muted">Payment: Cash on Delivery</div>
   </footer>
+</aside>
 
-  <script>
-  (function(){
-    const ADMIN_BASE = 'https://hunter9201.github.io/Admin.Html-Orjisupplies/';
-    const PRODUCTS_URL = ADMIN_BASE + 'products.json';
-    const HEROES_URL   = ADMIN_BASE + 'heroes.json';
+<!-- WhatsApp checkout -->
+<a id="checkoutFab" class="fab" href="#" target="_blank" aria-label="Checkout on WhatsApp">
+  <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M19.11 17.56c-.26-.13-1.52-.75-1.76-.84s-.41-.13-.58.13-.66.84-.81 1.01-.3.19-.56.06a8.94 8.94 0 0 1-2.64-1.63 9.9 9.9 0 0 1-1.84-2.28c-.19-.32 0-.49.13-.62.13-.13.26-.32.39-.45.13-.13.19-.26.32-.45.13-.19.06-.36 0-.49-.06-.13-.58-1.39-.8-1.89-.21-.51-.43-.44-.58-.45h-.5a.96.96 0 0 0-.69.32c-.24.26-.9.88-.9 2.14s.92 2.49 1.05 2.66c.13.17 1.81 2.76 4.39 3.87.61 .26 1.08 .41 1.45 .52.61 .19 1.16 .16 1.6 .1.49 -.07 1.52 -.62 1.74 -1.22.21 -.58.21 -1.08.15 -1.22-.06 -.13-.24 -.2-.5 -.33zM16 3C9.37 3 4 8.37 4 15c0 2.12.55 4.1 1.52 5.83L4 29l8.33-1.46A12.95 12.95 0 0 0 16 27c6.63 0 12-5.37 12-12S22.63 3 16 3zm0 22.33c-1.84 0-3.55-.54-4.98-1.46l-.36-.23-4.94.86.86-4.81-.24-.39A9.36 9.36 0 1 1 25.36 20a9.33 9.33 0 0 1-9.36 5.33z"/></svg>
+  <span>Checkout</span>
+</a>
 
-    // State
-    let PRODUCTS = [];
-    let HEROES = [];
-    let MODE = 'retail'; // 'retail' | 'wholesale'
-    let QUERY = '';
-    let CAT = 'All';
+<script>
+  // ===== Config =====
+  const WHATSAPP_NUMBER = '256700000000';     // your number (no +)
 
-    const $ = s=>document.querySelector(s);
-    const $$ = s=>Array.from(document.querySelectorAll(s));
+  // Elements
+  const grid = document.getElementById('grid');
+  const drawer = document.getElementById('drawer');
+  const cartBtn = document.getElementById('cartBtn');
+  const closeDrawer = document.getElementById('closeDrawer');
+  const cartLines = document.getElementById('cartLines');
+  const grandTotal = document.getElementById('grandTotal');
+  const checkoutFab = document.getElementById('checkoutFab');
+  const cartCount = document.getElementById('cartCount');
 
-    const heroEl = $('#hero');
-    const gridEl = $('#catalog');
-    const catsEl = $('#categories');
-    const emptyEl = $('#emptyState');
-    const alertsEl = $('#alerts');
+  // State
+  let mode = 'retail';
+  let cart = new Map();
 
-    // Helpers
-    const money = (n)=>{
-      if(n===null || n===undefined || isNaN(n)) return '';
-      return 'UGX ' + (Math.round(Number(n))).toLocaleString('en-UG', {maximumFractionDigits:0});
-    };
-    const isFromAdmin = (url)=> typeof url === 'string' && url.startsWith(ADMIN_BASE);
-    const safeImg = (url)=> isFromAdmin(url) ? url : '';
-    const byPub = (a)=> (a.published===true);
+  // Normalize images: use p.imgs (1–4) or fallback; accept any URL (http/https/data/blob/raw GitHub)
+  function normalizeImgs(p){
+    let arr = Array.isArray(p.imgs) && p.imgs.length ? p.imgs : (p.img ? [p.img] : []);
+    if (!arr.length) arr = ['https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop'];
+    return arr.slice(0,4);
+  }
 
-    function showAlert(txt,type='warn'){
-      alertsEl.innerHTML = `<div class="notice" style="margin:8px 0;border-style:solid;border-color:${type==='ok'?'#16a34a':'#f59e0b'}">${txt}</div>`;
-      setTimeout(()=>{alertsEl.innerHTML='';}, 5000);
-    }
+  // Load products.json (same repo / root)
+  async function loadProducts(){
+    try{
+      const res = await fetch('products.json', {cache:'no-store'});
+      if(!res.ok) throw new Error('products.json missing');
+      const arr = await res.json();
+      if(Array.isArray(arr) && arr.length) return arr;
+    }catch(e){}
+    // fallback sample (only shows if file missing/empty)
+    return [
+      {id:'pSample', name:'Sample Product', retailPrice:10000, wholesalePrice:8000, moq:10, category:'home', unit:'piece',
+       imgs:['https://images.unsplash.com/photo-1581579188871-45ea61f2a0bb?q=80&w=800&auto=format&fit=crop'],
+       desc:'Use admin.html to add real products.'}
+    ];
+  }
 
-    // Fetch JSON with graceful errors
-    async function getJSON(url){
-      try{
-        const res = await fetch(url, {cache:'no-store'});
-        if(!res.ok) throw new Error('HTTP '+res.status);
-        return await res.json();
-      }catch(err){
-        console.error('Fetch failed', url, err);
-        showAlert(`Could not load data from: ${url}. Make sure the file exists on Admin and is valid JSON.`, 'warn');
-        return null;
+  const fmtUGX = v => new Intl.NumberFormat('en-UG',{style:'currency',currency:'UGX',maximumFractionDigits:0}).format(v);
+  const priceOf = (p) => mode==='retail' ? p.retailPrice : p.wholesalePrice;
+  const minQty  = (p) => mode==='retail' ? 1 : (p.moq||1);
+
+  // ===== Gallery HTML (main + thumbnails) =====
+  function renderGalleryHTML(imgs, pid){
+    const slides = imgs.map((src,i)=>`
+      <div class="gslide ${i===0?'active':''}">
+        <img src="${src}" alt="" loading="${i===0?'eager':'lazy'}"
+             onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1585421514284-efb74c2b9d6b?q=80&w=800&auto=format&fit=crop';">
+      </div>`).join('');
+
+    const dots = imgs.map((_,i)=>`<span class="dot ${i===0?'active':''}" data-i="${i}"></span>`).join('');
+
+    const thumbs = imgs.map((src,i)=>`
+      <button class="gthumb ${i===0?'active':''}" data-i="${i}" aria-label="Show image ${i+1}">
+        <img src="${src}" alt="">
+      </button>`).join('');
+
+    return `
+      <div class="gallery" data-pid="${pid}">
+        <div class="gallery-main">
+          ${slides}
+          <div class="garrows">
+            <button class="gprev" aria-label="Previous slide">‹</button>
+            <button class="gnext" aria-label="Next slide">›</button>
+          </div>
+          <div class="gdots">${dots}</div>
+        </div>
+        <div class="gthumbs">${thumbs}</div>
+      </div>
+    `;
+  }
+
+  // ===== Render all products =====
+  async function render(){
+    const PRODUCTS = await loadProducts();
+    grid.innerHTML = PRODUCTS.map(p=>{
+      const pr = priceOf(p);
+      const imgs = normalizeImgs(p);
+      return `<div class="card">
+        ${renderGalleryHTML(imgs, p.id)}
+        <div class="body">
+          <h3 style="margin:0 0 6px">${p.name} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</h3>
+          <p class="muted" style="min-height:32px">${p.desc||''}</p>
+          <div class="price">${fmtUGX(pr)} ${mode==='retail'?'(Retail)':'(Wholesale)'} ${mode==='wholesale'? `<span class="moq">MOQ ${minQty(p)}</span>`:''}</div>
+          <div class="muted" style="font-size:12px;margin-top:-4px">${mode==='retail'? `Wholesale: ${fmtUGX(p.wholesalePrice)} (MOQ ${minQty(p)})` : `Retail: ${fmtUGX(p.retailPrice)}`}</div>
+          <div style="margin-top:8px;display:flex;gap:8px;align-items:center">
+            <label class="muted">Qty:
+              <input type="number" id="qty-${p.id}" value="${minQty(p)}" min="${minQty(p)}" step="${minQty(p)}" style="width:110px;padding:10px 12px;border:1px solid var(--line);border-radius:10px;font-size:16px">
+            </label>
+            <span class="muted">/ ${p.unit||'piece'}</span>
+          </div>
+          <div style="display:flex;gap:8px;margin-top:10px;flex-wrap:wrap">
+            <button class="button" onclick="addToCart('${p.id}')">Add to Cart</button>
+            <button class="button primary" onclick="buyNow('${p.id}')">Buy Now</button>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+    initAllGalleries();
+  }
+
+  // ===== Gallery logic: auto slide, arrows, thumbnails, hover pause, touch swipe =====
+  const SLIDE_MS = 3000;
+
+  function initAllGalleries(){
+    document.querySelectorAll('.gallery').forEach(gal=>{
+      const slides = [...gal.querySelectorAll('.gslide')];
+      const dots   = [...gal.querySelectorAll('.gdots .dot')];
+      const thumbs = [...gal.querySelectorAll('.gthumb')];
+      const prevBtn = gal.querySelector('.gprev');
+      const nextBtn = gal.querySelector('.gnext');
+      let i = 0;
+      let timer = null;
+
+      function show(n){
+        i = (n + slides.length) % slides.length;
+        slides.forEach((s,idx)=>s.classList.toggle('active', idx===i));
+        dots.forEach((d,idx)=>d.classList.toggle('active', idx===i));
+        thumbs.forEach((t,idx)=>t.classList.toggle('active', idx===i));
       }
-    }
+      function start(){ if(slides.length>1 && !timer) timer = setInterval(()=>show(i+1), SLIDE_MS); }
+      function stop(){ if(timer){ clearInterval(timer); timer = null; } }
 
-    // Render Heroes
-    function renderHeroes(){
-      heroEl.innerHTML = '';
-      const list = (HEROES||[]).filter(byPub).filter(h=>isFromAdmin(h.img));
-      if(list.length===0){
-        heroEl.innerHTML = `<div class="hero-slide active"><div class="overlay"></div><div class="content"><h2>Welcome to Orji Supplies</h2><p>Retail & Wholesale • Cash on Delivery • Fast Kampala delivery</p><div class="hero-cta"><a class="btn primary" href="#catalog">Shop Now</a><a class="btn ghost" href="https://wa.me/256783501222" rel="noopener">WhatsApp 0783501222</a></div></div></div>`;
-        return;
-      }
-      list.forEach((h,i)=>{
-        const slide = document.createElement('div');
-        slide.className = 'hero-slide'+(i===0?' active':'');
-        slide.innerHTML = `
-          <img loading="eager" src="${safeImg(h.img)}" alt="" />
-          <div class="overlay"></div>
-          <div class="content">
-            <h2>${h.headline||''}</h2>
-            <p>${h.sub||''}</p>
-            <div class="hero-cta">
-              <a class="btn primary" href="${h.link||'#catalog'}">${h.cta||'Shop Now'}</a>
-              <a class="btn ghost" href="https://wa.me/256783501222" rel="noopener">WhatsApp 0783501222</a>
-            </div>
-          </div>`;
-        heroEl.appendChild(slide);
+      // arrows
+      prevBtn.addEventListener('click', ()=>{ stop(); show(i-1); start(); });
+      nextBtn.addEventListener('click', ()=>{ stop(); show(i+1); start(); });
+
+      // thumbs
+      thumbs.forEach(btn=>{
+        btn.addEventListener('click', ()=>{ stop(); show(parseInt(btn.dataset.i,10)||0); start(); });
       });
-      // Auto-rotate
-      let idx=0; setInterval(()=>{
-        const slides = $$('.hero-slide');
-        slides.forEach(s=>s.classList.remove('active'));
-        idx = (idx+1)%slides.length;
-        slides[idx].classList.add('active');
-      }, 5000);
-    }
 
-    // Build Category chips
-    function renderCategories(){
-      const cats = ['All', ...Array.from(new Set(PRODUCTS.filter(byPub).map(p=>p.category||'Other'))).sort()];
-      catsEl.innerHTML = cats.map(c=>`<button class="chip ${CAT===c?'active':''}" data-cat="${c}">${c}</button>`).join('');
-      $$('#categories .chip').forEach(btn=>{
-        btn.addEventListener('click',()=>{ CAT = btn.dataset.cat; renderGrid(); renderCategories(); });
+      // hover pause
+      gal.addEventListener('mouseenter', stop);
+      gal.addEventListener('mouseleave', start);
+
+      // touch swipe
+      let sx=0, sy=0, dx=0, dy=0, touching=false;
+      gal.addEventListener('touchstart', e=>{
+        if(!e.touches[0]) return;
+        touching=true; sx=e.touches[0].clientX; sy=e.touches[0].clientY; dx=dy=0; stop();
+      }, {passive:true});
+      gal.addEventListener('touchmove', e=>{
+        if(!touching||!e.touches[0]) return;
+        dx = e.touches[0].clientX - sx;
+        dy = e.touches[0].clientY - sy;
+      }, {passive:true});
+      gal.addEventListener('touchend', ()=>{
+        if(!touching) return;
+        touching=false;
+        if(Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)){
+          if(dx < 0) show(i+1); else show(i-1);
+        }
+        start();
       });
-    }
 
-    // Render Products Grid
-    function renderGrid(){
-      const list = PRODUCTS
-        .filter(byPub)
-        .filter(p=>isFromAdmin(p.img))
-        .filter(p=> !QUERY || (p.name||'').toLowerCase().includes(QUERY) || (p.category||'').toLowerCase().includes(QUERY) || (p.tags||'').toString().toLowerCase().includes(QUERY))
-        .filter(p=> CAT==='All' ? true : (p.category||'Other')===CAT);
-
-      gridEl.innerHTML = list.map(p=>{
-        const price = Number(p[MODE]);
-        const hasW = p.wholesale!=null && !isNaN(Number(p.wholesale));
-        const hasR = p.retail!=null && !isNaN(Number(p.retail));
-        const showStrike = MODE==='retail' && hasW && hasR && Number(p.wholesale) < Number(p.retail);
-        const moqTxt = MODE==='wholesale' && p.moq ? ` • MOQ ${p.moq}` : '';
-        const uom = p.uom?`/${p.uom}`:'';
-        return `
-          <article class="card" role="article" aria-label="${p.name}">
-            <div class="thumb">
-              <img loading="lazy" src="${safeImg(p.img)}" alt="${p.name}" onerror="this.src='${ADMIN_BASE}images/placeholder.png'" />
-              ${p.badge?`<div class='badge'>${p.badge}</div>`:''}
-            </div>
-            <div class="body">
-              <div class="title">${p.name||''}</div>
-              <div class="meta">${p.category||'Other'}${moqTxt}</div>
-              <div class="prices">
-                <div class="price">${money(price)} <span class="meta">${uom}</span></div>
-                ${showStrike?`<div class="strike">${money(p.retail)}</div>`:''}
-              </div>
-              <div class="actions">
-                <a class="btn primary" href="https://wa.me/256783501222?text=${encodeURIComponent('Order: '+(p.name||'')+' – '+money(price)+(uom?(' '+uom):''))}" rel="noopener">Order</a>
-                <button class="btn ghost" onclick="navigator.clipboard.writeText('${(p.name||'')+' – '+money(price)}');this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',1500)">Copy</button>
-              </div>
-            </div>
-          </article>`;
-      }).join('');
-
-      emptyEl.style.display = list.length ? 'none' : 'block';
-    }
-
-    // Wire UI
-    $('#retailTab').addEventListener('click',()=>{ MODE='retail'; $('#retailTab').classList.add('active'); $('#wholesaleTab').classList.remove('active'); renderGrid(); });
-    $('#wholesaleTab').addEventListener('click',()=>{ MODE='wholesale'; $('#wholesaleTab').classList.add('active'); $('#retailTab').classList.remove('active'); renderGrid(); });
-    $('#q').addEventListener('input', e=>{ QUERY = (e.target.value||'').trim().toLowerCase(); renderGrid(); });
-
-    // Init
-    (async function init(){
-      document.getElementById('year').textContent = new Date().getFullYear();
-
-      // Load heroes & products from Admin (must be valid JSON arrays)
-      const [heroes, products] = await Promise.all([
-        getJSON(HEROES_URL),
-        getJSON(PRODUCTS_URL)
-      ]);
-
-      HEROES = Array.isArray(heroes) ? heroes : [];
-      PRODUCTS = Array.isArray(products) ? products : [];
-
-      // Validate & sanitize minimal fields
-      PRODUCTS = PRODUCTS.map(p=>({
-        id: p.id || crypto.randomUUID(),
-        name: String(p.name||'').trim(),
-        img: String(p.img||''),
-        category: String(p.category||'Other').trim(),
-        retail: Number(p.retail),
-        wholesale: Number(p.wholesale),
-        uom: p.uom || 'pcs',
-        badge: p.badge || '',
-        moq: p.moq || null,
-        tags: p.tags || [],
-        published: p.published===true
-      }));
-
-      // Warn if any image is not hosted on Admin
-      const badImgs = PRODUCTS.filter(p=>p.published===true && !isFromAdmin(p.img));
-      if(badImgs.length){
-        showAlert(`Some products were hidden because their images are not hosted on the Admin site. Move images under ${ADMIN_BASE}`, 'warn');
+      // if only 1 image, hide arrows/dots/thumbs visuals
+      if (slides.length <= 1){
+        prevBtn.style.display='none';
+        nextBtn.style.display='none';
+        gal.querySelector('.gdots').style.display='none';
+        gal.querySelector('.gthumbs').style.display='none';
       }
 
-      renderHeroes();
-      renderCategories();
-      renderGrid();
-    })();
-  })();
-  </script>
+      show(0);
+      start();
+    });
+  }
+
+  // ===== Cart =====
+  function addToCart(id){
+    const qtyEl = document.getElementById(`qty-${id}`);
+    loadProducts().then(PRODUCTS=>{
+      const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
+      let qty = parseInt(qtyEl?.value)||minQty(p);
+      if(qty < minQty(p)) qty = minQty(p);
+      const unitPrice = priceOf(p);
+      const key = id+':'+mode;
+      const existing = cart.get(key);
+      cart.set(key,{product:p,qty:(existing?existing.qty:0)+qty,unitPrice,mode});
+      updateCartUI();
+      openDrawer();
+    });
+  }
+  function buyNow(id){
+    loadProducts().then(PRODUCTS=>{
+      const p = PRODUCTS.find(x=>x.id===id); if(!p) return;
+      const qtyInput = document.getElementById(`qty-${id}`);
+      let qty = parseInt(qtyInput?.value)||minQty(p);
+      if(qty < minQty(p)) qty = minQty(p);
+      const unitPrice = priceOf(p);
+      const msg = `Hi Orji Supplies, I want to order:\n• ${p.name} x${qty} @ ${fmtUGX(unitPrice)} (${mode})`;
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(url,'_blank');
+    });
+  }
+  function updateCartUI(){
+    cartLines.innerHTML=''; let total=0; let count=0;
+    cart.forEach(({product,qty,unitPrice,mode})=>{
+      const lineTotal=unitPrice*qty; total+=lineTotal; count+=qty;
+      const div=document.createElement('div');
+      div.style.borderBottom='1px dashed var(--line)'; div.style.padding='6px 0';
+      div.innerHTML = `<strong>${product.name}</strong><br><span class="muted">${mode==='retail'?'Retail':'Wholesale'} • ${fmtUGX(unitPrice)} × ${qty}</span> — <strong>${fmtUGX(lineTotal)}</strong>`;
+      cartLines.appendChild(div);
+    });
+    grandTotal.textContent='Total: '+fmtUGX(total);
+    cartCount.style.display = count>0? 'inline-block':'none';
+    cartCount.textContent = count;
+    checkoutFab.href = cartToWhatsApp(total);
+    updateFabVisibility();
+  }
+  function cartToWhatsApp(total=0){
+    if(cart.size===0) return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hi Orji Supplies')}`;
+    let lines=[];
+    cart.forEach(({product,qty,unitPrice,mode})=>{
+      lines.push(`• ${product.name} x${qty} @ ${fmtUGX(unitPrice)} (${mode})`);
+    });
+    const msg = `Order (Cash on Delivery):\n${lines.join('\n')}\nTotal: ${fmtUGX(total)}`;
+    return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  }
+  function updateFabVisibility(){
+    const visible = cart.size>0 && drawer.classList.contains('open');
+    checkoutFab.style.display = visible ? 'flex' : 'none';
+  }
+  function openDrawer(){ drawer.classList.add('open'); updateFabVisibility(); }
+  closeDrawer.onclick=()=>{ drawer.classList.remove('open'); updateFabVisibility(); };
+  cartBtn.onclick=()=>{ drawer.classList.toggle('open'); updateFabVisibility(); };
+
+  // Init
+  render();
+</script>
 </body>
 </html>
