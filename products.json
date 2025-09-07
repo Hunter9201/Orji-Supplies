@@ -248,21 +248,5 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plusb-1757204774095-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plusb-1757204774095-4.jpg"
     ]
-  },
-  {
-    "id": "x7t889-1757204885736",
-    "name": "x7t889",
-    "category": "laundry",
-    "retailPrice": 45678,
-    "wholesalePrice": 788,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/x7t889-1757204885736-1.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/x7t889-1757204885736-2.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/x7t889-1757204885736-3.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/x7t889-1757204885736-4.jpg"
-    ]
   }
 ]
