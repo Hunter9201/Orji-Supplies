@@ -1,21 +1,5 @@
 [
   {
-    "id": "bin-1757191648732",
-    "name": "BIN",
-    "category": "laundry",
-    "retailPrice": 17000,
-    "wholesalePrice": 16500,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/bin-1757191648732-1.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/bin-1757191648732-2.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/bin-1757191648732-3.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/bin-1757191648732-4.jpg"
-    ]
-  },
-  {
     "id": "bin-1757191726179",
     "name": "BIN",
     "category": "laundry",
