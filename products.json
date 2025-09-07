@@ -396,19 +396,6 @@
     ]
   },
   {
-    "id": "banage-1757205550682",
-    "name": "Banage",
-    "category": "home",
-    "retailPrice": 1500000,
-    "wholesalePrice": 14000,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/banage-1757205550682-1.png"
-    ]
-  },
-  {
     "id": "all-1757205820868",
     "name": "All",
     "category": "home",
