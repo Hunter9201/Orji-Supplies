@@ -1,18 +1,5 @@
 [
   {
-    "id": "united-1757193685338",
-    "name": "United",
-    "category": "home",
-    "retailPrice": 10178,
-    "wholesalePrice": 9,
-    "unit": "4",
-    "moq": 1,
-    "desc": "The only thing that will shine this Season at old tradordis the bald head",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/united-1757193685338-1.png"
-    ]
-  },
-  {
     "id": "rasta-1757193844935",
     "name": "rasta",
     "category": "home",
