@@ -480,18 +480,5 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/gloves-1757254784213-2.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/gloves-1757254784213-3.jpg"
     ]
-  },
-  {
-    "id": "flamingo-1757257242711",
-    "name": "Flamingo",
-    "category": "laundry",
-    "retailPrice": 18000,
-    "wholesalePrice": 17500,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/flamingo-1757257242711-1.jpg"
-    ]
   }
 ]
