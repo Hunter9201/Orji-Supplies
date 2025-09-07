@@ -467,21 +467,6 @@
     ]
   },
   {
-    "id": "waznmm-1757236575979",
-    "name": "Waznmm",
-    "category": "home",
-    "retailPrice": 4000000,
-    "wholesalePrice": 49000,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/waznmm-1757236575979-1.jpeg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/waznmm-1757236575979-2.jpeg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/waznmm-1757236575979-3.jpeg"
-    ]
-  },
-  {
     "id": "car-engine-1757244229890",
     "name": "Car Engine",
     "category": "accessories",
