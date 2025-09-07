@@ -1,20 +1,5 @@
 [
   {
-    "id": "tam-1757192253998",
-    "name": "TAM",
-    "category": "laundry",
-    "retailPrice": 1689,
-    "wholesalePrice": 15000,
-    "unit": "piece",
-    "moq": 10,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/tam-1757192253998-1.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/tam-1757192253998-2.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/tam-1757192253998-3.jpg"
-    ]
-  },
-  {
     "id": "good-life-1757193404666",
     "name": "Good life",
     "category": "laundry",
