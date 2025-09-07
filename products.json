@@ -1,18 +1,5 @@
 [
   {
-    "id": "orjii-supplies-1757194643787",
-    "name": "Orjii Supplies",
-    "category": "home",
-    "retailPrice": 10000000,
-    "wholesalePrice": 100000,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/orjii-supplies-1757194643787-1.png"
-    ]
-  },
-  {
     "id": "in-the-waat-1757195032855",
     "name": "In the waat",
     "category": "home",
