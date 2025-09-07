@@ -266,20 +266,6 @@
     ]
   },
   {
-    "id": "all-1757205820868",
-    "name": "All",
-    "category": "home",
-    "retailPrice": 300000,
-    "wholesalePrice": 2950000,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/all-1757205820868-1.jpeg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/all-1757205820868-2.jpeg"
-    ]
-  },
-  {
     "id": "x7t889-1757206054651",
     "name": "x7t889",
     "category": "laundry",
