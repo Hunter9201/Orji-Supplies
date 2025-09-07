@@ -14,18 +14,5 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/twist-mop-micro-fibre-self-wing-mop-1757278021643-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/twist-mop-micro-fibre-self-wing-mop-1757278021643-4.jpg"
     ]
-  },
-  {
-    "id": "soft-brooms-1757278890863",
-    "name": "Soft Brooms",
-    "category": "laundry",
-    "retailPrice": 6300,
-    "wholesalePrice": 4500,
-    "unit": "piece",
-    "moq": 12,
-    "desc": "Indoor Soft Brooms",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/soft-brooms-1757278890863-1.jpg"
-    ]
   }
 ]
