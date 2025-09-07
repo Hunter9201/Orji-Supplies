@@ -89,19 +89,5 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plus-1757202141700-1.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plus-1757202141700-2.jpg"
     ]
-  },
-  {
-    "id": "harpic-plus-1757202312553",
-    "name": "harpic Plus",
-    "category": "laundry",
-    "retailPrice": 18000,
-    "wholesalePrice": 17000,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plus-1757202312553-1.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/harpic-plus-1757202312553-2.jpg"
-    ]
   }
 ]
