@@ -1,21 +1,5 @@
 [
   {
-    "id": "appic-1757196750766",
-    "name": "Appic",
-    "category": "laundry",
-    "retailPrice": 16000,
-    "wholesalePrice": 15000,
-    "unit": "piece",
-    "moq": 10,
-    "desc": "okay",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/appic-1757196750766-1.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/appic-1757196750766-2.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/appic-1757196750766-3.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/appic-1757196750766-4.jpg"
-    ]
-  },
-  {
     "id": "appice-1757196837068",
     "name": "Appice",
     "category": "home",
