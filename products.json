@@ -450,5 +450,20 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/all-housea-1757207445150-1.png"
     ]
+  },
+  {
+    "id": "gloves-1757233120489",
+    "name": "GLOVES",
+    "category": "laundry",
+    "retailPrice": 180000,
+    "wholesalePrice": 170000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/gloves-1757233120489-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/gloves-1757233120489-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/gloves-1757233120489-3.jpg"
+    ]
   }
 ]
