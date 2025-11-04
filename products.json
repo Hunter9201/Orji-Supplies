@@ -57,5 +57,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/soft-broom-1757369994981-1.jpeg"
     ]
+  },
+  {
+    "id": "test-1762252743774",
+    "name": "test",
+    "category": "laundry",
+    "retailPrice": 5000,
+    "wholesalePrice": 5000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "test",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/test-1762252743774-1.png"
+    ]
   }
 ]
