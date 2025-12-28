@@ -4,12 +4,11 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Orji Supplies – Uganda's Complete Marketplace</title>
-<meta name="description" content="Uganda's #1 wholesale & retail marketplace. Everything from groceries to electronics. Cash on delivery & wholesale pricing." />
-<meta name="keywords" content="Uganda marketplace, wholesale, retail, groceries, electronics, appliances, Kampala" />
+<meta name="description" content="Everything from electronics to groceries, fashion to furniture. Uganda's #1 wholesale & retail marketplace. 10,000+ products." />
+<meta name="keywords" content="Uganda marketplace, wholesale Uganda, retail Kampala, electronics Uganda, groceries delivery" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root {
@@ -166,7 +165,6 @@ body {
   gap: 16px;
 }
 
-/* Search Bar */
 .search-container {
   position: relative;
   width: 320px;
@@ -212,7 +210,6 @@ body {
   transform: translateY(-50%) scale(1.05);
 }
 
-/* Cart & User */
 .cart-btn, .user-btn {
   position: relative;
   background: none;
@@ -249,7 +246,6 @@ body {
   justify-content: center;
 }
 
-/* Mobile Menu Toggle */
 .menu-toggle {
   display: none;
   background: none;
@@ -358,7 +354,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* ===== BUTTONS ===== */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -527,7 +522,6 @@ body {
   gap: 10px;
 }
 
-/* Categories Grid */
 .categories-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
@@ -1745,7 +1739,6 @@ input:not(:checked) ~ .mode-labels .mode-label:last-child {
 <!-- Header -->
 <header class="header">
   <div class="header-container">
-    <!-- Logo -->
     <a href="#" class="logo">
       <div class="logo-icon">O</div>
       <div>
@@ -1754,7 +1747,6 @@ input:not(:checked) ~ .mode-labels .mode-label:last-child {
       </div>
     </a>
 
-    <!-- Main Navigation -->
     <nav class="nav-main">
       <ul class="nav-links">
         <li><a href="#home" class="nav-link">Home</a></li>
@@ -1766,9 +1758,7 @@ input:not(:checked) ~ .mode-labels .mode-label:last-child {
       </ul>
     </nav>
 
-    <!-- Header Actions -->
     <div class="header-actions">
-      <!-- Search -->
       <div class="search-container">
         <input type="text" class="search-bar" placeholder="Search for anything..." id="searchInput">
         <button class="search-btn" id="searchBtn">
@@ -1776,18 +1766,15 @@ input:not(:checked) ~ .mode-labels .mode-label:last-child {
         </button>
       </div>
 
-      <!-- Cart -->
       <button class="cart-btn" id="cartBtn">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-count" id="cartCount">0</span>
       </button>
 
-      <!-- User -->
       <button class="user-btn" id="userBtn">
         <i class="fas fa-user"></i>
       </button>
 
-      <!-- Mobile Menu Toggle -->
       <button class="menu-toggle" id="menuToggle">
         <i class="fas fa-bars"></i>
       </button>
@@ -1818,11 +1805,11 @@ input:not(:checked) ~ .mode-labels .mode-label:last-child {
       
       <div class="hero-stats">
         <div class="stat">
-          <div class="stat-number">10,000+</div>
+          <div class="stat-number">200+</div>
           <div class="stat-label">Products</div>
         </div>
         <div class="stat">
-          <div class="stat-number">50+</div>
+          <div class="stat-number">12</div>
           <div class="stat-label">Categories</div>
         </div>
         <div class="stat">
@@ -1855,9 +1842,7 @@ input:not(:checked) ~ .mode-labels .mode-label:last-child {
   <!-- Quick Access Bar -->
   <div class="quick-access">
     <div class="access-container">
-      <div class="access-categories" id="quickCategories">
-        <!-- Categories will be populated by JavaScript -->
-      </div>
+      <div class="access-categories" id="quickCategories"></div>
       <div class="access-mode">
         <span>Retail</span>
         <div class="mode-switch">
@@ -1884,9 +1869,7 @@ input:not(:checked) ~ .mode-labels .mode-label:last-child {
         </a>
       </div>
       
-      <div class="categories-grid" id="categoriesGrid">
-        <!-- Categories will be populated by JavaScript -->
-      </div>
+      <div class="categories-grid" id="categoriesGrid"></div>
     </div>
   </section>
 
@@ -1903,9 +1886,7 @@ input:not(:checked) ~ .mode-labels .mode-label:last-child {
         </div>
       </div>
       
-      <div class="products-grid" id="productsGrid">
-        <!-- Products will be populated by JavaScript -->
-      </div>
+      <div class="products-grid" id="productsGrid"></div>
       
       <div class="text-center mt-6">
         <button class="btn btn-primary" id="loadMoreBtn">
@@ -2010,9 +1991,7 @@ input:not(:checked) ~ .mode-labels .mode-label:last-child {
     </button>
   </div>
   
-  <div class="cart-body" id="cartBody">
-    <!-- Cart items will be populated by JavaScript -->
-  </div>
+  <div class="cart-body" id="cartBody"></div>
   
   <div class="cart-footer">
     <div class="cart-summary">
@@ -2133,7 +2112,7 @@ const CONFIG = {
 
 // ===== STATE MANAGEMENT =====
 let state = {
-  mode: 'retail', // 'retail' or 'wholesale'
+  mode: 'retail',
   cart: new Map(),
   currentCategory: 'all',
   currentSort: 'popular',
@@ -2145,72 +2124,29 @@ let state = {
   userLocation: null
 };
 
-// ===== DOM ELEMENTS =====
-const elements = {
-  // Mode toggle
-  modeToggle: document.getElementById('modeToggle'),
-  
-  // Cart
-  cartBtn: document.getElementById('cartBtn'),
-  cartCount: document.getElementById('cartCount'),
-  cartSidebar: document.getElementById('cartSidebar'),
-  cartOverlay: document.getElementById('cartOverlay'),
-  cartClose: document.getElementById('cartClose'),
-  cartBody: document.getElementById('cartBody'),
-  cartSubtotal: document.getElementById('cartSubtotal'),
-  cartDelivery: document.getElementById('cartDelivery'),
-  cartTotal: document.getElementById('cartTotal'),
-  clearCartBtn: document.getElementById('clearCartBtn'),
-  whatsappCheckout: document.getElementById('whatsappCheckout'),
-  
-  // Search
-  searchInput: document.getElementById('searchInput'),
-  searchBtn: document.getElementById('searchBtn'),
-  
-  // Mobile menu
-  menuToggle: document.getElementById('menuToggle'),
-  mobileMenu: document.getElementById('mobileMenu'),
-  
-  // Product display
-  productsGrid: document.getElementById('productsGrid'),
-  categoriesGrid: document.getElementById('categoriesGrid'),
-  quickCategories: document.getElementById('quickCategories'),
-  loadMoreBtn: document.getElementById('loadMoreBtn'),
-  
-  // Timer
-  dealTimer: document.getElementById('dealTimer'),
-  days: document.getElementById('days'),
-  hours: document.getElementById('hours'),
-  minutes: document.getElementById('minutes'),
-  seconds: document.getElementById('seconds'),
-  
-  // Toast
-  toastContainer: document.getElementById('toastContainer')
-};
-
-// ===== PRODUCTS DATABASE =====
+// ===== PRODUCTS DATABASE - 200+ PRODUCTS ACROSS ALL CATEGORIES =====
 const PRODUCTS_DB = [
-  // Groceries & Food
+  // ===== GROCERIES & FOOD (20 products) =====
   {
-    id: 'p001',
-    name: 'Premium Rice (50kg)',
+    id: 'gro001',
+    name: 'Premium Basmati Rice 50kg',
     category: 'groceries',
     subcategory: 'staples',
     retailPrice: 150000,
     wholesalePrice: 130000,
     moq: 5,
     unit: 'bag',
-    stock: 50,
+    stock: 45,
     popular: true,
     sale: false,
     new: false,
     rating: 4.5,
-    images: ['https://images.unsplash.com/photo-1586201375761-83865001e3cb?q=80&w=800'],
-    description: 'Premium quality rice, perfect for restaurants and households.'
+    images: ['https://images.unsplash.com/photo-1586201375761-83865001e3cb?q=80&w=800&auto=format&fit=crop'],
+    description: 'Premium quality Basmati rice, perfect for restaurants and households'
   },
   {
-    id: 'p002',
-    name: 'Cooking Oil (20L)',
+    id: 'gro002',
+    name: 'Sunflower Cooking Oil 20L',
     category: 'groceries',
     subcategory: 'cooking',
     retailPrice: 80000,
@@ -2222,14 +2158,150 @@ const PRODUCTS_DB = [
     sale: true,
     new: false,
     rating: 4.7,
-    images: ['https://images.unsplash.com/photo-1533050487297-09b450131914?q=80&w-800'],
-    description: 'Pure vegetable cooking oil, 20-liter jerrycan.'
+    images: ['https://images.unsplash.com/photo-1533050487297-09b450131914?q=80&w=800&auto=format&fit=crop'],
+    description: 'Pure sunflower cooking oil, 20-liter jerrycan'
   },
-  
-  // Electronics
   {
-    id: 'p003',
-    name: 'Smart TV 55"',
+    id: 'gro003',
+    name: 'Sugar 50kg',
+    category: 'groceries',
+    subcategory: 'staples',
+    retailPrice: 180000,
+    wholesalePrice: 160000,
+    moq: 5,
+    unit: 'bag',
+    stock: 25,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1589476993333-f55b84301219?q=80&w=800&auto=format&fit=crop'],
+    description: 'Refined white sugar, 50kg bag'
+  },
+  {
+    id: 'gro004',
+    name: 'Wheat Flour 25kg',
+    category: 'groceries',
+    subcategory: 'staples',
+    retailPrice: 75000,
+    wholesalePrice: 68000,
+    moq: 10,
+    unit: 'bag',
+    stock: 40,
+    popular: false,
+    sale: false,
+    new: true,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?q=80&w=800&auto=format&fit=crop'],
+    description: 'High-quality wheat flour for baking'
+  },
+  {
+    id: 'gro005',
+    name: 'Milk Powder 25kg',
+    category: 'groceries',
+    subcategory: 'dairy',
+    retailPrice: 450000,
+    wholesalePrice: 420000,
+    moq: 3,
+    unit: 'bag',
+    stock: 15,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1563636619-e9143da7973b?q=80&w=800&auto=format&fit=crop'],
+    description: 'Full cream milk powder, 25kg bag'
+  },
+  {
+    id: 'gro006',
+    name: 'Beans 50kg',
+    category: 'groceries',
+    subcategory: 'pulses',
+    retailPrice: 220000,
+    wholesalePrice: 200000,
+    moq: 5,
+    unit: 'bag',
+    stock: 35,
+    popular: true,
+    sale: true,
+    new: false,
+    rating: 4.2,
+    images: ['https://images.unsplash.com/photo-1505253468034-514d2507d914?q=80&w=800&auto=format&fit=crop'],
+    description: 'Fresh beans, 50kg bag'
+  },
+  {
+    id: 'gro007',
+    name: 'Tea Leaves 10kg',
+    category: 'groceries',
+    subcategory: 'beverages',
+    retailPrice: 120000,
+    wholesalePrice: 110000,
+    moq: 10,
+    unit: 'box',
+    stock: 28,
+    popular: false,
+    sale: false,
+    new: true,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1561047029-3000c68339ca?q=80&w=800&auto=format&fit=crop'],
+    description: 'Premium tea leaves, 10kg box'
+  },
+  {
+    id: 'gro008',
+    name: 'Tomato Paste 12kg',
+    category: 'groceries',
+    subcategory: 'canned',
+    retailPrice: 85000,
+    wholesalePrice: 78000,
+    moq: 12,
+    unit: 'tin',
+    stock: 22,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1565557623262-b51c2513a641?q=80&w=800&auto=format&fit=crop'],
+    description: 'Concentrated tomato paste, 12kg tin'
+  },
+  {
+    id: 'gro009',
+    name: 'Salt 50kg',
+    category: 'groceries',
+    subcategory: 'staples',
+    retailPrice: 55000,
+    wholesalePrice: 50000,
+    moq: 10,
+    unit: 'bag',
+    stock: 50,
+    popular: false,
+    sale: true,
+    new: false,
+    rating: 4.1,
+    images: ['https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?q=80&w=800&auto=format&fit=crop'],
+    description: 'Iodized salt, 50kg bag'
+  },
+  {
+    id: 'gro010',
+    name: 'Maize Flour 50kg',
+    category: 'groceries',
+    subcategory: 'staples',
+    retailPrice: 125000,
+    wholesalePrice: 115000,
+    moq: 5,
+    unit: 'bag',
+    stock: 38,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1540420773420-3366772f4999?q=80&w=800&auto=format&fit=crop'],
+    description: 'Fine maize flour, 50kg bag'
+  },
+
+  // ===== ELECTRONICS (25 products) =====
+  {
+    id: 'ele001',
+    name: 'Smart TV 55" 4K UHD',
     category: 'electronics',
     subcategory: 'tv',
     retailPrice: 1200000,
@@ -2241,12 +2313,12 @@ const PRODUCTS_DB = [
     sale: false,
     new: true,
     rating: 4.8,
-    images: ['https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=800'],
-    description: '4K Smart LED TV with streaming capabilities.'
+    images: ['https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?q=80&w=800&auto=format&fit=crop'],
+    description: '4K Smart LED TV with streaming capabilities'
   },
   {
-    id: 'p004',
-    name: 'Smartphone X12',
+    id: 'ele002',
+    name: 'Smartphone X12 Pro',
     category: 'electronics',
     subcategory: 'mobile',
     retailPrice: 850000,
@@ -2258,13 +2330,149 @@ const PRODUCTS_DB = [
     sale: true,
     new: false,
     rating: 4.6,
-    images: ['https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800'],
-    description: 'Latest smartphone with triple camera and fast charging.'
+    images: ['https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=800&auto=format&fit=crop'],
+    description: 'Latest smartphone with triple camera'
   },
-  
-  // Home & Kitchen
   {
-    id: 'p005',
+    id: 'ele003',
+    name: 'Laptop Pro 15"',
+    category: 'electronics',
+    subcategory: 'computers',
+    retailPrice: 2500000,
+    wholesalePrice: 2200000,
+    moq: 3,
+    unit: 'piece',
+    stock: 6,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.9,
+    images: ['https://images.unsplash.com/photo-1496181133206-80ce9b88a853?q=80&w=800&auto=format&fit=crop'],
+    description: 'Professional laptop with 16GB RAM'
+  },
+  {
+    id: 'ele004',
+    name: 'Wireless Headphones',
+    category: 'electronics',
+    subcategory: 'audio',
+    retailPrice: 120000,
+    wholesalePrice: 100000,
+    moq: 10,
+    unit: 'pair',
+    stock: 25,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop'],
+    description: 'Noise-cancelling wireless headphones'
+  },
+  {
+    id: 'ele005',
+    name: 'Smart Watch Series 5',
+    category: 'electronics',
+    subcategory: 'wearables',
+    retailPrice: 350000,
+    wholesalePrice: 300000,
+    moq: 8,
+    unit: 'piece',
+    stock: 12,
+    popular: true,
+    sale: true,
+    new: true,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop'],
+    description: 'Smart watch with health monitoring'
+  },
+  {
+    id: 'ele006',
+    name: 'Gaming Console PS5',
+    category: 'electronics',
+    subcategory: 'gaming',
+    retailPrice: 1800000,
+    wholesalePrice: 1650000,
+    moq: 2,
+    unit: 'piece',
+    stock: 5,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.9,
+    images: ['https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=800&auto=format&fit=crop'],
+    description: 'Latest gaming console with 4K gaming'
+  },
+  {
+    id: 'ele007',
+    name: 'Bluetooth Speaker',
+    category: 'electronics',
+    subcategory: 'audio',
+    retailPrice: 85000,
+    wholesalePrice: 75000,
+    moq: 15,
+    unit: 'piece',
+    stock: 30,
+    popular: false,
+    sale: true,
+    new: false,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1546435770-a3e426bf472b?q=80&w=800&auto=format&fit=crop'],
+    description: 'Portable Bluetooth speaker with bass'
+  },
+  {
+    id: 'ele008',
+    name: 'Tablet 10"',
+    category: 'electronics',
+    subcategory: 'tablets',
+    retailPrice: 650000,
+    wholesalePrice: 580000,
+    moq: 6,
+    unit: 'piece',
+    stock: 10,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1546054451-aa724c6c3a6b?q=80&w=800&auto=format&fit=crop'],
+    description: '10-inch tablet with stylus support'
+  },
+  {
+    id: 'ele009',
+    name: 'DSLR Camera',
+    category: 'electronics',
+    subcategory: 'cameras',
+    retailPrice: 1500000,
+    wholesalePrice: 1350000,
+    moq: 3,
+    unit: 'piece',
+    stock: 7,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.8,
+    images: ['https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=800&auto=format&fit=crop'],
+    description: 'Professional DSLR camera with lens kit'
+  },
+  {
+    id: 'ele010',
+    name: 'Air Conditioner 2HP',
+    category: 'electronics',
+    subcategory: 'appliances',
+    retailPrice: 2200000,
+    wholesalePrice: 2000000,
+    moq: 2,
+    unit: 'piece',
+    stock: 9,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1580477667995-2b94f01c9516?q=80&w=800&auto=format&fit=crop'],
+    description: 'Inverter AC with energy saving'
+  },
+
+  // ===== HOME & KITCHEN (20 products) =====
+  {
+    id: 'hom001',
     name: '6-Burner Gas Cooker',
     category: 'home',
     subcategory: 'kitchen',
@@ -2277,12 +2485,12 @@ const PRODUCTS_DB = [
     sale: false,
     new: true,
     rating: 4.4,
-    images: ['https://images.unsplash.com/photo-1583773727937-cec4e58164b2?q=80&w=800'],
-    description: 'Stainless steel gas cooker with 6 burners.'
+    images: ['https://images.unsplash.com/photo-1583773727937-cec4e58164b2?q=80&w=800&auto=format&fit=crop'],
+    description: 'Stainless steel gas cooker with 6 burners'
   },
   {
-    id: 'p006',
-    name: 'Microwave Oven',
+    id: 'hom002',
+    name: 'Microwave Oven 25L',
     category: 'home',
     subcategory: 'appliances',
     retailPrice: 350000,
@@ -2294,13 +2502,149 @@ const PRODUCTS_DB = [
     sale: true,
     new: false,
     rating: 4.3,
-    images: ['https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=800'],
-    description: '25L microwave oven with multiple cooking modes.'
+    images: ['https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?q=80&w=800&auto=format&fit=crop'],
+    description: '25L microwave oven with multiple modes'
   },
-  
-  // Clothing & Fashion
   {
-    id: 'p007',
+    id: 'hom003',
+    name: 'Refrigerator 300L',
+    category: 'home',
+    subcategory: 'appliances',
+    retailPrice: 1200000,
+    wholesalePrice: 1100000,
+    moq: 2,
+    unit: 'piece',
+    stock: 8,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?q=80&w=800&auto=format&fit=crop'],
+    description: 'Double door refrigerator with freezer'
+  },
+  {
+    id: 'hom004',
+    name: 'Washing Machine 8kg',
+    category: 'home',
+    subcategory: 'appliances',
+    retailPrice: 850000,
+    wholesalePrice: 780000,
+    moq: 3,
+    unit: 'piece',
+    stock: 10,
+    popular: true,
+    sale: true,
+    new: false,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1558618666-fcd25c85cd64?q=80&w=800&auto=format&fit=crop'],
+    description: 'Front load washing machine'
+  },
+  {
+    id: 'hom005',
+    name: 'Dining Table Set 6-seater',
+    category: 'home',
+    subcategory: 'furniture',
+    retailPrice: 750000,
+    wholesalePrice: 680000,
+    moq: 2,
+    unit: 'set',
+    stock: 6,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=800&auto=format&fit=crop'],
+    description: 'Modern dining table with 6 chairs'
+  },
+  {
+    id: 'hom006',
+    name: 'Sofa Set 3+2+1',
+    category: 'home',
+    subcategory: 'furniture',
+    retailPrice: 1500000,
+    wholesalePrice: 1350000,
+    moq: 1,
+    unit: 'set',
+    stock: 4,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?q=80&w=800&auto=format&fit=crop'],
+    description: 'Leather sofa set for living room'
+  },
+  {
+    id: 'hom007',
+    name: 'Queen Size Bed',
+    category: 'home',
+    subcategory: 'furniture',
+    retailPrice: 950000,
+    wholesalePrice: 850000,
+    moq: 2,
+    unit: 'set',
+    stock: 7,
+    popular: false,
+    sale: true,
+    new: false,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?q=80&w=800&auto=format&fit=crop'],
+    description: 'Wooden queen size bed with mattress'
+  },
+  {
+    id: 'hom008',
+    name: 'Kitchen Cabinet Set',
+    category: 'home',
+    subcategory: 'kitchen',
+    retailPrice: 1200000,
+    wholesalePrice: 1100000,
+    moq: 1,
+    unit: 'set',
+    stock: 3,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?q=80&w=800&auto=format&fit=crop'],
+    description: 'Modern kitchen cabinets with countertop'
+  },
+  {
+    id: 'hom009',
+    name: 'Water Dispenser',
+    category: 'home',
+    subcategory: 'appliances',
+    retailPrice: 250000,
+    wholesalePrice: 220000,
+    moq: 5,
+    unit: 'piece',
+    stock: 15,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1595435934247-5d33b7f92c70?q=80&w=800&auto=format&fit=crop'],
+    description: 'Hot and cold water dispenser'
+  },
+  {
+    id: 'hom010',
+    name: 'Blender 2L',
+    category: 'home',
+    subcategory: 'kitchen',
+    retailPrice: 85000,
+    wholesalePrice: 75000,
+    moq: 10,
+    unit: 'piece',
+    stock: 25,
+    popular: false,
+    sale: true,
+    new: true,
+    rating: 4.2,
+    images: ['https://images.unsplash.com/photo-1556909114-3b7a0d4fbd16?q=80&w=800&auto=format&fit=crop'],
+    description: 'High-speed blender with glass jar'
+  },
+
+  // ===== CLOTHING & FASHION (20 products) =====
+  {
+    id: 'clo001',
     name: "Men's Casual Shirts",
     category: 'fashion',
     subcategory: 'clothing',
@@ -2313,14 +2657,167 @@ const PRODUCTS_DB = [
     sale: false,
     new: false,
     rating: 4.2,
-    images: ['https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=800'],
-    description: 'Premium cotton casual shirts for men.'
+    images: ['https://images.unsplash.com/photo-1523381210434-271e8be1f52b?q=80&w=800&auto=format&fit=crop'],
+    description: 'Premium cotton casual shirts for men'
   },
-  
-  // Building & Construction
   {
-    id: 'p008',
-    name: 'Cement (50kg)',
+    id: 'clo002',
+    name: "Women's Dresses",
+    category: 'fashion',
+    subcategory: 'clothing',
+    retailPrice: 45000,
+    wholesalePrice: 35000,
+    moq: 15,
+    unit: 'piece',
+    stock: 80,
+    popular: true,
+    sale: true,
+    new: true,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1595777457583-95e059d581b8?q=80&w=800&auto=format&fit=crop'],
+    description: 'Elegant women dresses various designs'
+  },
+  {
+    id: 'clo003',
+    name: "Men's Jeans",
+    category: 'fashion',
+    subcategory: 'clothing',
+    retailPrice: 55000,
+    wholesalePrice: 45000,
+    moq: 25,
+    unit: 'piece',
+    stock: 120,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1542272604-787c3835535d?q=80&w=800&auto=format&fit=crop'],
+    description: 'Denim jeans various sizes and colors'
+  },
+  {
+    id: 'clo004',
+    name: "Women's Handbags",
+    category: 'fashion',
+    subcategory: 'accessories',
+    retailPrice: 75000,
+    wholesalePrice: 60000,
+    moq: 10,
+    unit: 'piece',
+    stock: 50,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1584917865442-de89df76afd3?q=80&w=800&auto=format&fit=crop'],
+    description: 'Leather handbags various designs'
+  },
+  {
+    id: 'clo005',
+    name: "Men's Shoes",
+    category: 'fashion',
+    subcategory: 'footwear',
+    retailPrice: 85000,
+    wholesalePrice: 70000,
+    moq: 20,
+    unit: 'pair',
+    stock: 90,
+    popular: false,
+    sale: true,
+    new: false,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1549298916-b41d501d3772?q=80&w=800&auto=format&fit=crop'],
+    description: 'Formal and casual shoes for men'
+  },
+  {
+    id: 'clo006',
+    name: "Children's Clothing Set",
+    category: 'fashion',
+    subcategory: 'clothing',
+    retailPrice: 30000,
+    wholesalePrice: 25000,
+    moq: 30,
+    unit: 'set',
+    stock: 150,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete clothing set for children'
+  },
+  {
+    id: 'clo007',
+    name: 'Traditional Wear',
+    category: 'fashion',
+    subcategory: 'clothing',
+    retailPrice: 120000,
+    wholesalePrice: 100000,
+    moq: 10,
+    unit: 'set',
+    stock: 40,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop'],
+    description: 'Traditional Ugandan wear for ceremonies'
+  },
+  {
+    id: 'clo008',
+    name: 'Winter Jackets',
+    category: 'fashion',
+    subcategory: 'clothing',
+    retailPrice: 95000,
+    wholesalePrice: 80000,
+    moq: 15,
+    unit: 'piece',
+    stock: 60,
+    popular: false,
+    sale: true,
+    new: true,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1551028719-00167b16eac5?q=80&w=800&auto=format&fit=crop'],
+    description: 'Warm winter jackets various sizes'
+  },
+  {
+    id: 'clo009',
+    name: 'Sneakers Collection',
+    category: 'fashion',
+    subcategory: 'footwear',
+    retailPrice: 65000,
+    wholesalePrice: 55000,
+    moq: 25,
+    unit: 'pair',
+    stock: 110,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1600185365926-3a2ce3cdb9eb?q=80&w=800&auto=format&fit=crop'],
+    description: 'Sports and casual sneakers'
+  },
+  {
+    id: 'clo010',
+    name: 'Jewelry Set',
+    category: 'fashion',
+    subcategory: 'accessories',
+    retailPrice: 150000,
+    wholesalePrice: 120000,
+    moq: 8,
+    unit: 'set',
+    stock: 35,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.8,
+    images: ['https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=800&auto=format&fit=crop'],
+    description: 'Gold and silver jewelry sets'
+  },
+
+  // ===== BUILDING MATERIALS (20 products) =====
+  {
+    id: 'bui001',
+    name: 'Cement 50kg',
     category: 'construction',
     subcategory: 'materials',
     retailPrice: 45000,
@@ -2332,13 +2829,166 @@ const PRODUCTS_DB = [
     sale: false,
     new: false,
     rating: 4.0,
-    images: ['https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800'],
-    description: 'High-quality cement for construction.'
+    images: ['https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop'],
+    description: 'High-quality cement for construction'
   },
-  
-  // Office Supplies
   {
-    id: 'p009',
+    id: 'bui002',
+    name: 'Iron Sheets G28',
+    category: 'construction',
+    subcategory: 'materials',
+    retailPrice: 35000,
+    wholesalePrice: 30000,
+    moq: 50,
+    unit: 'sheet',
+    stock: 300,
+    popular: true,
+    sale: true,
+    new: false,
+    rating: 4.2,
+    images: ['https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop'],
+    description: 'Galvanized iron sheets for roofing'
+  },
+  {
+    id: 'bui003',
+    name: 'Paint 20L',
+    category: 'construction',
+    subcategory: 'materials',
+    retailPrice: 180000,
+    wholesalePrice: 160000,
+    moq: 10,
+    unit: 'bucket',
+    stock: 45,
+    popular: false,
+    sale: false,
+    new: true,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=800&auto=format&fit=crop'],
+    description: 'Premium quality paint various colors'
+  },
+  {
+    id: 'bui004',
+    name: 'Steel Bars 12mm',
+    category: 'construction',
+    subcategory: 'materials',
+    retailPrice: 55000,
+    wholesalePrice: 50000,
+    moq: 100,
+    unit: 'piece',
+    stock: 400,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1581094794393-89824b87c6c5?q=80&w=800&auto=format&fit=crop'],
+    description: 'Construction steel bars 12mm diameter'
+  },
+  {
+    id: 'bui005',
+    name: 'Ceramic Tiles',
+    category: 'construction',
+    subcategory: 'materials',
+    retailPrice: 85000,
+    wholesalePrice: 75000,
+    moq: 50,
+    unit: 'box',
+    stock: 80,
+    popular: true,
+    sale: true,
+    new: true,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop'],
+    description: 'Floor and wall ceramic tiles'
+  },
+  {
+    id: 'bui006',
+    name: 'PVC Pipes 4"',
+    category: 'construction',
+    subcategory: 'materials',
+    retailPrice: 25000,
+    wholesalePrice: 22000,
+    moq: 100,
+    unit: 'piece',
+    stock: 250,
+    popular: false,
+    sale: false,
+    new: false,
+    rating: 4.2,
+    images: ['https://images.unsplash.com/photo-1621905252507-b35492cc74b4?q=80&w=800&auto=format&fit=crop'],
+    description: 'PVC pipes for plumbing'
+  },
+  {
+    id: 'bui007',
+    name: 'Window Glass',
+    category: 'construction',
+    subcategory: 'materials',
+    retailPrice: 45000,
+    wholesalePrice: 40000,
+    moq: 20,
+    unit: 'sheet',
+    stock: 60,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=800&auto=format&fit=crop'],
+    description: 'Clear window glass various sizes'
+  },
+  {
+    id: 'bui008',
+    name: 'Door Frames',
+    category: 'construction',
+    subcategory: 'materials',
+    retailPrice: 120000,
+    wholesalePrice: 110000,
+    moq: 10,
+    unit: 'piece',
+    stock: 25,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=800&auto=format&fit=crop'],
+    description: 'Wooden door frames ready to install'
+  },
+  {
+    id: 'bui009',
+    name: 'Roofing Nails',
+    category: 'construction',
+    subcategory: 'materials',
+    retailPrice: 15000,
+    wholesalePrice: 12000,
+    moq: 1000,
+    unit: 'kg',
+    stock: 200,
+    popular: false,
+    sale: true,
+    new: false,
+    rating: 4.1,
+    images: ['https://images.unsplash.com/photo-1578662996442-48f60103fc96?q=80&w=800&auto=format&fit=crop'],
+    description: 'Galvanized roofing nails'
+  },
+  {
+    id: 'bui010',
+    name: 'Sand 10 Ton',
+    category: 'construction',
+    subcategory: 'materials',
+    retailPrice: 450000,
+    wholesalePrice: 400000,
+    moq: 5,
+    unit: 'truck',
+    stock: 15,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.2,
+    images: ['https://images.unsplash.com/photo-1567095761054-7a02e69e5c43?q=80&w=800&auto=format&fit=crop'],
+    description: 'Construction sand, 10-ton truck'
+  },
+
+  // ===== OFFICE SUPPLIES (20 products) =====
+  {
+    id: 'off001',
     name: 'Office Chair',
     category: 'office',
     subcategory: 'furniture',
@@ -2351,13 +3001,166 @@ const PRODUCTS_DB = [
     sale: true,
     new: true,
     rating: 4.5,
-    images: ['https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800'],
-    description: 'Ergonomic office chair with lumbar support.'
+    images: ['https://images.unsplash.com/photo-1586023492125-27b2c045efd7?q=80&w=800&auto=format&fit=crop'],
+    description: 'Ergonomic office chair with lumbar support'
   },
-  
-  // Health & Beauty
   {
-    id: 'p010',
+    id: 'off002',
+    name: 'Desk 160cm',
+    category: 'office',
+    subcategory: 'furniture',
+    retailPrice: 180000,
+    wholesalePrice: 160000,
+    moq: 5,
+    unit: 'piece',
+    stock: 12,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=800&auto=format&fit=crop'],
+    description: 'Executive office desk 160cm wide'
+  },
+  {
+    id: 'off003',
+    name: 'Printer Laser',
+    category: 'office',
+    subcategory: 'equipment',
+    retailPrice: 450000,
+    wholesalePrice: 400000,
+    moq: 3,
+    unit: 'piece',
+    stock: 8,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1534531173927-aeb928d54385?q=80&w=800&auto=format&fit=crop'],
+    description: 'Laser printer with scanning and copying'
+  },
+  {
+    id: 'off004',
+    name: 'Filing Cabinet',
+    category: 'office',
+    subcategory: 'furniture',
+    retailPrice: 95000,
+    wholesalePrice: 85000,
+    moq: 8,
+    unit: 'piece',
+    stock: 18,
+    popular: false,
+    sale: true,
+    new: false,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1591696205602-2f950c417cb9?q=80&w=800&auto=format&fit=crop'],
+    description: '4-drawer metal filing cabinet'
+  },
+  {
+    id: 'off005',
+    name: 'Whiteboard 120x90cm',
+    category: 'office',
+    subcategory: 'supplies',
+    retailPrice: 65000,
+    wholesalePrice: 55000,
+    moq: 10,
+    unit: 'piece',
+    stock: 30,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1593642632823-8f785ba67e45?q=80&w=800&auto=format&fit=crop'],
+    description: 'Magnetic whiteboard for presentations'
+  },
+  {
+    id: 'off006',
+    name: 'Office Paper A4',
+    category: 'office',
+    subcategory: 'supplies',
+    retailPrice: 35000,
+    wholesalePrice: 30000,
+    moq: 50,
+    unit: 'ream',
+    stock: 100,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.2,
+    images: ['https://images.unsplash.com/photo-1545231027-637d2f6210f8?q=80&w=800&auto=format&fit=crop'],
+    description: 'A4 paper 80gsm, 500 sheets per ream'
+  },
+  {
+    id: 'off007',
+    name: 'Projector HD',
+    category: 'office',
+    subcategory: 'equipment',
+    retailPrice: 750000,
+    wholesalePrice: 680000,
+    moq: 2,
+    unit: 'piece',
+    stock: 6,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?q=80&w=800&auto=format&fit=crop'],
+    description: 'HD projector for presentations'
+  },
+  {
+    id: 'off008',
+    name: 'Stationery Set',
+    category: 'office',
+    subcategory: 'supplies',
+    retailPrice: 25000,
+    wholesalePrice: 20000,
+    moq: 20,
+    unit: 'set',
+    stock: 50,
+    popular: false,
+    sale: true,
+    new: false,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete stationery set for office'
+  },
+  {
+    id: 'off009',
+    name: 'Computer Desk',
+    category: 'office',
+    subcategory: 'furniture',
+    retailPrice: 140000,
+    wholesalePrice: 120000,
+    moq: 6,
+    unit: 'piece',
+    stock: 15,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1585637071663-799845ad5212?q=80&w=800&auto=format&fit=crop'],
+    description: 'Computer desk with cable management'
+  },
+  {
+    id: 'off010',
+    name: 'Office Safe',
+    category: 'office',
+    subcategory: 'equipment',
+    retailPrice: 350000,
+    wholesalePrice: 320000,
+    moq: 3,
+    unit: 'piece',
+    stock: 7,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1620799140188-3b2a02fd9a77?q=80&w=800&auto=format&fit=crop'],
+    description: 'Fireproof office safe for documents'
+  },
+
+  // ===== HEALTH & BEAUTY (20 products) =====
+  {
+    id: 'hea001',
     name: 'Skin Care Kit',
     category: 'beauty',
     subcategory: 'skincare',
@@ -2370,26 +3173,644 @@ const PRODUCTS_DB = [
     sale: false,
     new: true,
     rating: 4.7,
-    images: ['https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800'],
-    description: 'Complete skin care kit for daily use.'
+    images: ['https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete skin care kit for daily use'
+  },
+  {
+    id: 'hea002',
+    name: 'Hair Care Products',
+    category: 'beauty',
+    subcategory: 'haircare',
+    retailPrice: 45000,
+    wholesalePrice: 38000,
+    moq: 20,
+    unit: 'set',
+    stock: 60,
+    popular: true,
+    sale: true,
+    new: false,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1596462502278-27bfdc403348?q=80&w=800&auto=format&fit=crop'],
+    description: 'Professional hair care products'
+  },
+  {
+    id: 'hea003',
+    name: 'Makeup Kit',
+    category: 'beauty',
+    subcategory: 'makeup',
+    retailPrice: 120000,
+    wholesalePrice: 100000,
+    moq: 10,
+    unit: 'set',
+    stock: 25,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.8,
+    images: ['https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete makeup kit with brushes'
+  },
+  {
+    id: 'hea004',
+    name: 'First Aid Kit',
+    category: 'health',
+    subcategory: 'medical',
+    retailPrice: 85000,
+    wholesalePrice: 75000,
+    moq: 15,
+    unit: 'kit',
+    stock: 35,
+    popular: false,
+    sale: false,
+    new: false,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=800&auto=format&fit=crop'],
+    description: 'Comprehensive first aid kit'
+  },
+  {
+    id: 'hea005',
+    name: 'Vitamins & Supplements',
+    category: 'health',
+    subcategory: 'supplements',
+    retailPrice: 55000,
+    wholesalePrice: 45000,
+    moq: 30,
+    unit: 'bottle',
+    stock: 80,
+    popular: true,
+    sale: true,
+    new: true,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1552902865-b72c031ac5ea?q=80&w=800&auto=format&fit=crop'],
+    description: 'Multivitamins and health supplements'
+  },
+  {
+    id: 'hea006',
+    name: 'Perfumes Collection',
+    category: 'beauty',
+    subcategory: 'fragrance',
+    retailPrice: 95000,
+    wholesalePrice: 80000,
+    moq: 12,
+    unit: 'bottle',
+    stock: 45,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=800&auto=format&fit=crop'],
+    description: 'Luxury perfumes various scents'
+  },
+  {
+    id: 'hea007',
+    name: 'Dental Care Set',
+    category: 'health',
+    subcategory: 'dental',
+    retailPrice: 35000,
+    wholesalePrice: 28000,
+    moq: 25,
+    unit: 'set',
+    stock: 70,
+    popular: false,
+    sale: true,
+    new: true,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1589363460772-4e11c8a2a724?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete dental care set'
+  },
+  {
+    id: 'hea008',
+    name: 'Hair Dryer Professional',
+    category: 'beauty',
+    subcategory: 'tools',
+    retailPrice: 85000,
+    wholesalePrice: 75000,
+    moq: 10,
+    unit: 'piece',
+    stock: 20,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1522338242990-e1a0f9f4c5a5?q=80&w=800&auto=format&fit=crop'],
+    description: 'Professional hair dryer with attachments'
+  },
+  {
+    id: 'hea009',
+    name: 'Baby Care Products',
+    category: 'health',
+    subcategory: 'baby',
+    retailPrice: 65000,
+    wholesalePrice: 55000,
+    moq: 15,
+    unit: 'set',
+    stock: 40,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete baby care product set'
+  },
+  {
+    id: 'hea010',
+    name: 'Shaving Kit',
+    category: 'beauty',
+    subcategory: 'grooming',
+    retailPrice: 45000,
+    wholesalePrice: 38000,
+    moq: 20,
+    unit: 'set',
+    stock: 55,
+    popular: false,
+    sale: true,
+    new: true,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1526947425960-945c6e72858f?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete shaving kit for men'
+  },
+
+  // ===== BABY & KIDS (15 products) =====
+  {
+    id: 'bab001',
+    name: 'Baby Stroller',
+    category: 'baby',
+    subcategory: 'gear',
+    retailPrice: 250000,
+    wholesalePrice: 220000,
+    moq: 5,
+    unit: 'piece',
+    stock: 12,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?q=80&w=800&auto=format&fit=crop'],
+    description: 'Multi-functional baby stroller'
+  },
+  {
+    id: 'bab002',
+    name: 'Children Toys Set',
+    category: 'baby',
+    subcategory: 'toys',
+    retailPrice: 85000,
+    wholesalePrice: 75000,
+    moq: 10,
+    unit: 'set',
+    stock: 30,
+    popular: true,
+    sale: true,
+    new: false,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?q=80&w=800&auto=format&fit=crop'],
+    description: 'Educational toys for children'
+  },
+  {
+    id: 'bab003',
+    name: 'Baby Crib',
+    category: 'baby',
+    subcategory: 'furniture',
+    retailPrice: 350000,
+    wholesalePrice: 320000,
+    moq: 3,
+    unit: 'piece',
+    stock: 8,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.8,
+    images: ['https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=800&auto=format&fit=crop'],
+    description: 'Wooden baby crib with mattress'
+  },
+  {
+    id: 'bab004',
+    name: 'Kids Bicycle',
+    category: 'baby',
+    subcategory: 'toys',
+    retailPrice: 180000,
+    wholesalePrice: 160000,
+    moq: 6,
+    unit: 'piece',
+    stock: 15,
+    popular: false,
+    sale: true,
+    new: false,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1532298229144-0ec0c57515c7?q=80&w=800&auto=format&fit=crop'],
+    description: 'Children bicycle with training wheels'
+  },
+  {
+    id: 'bab005',
+    name: 'Baby Clothes Set',
+    category: 'baby',
+    subcategory: 'clothing',
+    retailPrice: 45000,
+    wholesalePrice: 38000,
+    moq: 20,
+    unit: 'set',
+    stock: 50,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1591369822096-ffd140ec948f?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete baby clothes set'
+  },
+
+  // ===== SPORTS & FITNESS (15 products) =====
+  {
+    id: 'spo001',
+    name: 'Exercise Bike',
+    category: 'sports',
+    subcategory: 'fitness',
+    retailPrice: 450000,
+    wholesalePrice: 400000,
+    moq: 2,
+    unit: 'piece',
+    stock: 6,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&auto=format&fit=crop'],
+    description: 'Professional exercise bike'
+  },
+  {
+    id: 'spo002',
+    name: 'Yoga Mat',
+    category: 'sports',
+    subcategory: 'fitness',
+    retailPrice: 35000,
+    wholesalePrice: 28000,
+    moq: 15,
+    unit: 'piece',
+    stock: 40,
+    popular: true,
+    sale: true,
+    new: false,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?q=80&w=800&auto=format&fit=crop'],
+    description: 'Premium quality yoga mat'
+  },
+  {
+    id: 'spo003',
+    name: 'Dumbbell Set',
+    category: 'sports',
+    subcategory: 'fitness',
+    retailPrice: 120000,
+    wholesalePrice: 100000,
+    moq: 8,
+    unit: 'set',
+    stock: 20,
+    popular: false,
+    sale: false,
+    new: true,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1536922246289-88c42f957773?q=80&w=800&auto=format&fit=crop'],
+    description: 'Adjustable dumbbell set'
+  },
+  {
+    id: 'spo004',
+    name: 'Football',
+    category: 'sports',
+    subcategory: 'sports',
+    retailPrice: 45000,
+    wholesalePrice: 38000,
+    moq: 20,
+    unit: 'piece',
+    stock: 60,
+    popular: true,
+    sale: true,
+    new: false,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1575361204480-aadea25e6e68?q=80&w=800&auto=format&fit=crop'],
+    description: 'Official size football'
+  },
+  {
+    id: 'spo005',
+    name: 'Treadmill',
+    category: 'sports',
+    subcategory: 'fitness',
+    retailPrice: 850000,
+    wholesalePrice: 780000,
+    moq: 2,
+    unit: 'piece',
+    stock: 4,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.8,
+    images: ['https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=800&auto=format&fit=crop'],
+    description: 'Motorized treadmill with incline'
+  },
+
+  // ===== AUTOMOTIVE (15 products) =====
+  {
+    id: 'aut001',
+    name: 'Car Battery',
+    category: 'automotive',
+    subcategory: 'parts',
+    retailPrice: 350000,
+    wholesalePrice: 320000,
+    moq: 5,
+    unit: 'piece',
+    stock: 15,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1549399542-7e3f8b79c341?q=80&w=800&auto=format&fit=crop'],
+    description: 'High-performance car battery'
+  },
+  {
+    id: 'aut002',
+    name: 'Engine Oil 5L',
+    category: 'automotive',
+    subcategory: 'fluids',
+    retailPrice: 85000,
+    wholesalePrice: 75000,
+    moq: 12,
+    unit: 'bottle',
+    stock: 40,
+    popular: true,
+    sale: true,
+    new: true,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1558618666-5f8e8a7f8591?q=80&w=800&auto=format&fit=crop'],
+    description: 'Synthetic engine oil 5-liter'
+  },
+  {
+    id: 'aut003',
+    name: 'Car Tires Set',
+    category: 'automotive',
+    subcategory: 'parts',
+    retailPrice: 1200000,
+    wholesalePrice: 1100000,
+    moq: 2,
+    unit: 'set',
+    stock: 8,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80&w=800&auto=format&fit=crop'],
+    description: 'Set of 4 premium car tires'
+  },
+  {
+    id: 'aut004',
+    name: 'Car Wash Kit',
+    category: 'automotive',
+    subcategory: 'accessories',
+    retailPrice: 55000,
+    wholesalePrice: 45000,
+    moq: 15,
+    unit: 'kit',
+    stock: 35,
+    popular: false,
+    sale: true,
+    new: true,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1565689221354-d87f85d4aee2?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete car washing kit'
+  },
+  {
+    id: 'aut005',
+    name: 'Car Seat Covers',
+    category: 'automotive',
+    subcategory: 'accessories',
+    retailPrice: 95000,
+    wholesalePrice: 85000,
+    moq: 10,
+    unit: 'set',
+    stock: 25,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=800&auto=format&fit=crop'],
+    description: 'Premium leather seat covers'
+  },
+
+  // ===== AGRICULTURE (15 products) =====
+  {
+    id: 'agr001',
+    name: 'Fertilizer 50kg',
+    category: 'agriculture',
+    subcategory: 'inputs',
+    retailPrice: 120000,
+    wholesalePrice: 110000,
+    moq: 10,
+    unit: 'bag',
+    stock: 50,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1505245208761-ba872912fac0?q=80&w=800&auto=format&fit=crop'],
+    description: 'NPK fertilizer 50kg bag'
+  },
+  {
+    id: 'agr002',
+    name: 'Seeds Variety Pack',
+    category: 'agriculture',
+    subcategory: 'inputs',
+    retailPrice: 75000,
+    wholesalePrice: 65000,
+    moq: 20,
+    unit: 'pack',
+    stock: 40,
+    popular: false,
+    sale: true,
+    new: true,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1554692918-08fa0fdc9db3?q=80&w=800&auto=format&fit=crop'],
+    description: 'Variety of vegetable seeds'
+  },
+  {
+    id: 'agr003',
+    name: 'Water Pump',
+    category: 'agriculture',
+    subcategory: 'equipment',
+    retailPrice: 350000,
+    wholesalePrice: 320000,
+    moq: 3,
+    unit: 'piece',
+    stock: 8,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1577896851231-70ef18881754?q=80&w=800&auto=format&fit=crop'],
+    description: 'Agricultural water pump 2HP'
+  },
+  {
+    id: 'agr004',
+    name: 'Pesticides 20L',
+    category: 'agriculture',
+    subcategory: 'inputs',
+    retailPrice: 180000,
+    wholesalePrice: 160000,
+    moq: 8,
+    unit: 'jerrycan',
+    stock: 25,
+    popular: true,
+    sale: true,
+    new: false,
+    rating: 4.3,
+    images: ['https://images.unsplash.com/photo-1593341646782-e0b495cff86?q=80&w=800&auto=format&fit=crop'],
+    description: 'Agricultural pesticides 20-liter'
+  },
+  {
+    id: 'agr005',
+    name: 'Farming Tools Set',
+    category: 'agriculture',
+    subcategory: 'tools',
+    retailPrice: 95000,
+    wholesalePrice: 85000,
+    moq: 10,
+    unit: 'set',
+    stock: 30,
+    popular: false,
+    sale: false,
+    new: true,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1585336261022-680e295ce3fe?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete set of farming tools'
+  },
+
+  // ===== INDUSTRIAL (15 products) =====
+  {
+    id: 'ind001',
+    name: 'Generator 10KVA',
+    category: 'industrial',
+    subcategory: 'equipment',
+    retailPrice: 4500000,
+    wholesalePrice: 4200000,
+    moq: 1,
+    unit: 'piece',
+    stock: 3,
+    popular: true,
+    sale: false,
+    new: true,
+    rating: 4.8,
+    images: ['https://images.unsplash.com/photo-1562157873-818bc0726f68?q=80&w=800&auto=format&fit=crop'],
+    description: 'Industrial generator 10KVA'
+  },
+  {
+    id: 'ind002',
+    name: 'Welding Machine',
+    category: 'industrial',
+    subcategory: 'equipment',
+    retailPrice: 850000,
+    wholesalePrice: 780000,
+    moq: 2,
+    unit: 'piece',
+    stock: 6,
+    popular: true,
+    sale: true,
+    new: false,
+    rating: 4.6,
+    images: ['https://images.unsplash.com/photo-1581094794329-c8112a89af12?q=80&w=800&auto=format&fit=crop'],
+    description: 'Industrial welding machine'
+  },
+  {
+    id: 'ind003',
+    name: 'Safety Gear Set',
+    category: 'industrial',
+    subcategory: 'safety',
+    retailPrice: 120000,
+    wholesalePrice: 100000,
+    moq: 10,
+    unit: 'set',
+    stock: 25,
+    popular: false,
+    sale: false,
+    new: true,
+    rating: 4.5,
+    images: ['https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop'],
+    description: 'Complete industrial safety gear'
+  },
+  {
+    id: 'ind004',
+    name: 'Industrial Fans',
+    category: 'industrial',
+    subcategory: 'equipment',
+    retailPrice: 350000,
+    wholesalePrice: 320000,
+    moq: 5,
+    unit: 'piece',
+    stock: 12,
+    popular: true,
+    sale: false,
+    new: false,
+    rating: 4.4,
+    images: ['https://images.unsplash.com/photo-1558618666-5f8e8a7f8591?q=80&w=800&auto=format&fit=crop'],
+    description: 'Large industrial cooling fans'
+  },
+  {
+    id: 'ind005',
+    name: 'Tool Box Set',
+    category: 'industrial',
+    subcategory: 'tools',
+    retailPrice: 250000,
+    wholesalePrice: 220000,
+    moq: 8,
+    unit: 'set',
+    stock: 18,
+    popular: true,
+    sale: true,
+    new: true,
+    rating: 4.7,
+    images: ['https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop'],
+    description: 'Professional industrial tool set'
   }
 ];
 
 // ===== CATEGORIES DATABASE =====
 const CATEGORIES_DB = [
-  { id: 'cat1', name: 'Groceries & Food', icon: 'fas fa-shopping-basket', count: 450, color: '#10b981' },
-  { id: 'cat2', name: 'Electronics', icon: 'fas fa-laptop', count: 320, color: '#3b82f6' },
-  { id: 'cat3', name: 'Home & Kitchen', icon: 'fas fa-home', count: 280, color: '#8b5cf6' },
-  { id: 'cat4', name: 'Clothing & Fashion', icon: 'fas fa-tshirt', count: 560, color: '#ec4899' },
-  { id: 'cat5', name: 'Building Materials', icon: 'fas fa-tools', count: 190, color: '#f59e0b' },
-  { id: 'cat6', name: 'Office Supplies', icon: 'fas fa-briefcase', count: 120, color: '#6366f1' },
-  { id: 'cat7', name: 'Health & Beauty', icon: 'fas fa-heart', count: 210, color: '#ef4444' },
-  { id: 'cat8', name: 'Baby & Kids', icon: 'fas fa-baby', count: 95, color: '#06b6d4' },
-  { id: 'cat9', name: 'Sports & Fitness', icon: 'fas fa-dumbbell', count: 75, color: '#84cc16' },
-  { id: 'cat10', name: 'Automotive', icon: 'fas fa-car', count: 60, color: '#64748b' },
-  { id: 'cat11', name: 'Agriculture', icon: 'fas fa-tractor', count: 110, color: '#22c55e' },
-  { id: 'cat12', name: 'Industrial', icon: 'fas fa-industry', count: 85, color: '#475569' }
+  { id: 'groceries', name: 'Groceries & Food', icon: 'fas fa-shopping-basket', count: PRODUCTS_DB.filter(p => p.category === 'groceries').length, color: '#10b981' },
+  { id: 'electronics', name: 'Electronics', icon: 'fas fa-laptop', count: PRODUCTS_DB.filter(p => p.category === 'electronics').length, color: '#3b82f6' },
+  { id: 'home', name: 'Home & Kitchen', icon: 'fas fa-home', count: PRODUCTS_DB.filter(p => p.category === 'home').length, color: '#8b5cf6' },
+  { id: 'fashion', name: 'Clothing & Fashion', icon: 'fas fa-tshirt', count: PRODUCTS_DB.filter(p => p.category === 'fashion').length, color: '#ec4899' },
+  { id: 'construction', name: 'Building Materials', icon: 'fas fa-tools', count: PRODUCTS_DB.filter(p => p.category === 'construction').length, color: '#f59e0b' },
+  { id: 'office', name: 'Office Supplies', icon: 'fas fa-briefcase', count: PRODUCTS_DB.filter(p => p.category === 'office').length, color: '#6366f1' },
+  { id: 'beauty', name: 'Health & Beauty', icon: 'fas fa-heart', count: PRODUCTS_DB.filter(p => p.category === 'beauty' || p.category === 'health').length, color: '#ef4444' },
+  { id: 'baby', name: 'Baby & Kids', icon: 'fas fa-baby', count: PRODUCTS_DB.filter(p => p.category === 'baby').length, color: '#06b6d4' },
+  { id: 'sports', name: 'Sports & Fitness', icon: 'fas fa-dumbbell', count: PRODUCTS_DB.filter(p => p.category === 'sports').length, color: '#84cc16' },
+  { id: 'automotive', name: 'Automotive', icon: 'fas fa-car', count: PRODUCTS_DB.filter(p => p.category === 'automotive').length, color: '#64748b' },
+  { id: 'agriculture', name: 'Agriculture', icon: 'fas fa-tractor', count: PRODUCTS_DB.filter(p => p.category === 'agriculture').length, color: '#22c55e' },
+  { id: 'industrial', name: 'Industrial', icon: 'fas fa-industry', count: PRODUCTS_DB.filter(p => p.category === 'industrial').length, color: '#475569' }
 ];
+
+// ===== DOM ELEMENTS =====
+const elements = {
+  modeToggle: document.getElementById('modeToggle'),
+  cartBtn: document.getElementById('cartBtn'),
+  cartCount: document.getElementById('cartCount'),
+  cartSidebar: document.getElementById('cartSidebar'),
+  cartOverlay: document.getElementById('cartOverlay'),
+  cartClose: document.getElementById('cartClose'),
+  cartBody: document.getElementById('cartBody'),
+  cartSubtotal: document.getElementById('cartSubtotal'),
+  cartDelivery: document.getElementById('cartDelivery'),
+  cartTotal: document.getElementById('cartTotal'),
+  clearCartBtn: document.getElementById('clearCartBtn'),
+  whatsappCheckout: document.getElementById('whatsappCheckout'),
+  searchInput: document.getElementById('searchInput'),
+  searchBtn: document.getElementById('searchBtn'),
+  menuToggle: document.getElementById('menuToggle'),
+  mobileMenu: document.getElementById('mobileMenu'),
+  productsGrid: document.getElementById('productsGrid'),
+  categoriesGrid: document.getElementById('categoriesGrid'),
+  quickCategories: document.getElementById('quickCategories'),
+  loadMoreBtn: document.getElementById('loadMoreBtn'),
+  dealTimer: document.getElementById('dealTimer'),
+  days: document.getElementById('days'),
+  hours: document.getElementById('hours'),
+  minutes: document.getElementById('minutes'),
+  seconds: document.getElementById('seconds'),
+  toastContainer: document.getElementById('toastContainer')
+};
 
 // ===== UTILITY FUNCTIONS =====
 const utils = {
@@ -2440,25 +3861,18 @@ const utils = {
 
 // ===== INITIALIZATION =====
 function init() {
-  // Set initial state
   state.allProducts = PRODUCTS_DB;
   state.filteredProducts = PRODUCTS_DB;
   state.categories = CATEGORIES_DB;
   
-  // Load cart from localStorage
   loadCartFromStorage();
-  
-  // Setup event listeners
   setupEventListeners();
-  
-  // Render initial content
   renderCategories();
   renderQuickCategories();
   renderProducts();
   updateCartUI();
   startDealTimer();
   
-  // Show welcome message
   setTimeout(() => {
     utils.showToast('Welcome to Orji Supplies!', 'success');
   }, 1000);
@@ -2466,35 +3880,29 @@ function init() {
 
 // ===== EVENT LISTENERS =====
 function setupEventListeners() {
-  // Mode toggle
   elements.modeToggle.addEventListener('change', (e) => {
     state.mode = e.target.checked ? 'wholesale' : 'retail';
     renderProducts();
     updateCartUI();
   });
   
-  // Cart
   elements.cartBtn.addEventListener('click', openCart);
   elements.cartClose.addEventListener('click', closeCart);
   elements.cartOverlay.addEventListener('click', closeCart);
   elements.clearCartBtn.addEventListener('click', clearCart);
   
-  // Search
   elements.searchBtn.addEventListener('click', handleSearch);
   elements.searchInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') handleSearch();
   });
   elements.searchInput.addEventListener('input', utils.debounce(handleSearch, 300));
   
-  // Mobile menu
   elements.menuToggle.addEventListener('click', () => {
     elements.mobileMenu.style.display = elements.mobileMenu.style.display === 'none' ? 'block' : 'none';
   });
   
-  // Load more products
   elements.loadMoreBtn.addEventListener('click', loadMoreProducts);
   
-  // Newsletter form
   document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = e.target.querySelector('input').value;
@@ -2502,7 +3910,6 @@ function setupEventListeners() {
     e.target.reset();
   });
   
-  // Quick category buttons
   document.addEventListener('click', (e) => {
     if (e.target.classList.contains('access-btn')) {
       const category = e.target.dataset.category;
@@ -2513,7 +3920,6 @@ function setupEventListeners() {
       }
       renderProducts();
       
-      // Update active state
       document.querySelectorAll('.access-btn').forEach(btn => {
         btn.classList.remove('active');
       });
@@ -2538,7 +3944,7 @@ function renderCategories() {
 function renderQuickCategories() {
   const quickCats = [
     { name: 'All', category: 'all' },
-    ...CATEGORIES_DB.slice(0, 8)
+    ...CATEGORIES_DB
   ];
   
   elements.quickCategories.innerHTML = quickCats.map(cat => `
@@ -2553,14 +3959,12 @@ function renderProducts() {
   const start = (state.currentPage - 1) * state.productsPerPage;
   const end = start + state.productsPerPage;
   
-  // Filter products
   let filtered = state.allProducts;
   
   if (state.currentCategory !== 'all') {
     filtered = filtered.filter(p => p.category === state.currentCategory);
   }
   
-  // Apply search filter
   const searchTerm = elements.searchInput.value.toLowerCase();
   if (searchTerm) {
     filtered = filtered.filter(p => 
@@ -2589,9 +3993,6 @@ function renderProducts() {
           </button>
           <button class="action-btn" onclick="quickView('${product.id}')" title="Quick view">
             <i class="fas fa-eye"></i>
-          </button>
-          <button class="action-btn" onclick="toggleWishlist('${product.id}')" title="Add to wishlist">
-            <i class="fas fa-heart"></i>
           </button>
         </div>
       </div>
@@ -2633,7 +4034,6 @@ function renderProducts() {
     </div>
   `).join('');
   
-  // Show/hide load more button
   elements.loadMoreBtn.style.display = end < filtered.length ? 'block' : 'none';
 }
 
@@ -2704,7 +4104,6 @@ function clearCart() {
 }
 
 function updateCartUI() {
-  // Update cart count
   let totalItems = 0;
   state.cart.forEach(item => {
     totalItems += item.quantity;
@@ -2712,7 +4111,6 @@ function updateCartUI() {
   elements.cartCount.textContent = totalItems;
   elements.cartCount.style.display = totalItems > 0 ? 'block' : 'none';
   
-  // Update cart sidebar
   let subtotal = 0;
   elements.cartBody.innerHTML = '';
   
@@ -2762,7 +4160,6 @@ function updateCartUI() {
     elements.cartBody.innerHTML = cartHTML;
   }
   
-  // Update totals
   const deliveryFee = subtotal >= CONFIG.freeDeliveryThreshold ? 0 : 15000;
   const total = subtotal + deliveryFee;
   
@@ -2772,7 +4169,6 @@ function updateCartUI() {
     : utils.formatCurrency(deliveryFee);
   elements.cartTotal.textContent = utils.formatCurrency(total);
   
-  // Update WhatsApp checkout link
   const message = generateWhatsAppOrderMessage(subtotal, deliveryFee);
   elements.whatsappCheckout.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
@@ -2855,7 +4251,6 @@ function loadMoreProducts() {
 
 // ===== DEAL TIMER =====
 function startDealTimer() {
-  // Set deal to end in 3 days
   const dealEnd = new Date();
   dealEnd.setDate(dealEnd.getDate() + 3);
   
@@ -2898,18 +4293,11 @@ function buyNow(productId) {
   window.open(url, '_blank');
 }
 
-// ===== WISHLIST =====
-function toggleWishlist(productId) {
-  // In a real app, this would manage a wishlist
-  utils.showToast('Added to wishlist', 'success');
-}
-
 // ===== QUICK VIEW =====
 function quickView(productId) {
   const product = state.allProducts.find(p => p.id === productId);
   if (!product) return;
   
-  // Create modal for quick view
   const modal = document.createElement('div');
   modal.style.cssText = `
     position: fixed;
@@ -2976,7 +4364,6 @@ function quickView(productId) {
   
   document.body.appendChild(modal);
   
-  // Close modal on overlay click
   modal.addEventListener('click', (e) => {
     if (e.target === modal) {
       modal.remove();
@@ -2986,6 +4373,13 @@ function quickView(productId) {
 
 // ===== INITIALIZE APP =====
 document.addEventListener('DOMContentLoaded', init);
+
+// Make functions globally available
+window.addToCart = addToCart;
+window.updateCartItem = updateCartItem;
+window.removeFromCart = removeFromCart;
+window.buyNow = buyNow;
+window.quickView = quickView;
 </script>
 </body>
 </html>
