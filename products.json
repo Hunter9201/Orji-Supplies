@@ -200,5 +200,16 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767474122095-1.jpeg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767474122095-2.jpeg"
     ]
+  },
+  {
+    "id": "product-1767474879264",
+    "name": "Black hair shampoo",
+    "category": "personal",
+    "retailPrice": 1000,
+    "wholesalePrice": 800,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Makes your hair black",
+    "imgs": []
   }
 ]
