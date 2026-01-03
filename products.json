@@ -200,5 +200,19 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767474122095-1.jpeg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767474122095-2.jpeg"
     ]
+  },
+  {
+    "id": "product-1767475740996",
+    "name": "Black hair shampoo",
+    "category": "laundry",
+    "retailPrice": 1000,
+    "wholesalePrice": 8000,
+    "unit": "Box",
+    "moq": 10,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767475737096-1.jpeg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767475739390-2.jpeg"
+    ]
   }
 ]
