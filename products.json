@@ -1,21 +1,5 @@
 [
   {
-    "id": "twist-mop-micro-fibre-self-wing-mop-1757278021643",
-    "name": "Twist Mop Micro Fibre Self Wing Mop",
-    "category": "laundry",
-    "retailPrice": 75500,
-    "wholesalePrice": 73500,
-    "unit": "piece",
-    "moq": 6,
-    "desc": "Self Wing Mop",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/twist-mop-micro-fibre-self-wing-mop-1757278021643-1.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/twist-mop-micro-fibre-self-wing-mop-1757278021643-2.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/twist-mop-micro-fibre-self-wing-mop-1757278021643-3.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/twist-mop-micro-fibre-self-wing-mop-1757278021643-4.jpg"
-    ]
-  },
-  {
     "id": "out-door-bins-1757280447175",
     "name": "OUT DOOR BINS",
     "category": "laundry",
