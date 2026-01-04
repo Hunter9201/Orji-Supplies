@@ -228,5 +228,27 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/dexe-black-hair-shampoo-1767510230278-1.jpeg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/dexe-black-hair-shampoo-1767510233733-2.jpeg"
     ]
+  },
+  {
+    "id": "product-1767515904820-d5or5k3oq",
+    "name": "Black hair shampoo",
+    "name_ti": "",
+    "category": "groceries",
+    "subcategory": "groceries",
+    "retailPrice": 10000,
+    "wholesalePrice": 8000,
+    "moq": 1,
+    "unit": "Box",
+    "stock": 10,
+    "popular": false,
+    "sale": false,
+    "new": true,
+    "rating": 4,
+    "images": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767515900519-1.jpeg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767515903067-2.jpeg"
+    ],
+    "description": "Hair black",
+    "description_ti": ""
   }
 ]
