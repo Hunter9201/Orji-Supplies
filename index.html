@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-<title>Orji Supplies – ኦርጂ ስፕላየስ – Complete Marketplace</title>
+<title>Orji Supplies – Complete Marketplace</title>
 <meta name="description" content="Everything from electronics to groceries, fashion to furniture. Uganda's #1 wholesale & retail marketplace. 10,000+ products." />
 <meta name="keywords" content="Uganda marketplace, wholesale Uganda, retail Kampala, electronics Uganda, groceries delivery" />
 
@@ -16,8 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<!-- Tigrinya font support -->
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
 :root {
   --primary: #2563eb;
@@ -60,7 +59,7 @@ html {
 }
 
 body {
-  font-family: 'Inter', 'Noto Sans Ethiopic', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--light);
   color: var(--dark);
   line-height: 1.6;
@@ -71,18 +70,6 @@ body {
   position: relative;
   font-size: 14px;
 }
-
-/* Tigrinya specific styles */
-body.tigrinya {
-  font-family: 'Noto Sans Ethiopic', 'Inter', sans-serif;
-  direction: ltr;
-}
-
-/* RTL support for Tigrinya if needed */
-/* body.tigrinya.rtl {
-  direction: rtl;
-  text-align: right;
-} */
 
 /* ===== HEADER & NAVIGATION ===== */
 .header {
@@ -192,85 +179,6 @@ body.tigrinya {
   align-items: center;
   gap: 12px;
   flex-shrink: 0;
-}
-
-/* Language Switcher */
-.language-switcher {
-  position: relative;
-}
-
-.lang-btn {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: var(--primary-light);
-  color: var(--primary);
-  border: none;
-  padding: 8px 12px;
-  border-radius: var(--radius-md);
-  font-weight: 600;
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.lang-btn:hover {
-  background: var(--primary);
-  color: white;
-}
-
-.lang-btn i {
-  font-size: 0.9rem;
-}
-
-.lang-dropdown {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  background: var(--white);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-lg);
-  padding: 8px;
-  margin-top: 8px;
-  min-width: 120px;
-  display: none;
-  z-index: 1001;
-  border: 1px solid var(--gray-light);
-}
-
-.lang-dropdown.active {
-  display: block;
-}
-
-.lang-option {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 12px;
-  border-radius: var(--radius-sm);
-  cursor: pointer;
-  transition: var(--transition);
-  text-decoration: none;
-  color: var(--dark);
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-.lang-option:hover {
-  background: var(--primary-light);
-  color: var(--primary);
-}
-
-.lang-option.active {
-  background: var(--primary);
-  color: white;
-}
-
-.lang-flag {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  object-fit: cover;
 }
 
 .search-container {
@@ -2212,6 +2120,32 @@ textarea {
   opacity: 1;
   content: 'Loading...';
 }
+
+/* ===== PRODUCTS LOADING OVERLAY ===== */
+#productsLoading {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  background: var(--light);
+  border-radius: var(--radius-md);
+  margin: 20px 0;
+}
+
+#productsLoading.active {
+  display: flex;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid var(--gray-light);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
 </style>
 </head>
 <body>
@@ -2222,46 +2156,27 @@ textarea {
       <div class="logo-icon">O</div>
       <div>
         <div class="logo-text">Orji Supplies</div>
-        <div class="logo-tagline" data-i18n="tagline">Everything Marketplace</div>
+        <div class="logo-tagline">Everything Marketplace</div>
       </div>
     </a>
 
     <nav class="nav-main">
       <ul class="nav-links">
-        <li><a href="#home" class="nav-link" data-i18n="nav.home">Home</a></li>
-        <li><a href="#categories" class="nav-link" data-i18n="nav.categories">Categories</a></li>
-        <li><a href="#products" class="nav-link" data-i18n="nav.products">Products</a></li>
-        <li><a href="#deals" class="nav-link" data-i18n="nav.deals">Deals</a></li>
-        <li><a href="#wholesale" class="nav-link" data-i18n="nav.wholesale">Wholesale</a></li>
-        <li><a href="#about" class="nav-link" data-i18n="nav.about">About</a></li>
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#categories" class="nav-link">Categories</a></li>
+        <li><a href="#products" class="nav-link">Products</a></li>
+        <li><a href="#deals" class="nav-link">Deals</a></li>
+        <li><a href="#wholesale" class="nav-link">Wholesale</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
       </ul>
     </nav>
 
     <div class="header-actions">
       <div class="search-container">
-        <input type="text" class="search-bar" placeholder="Search for anything..." id="searchInput" data-i18n-placeholder="search.placeholder">
+        <input type="text" class="search-bar" placeholder="Search for anything..." id="searchInput">
         <button class="search-btn" id="searchBtn">
           <i class="fas fa-search"></i>
         </button>
-      </div>
-
-      <!-- Language Switcher -->
-      <div class="language-switcher">
-        <button class="lang-btn" id="langBtn">
-          <i class="fas fa-globe"></i>
-          <span id="currentLang">EN</span>
-          <i class="fas fa-chevron-down"></i>
-        </button>
-        <div class="lang-dropdown" id="langDropdown">
-          <a href="#" class="lang-option active" data-lang="en">
-            <img src="https://flagcdn.com/w40/gb.png" class="lang-flag" alt="English">
-            <span>English</span>
-          </a>
-          <a href="#" class="lang-option" data-lang="ti">
-            <img src="https://flagcdn.com/w40/er.png" class="lang-flag" alt="Tigrinya">
-            <span>ትግርኛ (Tigrinya)</span>
-          </a>
-        </div>
       </div>
 
       <button class="cart-btn" id="cartBtn">
@@ -2284,7 +2199,7 @@ textarea {
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-search">
     <div class="mobile-search-container">
-      <input type="text" class="search-bar" placeholder="Search products..." id="mobileSearchInput" data-i18n-placeholder="search.placeholder">
+      <input type="text" class="search-bar" placeholder="Search products..." id="mobileSearchInput">
       <button class="search-btn" id="mobileSearchBtn">
         <i class="fas fa-search"></i>
       </button>
@@ -2293,31 +2208,31 @@ textarea {
   <div class="mobile-menu-content">
     <a href="#home" class="mobile-nav-link">
       <i class="fas fa-home"></i>
-      <span data-i18n="nav.home">Home</span>
+      <span>Home</span>
     </a>
     <a href="#categories" class="mobile-nav-link">
       <i class="fas fa-th-large"></i>
-      <span data-i18n="nav.categories">Categories</span>
+      <span>Categories</span>
     </a>
     <a href="#products" class="mobile-nav-link">
       <i class="fas fa-shopping-bag"></i>
-      <span data-i18n="nav.products">Products</span>
+      <span>Products</span>
     </a>
     <a href="#deals" class="mobile-nav-link">
       <i class="fas fa-bolt"></i>
-      <span data-i18n="nav.deals">Deals</span>
+      <span>Deals</span>
     </a>
     <a href="#wholesale" class="mobile-nav-link">
       <i class="fas fa-building"></i>
-      <span data-i18n="nav.wholesale">Wholesale</span>
+      <span>Wholesale</span>
     </a>
     <a href="#about" class="mobile-nav-link">
       <i class="fas fa-info-circle"></i>
-      <span data-i18n="nav.about">About</span>
+      <span>About</span>
     </a>
     <a href="#contact" class="mobile-nav-link">
       <i class="fas fa-phone"></i>
-      <span data-i18n="nav.contact">Contact</span>
+      <span>Contact</span>
     </a>
   </div>
 </div>
@@ -2327,40 +2242,40 @@ textarea {
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-content">
-      <h1 data-i18n="hero.title">Everything You Need, Delivered</h1>
-      <p class="hero-subtitle" data-i18n="hero.subtitle">Uganda's #1 wholesale & retail marketplace. From groceries to electronics, home goods to industrial supplies.</p>
+      <h1>Everything You Need, Delivered</h1>
+      <p class="hero-subtitle">Uganda's #1 wholesale & retail marketplace. From groceries to electronics, home goods to industrial supplies.</p>
       
       <div class="hero-stats">
         <div class="stat">
-          <div class="stat-number">10,000+</div>
-          <div class="stat-label" data-i18n="hero.products">Products</div>
+          <div class="stat-number" id="totalProducts">0</div>
+          <div class="stat-label">Products</div>
         </div>
         <div class="stat">
-          <div class="stat-number">12</div>
-          <div class="stat-label" data-i18n="hero.categories">Categories</div>
+          <div class="stat-number" id="totalCategories">0</div>
+          <div class="stat-label">Categories</div>
         </div>
         <div class="stat">
           <div class="stat-number">24/7</div>
-          <div class="stat-label" data-i18n="hero.support">Support</div>
+          <div class="stat-label">Support</div>
         </div>
         <div class="stat">
-          <div class="stat-number" data-i18n="hero.free">Free</div>
-          <div class="stat-label" data-i18n="hero.delivery">Delivery*</div>
+          <div class="stat-number">Free</div>
+          <div class="stat-label">Delivery*</div>
         </div>
       </div>
       
       <div class="hero-cta">
         <a href="#products" class="btn btn-primary btn-lg">
           <i class="fas fa-shopping-basket"></i>
-          <span data-i18n="hero.shopNow">Shop Now</span>
+          <span>Shop Now</span>
         </a>
         <a href="https://wa.me/256783501222" target="_blank" class="btn btn-whatsapp btn-lg">
           <i class="fab fa-whatsapp"></i>
-          <span data-i18n="hero.whatsapp">Chat on WhatsApp</span>
+          <span>Chat on WhatsApp</span>
         </a>
         <a href="#wholesale" class="btn btn-secondary btn-lg">
           <i class="fas fa-building"></i>
-          <span data-i18n="hero.bulkOrders">Bulk Orders</span>
+          <span>Bulk Orders</span>
         </a>
       </div>
     </div>
@@ -2371,16 +2286,16 @@ textarea {
     <div class="access-container">
       <div class="access-categories" id="quickCategories"></div>
       <div class="access-mode">
-        <span data-i18n="mode.retail">Retail</span>
+        <span>Retail</span>
         <div class="mode-switch">
           <input type="checkbox" id="modeToggle">
           <span class="mode-slider"></span>
           <div class="mode-labels">
-            <span class="mode-label" data-i18n="mode.retail">Retail</span>
-            <span class="mode-label" data-i18n="mode.wholesale">Wholesale</span>
+            <span class="mode-label">Retail</span>
+            <span class="mode-label">Wholesale</span>
           </div>
         </div>
-        <span data-i18n="mode.wholesale">Wholesale</span>
+        <span>Wholesale</span>
       </div>
     </div>
   </div>
@@ -2389,9 +2304,9 @@ textarea {
   <section class="section" id="categories">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title" data-i18n="categories.title">Browse Categories</h2>
+        <h2 class="section-title">Browse Categories</h2>
         <a href="#all-categories" class="view-all">
-          <span data-i18n="categories.viewAll">View All</span>
+          <span>View All</span>
           <i class="fas fa-arrow-right"></i>
         </a>
       </div>
@@ -2404,13 +2319,23 @@ textarea {
   <section class="section" id="products">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title" data-i18n="products.featured">Featured Products</h2>
+        <h2 class="section-title">Featured Products</h2>
         <div class="filters">
+          <button class="btn btn-outline btn-sm" id="refreshProductsBtn">
+            <i class="fas fa-sync-alt"></i>
+            <span>Refresh</span>
+          </button>
           <button class="btn btn-outline btn-sm" id="filterBtn">
             <i class="fas fa-filter"></i>
-            <span data-i18n="products.filters">Filters</span>
+            <span>Filters</span>
           </button>
         </div>
+      </div>
+      
+      <!-- Products Loading Indicator -->
+      <div id="productsLoading" class="loading">
+        <div class="loading-spinner"></div>
+        <p>Loading products from GitHub...</p>
       </div>
       
       <div class="products-grid" id="productsGrid"></div>
@@ -2418,7 +2343,7 @@ textarea {
       <div class="text-center mt-5">
         <button class="btn btn-primary" id="loadMoreBtn">
           <i class="fas fa-plus"></i>
-          <span data-i18n="products.loadMore">Load More Products</span>
+          <span>Load More Products</span>
         </button>
       </div>
     </div>
@@ -2429,31 +2354,31 @@ textarea {
     <div class="container">
       <div class="deals-banner">
         <div class="deals-content">
-          <h2 class="deals-title" data-i18n="deals.title">Weekend Super Sale!</h2>
-          <p class="deals-subtitle" data-i18n="deals.subtitle">Up to 50% off on selected items. Limited time offer!</p>
+          <h2 class="deals-title">Weekend Super Sale!</h2>
+          <p class="deals-subtitle">Up to 50% off on selected items. Limited time offer!</p>
           
           <div class="deals-timer" id="dealTimer">
             <div class="timer-item">
               <div class="timer-value" id="days">00</div>
-              <div class="timer-label" data-i18n="deals.days">Days</div>
+              <div class="timer-label">Days</div>
             </div>
             <div class="timer-item">
               <div class="timer-value" id="hours">00</div>
-              <div class="timer-label" data-i18n="deals.hours">Hours</div>
+              <div class="timer-label">Hours</div>
             </div>
             <div class="timer-item">
               <div class="timer-value" id="minutes">00</div>
-              <div class="timer-label" data-i18n="deals.minutes">Minutes</div>
+              <div class="timer-label">Minutes</div>
             </div>
             <div class="timer-item">
               <div class="timer-value" id="seconds">00</div>
-              <div class="timer-label" data-i18n="deals.seconds">Seconds</div>
+              <div class="timer-label">Seconds</div>
             </div>
           </div>
           
           <a href="#sale-products" class="btn btn-secondary btn-lg">
             <i class="fas fa-bolt"></i>
-            <span data-i18n="deals.shopSale">Shop Sale Items</span>
+            <span>Shop Sale Items</span>
           </a>
         </div>
       </div>
@@ -2464,10 +2389,10 @@ textarea {
   <section class="section" id="wholesale">
     <div class="container">
       <div class="section-header">
-        <h2 class="section-title" data-i18n="wholesale.title">Wholesale Advantages</h2>
+        <h2 class="section-title">Wholesale Advantages</h2>
         <a href="#wholesale-form" class="btn btn-success">
           <i class="fas fa-file-invoice-dollar"></i>
-          <span data-i18n="wholesale.requestQuote">Request Quote</span>
+          <span>Request Quote</span>
         </a>
       </div>
       
@@ -2476,32 +2401,32 @@ textarea {
           <div class="category-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
             <i class="fas fa-percentage"></i>
           </div>
-          <h3 class="category-name" data-i18n="wholesale.bulkDiscounts">Bulk Discounts</h3>
-          <p class="category-count" data-i18n="wholesale.saveUpTo">Save up to 40%</p>
+          <h3 class="category-name">Bulk Discounts</h3>
+          <p class="category-count">Save up to 40%</p>
         </div>
         
         <div class="category-card">
           <div class="category-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
             <i class="fas fa-shipping-fast"></i>
           </div>
-          <h3 class="category-name" data-i18n="wholesale.freeDelivery">Free Delivery</h3>
-          <p class="category-count" data-i18n="wholesale.ordersAbove">Orders above 500,000 UGX</p>
+          <h3 class="category-name">Free Delivery</h3>
+          <p class="category-count">Orders above 500,000 UGX</p>
         </div>
         
         <div class="category-card">
           <div class="category-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
             <i class="fas fa-headset"></i>
           </div>
-          <h3 class="category-name" data-i18n="wholesale.dedicatedSupport">Dedicated Support</h3>
-          <p class="category-count" data-i18n="wholesale.personalManager">Personal Account Manager</p>
+          <h3 class="category-name">Dedicated Support</h3>
+          <p class="category-count">Personal Account Manager</p>
         </div>
         
         <div class="category-card">
           <div class="category-icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">
             <i class="fas fa-boxes"></i>
           </div>
-          <h3 class="category-name" data-i18n="wholesale.customPackaging">Custom Packaging</h3>
-          <p class="category-count" data-i18n="wholesale.brandYourProducts">Brand your products</p>
+          <h3 class="category-name">Custom Packaging</h3>
+          <p class="category-count">Brand your products</p>
         </div>
       </div>
     </div>
@@ -2512,7 +2437,7 @@ textarea {
 <div class="cart-overlay" id="cartOverlay"></div>
 <div class="cart-sidebar" id="cartSidebar">
   <div class="cart-header">
-    <h3 class="cart-title" data-i18n="cart.title">Your Cart</h3>
+    <h3 class="cart-title">Your Cart</h3>
     <button class="cart-close" id="cartClose">
       <i class="fas fa-times"></i>
     </button>
@@ -2523,27 +2448,27 @@ textarea {
   <div class="cart-footer">
     <div class="cart-summary">
       <div class="summary-row">
-        <span data-i18n="cart.subtotal">Subtotal:</span>
+        <span>Subtotal:</span>
         <span id="cartSubtotal">UGX 0</span>
       </div>
       <div class="summary-row">
-        <span data-i18n="cart.delivery">Delivery:</span>
-        <span id="cartDelivery" data-i18n="cart.calculated">Calculated at checkout</span>
+        <span>Delivery:</span>
+        <span id="cartDelivery">Calculated at checkout</span>
       </div>
       <div class="summary-row summary-total">
-        <span data-i18n="cart.total">Total:</span>
+        <span>Total:</span>
         <span id="cartTotal">UGX 0</span>
       </div>
     </div>
     
     <a href="https://wa.me/256783501222" class="btn btn-whatsapp btn-full" id="whatsappCheckout" target="_blank">
       <i class="fab fa-whatsapp"></i>
-      <span data-i18n="cart.checkoutWhatsapp">Checkout on WhatsApp</span>
+      <span>Checkout on WhatsApp</span>
     </a>
     
     <button class="btn btn-outline btn-full mt-3" id="clearCartBtn">
       <i class="fas fa-trash"></i>
-      <span data-i18n="cart.clear">Clear Cart</span>
+      <span>Clear Cart</span>
     </button>
   </div>
 </div>
@@ -2552,7 +2477,7 @@ textarea {
 <div class="product-quick-view" id="quickViewModal">
   <div class="quick-view-content">
     <div class="quick-view-header">
-      <h3 class="quick-view-title" data-i18n="quickview.title">Product Details</h3>
+      <h3 class="quick-view-title">Product Details</h3>
       <button class="quick-view-close" id="quickViewClose">
         <i class="fas fa-times"></i>
       </button>
@@ -2564,7 +2489,7 @@ textarea {
 </div>
 
 <!-- WhatsApp FAB -->
-<a href="https://wa.me/256783501222" class="whatsapp-fab" target="_blank" aria-label="Chat on WhatsApp" data-i18n-label="whatsapp.label">
+<a href="https://wa.me/256783501222" class="whatsapp-fab" target="_blank" aria-label="Chat on WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -2573,12 +2498,12 @@ textarea {
   <div class="container">
     <div class="footer-grid">
       <div class="footer-section">
-        <h3 data-i18n="footer.about">Orji Supplies</h3>
-        <p data-i18n="footer.description">Uganda's complete marketplace for all your needs. Quality products, wholesale prices, reliable delivery.</p>
+        <h3>Orji Supplies</h3>
+        <p>Uganda's complete marketplace for all your needs. Quality products, wholesale prices, reliable delivery.</p>
         <div class="contact-info">
           <div class="contact-item">
             <i class="fas fa-map-marker-alt contact-icon"></i>
-            <span data-i18n="footer.address">Discover Plaza, Kampala, Uganda</span>
+            <span>Discover Plaza, Kampala, Uganda</span>
           </div>
           <div class="contact-item">
             <i class="fas fa-phone contact-icon"></i>
@@ -2596,45 +2521,45 @@ textarea {
       </div>
       
       <div class="footer-section">
-        <h3 data-i18n="footer.quickLinks">Quick Links</h3>
+        <h3>Quick Links</h3>
         <ul class="footer-links">
-          <li><a href="#home"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.home">Home</span></a></li>
-          <li><a href="#products"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.products">Products</span></a></li>
-          <li><a href="#categories"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.categories">Categories</span></a></li>
-          <li><a href="#deals"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.deals">Deals</span></a></li>
-          <li><a href="#wholesale"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.wholesale">Wholesale</span></a></li>
-          <li><a href="#about"><i class="fas fa-chevron-right"></i> <span data-i18n="nav.about">About Us</span></a></li>
+          <li><a href="#home"><i class="fas fa-chevron-right"></i> <span>Home</span></a></li>
+          <li><a href="#products"><i class="fas fa-chevron-right"></i> <span>Products</span></a></li>
+          <li><a href="#categories"><i class="fas fa-chevron-right"></i> <span>Categories</span></a></li>
+          <li><a href="#deals"><i class="fas fa-chevron-right"></i> <span>Deals</span></a></li>
+          <li><a href="#wholesale"><i class="fas fa-chevron-right"></i> <span>Wholesale</span></a></li>
+          <li><a href="#about"><i class="fas fa-chevron-right"></i> <span>About Us</span></a></li>
         </ul>
       </div>
       
       <div class="footer-section">
-        <h3 data-i18n="footer.customerService">Customer Service</h3>
+        <h3>Customer Service</h3>
         <ul class="footer-links">
-          <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="footer.contact">Contact Us</span></a></li>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="footer.faq">FAQ</span></a></li>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="footer.shipping">Shipping Policy</span></a></li>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="footer.returns">Returns & Refunds</span></a></li>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="footer.privacy">Privacy Policy</span></a></li>
-          <li><a href="#"><i class="fas fa-chevron-right"></i> <span data-i18n="footer.terms">Terms of Service</span></a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> <span>Contact Us</span></a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> <span>FAQ</span></a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> <span>Shipping Policy</span></a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> <span>Returns & Refunds</span></a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> <span>Privacy Policy</span></a></li>
+          <li><a href="#"><i class="fas fa-chevron-right"></i> <span>Terms of Service</span></a></li>
         </ul>
       </div>
       
       <div class="footer-section">
-        <h3 data-i18n="footer.newsletter">Newsletter</h3>
-        <p data-i18n="footer.newsletterDesc">Subscribe to get updates on new products and special offers.</p>
+        <h3>Newsletter</h3>
+        <p>Subscribe to get updates on new products and special offers.</p>
         <form class="newsletter-form" id="newsletterForm">
-          <input type="email" class="newsletter-input" placeholder="Your email address" data-i18n-placeholder="footer.emailPlaceholder" required>
+          <input type="email" class="newsletter-input" placeholder="Your email address" required>
           <button type="submit" class="btn btn-primary">
             <i class="fas fa-paper-plane"></i>
           </button>
         </form>
-        <p class="text-gray mt-3" data-i18n="footer.privacyAgree">By subscribing, you agree to our Privacy Policy.</p>
+        <p class="text-gray mt-3">By subscribing, you agree to our Privacy Policy.</p>
       </div>
     </div>
     
     <div class="footer-bottom">
-      <p data-i18n="footer.copyright">&copy; 2024 Orji Supplies. All rights reserved. | Designed by Orji Supplies ICT Solutions</p>
-      <p class="mt-2" data-i18n="footer.location">Kampala, Uganda | VAT: XXXXXXXX</p>
+      <p>&copy; 2024 Orji Supplies. All rights reserved. | Designed by Orji Supplies ICT Solutions</p>
+      <p class="mt-2">Kampala, Uganda | VAT: XXXXXXXX</p>
     </div>
   </div>
 </footer>
@@ -2649,9 +2574,16 @@ const CONFIG = {
   companyName: 'Orji Supplies',
   currency: 'UGX',
   freeDeliveryThreshold: 500000,
-  whatsappMessage: {
-    en: 'Hi Orji Supplies, I would like to place an order:',
-    ti: 'ሰላም ኦርጂ ስፕላየስ፡ ስድራ ክወስድ ደልየ ኣለኹ፡'
+  whatsappMessage: 'Hi Orji Supplies, I would like to place an order:',
+  
+  // GitHub Configuration
+  github: {
+    owner: 'hunter9201',
+    repo: 'Orji-Supplies',
+    branch: 'main',
+    productsPath: 'products.json',
+    imagesFolder: 'images',
+    rawBaseUrl: 'https://raw.githubusercontent.com'
   }
 };
 
@@ -2666,430 +2598,8 @@ let state = {
   allProducts: [],
   filteredProducts: [],
   categories: [],
-  userLocation: null,
-  currentLanguage: 'en'
+  userLocation: null
 };
-
-// ===== LANGUAGE TRANSLATIONS =====
-const translations = {
-  en: {
-    // Navigation
-    "nav.home": "Home",
-    "nav.categories": "Categories",
-    "nav.products": "Products",
-    "nav.deals": "Deals",
-    "nav.wholesale": "Wholesale",
-    "nav.about": "About",
-    "nav.contact": "Contact",
-    
-    // Hero Section
-    "hero.title": "Everything You Need, Delivered",
-    "hero.subtitle": "Uganda's #1 wholesale & retail marketplace. From groceries to electronics, home goods to industrial supplies.",
-    "hero.products": "Products",
-    "hero.categories": "Categories",
-    "hero.support": "Support",
-    "hero.free": "Free",
-    "hero.delivery": "Delivery*",
-    "hero.shopNow": "Shop Now",
-    "hero.whatsapp": "Chat on WhatsApp",
-    "hero.bulkOrders": "Bulk Orders",
-    
-    // Categories
-    "categories.title": "Browse Categories",
-    "categories.viewAll": "View All",
-    
-    // Products
-    "products.featured": "Featured Products",
-    "products.filters": "Filters",
-    "products.loadMore": "Load More Products",
-    "products.addToCart": "Add to Cart",
-    "products.view": "View",
-    "products.inStock": "In Stock",
-    "products.lowStock": "Low Stock",
-    "products.outOfStock": "Out of Stock",
-    "products.moq": "MOQ",
-    
-    // Deals
-    "deals.title": "Weekend Super Sale!",
-    "deals.subtitle": "Up to 50% off on selected items. Limited time offer!",
-    "deals.days": "Days",
-    "deals.hours": "Hours",
-    "deals.minutes": "Minutes",
-    "deals.seconds": "Seconds",
-    "deals.shopSale": "Shop Sale Items",
-    
-    // Wholesale
-    "wholesale.title": "Wholesale Advantages",
-    "wholesale.requestQuote": "Request Quote",
-    "wholesale.bulkDiscounts": "Bulk Discounts",
-    "wholesale.saveUpTo": "Save up to 40%",
-    "wholesale.freeDelivery": "Free Delivery",
-    "wholesale.ordersAbove": "Orders above 500,000 UGX",
-    "wholesale.dedicatedSupport": "Dedicated Support",
-    "wholesale.personalManager": "Personal Account Manager",
-    "wholesale.customPackaging": "Custom Packaging",
-    "wholesale.brandYourProducts": "Brand your products",
-    
-    // Mode
-    "mode.retail": "Retail",
-    "mode.wholesale": "Wholesale",
-    
-    // Cart
-    "cart.title": "Your Cart",
-    "cart.subtotal": "Subtotal:",
-    "cart.delivery": "Delivery:",
-    "cart.calculated": "Calculated at checkout",
-    "cart.total": "Total:",
-    "cart.checkoutWhatsapp": "Checkout on WhatsApp",
-    "cart.clear": "Clear Cart",
-    "cart.remove": "Remove",
-    "cart.empty": "Your cart is empty",
-    "cart.browse": "Browse Products",
-    
-    // Quick View
-    "quickview.title": "Product Details",
-    "quickview.stock": "Stock",
-    "quickview.rating": "Rating",
-    "quickview.status": "Status",
-    
-    // Footer
-    "footer.about": "Orji Supplies",
-    "footer.description": "Uganda's complete marketplace for all your needs. Quality products, wholesale prices, reliable delivery.",
-    "footer.address": "Discover Plaza, Kampala, Uganda",
-    "footer.quickLinks": "Quick Links",
-    "footer.customerService": "Customer Service",
-    "footer.contact": "Contact Us",
-    "footer.faq": "FAQ",
-    "footer.shipping": "Shipping Policy",
-    "footer.returns": "Returns & Refunds",
-    "footer.privacy": "Privacy Policy",
-    "footer.terms": "Terms of Service",
-    "footer.newsletter": "Newsletter",
-    "footer.newsletterDesc": "Subscribe to get updates on new products and special offers.",
-    "footer.emailPlaceholder": "Your email address",
-    "footer.privacyAgree": "By subscribing, you agree to our Privacy Policy.",
-    "footer.copyright": "© 2024 Orji Supplies. All rights reserved. | Designed by Orji Supplies ICT Solutions",
-    "footer.location": "Kampala, Uganda | VAT: XXXXXXXX",
-    
-    // Search
-    "search.placeholder": "Search for anything...",
-    
-    // Toast Messages
-    "toast.addedToCart": "added to cart",
-    "toast.removedFromCart": "removed from cart",
-    "toast.cartCleared": "Cart cleared",
-    "toast.welcome": "Welcome to Orji Supplies!",
-    "toast.languageChanged": "Language changed to",
-    "toast.modeChanged": "Switched to",
-    "toast.foundProducts": "Found products for",
-    
-    // Tagline
-    "tagline": "Everything Marketplace"
-  },
-  
-  ti: {
-    // Navigation
-    "nav.home": "መበገሲ",
-    "nav.categories": "ዓይነታት",
-    "nav.products": "ዕቋር",
-    "nav.deals": "ዋጋ ምቕናስ",
-    "nav.wholesale": "ብጅግራን ዕቋር",
-    "nav.about": "ብዛዕባና",
-    "nav.contact": "ርኸብና",
-    
-    // Hero Section
-    "hero.title": "ኩሉ ዘድልየካ ኣብ ቤትካ ንምምላስ",
-    "hero.subtitle": "ቀዳማይ መደበር ኣገልግሎት ኣገባብ ዕቋር ኣብ ኡጋንዳ. ካብ መብልዕ ክሳብ ኤሌክትሮኒክስ፡ ካብ ንብረት ቤት ክሳብ ንብረት ኢንዱስትሪ።",
-    "hero.products": "ዕቋር",
-    "hero.categories": "ዓይነታት",
-    "hero.support": "ደገፍ",
-    "hero.free": "ነጻ",
-    "hero.delivery": "ምድላይ*",
-    "hero.shopNow": "ሕጂ ይሕዝ",
-    "hero.whatsapp": "ብዋትስአፕ ተዛረብ",
-    "hero.bulkOrders": "ብጅግራን ዕቋር",
-    
-    // Categories
-    "categories.title": "ዓይነታት ዕቋር ርአ",
-    "categories.viewAll": "ኩሎም ርአ",
-    
-    // Products
-    "products.featured": "ርእሰ ዕቋር",
-    "products.filters": "ፍልጠታት",
-    "products.loadMore": "ተወሳኺ ዕቋር ጽዕነ",
-    "products.addToCart": "ናብ ባዶ ግዳፅ",
-    "products.view": "ርአ",
-    "products.inStock": "ኣብ መዝገብ ኣሎ",
-    "products.lowStock": "ውሑድ ኣሎ",
-    "products.outOfStock": "ወዲእ ኣሎ",
-    "products.moq": "ናይ ትሕቲ ቁጽሪ",
-    
-    // Deals
-    "deals.title": "ዓርቢ ሳላ!",
-    "deals.subtitle": "ክሳብ 50% ምቕናስ ኣብ ዝተሓየሸ ዕቋር። ንግዜ ዝወሰነ ቅናት!",
-    "deals.days": "መዓልታት",
-    "deals.hours": "ሰዓታት",
-    "deals.minutes": "ደቒቓታት",
-    "deals.seconds": "ሰከንዳት",
-    "deals.shopSale": "ዕቋር ሳላ ግዛ",
-    
-    // Wholesale
-    "wholesale.title": "ብጅግራን ዕቋር ዓቕሚታት",
-    "wholesale.requestQuote": "ዋጋ ሕተት",
-    "wholesale.bulkDiscounts": "ብጅግራን ምቕናስ",
-    "wholesale.saveUpTo": "ክሳብ 40% ኣጕል",
-    "wholesale.freeDelivery": "ነጻ ምድላይ",
-    "wholesale.ordersAbove": "ካብ 500,000 UGX ንላዕሊ ዝኸውን ዕቋር",
-    "wholesale.dedicatedSupport": "ፍሉይ ደገፍ",
-    "wholesale.personalManager": "ፍሉይ ኣካውንት ሜነጀር",
-    "wholesale.customPackaging": "ብፍላይ ምሸጣ",
-    "wholesale.brandYourProducts": "ናይ ንብረትካ ስም ግበር",
-    
-    // Mode
-    "mode.retail": "ብተንኮል",
-    "mode.wholesale": "ብጅግራን",
-    
-    // Cart
-    "cart.title": "ባዶኻ",
-    "cart.subtotal": "ናይ ትሕቲ ድምር:",
-    "cart.delivery": "ምድላይ:",
-    "cart.calculated": "ኣብ ምቕራብ ይቑጸር",
-    "cart.total": "ድምር:",
-    "cart.checkoutWhatsapp": "ብዋትስአፕ ኣውጽእ",
-    "cart.clear": "ባዶ ኣጽርዮ",
-    "cart.remove": "ኣውጽእ",
-    "cart.empty": "ባዶኻ ባዶ ኣሎ",
-    "cart.browse": "ዕቋር ርአ",
-    
-    // Quick View
-    "quickview.title": "ዝርዝር ዕቋር",
-    "quickview.stock": "መዝገብ",
-    "quickview.rating": "ደረጃ",
-    "quickview.status": "ስርዓት",
-    
-    // Footer
-    "footer.about": "ኦርጂ ስፕላየስ",
-    "footer.description": "ብሉጽ መደበር ኣገልግሎት ኣገባብ ዕቋር ኣብ ኡጋንዳ። ብሉጽ ዕቋር፡ ናይ ብጅግራን ዋጋ፡ ኣማኒ ምድላይ።",
-    "footer.address": "ዲስኮቨር ፕላዛ፡ ካምፓላ፡ ኡጋንዳ",
-    "footer.quickLinks": "ቅልጡፍ ሊንክታት",
-    "footer.customerService": "ኣገልግሎት ዓማዊል",
-    "footer.contact": "ርኸብና",
-    "footer.faq": "ተደጋጋሚ ሕቶታት",
-    "footer.shipping": "ስርዓት ምድላይ",
-    "footer.returns": "ምምላስ & ምምላስ ገንዘብ",
-    "footer.privacy": "ስርዓት ምስጢር",
-    "footer.terms": "ስርዓታት ኣገልግሎት",
-    "footer.newsletter": "ዜና መጋቢ",
-    "footer.newsletterDesc": "ብዛዕባ ሓድሽ ዕቋርን ፍሉይ ቅናትን ምእዋጅ ርኣይ።",
-    "footer.emailPlaceholder": "ኢመይልካ",
-    "footer.privacyAgree": "ብምዝገባካ፡ ንስርዓት ምስጢርና ትቕበሎ።",
-    "footer.copyright": "© 2024 ኦርጂ ስፕላየስ። ኩሉ መሰል ይሕግዝ። | ብኦርጂ ስፕላየስ ኣይሲቲ ሶልሽንስ ዝተነድፈ",
-    "footer.location": "ካምፓላ፡ ኡጋንዳ | ቫት: XXXXXXXX",
-    
-    // Search
-    "search.placeholder": "ንሓደ ነገር ድለይ...",
-    
-    // Toast Messages
-    "toast.addedToCart": "ናብ ባዶ ተወሰኸ",
-    "toast.removedFromCart": "ካብ ባዶ ተወጽአ",
-    "toast.cartCleared": "ባዶ ተጸሪዩ",
-    "toast.welcome": "ናብ ኦርጂ ስፕላየስ ብደሓን መጻእኩም!",
-    "toast.languageChanged": "ቋንቋ ተቐይሩ ናብ",
-    "toast.modeChanged": "ተቐይሩ ናብ",
-    "toast.foundProducts": "ዕቋር ተረኺቡ ኣብ",
-    
-    // Tagline
-    "tagline": "ኩሉ ዘለዎ መደበር"
-  }
-};
-
-// Tigrinya product names and descriptions
-const tigrinyaProductData = {
-  // Groceries
-  "Premium Basmati Rice 50kg": "ፕሪሚየም ባስማቲ ሩዝ 50ኪግ",
-  "Sunflower Cooking Oil 20L": "ዘይቲ ቆሎ ንምብላዕ 20ሊተር",
-  "Sugar 50kg": "ሽኰር 50ኪግ",
-  "Maize Flour 10kg": "ዱቂ ዕፉን 10ኪግ",
-  
-  // Electronics
-  "Smartphone Samsung A14": "ስማርትፎን ሳምሰንግ ኤ14",
-  "LED TV 43\"": "ኤልኢዲ ቲቪ 43\"",
-  "Laptop HP 15s": "ላፕቶፕ ኤችፒ 15s",
-  
-  // Descriptions
-  "Premium quality Basmati rice, perfect for restaurants and households": "ፕሪሚየም ባስማቲ ሩዝ፡ ንምባል ቤትን ቤተሰባትን ግቡእ",
-  "Pure sunflower cooking oil, 20-liter jerrycan": "ጽሩይ ዘይቲ ቆሎ ንምብላዕ፡ 20ሊተር ጀሪካን",
-  "Samsung Galaxy A14, 128GB, 4GB RAM, 6.6\" Display": "ሳምሰንግ ጋላክሲ ኤ14፡ 128ጊባ፡ 4ጊባ ራም፡ 6.6\" ስክሪን"
-};
-
-// ===== PRODUCTS DATABASE (Same as before - 120+ products) =====
-const PRODUCTS_DB = [
-  // Groceries (12 products)
-  {
-    id: 'gro001',
-    name: 'Premium Basmati Rice 50kg',
-    name_ti: 'ፕሪሚየም ባስማቲ ሩዝ 50ኪግ',
-    category: 'groceries',
-    subcategory: 'staples',
-    retailPrice: 150000,
-    wholesalePrice: 130000,
-    moq: 5,
-    unit: 'bag',
-    stock: 45,
-    popular: true,
-    sale: false,
-    new: false,
-    rating: 4.5,
-    images: ['https://images.unsplash.com/photo-1586201375761-83865001e3cb?q=80&w=800&auto=format&fit=crop'],
-    description: 'Premium quality Basmati rice, perfect for restaurants and households',
-    description_ti: 'ፕሪሚየም ባስማቲ ሩዝ፡ ንምባል ቤትን ቤተሰባትን ግቡእ'
-  },
-  {
-    id: 'gro002',
-    name: 'Sunflower Cooking Oil 20L',
-    name_ti: 'ዘይቲ ቆሎ ንምብላዕ 20ሊተር',
-    category: 'groceries',
-    subcategory: 'cooking',
-    retailPrice: 80000,
-    wholesalePrice: 72000,
-    moq: 10,
-    unit: 'jerrycan',
-    stock: 30,
-    popular: true,
-    sale: true,
-    new: false,
-    rating: 4.7,
-    images: ['https://images.unsplash.com/photo-1533050487297-09b450131914?q=80&w=800&auto=format&fit=crop'],
-    description: 'Pure sunflower cooking oil, 20-liter jerrycan',
-    description_ti: 'ጽሩይ ዘይቲ ቆሎ ንምብላዕ፡ 20ሊተር ጀሪካን'
-  },
-  {
-    id: 'gro003',
-    name: 'Sugar 50kg',
-    name_ti: 'ሽኰር 50ኪግ',
-    category: 'groceries',
-    subcategory: 'staples',
-    retailPrice: 180000,
-    wholesalePrice: 160000,
-    moq: 5,
-    unit: 'bag',
-    stock: 25,
-    popular: true,
-    sale: false,
-    new: false,
-    rating: 4.3,
-    images: ['https://images.unsplash.com/photo-1589476993333-f55b84301219?q=80&w=800&auto=format&fit=crop'],
-    description: 'Refined white sugar, 50kg bag',
-    description_ti: 'ጽሩይ ጻዕዳ ሽኰር፡ 50ኪግ ባርኔት'
-  },
-  // ... Add all other products with Tigrinya translations
-  // For brevity, I'm showing 3 examples. You should add translations for all products.
-];
-
-// ===== CATEGORIES DATABASE =====
-const CATEGORIES_DB = [
-  { 
-    id: 'groceries', 
-    name: 'Groceries & Food', 
-    name_ti: 'መብልዕ & መግቢ',
-    icon: 'fas fa-shopping-basket', 
-    count: 12, 
-    color: '#10b981' 
-  },
-  { 
-    id: 'electronics', 
-    name: 'Electronics', 
-    name_ti: 'ኤሌክትሮኒክስ',
-    icon: 'fas fa-laptop', 
-    count: 12, 
-    color: '#3b82f6' 
-  },
-  { 
-    id: 'home', 
-    name: 'Home & Kitchen', 
-    name_ti: 'ቤት & ክሽነ',
-    icon: 'fas fa-home', 
-    count: 12, 
-    color: '#8b5cf6' 
-  },
-  { 
-    id: 'fashion', 
-    name: 'Clothing & Fashion', 
-    name_ti: 'ክዳውንቲ & ፋሽን',
-    icon: 'fas fa-tshirt', 
-    count: 12, 
-    color: '#ec4899' 
-  },
-  { 
-    id: 'construction', 
-    name: 'Building Materials', 
-    name_ti: 'ንብረት ህንጻ',
-    icon: 'fas fa-tools', 
-    count: 12, 
-    color: '#f59e0b' 
-  },
-  { 
-    id: 'office', 
-    name: 'Office Supplies', 
-    name_ti: 'ንብረት ቤት ጽሕፈት',
-    icon: 'fas fa-briefcase', 
-    count: 12, 
-    color: '#6366f1' 
-  },
-  { 
-    id: 'beauty', 
-    name: 'Health & Beauty', 
-    name_ti: 'ጥዕና & ጽባቐ',
-    icon: 'fas fa-heart', 
-    count: 12, 
-    color: '#ef4444' 
-  },
-  { 
-    id: 'baby', 
-    name: 'Baby & Kids', 
-    name_ti: 'ህጻን & ቆልዑ',
-    icon: 'fas fa-baby', 
-    count: 12, 
-    color: '#06b6d4' 
-  },
-  { 
-    id: 'sports', 
-    name: 'Sports & Fitness', 
-    name_ti: 'ስፖርት & ጥዕና',
-    icon: 'fas fa-dumbbell', 
-    count: 12, 
-    color: '#84cc16' 
-  },
-  { 
-    id: 'automotive', 
-    name: 'Automotive', 
-    name_ti: 'መኪና',
-    icon: 'fas fa-car', 
-    count: 12, 
-    color: '#64748b' 
-  },
-  { 
-    id: 'agriculture', 
-    name: 'Agriculture', 
-    name_ti: 'ሕርሻ',
-    icon: 'fas fa-tractor', 
-    count: 12, 
-    color: '#22c55e' 
-  },
-  { 
-    id: 'industrial', 
-    name: 'Industrial', 
-    name_ti: 'ኢንዱስትሪ',
-    icon: 'fas fa-industry', 
-    count: 12, 
-    color: '#475569' 
-  }
-];
-
-// Initialize with counts from PRODUCTS_DB
-CATEGORIES_DB.forEach(cat => {
-  cat.count = PRODUCTS_DB.filter(p => p.category === cat.id).length;
-});
 
 // ===== DOM ELEMENTS =====
 const elements = {
@@ -3112,9 +2622,11 @@ const elements = {
   mobileSearchInput: document.getElementById('mobileSearchInput'),
   mobileSearchBtn: document.getElementById('mobileSearchBtn'),
   productsGrid: document.getElementById('productsGrid'),
+  productsLoading: document.getElementById('productsLoading'),
   categoriesGrid: document.getElementById('categoriesGrid'),
   quickCategories: document.getElementById('quickCategories'),
   loadMoreBtn: document.getElementById('loadMoreBtn'),
+  refreshProductsBtn: document.getElementById('refreshProductsBtn'),
   dealTimer: document.getElementById('dealTimer'),
   days: document.getElementById('days'),
   hours: document.getElementById('hours'),
@@ -3124,10 +2636,90 @@ const elements = {
   quickViewModal: document.getElementById('quickViewModal'),
   quickViewClose: document.getElementById('quickViewClose'),
   quickViewBody: document.getElementById('quickViewBody'),
-  langBtn: document.getElementById('langBtn'),
-  langDropdown: document.getElementById('langDropdown'),
-  currentLang: document.getElementById('currentLang')
+  totalProducts: document.getElementById('totalProducts'),
+  totalCategories: document.getElementById('totalCategories')
 };
+
+// ===== CATEGORIES DATABASE =====
+const CATEGORIES_DB = [
+  { 
+    id: 'accessories', 
+    name: 'Accessories', 
+    icon: 'fas fa-headphones', 
+    count: 0,
+    color: '#10b981' 
+  },
+  { 
+    id: 'home', 
+    name: 'Home Goods', 
+    icon: 'fas fa-home', 
+    count: 0,
+    color: '#3b82f6' 
+  },
+  { 
+    id: 'laundry', 
+    name: 'Laundry', 
+    icon: 'fas fa-tshirt', 
+    count: 0,
+    color: '#8b5cf6' 
+  },
+  { 
+    id: 'pest', 
+    name: 'Pest Control', 
+    icon: 'fas fa-bug', 
+    count: 0,
+    color: '#ec4899' 
+  },
+  { 
+    id: 'office-supplies', 
+    name: 'Office Supplies', 
+    icon: 'fas fa-briefcase', 
+    count: 0,
+    color: '#f59e0b' 
+  },
+  { 
+    id: 'cleaning', 
+    name: 'Cleaning Products', 
+    icon: 'fas fa-broom', 
+    count: 0,
+    color: '#6366f1' 
+  },
+  { 
+    id: 'stationery', 
+    name: 'Stationery', 
+    icon: 'fas fa-pen', 
+    count: 0,
+    color: '#ef4444' 
+  },
+  { 
+    id: 'furniture', 
+    name: 'Furniture', 
+    icon: 'fas fa-couch', 
+    count: 0,
+    color: '#06b6d4' 
+  },
+  { 
+    id: 'electronics', 
+    name: 'Electronics', 
+    icon: 'fas fa-laptop', 
+    count: 0,
+    color: '#84cc16' 
+  },
+  { 
+    id: 'groceries', 
+    name: 'Groceries', 
+    icon: 'fas fa-shopping-basket', 
+    count: 0,
+    color: '#64748b' 
+  },
+  { 
+    id: 'other', 
+    name: 'Other', 
+    icon: 'fas fa-box', 
+    count: 0,
+    color: '#475569' 
+  }
+];
 
 // ===== UTILITY FUNCTIONS =====
 const utils = {
@@ -3143,27 +2735,21 @@ const utils = {
   showToast: (message, type = 'info') => {
     const toast = document.createElement('div');
     toast.className = `toast ${type}`;
-    toast.innerHTML = `
-      <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : type === 'warning' ? 'exclamation-triangle' : 'info-circle'}"></i>
-      <span>${message}</span>
-    `;
+    const icon = type === 'success' ? 'check-circle' : 
+                 type === 'error' ? 'exclamation-circle' : 
+                 type === 'warning' ? 'exclamation-triangle' : 'info-circle';
+    toast.innerHTML = `<i class="fas fa-${icon}"></i><span>${message}</span>`;
     
     elements.toastContainer.appendChild(toast);
     
-    setTimeout(() => {
-      toast.remove();
-    }, 5000);
+    setTimeout(() => toast.remove(), 5000);
   },
   
   debounce: (func, wait) => {
     let timeout;
-    return function executedFunction(...args) {
-      const later = () => {
-        clearTimeout(timeout);
-        func(...args);
-      };
+    return (...args) => {
       clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
+      timeout = setTimeout(() => func(...args), wait);
     };
   },
   
@@ -3172,7 +2758,7 @@ const utils = {
   },
   
   getMinQty: (product) => {
-    return state.mode === 'retail' ? 1 : product.moq;
+    return state.mode === 'retail' ? 1 : (product.moq || 1);
   },
   
   closeMobileMenu: () => {
@@ -3186,127 +2772,137 @@ const utils = {
   },
   
   handleImageError: (img) => {
-    img.src = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f0f0f0"/><text x="200" y="150" font-family="Arial" font-size="14" text-anchor="middle" fill="%23666">Image not available</text></svg>';
+    const fallbackSvg = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f0f0f0"/><text x="200" y="150" font-family="Arial" font-size="14" text-anchor="middle" fill="%23666">Image not available</text></svg>';
+    if (img.src !== fallbackSvg) img.src = fallbackSvg;
   },
   
-  translateElement: (element) => {
-    const i18nKey = element.getAttribute('data-i18n');
-    const placeholderKey = element.getAttribute('data-i18n-placeholder');
-    const labelKey = element.getAttribute('data-i18n-label');
-    
-    if (i18nKey && translations[state.currentLanguage] && translations[state.currentLanguage][i18nKey]) {
-      if (element.tagName === 'INPUT' && element.type === 'submit') {
-        element.value = translations[state.currentLanguage][i18nKey];
-      } else if (element.tagName === 'IMG' && element.hasAttribute('alt')) {
-        element.alt = translations[state.currentLanguage][i18nKey];
-      } else {
-        element.textContent = translations[state.currentLanguage][i18nKey];
-      }
-    }
-    
-    if (placeholderKey && translations[state.currentLanguage] && translations[state.currentLanguage][placeholderKey]) {
-      element.placeholder = translations[state.currentLanguage][placeholderKey];
-    }
-    
-    if (labelKey && translations[state.currentLanguage] && translations[state.currentLanguage][labelKey]) {
-      element.setAttribute('aria-label', translations[state.currentLanguage][labelKey]);
+  // Load products from GitHub
+  loadProductsFromGitHub: async () => {
+    try {
+      elements.productsLoading.classList.add('active');
+      elements.productsGrid.innerHTML = '';
+      
+      const productsUrl = `${CONFIG.github.rawBaseUrl}/${CONFIG.github.owner}/${CONFIG.github.repo}/${CONFIG.github.branch}/${CONFIG.github.productsPath}`;
+      
+      console.log('Loading products from:', productsUrl);
+      
+      const response = await fetch(productsUrl + '?t=' + Date.now());
+      
+      if (!response.ok) throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      
+      const products = await response.json();
+      
+      if (!Array.isArray(products)) throw new Error('Invalid products data format');
+      
+      console.log(`Successfully loaded ${products.length} products from GitHub`);
+      
+      // Process products data
+      const processedProducts = products.map(product => ({
+        id: product.id || `prod_${Math.random().toString(36).substr(2, 9)}`,
+        name: product.name || 'Unnamed Product',
+        category: product.category || 'other',
+        subcategory: product.subcategory || 'general',
+        retailPrice: Number(product.retailPrice) || 0,
+        wholesalePrice: Number(product.wholesalePrice) || Number(product.retailPrice) || 0,
+        moq: Number(product.moq) || 1,
+        unit: product.unit || 'piece',
+        stock: product.stock || 50,
+        popular: product.popular || false,
+        sale: product.sale || false,
+        new: product.new || false,
+        rating: product.rating || 4.0,
+        images: Array.isArray(product.imgs) && product.imgs.length > 0 ? product.imgs : ['https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=800&auto=format&fit=crop'],
+        description: product.desc || 'No description available'
+      }));
+      
+      state.allProducts = processedProducts;
+      state.filteredProducts = processedProducts;
+      
+      // Update stats
+      updateCategoryCounts();
+      updateStats();
+      
+      utils.showToast(`Loaded ${products.length} products successfully!`, 'success');
+      
+      // Render products
+      renderProducts();
+      
+    } catch (error) {
+      console.error('Failed to load products from GitHub:', error);
+      utils.showToast('Failed to load products. Please try again later.', 'error');
+      
+      // Fallback to empty state
+      state.allProducts = [];
+      state.filteredProducts = [];
+      updateCategoryCounts();
+      updateStats();
+      renderProducts();
+    } finally {
+      elements.productsLoading.classList.remove('active');
     }
   },
   
-  translatePage: () => {
-    // Update body class for font
-    document.body.classList.toggle('tigrinya', state.currentLanguage === 'ti');
-    
-    // Translate all elements with data-i18n attributes
-    document.querySelectorAll('[data-i18n]').forEach(utils.translateElement);
-    document.querySelectorAll('[data-i18n-placeholder]').forEach(utils.translateElement);
-    document.querySelectorAll('[data-i18n-label]').forEach(utils.translateElement);
-    
-    // Update language button
-    elements.currentLang.textContent = state.currentLanguage === 'en' ? 'EN' : 'ት';
-    
-    // Update active language in dropdown
-    document.querySelectorAll('.lang-option').forEach(option => {
-      option.classList.remove('active');
-      if (option.getAttribute('data-lang') === state.currentLanguage) {
-        option.classList.add('active');
-      }
-    });
-    
-    // Save language preference
-    localStorage.setItem('orji_language', state.currentLanguage);
-    
-    // Re-render dynamic content
-    renderCategories();
-    renderQuickCategories();
-    renderProducts();
-    updateCartUI();
+  // Auto-refresh products every 5 minutes
+  startAutoRefresh: () => {
+    setInterval(() => {
+      console.log('Auto-refreshing products from GitHub...');
+      utils.loadProductsFromGitHub();
+    }, 5 * 60 * 1000);
   }
 };
 
-// ===== INITIALIZATION =====
-function init() {
-  state.allProducts = PRODUCTS_DB;
-  state.filteredProducts = PRODUCTS_DB;
-  state.categories = CATEGORIES_DB;
+// ===== UPDATE STATS =====
+function updateStats() {
+  elements.totalProducts.textContent = state.allProducts.length;
   
-  // Load saved language preference
-  const savedLang = localStorage.getItem('orji_language');
-  if (savedLang && (savedLang === 'en' || savedLang === 'ti')) {
-    state.currentLanguage = savedLang;
-  } else {
-    // Default to English
-    state.currentLanguage = 'en';
-  }
+  const uniqueCategories = [...new Set(state.allProducts.map(p => p.category))];
+  elements.totalCategories.textContent = uniqueCategories.length;
+}
+
+// ===== UPDATE CATEGORY COUNTS =====
+function updateCategoryCounts() {
+  CATEGORIES_DB.forEach(cat => {
+    cat.count = state.allProducts.filter(p => p.category === cat.id).length;
+  });
+  
+  // Update categories in state
+  state.categories = CATEGORIES_DB.filter(cat => cat.count > 0);
+}
+
+// ===== INITIALIZATION =====
+async function init() {
+  // Set initial categories
+  state.categories = CATEGORIES_DB;
   
   loadCartFromStorage();
   setupEventListeners();
-  utils.translatePage();
   renderCategories();
   renderQuickCategories();
-  renderProducts();
   updateCartUI();
   startDealTimer();
+  
+  // Load products from GitHub
+  await utils.loadProductsFromGitHub();
+  
+  // Start auto-refresh
+  utils.startAutoRefresh();
   
   // Preload hero image
   const heroImg = new Image();
   heroImg.src = 'https://i.postimg.cc/Kjyz2mXg/Chat-GPT-Image-Sep-9-2025-08-55-57-AM.png';
   
   setTimeout(() => {
-    utils.showToast(translations[state.currentLanguage]['toast.welcome'], 'success');
+    utils.showToast('Welcome to Orji Supplies!', 'success');
   }, 1000);
 }
 
 // ===== EVENT LISTENERS =====
 function setupEventListeners() {
-  // Language switcher
-  elements.langBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    elements.langDropdown.classList.toggle('active');
-  });
-  
-  document.querySelectorAll('.lang-option').forEach(option => {
-    option.addEventListener('click', (e) => {
-      e.preventDefault();
-      const lang = option.getAttribute('data-lang');
-      if (lang !== state.currentLanguage) {
-        state.currentLanguage = lang;
-        utils.translatePage();
-        utils.showToast(`${translations[state.currentLanguage]['toast.languageChanged']} ${lang === 'en' ? 'English' : 'Tigrinya'}`, 'info');
-      }
-      elements.langDropdown.classList.remove('active');
-    });
-  });
-  
-  document.addEventListener('click', () => {
-    elements.langDropdown.classList.remove('active');
-  });
-  
   elements.modeToggle.addEventListener('change', (e) => {
     state.mode = e.target.checked ? 'wholesale' : 'retail';
     renderProducts();
     updateCartUI();
-    utils.showToast(`${translations[state.currentLanguage]['toast.modeChanged']} ${state.mode}`, 'info');
+    utils.showToast(`Switched to ${state.mode} mode`, 'info');
   });
   
   elements.cartBtn.addEventListener('click', openCart);
@@ -3330,28 +2926,31 @@ function setupEventListeners() {
   
   elements.quickViewClose.addEventListener('click', closeQuickView);
   elements.quickViewModal.addEventListener('click', (e) => {
-    if (e.target === elements.quickViewModal) {
-      closeQuickView();
-    }
+    if (e.target === elements.quickViewModal) closeQuickView();
   });
   
   elements.loadMoreBtn.addEventListener('click', loadMoreProducts);
   
+  elements.refreshProductsBtn.addEventListener('click', () => {
+    elements.refreshProductsBtn.querySelector('i').classList.add('fa-spin');
+    utils.loadProductsFromGitHub().finally(() => {
+      setTimeout(() => {
+        elements.refreshProductsBtn.querySelector('i').classList.remove('fa-spin');
+      }, 500);
+    });
+  });
+  
   document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const email = e.target.querySelector('input').value;
-    utils.showToast(translations[state.currentLanguage]['toast.thankYou'] || 'Thank you for subscribing!', 'success');
+    utils.showToast('Thank you for subscribing!', 'success');
     e.target.reset();
   });
   
   document.addEventListener('click', (e) => {
     if (e.target.classList.contains('access-btn')) {
       const category = e.target.dataset.category;
-      if (category === 'all') {
-        state.currentCategory = 'all';
-      } else {
-        state.currentCategory = category;
-      }
+      state.currentCategory = category;
       state.currentPage = 1;
       renderProducts();
       
@@ -3379,32 +2978,15 @@ function setupEventListeners() {
   
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (elements.cartSidebar.classList.contains('open')) {
-        closeCart();
-      }
-      if (elements.quickViewModal.classList.contains('active')) {
-        closeQuickView();
-      }
-      if (elements.mobileMenu.classList.contains('active')) {
-        utils.closeMobileMenu();
-      }
-      elements.langDropdown.classList.remove('active');
+      if (elements.cartSidebar.classList.contains('open')) closeCart();
+      if (elements.quickViewModal.classList.contains('active')) closeQuickView();
+      if (elements.mobileMenu.classList.contains('active')) utils.closeMobileMenu();
     }
   });
   
   document.addEventListener('error', (e) => {
-    if (e.target.tagName === 'IMG') {
-      utils.handleImageError(e.target);
-    }
+    if (e.target.tagName === 'IMG') utils.handleImageError(e.target);
   }, true);
-}
-
-// ===== LANGUAGE FUNCTIONS =====
-function getLocalizedText(product, field) {
-  if (state.currentLanguage === 'ti' && product[`${field}_ti`]) {
-    return product[`${field}_ti`];
-  }
-  return product[field];
 }
 
 // ===== MOBILE MENU FUNCTIONS =====
@@ -3434,17 +3016,15 @@ function handleResize() {
 
 // ===== RENDERING FUNCTIONS =====
 function renderCategories() {
-  elements.categoriesGrid.innerHTML = CATEGORIES_DB.map(category => {
-    const categoryName = state.currentLanguage === 'ti' && category.name_ti ? category.name_ti : category.name;
-    return `
+  elements.categoriesGrid.innerHTML = state.categories.map(category => `
     <a href="#products" class="category-card" data-category="${category.id}">
       <div class="category-icon" style="background: linear-gradient(135deg, ${category.color}, ${category.color}99);">
         <i class="${category.icon}"></i>
       </div>
-      <h3 class="category-name">${categoryName}</h3>
-      <div class="category-count">${category.count} ${translations[state.currentLanguage]['hero.products'] || 'items'}</div>
+      <h3 class="category-name">${category.name}</h3>
+      <div class="category-count">${category.count} items</div>
     </a>
-  `}).join('');
+  `).join('');
   
   document.querySelectorAll('.category-card').forEach(card => {
     card.addEventListener('click', (e) => {
@@ -3459,9 +3039,7 @@ function renderCategories() {
       });
       
       const activeBtn = document.querySelector(`.access-btn[data-category="${category}"]`);
-      if (activeBtn) {
-        activeBtn.classList.add('active');
-      }
+      if (activeBtn) activeBtn.classList.add('active');
       
       document.getElementById('products').scrollIntoView({ 
         behavior: 'smooth',
@@ -3473,21 +3051,31 @@ function renderCategories() {
 
 function renderQuickCategories() {
   const quickCats = [
-    { name: translations[state.currentLanguage]['nav.all'] || 'All', name_ti: 'ኩሎም', category: 'all' },
-    ...CATEGORIES_DB.slice(0, 6)
+    { name: 'All Products', category: 'all', icon: 'fas fa-th-large' },
+    ...state.categories.slice(0, 6)
   ];
   
-  elements.quickCategories.innerHTML = quickCats.map(cat => {
-    const catName = state.currentLanguage === 'ti' && cat.name_ti ? cat.name_ti : cat.name;
-    return `
+  elements.quickCategories.innerHTML = quickCats.map(cat => `
     <button class="access-btn ${cat.category === 'all' ? 'active' : ''}" 
             data-category="${cat.category}">
-      ${catName}
+      ${cat.name}
     </button>
-  `}).join('');
+  `).join('');
 }
 
 function renderProducts() {
+  if (state.allProducts.length === 0) {
+    elements.productsGrid.innerHTML = `
+      <div class="text-center" style="grid-column: 1 / -1; padding: 40px;">
+        <i class="fas fa-box-open" style="font-size: 3rem; color: var(--gray-light); margin-bottom: 16px;"></i>
+        <h3>No products available yet</h3>
+        <p class="text-gray">Check back soon for our products!</p>
+      </div>
+    `;
+    elements.loadMoreBtn.style.display = 'none';
+    return;
+  }
+  
   const start = (state.currentPage - 1) * state.productsPerPage;
   const end = start + state.productsPerPage;
   
@@ -3502,8 +3090,8 @@ function renderProducts() {
   
   if (searchTerm) {
     filtered = filtered.filter(p => {
-      const name = getLocalizedText(p, 'name').toLowerCase();
-      const description = getLocalizedText(p, 'description').toLowerCase();
+      const name = p.name.toLowerCase();
+      const description = p.description.toLowerCase();
       const category = p.category.toLowerCase();
       
       return name.includes(searchTerm) ||
@@ -3519,8 +3107,8 @@ function renderProducts() {
     elements.productsGrid.innerHTML = `
       <div class="text-center" style="grid-column: 1 / -1; padding: 40px;">
         <i class="fas fa-search" style="font-size: 3rem; color: var(--gray-light); margin-bottom: 16px;"></i>
-        <h3>${translations[state.currentLanguage]['products.noProducts'] || 'No products found'}</h3>
-        <p class="text-gray">${translations[state.currentLanguage]['products.trySearch'] || 'Try searching with different keywords'}</p>
+        <h3>No products found</h3>
+        <p class="text-gray">Try searching with different keywords</p>
       </div>
     `;
     elements.loadMoreBtn.style.display = 'none';
@@ -3528,41 +3116,31 @@ function renderProducts() {
   }
   
   elements.productsGrid.innerHTML = productsToShow.map(product => {
-    const productName = getLocalizedText(product, 'name');
-    const productDescription = getLocalizedText(product, 'description');
-    const inStockText = translations[state.currentLanguage]['products.inStock'] || 'In Stock';
-    const lowStockText = translations[state.currentLanguage]['products.lowStock'] || 'Low Stock';
-    const outOfStockText = translations[state.currentLanguage]['products.outOfStock'] || 'Out of Stock';
-    const addToCartText = translations[state.currentLanguage]['products.addToCart'] || 'Add to Cart';
-    const viewText = translations[state.currentLanguage]['products.view'] || 'View';
-    const moqText = translations[state.currentLanguage]['products.moq'] || 'MOQ';
+    const price = utils.getPrice(product);
+    const originalPrice = product.sale && state.mode === 'retail' ? product.retailPrice * 1.2 : null;
     
     let stockText = '';
-    if (product.stock > 20) {
-      stockText = inStockText;
-    } else if (product.stock > 0) {
-      stockText = `${lowStockText} (${product.stock})`;
-    } else {
-      stockText = outOfStockText;
-    }
+    if (product.stock > 20) stockText = 'In Stock';
+    else if (product.stock > 0) stockText = `Low Stock (${product.stock})`;
+    else stockText = 'Out of Stock';
     
     return `
     <div class="product-card fade-in">
       <div class="product-badges">
-        ${product.popular ? '<span class="badge badge-popular">' + (translations[state.currentLanguage]['products.popular'] || 'Popular') + '</span>' : ''}
-        ${product.new ? '<span class="badge badge-new">' + (translations[state.currentLanguage]['products.new'] || 'New') + '</span>' : ''}
-        ${product.sale ? '<span class="badge badge-sale">' + (translations[state.currentLanguage]['products.sale'] || 'Sale') + '</span>' : ''}
+        ${product.popular ? '<span class="badge badge-popular">Popular</span>' : ''}
+        ${product.new ? '<span class="badge badge-new">New</span>' : ''}
+        ${product.sale ? '<span class="badge badge-sale">Sale</span>' : ''}
       </div>
       
       <div class="product-image">
-        <img src="${product.images[0]}" alt="${productName}" 
+        <img src="${product.images[0]}" alt="${product.name}" 
              loading="lazy" 
              onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\" viewBox=\"0 0 400 300\"><rect width=\"400\" height=\"300\" fill=\"%23f0f0f0\"/><text x=\"200\" y=\"150\" font-family=\"Arial\" font-size=\"14\" text-anchor=\"middle\" fill=\"%23666\">Product Image</text></svg>';">
         <div class="product-actions">
-          <button class="action-btn" onclick="addToCart('${product.id}')" title="${addToCartText}">
+          <button class="action-btn" onclick="addToCart('${product.id}')" title="Add to Cart" ${product.stock === 0 ? 'disabled' : ''}>
             <i class="fas fa-cart-plus"></i>
           </button>
-          <button class="action-btn" onclick="quickView('${product.id}')" title="${viewText}">
+          <button class="action-btn" onclick="quickView('${product.id}')" title="View">
             <i class="fas fa-eye"></i>
           </button>
         </div>
@@ -3570,13 +3148,11 @@ function renderProducts() {
       
       <div class="product-info">
         <div class="product-category">${product.category}</div>
-        <h3 class="product-name">${productName}</h3>
+        <h3 class="product-name">${product.name}</h3>
         
         <div class="product-price">
-          <span class="current-price">${utils.formatCurrency(utils.getPrice(product))}</span>
-          ${product.sale && state.mode === 'retail' ? `
-            <span class="original-price">${utils.formatCurrency(product.retailPrice * 1.2)}</span>
-          ` : ''}
+          <span class="current-price">${utils.formatCurrency(price)}</span>
+          ${originalPrice ? `<span class="original-price">${utils.formatCurrency(originalPrice)}</span>` : ''}
           <span class="price-unit">/${product.unit}</span>
         </div>
         
@@ -3585,27 +3161,26 @@ function renderProducts() {
             <i class="fas fa-${product.stock > 20 ? 'check-circle' : product.stock > 0 ? 'exclamation-circle' : 'times-circle'}"></i>
             ${stockText}
           </div>
-          ${state.mode === 'wholesale' ? `
-            <div class="min-order">${moqText}: ${product.moq}</div>
-          ` : ''}
+          ${state.mode === 'wholesale' ? `<div class="min-order">MOQ: ${product.moq}</div>` : ''}
         </div>
         
         <div class="product-cta">
           <button class="btn btn-primary btn-sm" onclick="addToCart('${product.id}')" ${product.stock === 0 ? 'disabled' : ''}>
             <i class="fas fa-cart-plus"></i>
-            ${addToCartText}
+            Add to Cart
           </button>
-          <button class="btn btn-outline btn-sm" onclick="quickView('${product.id}')" ${product.stock === 0 ? 'disabled' : ''}>
+          <button class="btn btn-outline btn-sm" onclick="quickView('${product.id}')">
             <i class="fas fa-eye"></i>
-            ${viewText}
+            View
           </button>
         </div>
       </div>
     </div>
   `}).join('');
   
-  elements.loadMoreBtn.style.display = end < filtered.length ? 'block' : 'none';
-  elements.loadMoreBtn.disabled = end >= filtered.length;
+  const hasMoreProducts = end < filtered.length;
+  elements.loadMoreBtn.style.display = hasMoreProducts ? 'block' : 'none';
+  elements.loadMoreBtn.disabled = !hasMoreProducts;
 }
 
 // ===== CART FUNCTIONS =====
@@ -3634,12 +3209,9 @@ function addToCart(productId, quantity = 1) {
   updateCartUI();
   saveCartToStorage();
   
-  const productName = getLocalizedText(product, 'name');
-  utils.showToast(`${productName} ${translations[state.currentLanguage]['toast.addedToCart']}`, 'success');
+  utils.showToast(`${product.name} added to cart`, 'success');
   
-  if (window.innerWidth < 768) {
-    openCart();
-  }
+  if (window.innerWidth < 768) openCart();
 }
 
 function updateCartItem(key, newQuantity) {
@@ -3649,8 +3221,7 @@ function updateCartItem(key, newQuantity) {
   const minQty = utils.getMinQty(item.product);
   if (newQuantity < minQty) {
     state.cart.delete(key);
-    const productName = getLocalizedText(item.product, 'name');
-    utils.showToast(`${productName} ${translations[state.currentLanguage]['toast.removedFromCart']}`, 'warning');
+    utils.showToast(`${item.product.name} removed from cart`, 'warning');
   } else {
     item.quantity = newQuantity;
     state.cart.set(key, item);
@@ -3664,8 +3235,7 @@ function removeFromCart(key) {
   const item = state.cart.get(key);
   if (item) {
     state.cart.delete(key);
-    const productName = getLocalizedText(item.product, 'name');
-    utils.showToast(`${productName} ${translations[state.currentLanguage]['toast.removedFromCart']}`, 'warning');
+    utils.showToast(`${item.product.name} removed from cart`, 'warning');
     updateCartUI();
     saveCartToStorage();
   }
@@ -3673,23 +3243,21 @@ function removeFromCart(key) {
 
 function clearCart() {
   if (state.cart.size === 0) {
-    utils.showToast(translations[state.currentLanguage]['cart.empty'] || 'Cart is already empty', 'info');
+    utils.showToast('Cart is already empty', 'info');
     return;
   }
   
-  if (confirm(translations[state.currentLanguage]['cart.confirmClear'] || 'Are you sure you want to clear your cart?')) {
+  if (confirm('Are you sure you want to clear your cart?')) {
     state.cart.clear();
     updateCartUI();
     saveCartToStorage();
-    utils.showToast(translations[state.currentLanguage]['toast.cartCleared'], 'warning');
+    utils.showToast('Cart cleared', 'warning');
   }
 }
 
 function updateCartUI() {
   let totalItems = 0;
-  state.cart.forEach(item => {
-    totalItems += item.quantity;
-  });
+  state.cart.forEach(item => totalItems += item.quantity);
   
   elements.cartCount.textContent = totalItems;
   elements.cartCount.style.display = totalItems > 0 ? 'block' : 'none';
@@ -3703,11 +3271,11 @@ function updateCartUI() {
         <div class="cart-empty-icon">
           <i class="fas fa-shopping-cart"></i>
         </div>
-        <h3>${translations[state.currentLanguage]['cart.empty']}</h3>
-        <p>${translations[state.currentLanguage]['cart.browsePrompt'] || 'Browse our products and add items to get started!'}</p>
+        <h3>Your cart is empty</h3>
+        <p>Browse our products and add items to get started!</p>
         <button class="btn btn-primary mt-4" onclick="closeCart(); document.getElementById('products').scrollIntoView({behavior: 'smooth'})">
           <i class="fas fa-shopping-basket"></i>
-          ${translations[state.currentLanguage]['cart.browse']}
+          Browse Products
         </button>
       </div>
     `;
@@ -3717,16 +3285,15 @@ function updateCartUI() {
     state.cart.forEach((item, key) => {
       const itemTotal = item.price * item.quantity;
       subtotal += itemTotal;
-      const productName = getLocalizedText(item.product, 'name');
       
       cartHTML += `
         <div class="cart-item">
           <div class="cart-item-image">
-            <img src="${item.product.images[0]}" alt="${productName}" 
+            <img src="${item.product.images[0]}" alt="${item.product.name}" 
                  onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23f0f0f0\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"10\" text-anchor=\"middle\" fill=\"%23666\">Product</text></svg>';">
           </div>
           <div class="cart-item-info">
-            <div class="cart-item-name">${productName}</div>
+            <div class="cart-item-name">${item.product.name}</div>
             <div class="cart-item-price">${utils.formatCurrency(item.price)} × ${item.quantity} ${item.product.unit}</div>
             <div class="cart-item-actions">
               <div class="quantity-control">
@@ -3736,7 +3303,7 @@ function updateCartUI() {
               </div>
               <button class="remove-item" onclick="removeFromCart('${key}')">
                 <i class="fas fa-trash"></i>
-                ${translations[state.currentLanguage]['cart.remove']}
+                Remove
               </button>
             </div>
           </div>
@@ -3753,9 +3320,7 @@ function updateCartUI() {
   const total = subtotal + deliveryFee;
   
   elements.cartSubtotal.textContent = utils.formatCurrency(subtotal);
-  elements.cartDelivery.textContent = deliveryFee === 0 
-    ? translations[state.currentLanguage]['cart.free'] || 'FREE' 
-    : utils.formatCurrency(deliveryFee);
+  elements.cartDelivery.textContent = deliveryFee === 0 ? 'FREE' : utils.formatCurrency(deliveryFee);
   elements.cartDelivery.style.color = deliveryFee === 0 ? 'var(--success)' : '';
   elements.cartTotal.textContent = utils.formatCurrency(total);
   
@@ -3764,30 +3329,28 @@ function updateCartUI() {
 }
 
 function generateWhatsAppOrderMessage(subtotal, deliveryFee) {
-  const lang = state.currentLanguage;
-  let message = `${CONFIG.whatsappMessage[lang]}\n\n`;
-  message += `${translations[lang]['cart.orderDetails'] || 'Order Details'}:\n`;
+  let message = `${CONFIG.whatsappMessage}\n\n`;
+  message += 'Order Details:\n';
   message += '='.repeat(30) + '\n';
   
   state.cart.forEach((item, key) => {
     const itemTotal = item.price * item.quantity;
-    const productName = getLocalizedText(item.product, 'name');
-    message += `• ${productName}\n`;
-    message += `  ${translations[lang]['cart.quantity'] || 'Quantity'}: ${item.quantity} ${item.product.unit}\n`;
-    message += `  ${translations[lang]['cart.price'] || 'Price'}: ${utils.formatCurrency(item.price)}/${item.product.unit}\n`;
-    message += `  ${translations[lang]['cart.total'] || 'Total'}: ${utils.formatCurrency(itemTotal)}\n`;
+    message += `• ${item.product.name}\n`;
+    message += `  Quantity: ${item.quantity} ${item.product.unit}\n`;
+    message += `  Price: ${utils.formatCurrency(item.price)}/${item.product.unit}\n`;
+    message += `  Total: ${utils.formatCurrency(itemTotal)}\n`;
     message += `  (${item.mode.toUpperCase()})\n\n`;
   });
   
   message += '='.repeat(30) + '\n';
-  message += `${translations[lang]['cart.subtotal'] || 'Subtotal'}: ${utils.formatCurrency(subtotal)}\n`;
-  message += `${translations[lang]['cart.delivery'] || 'Delivery'}: ${deliveryFee === 0 ? translations[lang]['cart.free'] || 'FREE' : utils.formatCurrency(deliveryFee)}\n`;
-  message += `${translations[lang]['cart.total'] || 'TOTAL'}: ${utils.formatCurrency(subtotal + deliveryFee)}\n\n`;
-  message += `${translations[lang]['cart.paymentMethod'] || 'Payment Method'}: ${translations[lang]['cart.cashOnDelivery'] || 'Cash on Delivery'}\n`;
-  message += `${translations[lang]['cart.deliveryAddress'] || 'Delivery Address'}: [${translations[lang]['cart.provideAddress'] || 'Please provide your address'}]\n\n`;
-  message += `${translations[lang]['cart.customerName'] || 'Customer Name'}: [${translations[lang]['cart.yourName'] || 'Your Name'}]\n`;
-  message += `${translations[lang]['cart.phoneNumber'] || 'Phone Number'}: [${translations[lang]['cart.yourPhone'] || 'Your Phone Number'}]\n\n`;
-  message += `${translations[lang]['cart.thankYou'] || 'Thank you!'}`;
+  message += `Subtotal: ${utils.formatCurrency(subtotal)}\n`;
+  message += `Delivery: ${deliveryFee === 0 ? 'FREE' : utils.formatCurrency(deliveryFee)}\n`;
+  message += `TOTAL: ${utils.formatCurrency(subtotal + deliveryFee)}\n\n`;
+  message += `Payment Method: Cash on Delivery\n`;
+  message += `Delivery Address: [Please provide your address]\n\n`;
+  message += `Customer Name: [Your Name]\n`;
+  message += `Phone Number: [Your Phone Number]\n\n`;
+  message += `Thank you!`;
   
   return message;
 }
@@ -3823,6 +3386,7 @@ function loadCartFromStorage() {
       });
     } catch (e) {
       console.error('Failed to load cart:', e);
+      localStorage.removeItem('orji_cart');
     }
   }
 }
@@ -3847,23 +3411,23 @@ function quickView(productId) {
   
   const price = utils.getPrice(product);
   const minQty = utils.getMinQty(product);
-  const productName = getLocalizedText(product, 'name');
-  const productDescription = getLocalizedText(product, 'description');
+  const stockText = product.stock > 20 ? 'In Stock' : 
+                   product.stock > 0 ? 'Low Stock' : 'Out of Stock';
   
   elements.quickViewBody.innerHTML = `
     <div style="display: flex; flex-direction: column; gap: 20px;">
       <div style="text-align: center;">
-        <img src="${product.images[0]}" alt="${productName}" 
+        <img src="${product.images[0]}" alt="${product.name}" 
              style="width: 100%; max-height: 300px; object-fit: cover; border-radius: var(--radius-md);"
              onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"500\" height=\"300\" viewBox=\"0 0 500 300\"><rect width=\"500\" height=\"300\" fill=\"%23f0f0f0\"/><text x=\"250\" y=\"150\" font-family=\"Arial\" font-size=\"14\" text-anchor=\"middle\" fill=\"%23666\">Product Image</text></svg>';">
       </div>
       
       <div>
-        <h3 style="margin: 0 0 8px 0; font-size: 1.3rem; font-weight: 700;">${productName}</h3>
+        <h3 style="margin: 0 0 8px 0; font-size: 1.3rem; font-weight: 700;">${product.name}</h3>
         <div style="color: var(--gray); font-size: 0.9rem; margin-bottom: 12px;">
           ${product.category} • ${product.subcategory}
         </div>
-        <p style="margin: 0 0 16px 0; line-height: 1.5;">${productDescription}</p>
+        <p style="margin: 0 0 16px 0; line-height: 1.5;">${product.description}</p>
         
         <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 16px;">
           <div style="font-size: 1.5rem; font-weight: 800; color: var(--primary);">
@@ -3879,12 +3443,12 @@ function quickView(productId) {
         
         <div style="background: var(--light); padding: 16px; border-radius: var(--radius-md); margin-bottom: 20px;">
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; font-size: 0.9rem;">
-            <div><strong>${translations[state.currentLanguage]['quickview.stock'] || 'Stock'}:</strong> ${product.stock} ${product.unit}s</div>
-            <div><strong>${translations[state.currentLanguage]['products.moq'] || 'MOQ'}:</strong> ${minQty} ${product.unit}s</div>
-            <div><strong>${translations[state.currentLanguage]['quickview.rating'] || 'Rating'}:</strong> ${product.rating}/5 ★</div>
-            <div><strong>${translations[state.currentLanguage]['quickview.status'] || 'Status'}:</strong> 
+            <div><strong>Stock:</strong> ${product.stock} ${product.unit}s</div>
+            <div><strong>MOQ:</strong> ${minQty} ${product.unit}s</div>
+            <div><strong>Rating:</strong> ${product.rating || 'N/A'}/5 ★</div>
+            <div><strong>Status:</strong> 
               <span class="${product.stock > 20 ? 'in-stock' : product.stock > 0 ? 'low-stock' : 'out-of-stock'}">
-                ${product.stock > 20 ? translations[state.currentLanguage]['products.inStock'] || 'In Stock' : product.stock > 0 ? translations[state.currentLanguage]['products.lowStock'] || 'Low Stock' : translations[state.currentLanguage]['products.outOfStock'] || 'Out of Stock'}
+                ${stockText}
               </span>
             </div>
           </div>
@@ -3892,14 +3456,14 @@ function quickView(productId) {
         
         <div style="display: flex; gap: 12px; margin-top: 20px;">
           <button onclick="addToCart('${productId}'); closeQuickView();" 
-                  class="btn btn-primary" style="flex: 1;">
+                  class="btn btn-primary" style="flex: 1;" ${product.stock === 0 ? 'disabled' : ''}>
             <i class="fas fa-cart-plus"></i>
-            ${translations[state.currentLanguage]['products.addToCart'] || 'Add to Cart'}
+            Add to Cart
           </button>
           <button onclick="buyNow('${productId}')" 
-                  class="btn btn-outline" style="flex: 1;">
+                  class="btn btn-outline" style="flex: 1;" ${product.stock === 0 ? 'disabled' : ''}>
             <i class="fab fa-whatsapp"></i>
-            ${translations[state.currentLanguage]['cart.orderWhatsapp'] || 'Order via WhatsApp'}
+            Order via WhatsApp
           </button>
         </div>
       </div>
@@ -3922,7 +3486,7 @@ function handleSearch() {
   
   const searchTerm = elements.searchInput.value.trim() || elements.mobileSearchInput.value.trim();
   if (searchTerm && state.filteredProducts.length > 0) {
-    utils.showToast(`${translations[state.currentLanguage]['toast.foundProducts'] || 'Found'} ${state.filteredProducts.length} ${translations[state.currentLanguage]['hero.products'] || 'products'} "${searchTerm}"`, 'info');
+    utils.showToast(`Found ${state.filteredProducts.length} products for "${searchTerm}"`, 'info');
   }
 }
 
@@ -3934,8 +3498,7 @@ function loadMoreProducts() {
   setTimeout(() => {
     const cards = document.querySelectorAll('.product-card');
     if (cards.length > 0) {
-      const lastCard = cards[cards.length - 1];
-      lastCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      cards[cards.length - 1].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, 100);
 }
@@ -3951,7 +3514,7 @@ function startDealTimer() {
     
     if (diff <= 0) {
       clearInterval(timer);
-      elements.dealTimer.innerHTML = `<div class="text-white" style="grid-column: 1 / -1; padding: 20px;">${translations[state.currentLanguage]['deals.ended'] || 'Sale Ended!'}</div>`;
+      elements.dealTimer.innerHTML = `<div class="text-white" style="grid-column: 1 / -1; padding: 20px;">Sale Ended!</div>`;
       return;
     }
     
@@ -3978,16 +3541,15 @@ function buyNow(productId) {
   const price = utils.getPrice(product);
   const minQty = utils.getMinQty(product);
   const total = price * minQty;
-  const productName = getLocalizedText(product, 'name');
   
-  const message = `${translations[state.currentLanguage]['cart.wantToOrder'] || 'Hi'} ${CONFIG.companyName}, ${translations[state.currentLanguage]['cart.iWantToOrder'] || 'I want to order'}:\n\n` +
-                  `${translations[state.currentLanguage]['cart.product'] || 'Product'}: ${productName}\n` +
-                  `${translations[state.currentLanguage]['cart.quantity'] || 'Quantity'}: ${minQty} ${product.unit}\n` +
-                  `${translations[state.currentLanguage]['cart.price'] || 'Price'}: ${utils.formatCurrency(price)}/${product.unit}\n` +
-                  `${translations[state.currentLanguage]['cart.total'] || 'Total'}: ${utils.formatCurrency(total)}\n` +
-                  `${translations[state.currentLanguage]['cart.mode'] || 'Mode'}: ${state.mode.toUpperCase()}\n\n` +
-                  `${translations[state.currentLanguage]['cart.paymentPreference'] || 'I prefer Cash on Delivery'}.\n` +
-                  `${translations[state.currentLanguage]['cart.contactToConfirm'] || 'Please contact me to confirm order details.'}`;
+  const message = `Hi ${CONFIG.companyName}, I want to order:\n\n` +
+                  `Product: ${product.name}\n` +
+                  `Quantity: ${minQty} ${product.unit}\n` +
+                  `Price: ${utils.formatCurrency(price)}/${product.unit}\n` +
+                  `Total: ${utils.formatCurrency(total)}\n` +
+                  `Mode: ${state.mode.toUpperCase()}\n\n` +
+                  `I prefer Cash on Delivery.\n` +
+                  `Please contact me to confirm order details.`;
   
   const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
   
