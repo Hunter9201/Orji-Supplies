@@ -134,5 +134,21 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/arthur-1767627951834-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/arthur-1767627951834-4.jpg"
     ]
+  },
+  {
+    "id": "thanks-gid-1767641770716",
+    "name": "Thanks Gid",
+    "category": "other",
+    "retailPrice": 10000,
+    "wholesalePrice": 9000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/thanks-gid-1767641770716-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/thanks-gid-1767641770716-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/thanks-gid-1767641770716-3.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/thanks-gid-1767641770716-4.jpg"
+    ]
   }
 ]
