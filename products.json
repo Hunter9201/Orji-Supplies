@@ -1,20 +1,5 @@
 [
   {
-    "id": "gloves-1757327930288",
-    "name": "Gloves",
-    "category": "laundry",
-    "retailPrice": 12000,
-    "wholesalePrice": 11000,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/gloves-1757327930288-1.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/gloves-1757327930288-2.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/gloves-1757327930288-3.jpg"
-    ]
-  },
-  {
     "id": "soft-broom-1757369994981",
     "name": "Soft broom",
     "category": "laundry",
