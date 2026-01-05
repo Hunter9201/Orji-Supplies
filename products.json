@@ -1,23 +1,5 @@
 [
   {
-    "id": "manpower-1762253504726",
-    "name": "manpower",
-    "category": "laundry",
-    "retailPrice": 10000,
-    "wholesalePrice": 0,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "wow",
-    "imgs": [],
-    "docs": [
-      {
-        "url": "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/files/manpower-1762253504726-doc-1.pdf",
-        "name": "KIFAMUNTE HENRY V UGANDA (Autosaved).pdf",
-        "type": "application/pdf"
-      }
-    ]
-  },
-  {
     "id": "manpower-1762253600793",
     "name": "manpower",
     "category": "laundry",
