@@ -2548,6 +2548,140 @@ body.tigrinya {
   font-weight: 700;
   font-size: 0.85rem;
 }
+
+/* ===== CATEGORIES NAVIGATION BAR ===== */
+.categories-nav-bar {
+  display: none;
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-light);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 72px;
+  z-index: 899;
+  overflow: hidden;
+}
+
+.categories-nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 16px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.categories-nav-container::-webkit-scrollbar {
+  display: none;
+}
+
+.categories-nav {
+  display: flex;
+  gap: 2px;
+  padding: 8px 0;
+  min-width: min-content;
+}
+
+.category-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 12px;
+  min-width: 80px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--dark);
+  flex-shrink: 0;
+  outline: none;
+}
+
+.category-nav-item:hover {
+  background: var(--primary-light);
+  transform: translateY(-2px);
+}
+
+.category-nav-item.active {
+  background: var(--primary);
+  color: white;
+}
+
+.category-nav-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 6px;
+  font-size: 1rem;
+  transition: var(--transition);
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.category-nav-item:hover .category-nav-icon {
+  transform: scale(1.1);
+}
+
+.category-nav-item.active .category-nav-icon {
+  background: white;
+  color: var(--primary);
+}
+
+.category-nav-name {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .categories-nav-bar {
+    display: block;
+  }
+  
+  .category-nav-item {
+    min-width: 90px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .categories-nav {
+    gap: 4px;
+  }
+  
+  .category-nav-item {
+    min-width: 100px;
+    padding: 10px 16px;
+  }
+}
+
+/* ===== CATEGORIES SECTION WITHOUT ICONS ===== */
+.category-card.no-icon {
+  padding-top: 20px;
+}
+
+.category-card.no-icon .category-icon {
+  display: none;
+}
+
+.category-card.no-icon .category-name {
+  margin-bottom: 12px;
+}
+
+/* Fix for the main content margin when categories nav is visible */
+@media (min-width: 768px) {
+  .main-content {
+    margin-top: 112px; /* 72px header + 40px categories nav */
+  }
+  
+  .quick-access {
+    top: 112px;
+  }
+}
 </style>
 </head>
 <body>
@@ -2608,6 +2742,13 @@ body.tigrinya {
     </div>
   </div>
 </header>
+
+<!-- Categories Navigation Bar -->
+<div class="categories-nav-bar" id="categoriesNavBar">
+  <div class="categories-nav-container">
+    <div class="categories-nav" id="categoriesNav"></div>
+  </div>
+</div>
 
 <!-- Mobile Menu -->
 <div class="mobile-menu" id="mobileMenu">
@@ -2863,34 +3004,22 @@ body.tigrinya {
       </div>
       
       <div class="categories-grid">
-        <div class="category-card">
-          <div class="category-icon" style="background: linear-gradient(135deg, #10b981, #059669);">
-            <i class="fas fa-percentage"></i>
-          </div>
+        <div class="category-card no-icon">
           <h3 class="category-name" data-en="Bulk Discounts" data-ti="ጅምላ ሽልማት">Bulk Discounts</h3>
           <p class="category-count" data-en="Save up to 40%" data-ti="ክሳብ 40% ዓቢ">Save up to 40%</p>
         </div>
         
-        <div class="category-card">
-          <div class="category-icon" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
-            <i class="fas fa-shipping-fast"></i>
-          </div>
+        <div class="category-card no-icon">
           <h3 class="category-name" data-en="Free Delivery" data-ti="ነጻ ደርቢ">Free Delivery</h3>
           <p class="category-count" data-en="Orders above 500,000 UGX" data-ti="ትእዛዝ ካብ 500,000 ሻሂ">Orders above 500,000 UGX</p>
         </div>
         
-        <div class="category-card">
-          <div class="category-icon" style="background: linear-gradient(135deg, #8b5cf6, #7c3aed);">
-            <i class="fas fa-headset"></i>
-          </div>
+        <div class="category-card no-icon">
           <h3 class="category-name" data-en="Dedicated Support" data-ti="ብቕዓት ደገፍ">Dedicated Support</h3>
           <p class="category-count" data-en="Personal Account Manager" data-ti="ብቕዓት ሒሳብ ኣማኸር">Personal Account Manager</p>
         </div>
         
-        <div class="category-card">
-          <div class="category-icon" style="background: linear-gradient(135deg, #ec4899, #db2777);">
-            <i class="fas fa-boxes"></i>
-          </div>
+        <div class="category-card no-icon">
           <h3 class="category-name" data-en="Custom Packaging" data-ti="ብቕዓት ምልጣፍ">Custom Packaging</h3>
           <p class="category-count" data-en="Brand your products" data-ti="ፕሮዳክትታትካ ብራንድ ኣቕርብ">Brand your products</p>
         </div>
@@ -2965,7 +3094,7 @@ body.tigrinya {
     <div class="footer-grid">
       <div class="footer-section">
         <h3 data-en="Orji Supplies" data-ti="ኦርጂ ኣቑሑት">Orji Supplies</h3>
-        <p data-en="Uganda's complete marketplace for all your needs. Quality products, wholesale prices, reliable delivery." data-ti="ኡጋንዳ ንኹሉ ድሌታትካ ምሉእ ዕዳጋ። ጽሩይ ዕብየትታት።">Uganda's complete marketplace for all your needs. Quality products, wholesale prices, reliable delivery.</p>
+        <p data-en="Uganda's complete marketplace for all your needs. Quality products, wholesale prices, reliable delivery." data-ti="ኡጋንዳ ንኩሉ ድሌታትካ ምሉእ ዕዳጋ። ጽሩይ ዕብየትታት።">Uganda's complete marketplace for all your needs. Quality products, wholesale prices, reliable delivery.</p>
         <div class="contact-info">
           <div class="contact-item">
             <i class="fas fa-map-marker-alt contact-icon"></i>
@@ -3104,6 +3233,7 @@ const elements = {
   productsGrid: document.getElementById('productsGrid'),
   productsLoading: document.getElementById('productsLoading'),
   categoriesGrid: document.getElementById('categoriesGrid'),
+  categoriesNav: document.getElementById('categoriesNav'),
   quickCategories: document.getElementById('quickCategories'),
   loadMoreBtn: document.getElementById('loadMoreBtn'),
   filterBtn: document.getElementById('filterBtn'),
@@ -3252,7 +3382,8 @@ const utils = {
   },
   
   handleImageError: (img) => {
-    const fallbackSvg = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f0f0f0"/><text x="200" y="150" font-family="Arial" font-size="14" text-anchor="middle" fill="%23666">Image not available</text></svg>';
+    // Use a simple placeholder without text
+    const fallbackSvg = 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300"><rect width="400" height="300" fill="%23f0f0f0"/></svg>';
     if (img.src !== fallbackSvg) img.src = fallbackSvg;
   },
   
@@ -3306,6 +3437,7 @@ const utils = {
       
       // Render products
       renderProducts();
+      renderCategoriesNav();
       
     } catch (error) {
       console.error('Failed to load products:', error);
@@ -3317,6 +3449,7 @@ const utils = {
       updateCategoryCounts();
       updateStats();
       renderProducts();
+      renderCategoriesNav();
     } finally {
       elements.productsLoading.classList.remove('active');
     }
@@ -3374,7 +3507,7 @@ const utils = {
         <div class="search-result-item" data-product-id="${product.id}">
           <div class="search-result-image">
             <img src="${product.images[0]}" alt="${product.name}" 
-                 onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23f0f0f0\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"10\" text-anchor=\"middle\" fill=\"%23666\">Product</text></svg>';">
+                 onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23f0f0f0\"/></svg>';">
           </div>
           <div class="search-result-info">
             <div class="search-result-name">${product.name}</div>
@@ -3411,6 +3544,7 @@ function setLanguage(lang) {
   // Update cart and products
   updateCartUI();
   renderProducts();
+  renderCategoriesNav();
   
   utils.showToast(getText('Language changed'), 'success');
 }
@@ -3440,6 +3574,74 @@ function updateCategoryCounts() {
   state.categories = CATEGORIES_DB.filter(cat => cat.count > 0);
 }
 
+// ===== RENDER CATEGORIES NAVIGATION BAR =====
+function renderCategoriesNav() {
+  const allCategories = [
+    { 
+      id: 'all', 
+      name: { en: 'All Products', ti: 'ኩሉ ዕብየትታት' }, 
+      icon: 'fas fa-th-large',
+      color: '#2563eb'
+    },
+    ...state.categories.slice(0, 10) // Show top 10 categories
+  ];
+  
+  elements.categoriesNav.innerHTML = allCategories.map(cat => `
+    <button class="category-nav-item ${cat.id === state.currentCategory ? 'active' : ''}" 
+            data-category="${cat.id}">
+      <div class="category-nav-icon" style="background: ${cat.id === state.currentCategory ? 'white' : `linear-gradient(135deg, ${cat.color || '#2563eb'}, ${cat.color || '#1d4ed8'})`}; color: ${cat.id === state.currentCategory ? cat.color || '#2563eb' : 'white'};">
+        <i class="${cat.icon}"></i>
+      </div>
+      <span class="category-nav-name">${getText(cat.name)}</span>
+    </button>
+  `).join('');
+  
+  // Add event listeners to category nav items
+  document.querySelectorAll('.category-nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+      const categoryId = this.dataset.category;
+      filterByCategory(categoryId);
+    });
+  });
+}
+
+// ===== FILTER BY CATEGORY =====
+function filterByCategory(categoryId) {
+  state.currentCategory = categoryId;
+  state.currentPage = 1;
+  renderProducts();
+  
+  // Update active state in categories nav
+  document.querySelectorAll('.category-nav-item').forEach(item => {
+    const icon = item.querySelector('.category-nav-icon');
+    if (item.dataset.category === categoryId) {
+      item.classList.add('active');
+      if (icon) {
+        icon.style.background = 'white';
+        icon.style.color = item.dataset.category === 'all' ? '#2563eb' : (CATEGORIES_DB.find(c => c.id === categoryId)?.color || '#2563eb');
+      }
+    } else {
+      item.classList.remove('active');
+      if (icon) {
+        const cat = CATEGORIES_DB.find(c => c.id === item.dataset.category) || { color: '#2563eb' };
+        icon.style.background = `linear-gradient(135deg, ${cat.color || '#2563eb'}, ${cat.color || '#1d4ed8'})`;
+        icon.style.color = 'white';
+      }
+    }
+  });
+  
+  // Update active state in quick access
+  document.querySelectorAll('.access-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.category === categoryId);
+  });
+  
+  // Scroll to products section
+  document.getElementById('products').scrollIntoView({ 
+    behavior: 'smooth',
+    block: 'start'
+  });
+}
+
 // ===== INITIALIZATION =====
 async function init() {
   // Set initial categories
@@ -3449,6 +3651,7 @@ async function init() {
   setupEventListeners();
   renderCategories();
   renderQuickCategories();
+  renderCategoriesNav();
   updateCartUI();
   startDealTimer();
   
@@ -3550,13 +3753,11 @@ function setupEventListeners() {
     e.target.reset();
   });
   
-  // Category selection
+  // Category selection for quick access
   document.addEventListener('click', (e) => {
     if (e.target.classList.contains('access-btn')) {
       const category = e.target.dataset.category;
-      state.currentCategory = category;
-      state.currentPage = 1;
-      renderProducts();
+      filterByCategory(category);
       
       document.querySelectorAll('.access-btn').forEach(btn => {
         btn.classList.remove('active');
@@ -3564,11 +3765,16 @@ function setupEventListeners() {
       e.target.classList.add('active');
       
       utils.closeMobileMenu();
-      
-      document.getElementById('products').scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
+    }
+  });
+  
+  // Category selection for main categories grid
+  document.addEventListener('click', (e) => {
+    const categoryCard = e.target.closest('.category-card');
+    if (categoryCard && categoryCard.dataset.category) {
+      e.preventDefault();
+      const category = categoryCard.dataset.category;
+      filterByCategory(category);
     }
   });
   
@@ -3713,41 +3919,16 @@ function handleResize() {
 // ===== RENDERING FUNCTIONS =====
 function renderCategories() {
   elements.categoriesGrid.innerHTML = state.categories.map(category => `
-    <a href="#products" class="category-card" data-category="${category.id}">
-      <div class="category-icon" style="background: linear-gradient(135deg, ${category.color}, ${category.color}99);">
-        <i class="${category.icon}"></i>
-      </div>
+    <a href="#products" class="category-card no-icon" data-category="${category.id}">
       <h3 class="category-name">${getText(category.name)}</h3>
       <div class="category-count">${category.count} ${getText({en: 'items', ti: 'ኣቑሑት'})}</div>
     </a>
   `).join('');
-  
-  document.querySelectorAll('.category-card').forEach(card => {
-    card.addEventListener('click', (e) => {
-      e.preventDefault();
-      const category = card.dataset.category;
-      state.currentCategory = category;
-      state.currentPage = 1;
-      renderProducts();
-      
-      document.querySelectorAll('.access-btn').forEach(btn => {
-        btn.classList.remove('active');
-      });
-      
-      const activeBtn = document.querySelector(`.access-btn[data-category="${category}"]`);
-      if (activeBtn) activeBtn.classList.add('active');
-      
-      document.getElementById('products').scrollIntoView({ 
-        behavior: 'smooth',
-        block: 'start'
-      });
-    });
-  });
 }
 
 function renderQuickCategories() {
   const quickCats = [
-    { name: {en: 'All Products', ti: 'ኩሉ ዕብየትታት'}, category: 'all', icon: 'fas fa-th-large' },
+    { name: {en: 'All Products', ti: 'ኩሉ ዕብየትታት'}, category: 'all' },
     ...state.categories.slice(0, 6)
   ];
   
@@ -3857,7 +4038,7 @@ function renderProducts() {
               <div class="swiper-slide">
                 <img src="${img}" alt="${product.name}" 
                      loading="lazy" 
-                     onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\" viewBox=\"0 0 400 300\"><rect width=\"400\" height=\"300\" fill=\"%23f0f0f0\"/><text x=\"200\" y=\"150\" font-family=\"Arial\" font-size=\"14\" text-anchor=\"middle\" fill=\"%23666\">Product Image</text></svg>';">
+                     onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"400\" height=\"300\" viewBox=\"0 0 400 300\"><rect width=\"400\" height=\"300\" fill=\"%23f0f0f0\"/></svg>';">
               </div>
             `).join('')}
           </div>
@@ -4040,7 +4221,7 @@ function updateCartUI() {
         <div class="cart-item">
           <div class="cart-item-image">
             <img src="${item.product.images[0]}" alt="${item.product.name}" 
-                 onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23f0f0f0\"/><text x=\"50\" y=\"50\" font-family=\"Arial\" font-size=\"10\" text-anchor=\"middle\" fill=\"%23666\">Product</text></svg>';">
+                 onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\" viewBox=\"0 0 100 100\"><rect width=\"100\" height=\"100\" fill=\"%23f0f0f0\"/></svg>';">
           </div>
           <div class="cart-item-info">
             <div class="cart-item-name">${item.product.name}</div>
@@ -4177,7 +4358,7 @@ function quickView(productId) {
           ${product.images.map(img => `
             <div class="swiper-slide">
               <img src="${img}" alt="${product.name}" 
-                   onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"500\" height=\"300\" viewBox=\"0 0 500 300\"><rect width=\"500\" height=\"300\" fill=\"%23f0f0f0\"/><text x=\"250\" y=\"150\" font-family=\"Arial\" font-size=\"14\" text-anchor=\"middle\" fill=\"%23666\">Product Image</text></svg>';">
+                   onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"500\" height=\"300\" viewBox=\"0 0 500 300\"><rect width=\"500\" height=\"300\" fill=\"%23f0f0f0\"/></svg>';">
             </div>
           `).join('')}
         </div>
@@ -4190,7 +4371,7 @@ function quickView(productId) {
     <div style="text-align: center; margin-bottom: 20px;">
       <img src="${product.images[0]}" alt="${product.name}" 
            style="width: 100%; max-height: 300px; object-fit: cover; border-radius: var(--radius-md);"
-           onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"500\" height=\"300\" viewBox=\"0 0 500 300\"><rect width=\"500\" height=\"300\" fill=\"%23f0f0f0\"/><text x=\"250\" y=\"150\" font-family=\"Arial\" font-size=\"14\" text-anchor=\"middle\" fill=\"%23666\">Product Image</text></svg>';">
+           onerror="this.onerror=null;this.src='data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"500\" height=\"300\" viewBox=\"0 0 500 300\"><rect width=\"500\" height=\"300\" fill=\"%23f0f0f0\"/></svg>';">
     </div>
   `;
   
@@ -4360,6 +4541,7 @@ window.removeFromCart = removeFromCart;
 window.buyNow = buyNow;
 window.quickView = quickView;
 window.closeQuickView = closeQuickView;
+window.filterByCategory = filterByCategory;
 </script>
 </body>
 </html>
