@@ -1,20 +1,5 @@
 [
   {
-    "id": "out-door-bins-1757280447175",
-    "name": "OUT DOOR BINS",
-    "category": "laundry",
-    "retailPrice": 150000,
-    "wholesalePrice": 0,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/out-door-bins-1757280447175-1.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/out-door-bins-1757280447175-2.jpg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/out-door-bins-1757280447175-3.jpg"
-    ]
-  },
-  {
     "id": "gloves-1757327930288",
     "name": "Gloves",
     "category": "laundry",
