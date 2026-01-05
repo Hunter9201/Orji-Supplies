@@ -194,27 +194,5 @@
     ],
     "description": "Hair black",
     "description_ti": ""
-  },
-  {
-    "id": "product-1767544837103-p6mwpprj0",
-    "name": "black hair shampoo",
-    "name_ti": "",
-    "category": "beauty",
-    "subcategory": "beauty",
-    "retailPrice": 10000,
-    "wholesalePrice": 8000,
-    "moq": 10,
-    "unit": "box",
-    "stock": 50,
-    "popular": false,
-    "sale": false,
-    "new": false,
-    "rating": 4,
-    "images": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767544837105-1.png",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767544842332-2.png"
-    ],
-    "description": "Box",
-    "description_ti": ""
   }
 ]
