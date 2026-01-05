@@ -291,18 +291,5 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-shampoo-1767559202629-1.jpg"
     ]
-  },
-  {
-    "id": "ggg-1767561439703",
-    "name": "ggg",
-    "category": "cleaning",
-    "retailPrice": 10000,
-    "wholesalePrice": 7000,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "bbbb",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ggg-1767561439703-1.jpg"
-    ]
   }
 ]
