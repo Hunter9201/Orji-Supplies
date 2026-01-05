@@ -1,23 +1,5 @@
 [
   {
-    "id": "manpower-1762255358509",
-    "name": "manpower",
-    "category": "laundry",
-    "retailPrice": 10000,
-    "wholesalePrice": 0,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "wow",
-    "imgs": [],
-    "docs": [
-      {
-        "url": "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/files/manpower-1762255358509-doc-1.jpg",
-        "name": "BINS.jpg",
-        "type": "image/jpeg"
-      }
-    ]
-  },
-  {
     "id": "dexe-black-shampoo-1767472386743",
     "name": "Dexe Black shampoo",
     "category": "laundry",
