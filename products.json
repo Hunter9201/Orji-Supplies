@@ -150,5 +150,20 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/thanks-gid-1767641770716-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/thanks-gid-1767641770716-4.jpg"
     ]
+  },
+  {
+    "id": "dustin-bins-1767807720697",
+    "name": "Dustin Bins",
+    "category": "cleaning",
+    "retailPrice": 5000,
+    "wholesalePrice": 4500,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Big Dust Bins",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/dustin-bins-1767807720697-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/dustin-bins-1767807720697-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/dustin-bins-1767807720697-3.jpg"
+    ]
   }
 ]
