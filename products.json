@@ -165,5 +165,21 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/dustin-bins-1767807720697-2.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/dustin-bins-1767807720697-3.jpg"
     ]
+  },
+  {
+    "id": "arthur-woods-1770420488792",
+    "name": "Arthur woods",
+    "category": "office-supplies",
+    "retailPrice": 2000000000000,
+    "wholesalePrice": 0,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Arthur",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/arthur-woods-1770420488792-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/arthur-woods-1770420488792-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/arthur-woods-1770420488792-3.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/arthur-woods-1770420488792-4.jpg"
+    ]
   }
 ]
