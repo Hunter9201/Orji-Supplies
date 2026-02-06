@@ -181,5 +181,21 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/arthur-woods-1770420488792-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/arthur-woods-1770420488792-4.jpg"
     ]
+  },
+  {
+    "id": "odor-neutralization-1770420794173",
+    "name": "ODOR NEUTRALIZATION",
+    "category": "other",
+    "retailPrice": 40000,
+    "wholesalePrice": 0,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Cosmitics",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/odor-neutralization-1770420794173-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/odor-neutralization-1770420794173-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/odor-neutralization-1770420794173-3.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/odor-neutralization-1770420794173-4.jpg"
+    ]
   }
 ]
