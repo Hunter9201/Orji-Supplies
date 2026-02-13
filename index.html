@@ -1582,16 +1582,10 @@
         const key = el.dataset[lang] || el.dataset.en;
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
           if (el.placeholder !== undefined) el.placeholder = key;
-          // For select options, we need to handle each option separately
         } else if (el.tagName === 'OPTION') {
           el.textContent = key;
         } else {
-          // For regular elements, we want to update the text content but preserve inner HTML if any
-          // We'll assume they only contain text or we replace whole content
-          el.innerHTML = key; // be careful: this will remove any inner HTML like icons
-          // Better: only update text nodes? But for simplicity, we'll replace.
-          // For elements with icons, we need to keep icon. We'll handle specifically.
-          // Since we have spans inside buttons, we'll update the span separately.
+          el.innerHTML = key;
         }
       });
 
@@ -1614,6 +1608,48 @@
     document.querySelectorAll('.language-btn').forEach(btn => {
       btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
+
+    // ===== WHATSAPP ORDER MESSAGE (SIMPLIFIED) =====
+    function generateWhatsAppOrderMessage(subtotal, deliveryFee) {
+      const total = subtotal + deliveryFee;
+      let message = `Hi Orji Supplies, I would like to place an order:\n\n`;
+      message += `Order Details:\n`;
+      message += `====================\n`;
+      
+      state.cart.forEach((item, key) => {
+        const itemTotal = item.price * item.quantity;
+        message += `• ${item.product.name}\n`;
+        message += `  Quantity: ${item.quantity} ${item.product.unit}\n`;
+        message += `  Price: ${utils.formatCurrency(item.price)}/${item.product.unit}\n`;
+        message += `  Total: ${utils.formatCurrency(itemTotal)}\n\n`;
+      });
+      
+      message += `====================\n`;
+      message += `Subtotal: ${utils.formatCurrency(subtotal)}\n`;
+      message += `Delivery: ${deliveryFee === 0 ? 'FREE' : utils.formatCurrency(deliveryFee)}\n`;
+      message += `TOTAL: ${utils.formatCurrency(total)}\n\n`;
+      message += `Thank you!`;
+      
+      return message;
+    }
+
+    // Override the checkout link generation
+    function updateWhatsAppLink() {
+      let subtotal = 0;
+      state.cart.forEach(item => {
+        subtotal += item.quantity * item.price;
+      });
+      const deliveryFee = subtotal >= CONFIG.freeDeliveryThreshold ? 0 : 15000;
+      const message = generateWhatsAppOrderMessage(subtotal, deliveryFee);
+      elements.whatsappCheckout.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
+    }
+
+    // Patch updateCartUI to also update the WhatsApp link
+    const originalUpdateCartUI = updateCartUI;
+    updateCartUI = function() {
+      originalUpdateCartUI();
+      updateWhatsAppLink();
+    };
 
     // ===== INIT =====
     async function init() {
