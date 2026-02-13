@@ -1013,9 +1013,9 @@
     </div>
     <div class="cart-body" id="cartBody"></div>
     <div class="cart-footer" id="cartFooter">
-      <div class="summary-row"><span data-en="Subtotal:" data-ti="ንኡስ ጠቕላላ:">Subtotal:</span> <span id="cartSubtotal">UGX 0</span></div>
+      <div class="summary-row"><span data-en="Subtotal:" data-ti="ንኡስ ጠቕላላ:">Subtotal:</span> <span id="cartSubtotal">USh 0</span></div>
       <div class="summary-row"><span data-en="Delivery:" data-ti="ደርቢ:">Delivery:</span> <span id="cartDelivery">Calculated at checkout</span></div>
-      <div class="summary-row summary-total"><span data-en="Total:" data-ti="ጠቕላላ:">Total:</span> <span id="cartTotal">UGX 0</span></div>
+      <div class="summary-row summary-total"><span data-en="Total:" data-ti="ጠቕላላ:">Total:</span> <span id="cartTotal">USh 0</span></div>
       <a href="https://wa.me/256783501222" class="whatsapp-checkout" id="whatsappCheckout" target="_blank" data-en="Checkout on WhatsApp" data-ti="በይ WhatsApp ውጺእ"><i class="fab fa-whatsapp"></i> <span>Checkout on WhatsApp</span></a>
       <button class="btn btn-outline" id="clearCartBtn" style="width:100%; margin-top:10px;" data-en="Clear Cart" data-ti="ካርት ኣፅር"><i class="fas fa-trash"></i> <span>Clear Cart</span></button>
     </div>
@@ -1139,8 +1139,9 @@
 
     // ===== UTILITIES =====
     const utils = {
+      // Format as USh without decimals
       formatCurrency: (amount) => {
-        return new Intl.NumberFormat('en-UG', { style: 'currency', currency: 'UGX', minimumFractionDigits: 0 }).format(amount);
+        return 'USh ' + Math.round(amount).toLocaleString('en-UG');
       },
       showToast: (message, type = 'info') => {
         const toast = document.createElement('div');
@@ -1158,7 +1159,7 @@
       },
       getPrice: (product) => product.retailPrice,
       saveCart: () => {
-        const cartData = Array.from(state.cart.entries()).map(([key, item]) => ({ key, productId: item.product.id, quantity: item.quantity }));
+        const cartData = Array.from(state.cart.entries()).map(([key, item]) => ({ key, productId: item.product.id, quantity: item.quantity, price: item.price }));
         localStorage.setItem('orji_cart', JSON.stringify(cartData));
       },
       loadCart: () => {
@@ -1168,7 +1169,7 @@
             const cartData = JSON.parse(saved);
             cartData.forEach(item => {
               const product = state.allProducts.find(p => p.id === item.productId);
-              if (product) state.cart.set(item.key, { product, quantity: item.quantity });
+              if (product) state.cart.set(item.key, { product, quantity: item.quantity, price: item.price });
             });
           } catch (e) {}
         }
@@ -1333,10 +1334,11 @@
       const product = state.allProducts.find(p => p.id === productId);
       if (!product || product.stock === 0) return;
       const key = productId;
+      const price = utils.getPrice(product); // unit price
       if (state.cart.has(key)) {
         state.cart.get(key).quantity++;
       } else {
-        state.cart.set(key, { product, quantity: 1 });
+        state.cart.set(key, { product, quantity: 1, price });
       }
       utils.saveCart();
       updateCartUI();
@@ -1347,7 +1349,7 @@
       let totalItems = 0, subtotal = 0;
       state.cart.forEach(item => {
         totalItems += item.quantity;
-        subtotal += item.quantity * utils.getPrice(item.product);
+        subtotal += item.quantity * item.price;
       });
       elements.cartCount.textContent = totalItems;
       elements.cartCount.style.display = totalItems ? 'flex' : 'none';
@@ -1357,12 +1359,13 @@
       } else {
         let html = '';
         state.cart.forEach((item, key) => {
+          const itemTotal = item.price * item.quantity;
           html += `
             <div class="cart-item">
               <div class="cart-item-image"><img src="${item.product.images[0]}" alt=""></div>
               <div class="cart-item-info">
                 <div class="cart-item-name">${item.product.name}</div>
-                <div class="cart-item-price">${utils.formatCurrency(utils.getPrice(item.product))}</div>
+                <div class="cart-item-price">${utils.formatCurrency(item.price)} × ${item.quantity} ${item.product.unit}</div>
                 <div class="cart-item-actions">
                   <button class="qty-btn" onclick="updateCartQty('${key}', -1)">-</button>
                   <span>${item.quantity}</span>
@@ -1370,6 +1373,7 @@
                   <button class="remove-item" onclick="removeFromCart('${key}')"><i class="fas fa-trash"></i> Remove</button>
                 </div>
               </div>
+              <div style="font-weight:700; margin-left:8px;">${utils.formatCurrency(itemTotal)}</div>
             </div>
           `;
         });
@@ -1380,6 +1384,9 @@
       elements.cartSubtotal.textContent = utils.formatCurrency(subtotal);
       elements.cartDelivery.textContent = delivery === 0 ? 'FREE' : utils.formatCurrency(delivery);
       elements.cartTotal.textContent = utils.formatCurrency(subtotal + delivery);
+      
+      // Update WhatsApp link
+      updateWhatsAppLink(subtotal);
     }
 
     window.updateCartQty = (key, delta) => {
@@ -1609,9 +1616,8 @@
       btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
 
-    // ===== WHATSAPP ORDER MESSAGE (SIMPLIFIED) =====
-    function generateWhatsAppOrderMessage(subtotal, deliveryFee) {
-      const total = subtotal + deliveryFee;
+    // ===== WHATSAPP ORDER MESSAGE (NO DELIVERY, ACCURATE TOTALS) =====
+    function generateWhatsAppOrderMessage(subtotal) {
       let message = `Hi Orji Supplies, I would like to place an order:\n\n`;
       message += `Order Details:\n`;
       message += `====================\n`;
@@ -1626,30 +1632,16 @@
       
       message += `====================\n`;
       message += `Subtotal: ${utils.formatCurrency(subtotal)}\n`;
-      message += `Delivery: ${deliveryFee === 0 ? 'FREE' : utils.formatCurrency(deliveryFee)}\n`;
-      message += `TOTAL: ${utils.formatCurrency(total)}\n\n`;
+      message += `TOTAL: ${utils.formatCurrency(subtotal)}\n\n`; // total same as subtotal (delivery excluded)
       message += `Thank you!`;
       
       return message;
     }
 
-    // Override the checkout link generation
-    function updateWhatsAppLink() {
-      let subtotal = 0;
-      state.cart.forEach(item => {
-        subtotal += item.quantity * item.price;
-      });
-      const deliveryFee = subtotal >= CONFIG.freeDeliveryThreshold ? 0 : 15000;
-      const message = generateWhatsAppOrderMessage(subtotal, deliveryFee);
+    function updateWhatsAppLink(subtotal) {
+      const message = generateWhatsAppOrderMessage(subtotal);
       elements.whatsappCheckout.href = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(message)}`;
     }
-
-    // Patch updateCartUI to also update the WhatsApp link
-    const originalUpdateCartUI = updateCartUI;
-    updateCartUI = function() {
-      originalUpdateCartUI();
-      updateWhatsAppLink();
-    };
 
     // ===== INIT =====
     async function init() {
