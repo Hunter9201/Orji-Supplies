@@ -197,5 +197,18 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/odor-neutralization-1770420794173-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/odor-neutralization-1770420794173-4.jpg"
     ]
+  },
+  {
+    "id": "counsel-1771021143276",
+    "name": "counsel",
+    "category": "other",
+    "retailPrice": 1211414242,
+    "wholesalePrice": 0,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/counsel-1771021143276-1.jpg"
+    ]
   }
 ]
