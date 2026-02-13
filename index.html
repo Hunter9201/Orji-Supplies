@@ -180,7 +180,7 @@
 
     .search-container {
       position: relative;
-      display: none;
+      display: none; /* hidden on mobile, we'll use prominent search */
     }
     .search-bar {
       width: 240px;
@@ -206,53 +206,6 @@
       color: var(--gray);
       cursor: pointer;
       font-size: 1rem;
-    }
-
-    .search-results-dropdown {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      background: white;
-      border-radius: var(--radius-md);
-      box-shadow: var(--shadow-lg);
-      margin-top: 8px;
-      max-height: 300px;
-      overflow-y: auto;
-      display: none;
-      z-index: 200;
-    }
-    .search-results-dropdown.active { display: block; }
-    .search-result-item {
-      padding: 12px;
-      border-bottom: 1px solid var(--gray-light);
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      gap: 12px;
-      align-items: center;
-    }
-    .search-result-item:hover { background: var(--primary-light); }
-    .search-result-image {
-      width: 40px;
-      height: 40px;
-      border-radius: var(--radius-sm);
-      overflow: hidden;
-      flex-shrink: 0;
-    }
-    .search-result-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .search-result-info { flex: 1; }
-    .search-result-name {
-      font-weight: 600;
-      margin-bottom: 2px;
-    }
-    .search-result-price {
-      color: var(--primary);
-      font-weight: 700;
     }
 
     .cart-btn, .user-btn, .menu-toggle {
@@ -375,7 +328,7 @@
     }
     .hero-cta .btn { width: auto; }
 
-    /* ===== FILTER BAR ===== */
+    /* ===== FILTER BAR (WITH PROMINENT SEARCH) ===== */
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
@@ -396,6 +349,40 @@
       background: var(--white);
       font-size: 0.9rem;
       cursor: pointer;
+    }
+
+    /* Prominent search bar */
+    .prominent-search {
+      flex: 1 1 100%;
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .prominent-search .search-bar {
+      flex: 1;
+      width: auto;
+      padding: 12px 16px;
+      font-size: 1rem;
+    }
+    .prominent-search .search-btn {
+      position: static;
+      transform: none;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius-md);
+      background: var(--primary);
+      color: white;
+      font-size: 1.2rem;
+    }
+    .prominent-search .search-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    @media (min-width: 640px) {
+      .prominent-search {
+        flex: 1 1 auto;
+        margin-bottom: 0;
+      }
     }
 
     /* ===== PRODUCT GRID ===== */
@@ -572,7 +559,7 @@
     }
     .add-to-cart:hover { background: var(--primary-dark); }
 
-    /* ===== CART SIDEBAR ===== */
+    /* ===== CART SIDEBAR (NO DELIVERY FEE) ===== */
     .cart-overlay {
       position: fixed;
       inset: 0;
@@ -914,8 +901,9 @@
 
       <div class="header-actions">
         <div class="search-container">
-          <input type="text" class="search-bar" id="searchInput" placeholder="Search products..." data-en="Search products..." data-ti="ምድላይ..." />
-          <button class="search-btn" id="searchBtn"><i class="fas fa-search"></i></button>
+          <!-- Header search (less prominent) -->
+          <input type="text" class="search-bar" id="headerSearchInput" placeholder="Search..." data-en="Search..." data-ti="ምድላይ..." />
+          <button class="search-btn" id="headerSearchBtn"><i class="fas fa-search"></i></button>
           <div class="search-results-dropdown" id="searchResults"></div>
         </div>
 
@@ -955,9 +943,15 @@
       </div>
     </section>
 
-    <!-- Filter Bar -->
+    <!-- Prominent Search + Filter Bar -->
     <div class="container">
       <div class="filter-bar">
+        <!-- Prominent search input (visible on all devices) -->
+        <div class="prominent-search">
+          <input type="text" class="search-bar" id="prominentSearchInput" placeholder="Search for anything..." data-en="Search for anything..." data-ti="ምድላይ..." />
+          <button class="search-btn" id="prominentSearchBtn"><i class="fas fa-search"></i></button>
+        </div>
+
         <div class="filter-group">
           <select class="filter-select" id="sortSelect">
             <option value="popular" data-en="Most Popular" data-ti="ዝዓበየ">Most Popular</option>
@@ -975,18 +969,16 @@
       </div>
     </div>
 
-    <!-- Products Grid -->
+    <!-- Products Grid (all products shown at once) -->
     <section class="section" id="products">
       <div class="container">
-        <h2 class="section-title" data-en="Featured Products" data-ti="ተሰሚሙ ዕብየትታት">Featured Products</h2>
+        <h2 class="section-title" data-en="Products" data-ti="ዕብየትታት">Products</h2>
         <div id="productsLoading" class="loading" style="display: none; text-align: center; padding: 40px;">
           <i class="fas fa-spinner fa-spin fa-2x"></i>
           <p data-en="Loading products..." data-ti="ዕብየትታት ይመጽእ...">Loading products...</p>
         </div>
         <div class="products-grid" id="productsGrid"></div>
-        <div class="text-center mt-5">
-          <button class="btn btn-outline" id="loadMoreBtn" data-en="Load More" data-ti="ተወሳኺ">Load More</button>
-        </div>
+        <!-- No "Load More" button – all products are shown -->
       </div>
     </section>
 
@@ -1014,7 +1006,6 @@
     <div class="cart-body" id="cartBody"></div>
     <div class="cart-footer" id="cartFooter">
       <div class="summary-row"><span data-en="Subtotal:" data-ti="ንኡስ ጠቕላላ:">Subtotal:</span> <span id="cartSubtotal">USh 0</span></div>
-      <div class="summary-row"><span data-en="Delivery:" data-ti="ደርቢ:">Delivery:</span> <span id="cartDelivery">Calculated at checkout</span></div>
       <div class="summary-row summary-total"><span data-en="Total:" data-ti="ጠቕላላ:">Total:</span> <span id="cartTotal">USh 0</span></div>
       <a href="https://wa.me/256783501222" class="whatsapp-checkout" id="whatsappCheckout" target="_blank" data-en="Checkout on WhatsApp" data-ti="በይ WhatsApp ውጺእ"><i class="fab fa-whatsapp"></i> <span>Checkout on WhatsApp</span></a>
       <button class="btn btn-outline" id="clearCartBtn" style="width:100%; margin-top:10px;" data-en="Clear Cart" data-ti="ካርት ኣፅር"><i class="fas fa-trash"></i> <span>Clear Cart</span></button>
@@ -1086,7 +1077,6 @@
     // ===== CONFIGURATION =====
     const CONFIG = {
       whatsappNumber: '256783501222',
-      freeDeliveryThreshold: 500000,
       productsSource: 'https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/products.json'
     };
 
@@ -1100,8 +1090,6 @@
       stockFilter: 'all',
       cart: new Map(),
       wishlist: new Set(),
-      currentPage: 1,
-      productsPerPage: 12,
       searchTerm: '',
       language: 'en'
     };
@@ -1115,12 +1103,13 @@
       cartClose: document.getElementById('cartClose'),
       cartBody: document.getElementById('cartBody'),
       cartSubtotal: document.getElementById('cartSubtotal'),
-      cartDelivery: document.getElementById('cartDelivery'),
       cartTotal: document.getElementById('cartTotal'),
       clearCartBtn: document.getElementById('clearCartBtn'),
       whatsappCheckout: document.getElementById('whatsappCheckout'),
-      searchInput: document.getElementById('searchInput'),
-      searchBtn: document.getElementById('searchBtn'),
+      prominentSearchInput: document.getElementById('prominentSearchInput'),
+      prominentSearchBtn: document.getElementById('prominentSearchBtn'),
+      headerSearchInput: document.getElementById('headerSearchInput'),
+      headerSearchBtn: document.getElementById('headerSearchBtn'),
       searchResults: document.getElementById('searchResults'),
       menuToggle: document.getElementById('menuToggle'),
       mobileMenu: document.getElementById('mobileMenu'),
@@ -1129,7 +1118,6 @@
       sortSelect: document.getElementById('sortSelect'),
       stockFilter: document.getElementById('stockFilter'),
       filterBtn: document.getElementById('filterBtn'),
-      loadMoreBtn: document.getElementById('loadMoreBtn'),
       quickViewModal: document.getElementById('quickViewModal'),
       quickViewClose: document.getElementById('quickViewClose'),
       quickViewBody: document.getElementById('quickViewBody'),
@@ -1139,7 +1127,6 @@
 
     // ===== UTILITIES =====
     const utils = {
-      // Format as USh without decimals
       formatCurrency: (amount) => {
         return 'USh ' + Math.round(amount).toLocaleString('en-UG');
       },
@@ -1251,7 +1238,11 @@
       if (state.currentCategory !== 'all') filtered = filtered.filter(p => p.category === state.currentCategory);
       if (state.searchTerm) {
         const term = state.searchTerm.toLowerCase();
-        filtered = filtered.filter(p => p.name.toLowerCase().includes(term) || p.description.toLowerCase().includes(term));
+        filtered = filtered.filter(p => 
+          p.name.toLowerCase().includes(term) || 
+          p.description.toLowerCase().includes(term) ||
+          p.category.toLowerCase().includes(term)
+        );
       }
       if (state.stockFilter === 'in-stock') filtered = filtered.filter(p => p.stock > 20);
       else if (state.stockFilter === 'low-stock') filtered = filtered.filter(p => p.stock > 0 && p.stock <= 20);
@@ -1264,16 +1255,16 @@
       }
 
       state.filteredProducts = filtered;
-      state.currentPage = 1;
-      renderProducts();
+      renderProducts(); // show all filtered products at once
     }
 
     // ===== RENDER PRODUCTS =====
     function renderProducts() {
-      const start = (state.currentPage - 1) * state.productsPerPage;
-      const productsToShow = state.filteredProducts.slice(0, start + state.productsPerPage);
-      elements.productsGrid.innerHTML = productsToShow.map(createProductCard).join('');
-      elements.loadMoreBtn.style.display = productsToShow.length < state.filteredProducts.length ? 'block' : 'none';
+      if (state.filteredProducts.length === 0) {
+        elements.productsGrid.innerHTML = '<div class="text-center" style="grid-column:1/-1; padding:40px;"><i class="fas fa-search fa-3x" style="color:var(--gray-light);"></i><h3>No products found</h3></div>';
+      } else {
+        elements.productsGrid.innerHTML = state.filteredProducts.map(createProductCard).join('');
+      }
 
       // Initialize Swiper
       setTimeout(() => {
@@ -1334,7 +1325,7 @@
       const product = state.allProducts.find(p => p.id === productId);
       if (!product || product.stock === 0) return;
       const key = productId;
-      const price = utils.getPrice(product); // unit price
+      const price = utils.getPrice(product);
       if (state.cart.has(key)) {
         state.cart.get(key).quantity++;
       } else {
@@ -1380,12 +1371,9 @@
         elements.cartBody.innerHTML = html;
       }
 
-      const delivery = subtotal >= CONFIG.freeDeliveryThreshold ? 0 : 15000;
       elements.cartSubtotal.textContent = utils.formatCurrency(subtotal);
-      elements.cartDelivery.textContent = delivery === 0 ? 'FREE' : utils.formatCurrency(delivery);
-      elements.cartTotal.textContent = utils.formatCurrency(subtotal + delivery);
+      elements.cartTotal.textContent = utils.formatCurrency(subtotal);
       
-      // Update WhatsApp link
       updateWhatsAppLink(subtotal);
     }
 
@@ -1495,47 +1483,46 @@
       closeQuickView();
     };
 
-    // ===== SEARCH =====
-    function handleSearch() {
-      const term = elements.searchInput.value.trim();
+    // ===== SEARCH HANDLER =====
+    function handleSearch(term) {
       state.searchTerm = term;
-      state.currentPage = 1;
-      applyFilters();
-      elements.searchResults.classList.remove('active');
+      applyFilters(); // instantly filters and renders all matching products
+      if (elements.headerSearchInput) elements.headerSearchInput.value = term;
+      if (term) utils.showToast(`Searching for "${term}"`, 'info');
     }
 
-    elements.searchBtn.addEventListener('click', handleSearch);
-    elements.searchInput.addEventListener('keypress', e => e.key === 'Enter' && handleSearch());
-    elements.searchInput.addEventListener('input', utils.debounce(() => {
-      const term = elements.searchInput.value.trim();
-      if (!term) {
-        elements.searchResults.classList.remove('active');
-        return;
+    // Prominent search
+    elements.prominentSearchBtn.addEventListener('click', () => {
+      const term = elements.prominentSearchInput.value.trim();
+      handleSearch(term);
+    });
+    elements.prominentSearchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const term = elements.prominentSearchInput.value.trim();
+        handleSearch(term);
       }
-      const results = state.allProducts.filter(p => p.name.toLowerCase().includes(term) || p.description.toLowerCase().includes(term)).slice(0,5);
-      if (results.length) {
-        elements.searchResults.innerHTML = results.map(p => `
-          <div class="search-result-item" data-id="${p.id}">
-            <div class="search-result-image"><img src="${p.images[0]}"></div>
-            <div class="search-result-info">
-              <div class="search-result-name">${p.name}</div>
-              <div class="search-result-price">${utils.formatCurrency(utils.getPrice(p))}</div>
-            </div>
-          </div>
-        `).join('');
-        elements.searchResults.classList.add('active');
-        document.querySelectorAll('.search-result-item').forEach(el => {
-          el.addEventListener('click', () => {
-            quickView(el.dataset.id);
-            elements.searchInput.value = '';
-            elements.searchResults.classList.remove('active');
-          });
-        });
-      } else {
-        elements.searchResults.innerHTML = '<div class="search-result-item">No products found</div>';
-        elements.searchResults.classList.add('active');
-      }
-    }, 300));
+    });
+    // Optional: debounced search as user types
+    elements.prominentSearchInput.addEventListener('input', utils.debounce(() => {
+      const term = elements.prominentSearchInput.value.trim();
+      handleSearch(term);
+    }, 400));
+
+    // Header search (if used)
+    if (elements.headerSearchBtn) {
+      elements.headerSearchBtn.addEventListener('click', () => {
+        const term = elements.headerSearchInput.value.trim();
+        handleSearch(term);
+        if (elements.prominentSearchInput) elements.prominentSearchInput.value = term;
+      });
+      elements.headerSearchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+          const term = elements.headerSearchInput.value.trim();
+          handleSearch(term);
+          if (elements.prominentSearchInput) elements.prominentSearchInput.value = term;
+        }
+      });
+    }
 
     // ===== CART SIDEBAR =====
     elements.cartBtn.addEventListener('click', () => {
@@ -1562,10 +1549,6 @@
     // ===== FILTERS =====
     elements.sortSelect.addEventListener('change', e => { state.sortBy = e.target.value; applyFilters(); });
     elements.stockFilter.addEventListener('change', e => { state.stockFilter = e.target.value; applyFilters(); });
-    elements.loadMoreBtn.addEventListener('click', () => {
-      state.currentPage++;
-      renderProducts();
-    });
 
     // ===== NEWSLETTER SUBSCRIPTION =====
     elements.newsletterForm.addEventListener('submit', (e) => {
@@ -1584,7 +1567,6 @@
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
 
-      // Update all elements with data-en and data-ti attributes
       document.querySelectorAll('[data-en]').forEach(el => {
         const key = el.dataset[lang] || el.dataset.en;
         if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT') {
@@ -1596,7 +1578,6 @@
         }
       });
 
-      // Specifically handle elements that contain icons + text (like buttons)
       document.querySelectorAll('.btn span, .mobile-nav-link span, .cart-header h3, .summary-row span:first-child, .footer-section h3, .footer-links a, .contact-info span').forEach(el => {
         const parent = el.closest('[data-en]') || el;
         if (parent.dataset && parent.dataset[lang]) {
@@ -1604,7 +1585,6 @@
         }
       });
 
-      // Handle select options
       document.querySelectorAll('select option[data-en]').forEach(opt => {
         opt.textContent = opt.dataset[lang] || opt.dataset.en;
       });
@@ -1616,7 +1596,7 @@
       btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
     });
 
-    // ===== WHATSAPP ORDER MESSAGE (NO DELIVERY, ACCURATE TOTALS) =====
+    // ===== WHATSAPP ORDER MESSAGE =====
     function generateWhatsAppOrderMessage(subtotal) {
       let message = `Hi Orji Supplies, I would like to place an order:\n\n`;
       message += `Order Details:\n`;
@@ -1632,7 +1612,7 @@
       
       message += `====================\n`;
       message += `Subtotal: ${utils.formatCurrency(subtotal)}\n`;
-      message += `TOTAL: ${utils.formatCurrency(subtotal)}\n\n`; // total same as subtotal (delivery excluded)
+      message += `TOTAL: ${utils.formatCurrency(subtotal)}\n\n`;
       message += `Thank you!`;
       
       return message;
@@ -1649,11 +1629,9 @@
       await loadProducts();
       utils.loadCart();
       updateCartUI();
-      setLanguage('en'); // initial language
+      setLanguage('en');
       elements.filterBtn.addEventListener('click', () => {
-        elements.sortSelect.value = state.sortBy;
-        elements.stockFilter.value = state.stockFilter;
-        applyFilters();
+        utils.showToast('Advanced filters coming soon', 'info');
       });
     }
 
