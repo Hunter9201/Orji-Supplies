@@ -66,8 +66,10 @@
       background: var(--light);
       color: var(--dark);
       line-height: 1.5;
-      font-size: 14px;
+      font-size: 15px; /* Slightly larger for readability on Android */
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased; /* Smoother fonts on Android */
+      -moz-osx-font-smoothing: grayscale;
     }
 
     /* ===== UTILITY CLASSES ===== */
@@ -82,17 +84,18 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 20px;
+      padding: 12px 24px; /* Increased padding for better touch */
       border: none;
       border-radius: var(--radius-md);
       font-weight: 600;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       cursor: pointer;
       transition: var(--transition);
       background: var(--white);
       color: var(--dark);
       box-shadow: var(--shadow-sm);
       touch-action: manipulation;
+      min-height: 48px; /* Minimum touch target */
     }
 
     .btn-primary {
@@ -117,10 +120,17 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(255,255,255,0.8);
+      background: rgba(255,255,255,0.9); /* Fallback for browsers without backdrop-filter */
       backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
       border-bottom: 1px solid var(--gray-light);
       box-shadow: var(--shadow-sm);
+    }
+    /* Solid background for older Android browsers */
+    @supports not (backdrop-filter: blur(10px)) {
+      .header {
+        background: rgba(255,255,255,0.98);
+      }
     }
 
     .header-container {
@@ -140,8 +150,8 @@
       text-decoration: none;
     }
     .logo-icon {
-      width: 40px;
-      height: 40px;
+      width: 44px; /* Larger touch area */
+      height: 44px;
       background: linear-gradient(135deg, var(--primary), var(--accent));
       border-radius: var(--radius-md);
       display: flex;
@@ -169,6 +179,7 @@
       color: var(--dark);
       font-weight: 500;
       transition: var(--transition);
+      padding: 8px 0; /* Larger tap area */
     }
     .nav-links a:hover { color: var(--primary); }
 
@@ -184,11 +195,11 @@
     }
     .search-bar {
       width: 240px;
-      padding: 8px 36px 8px 12px;
+      padding: 12px 40px 12px 16px; /* Increased padding */
       border: 1px solid var(--gray-light);
       border-radius: var(--radius-full);
       background: var(--white);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       transition: var(--transition);
     }
     .search-bar:focus {
@@ -205,22 +216,28 @@
       border: none;
       color: var(--gray);
       cursor: pointer;
-      font-size: 1rem;
+      font-size: 1.1rem;
+      width: 44px; /* Larger touch */
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .cart-btn, .user-btn, .menu-toggle {
       background: none;
       border: none;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: var(--dark);
       cursor: pointer;
-      width: 40px;
-      height: 40px;
+      width: 44px; /* Increased to 44px */
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       transition: var(--transition);
+      position: relative;
     }
     .cart-btn:hover, .user-btn:hover, .menu-toggle:hover {
       background: var(--primary-light);
@@ -228,14 +245,14 @@
     }
     .cart-count {
       position: absolute;
-      top: -4px;
-      right: -4px;
+      top: -2px;
+      right: -2px;
       background: var(--danger);
       color: white;
       font-size: 0.7rem;
       font-weight: 700;
-      width: 18px;
-      height: 18px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -273,6 +290,7 @@
       font-weight: 600;
       border-radius: var(--radius-md);
       transition: var(--transition);
+      min-height: 56px; /* Good touch */
     }
     .mobile-nav-link:hover { background: var(--primary-light); color: var(--primary); }
 
@@ -289,15 +307,16 @@
       border: 1px solid var(--gray-light);
     }
     .language-btn {
-      padding: 6px 12px;
+      padding: 8px 16px; /* Larger touch */
       border: none;
       background: transparent;
       border-radius: var(--radius-full);
       font-weight: 600;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       cursor: pointer;
       transition: var(--transition);
       color: var(--gray);
+      min-height: 44px; /* Touch-friendly */
     }
     .language-btn.active { background: var(--primary); color: white; }
 
@@ -305,7 +324,7 @@
     .hero {
       background: linear-gradient(135deg, rgba(0,0,0,0.8), rgba(0,0,0,0.6)), url('https://i.postimg.cc/Kjyz2mXg/Chat-GPT-Image-Sep-9-2025-08-55-57-AM.png') center/cover;
       color: white;
-      padding: 60px 0;
+      padding: 80px 0; /* More padding for breathing */
       text-align: center;
     }
     .hero h1 {
@@ -313,9 +332,10 @@
       font-weight: 800;
       margin-bottom: 16px;
       text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+      line-height: 1.2;
     }
     .hero-subtitle {
-      font-size: 1rem;
+      font-size: 1.1rem;
       max-width: 600px;
       margin: 0 auto 32px;
       opacity: 0.9;
@@ -326,7 +346,7 @@
       justify-content: center;
       flex-wrap: wrap;
     }
-    .hero-cta .btn { width: auto; }
+    .hero-cta .btn { width: auto; min-width: 200px; }
 
     /* ===== FILTER BAR (WITH PROMINENT SEARCH) ===== */
     .filter-bar {
@@ -343,12 +363,13 @@
       flex-wrap: wrap;
     }
     .filter-select {
-      padding: 8px 12px;
+      padding: 12px 16px; /* Larger */
       border: 1px solid var(--gray-light);
       border-radius: var(--radius-md);
       background: var(--white);
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       cursor: pointer;
+      min-height: 48px;
     }
 
     /* Prominent search bar */
@@ -361,18 +382,22 @@
     .prominent-search .search-bar {
       flex: 1;
       width: auto;
-      padding: 12px 16px;
+      padding: 14px 16px; /* Larger */
       font-size: 1rem;
+      min-height: 52px;
     }
     .prominent-search .search-btn {
       position: static;
       transform: none;
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: var(--radius-md);
       background: var(--primary);
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .prominent-search .search-btn:hover {
       background: var(--primary-dark);
@@ -388,7 +413,7 @@
     /* ===== PRODUCT GRID ===== */
     .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(160px,1fr));
+      grid-template-columns: repeat(auto-fill, minmax(150px,1fr)); /* Slightly smaller min for narrow screens */
       gap: 16px;
       margin: 24px 0;
     }
@@ -462,8 +487,8 @@
       z-index: 3;
     }
     .action-btn {
-      width: 34px;
-      height: 34px;
+      width: 44px; /* Larger touch target */
+      height: 44px;
       border-radius: 50%;
       background: white;
       border: none;
@@ -474,6 +499,7 @@
       cursor: pointer;
       transition: var(--transition);
       color: var(--dark);
+      font-size: 1.2rem;
     }
     .action-btn:hover { background: var(--primary); color: white; }
     .action-btn.wishlist.active { color: var(--danger); }
@@ -548,7 +574,7 @@
     .add-to-cart {
       margin-top: 12px;
       width: 100%;
-      padding: 10px;
+      padding: 12px; /* Larger */
       background: var(--primary);
       color: white;
       border: none;
@@ -556,6 +582,8 @@
       font-weight: 600;
       cursor: pointer;
       transition: var(--transition);
+      min-height: 48px;
+      font-size: 0.95rem;
     }
     .add-to-cart:hover { background: var(--primary-dark); }
 
@@ -601,8 +629,8 @@
       border: none;
       font-size: 1.2rem;
       cursor: pointer;
-      width: 36px;
-      height: 36px;
+      width: 44px; /* Larger */
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -626,8 +654,8 @@
       border-bottom: 1px solid var(--gray-light);
     }
     .cart-item-image {
-      width: 60px;
-      height: 60px;
+      width: 70px; /* Slightly larger */
+      height: 70px;
       border-radius: var(--radius-sm);
       overflow: hidden;
       flex-shrink: 0;
@@ -641,24 +669,31 @@
     .cart-item-name {
       font-weight: 600;
       margin-bottom: 4px;
+      font-size: 0.95rem;
     }
     .cart-item-price {
       color: var(--primary);
       font-weight: 700;
+      font-size: 0.9rem;
     }
     .cart-item-actions {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px; /* More spacing */
       margin-top: 8px;
+      flex-wrap: wrap;
     }
     .qty-btn {
-      width: 28px;
-      height: 28px;
+      width: 36px; /* Larger */
+      height: 36px;
       border-radius: 50%;
       border: 1px solid var(--gray-light);
       background: white;
       cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .remove-item {
       color: var(--danger);
@@ -667,6 +702,8 @@
       cursor: pointer;
       font-size: 0.9rem;
       margin-left: auto;
+      padding: 8px;
+      min-height: 44px;
     }
     .cart-footer {
       padding: 16px;
@@ -700,6 +737,7 @@
       font-weight: 600;
       margin-top: 16px;
       text-decoration: none;
+      min-height: 52px;
     }
 
     /* ===== QUICK VIEW MODAL ===== */
@@ -740,8 +778,8 @@
       border: none;
       font-size: 1.2rem;
       cursor: pointer;
-      width: 36px;
-      height: 36px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -769,13 +807,14 @@
     .toast {
       background: var(--dark);
       color: white;
-      padding: 12px 16px;
+      padding: 14px 18px; /* Larger */
       border-radius: var(--radius-md);
       box-shadow: var(--shadow-lg);
       display: flex;
       align-items: center;
       gap: 10px;
       animation: slideIn 0.3s ease-out;
+      font-size: 0.95rem;
     }
     .toast.success { background: var(--success); }
     .toast.error { background: var(--danger); }
@@ -824,6 +863,8 @@
       display: flex;
       align-items: center;
       gap: 8px;
+      padding: 8px 0; /* Larger tap */
+      min-height: 44px;
     }
     .footer-links a:hover { color: white; padding-left: 4px; }
     .newsletter-form {
@@ -833,21 +874,23 @@
       margin-top: 12px;
     }
     .newsletter-input {
-      padding: 10px 12px;
+      padding: 14px 12px; /* Larger */
       border: 1px solid #475569;
       border-radius: var(--radius-md);
       background: #1e293b;
       color: white;
       width: 100%;
+      min-height: 48px;
     }
     .newsletter-btn {
       background: var(--primary);
       color: white;
       border: none;
-      padding: 10px;
+      padding: 14px;
       border-radius: var(--radius-md);
       cursor: pointer;
       font-weight: 600;
+      min-height: 48px;
     }
     .footer-bottom {
       border-top: 1px solid #334155;
@@ -872,6 +915,18 @@
     /* ===== TIGRINYA FONT SUPPORT ===== */
     body.tigrinya {
       font-family: 'Inter', 'Noto Sans Ethiopic', sans-serif;
+    }
+
+    /* Additional Android-specific fixes */
+    input, select, textarea, button {
+      font-family: inherit;
+      font-size: inherit;
+    }
+    /* Prevent zoom on input focus for Android */
+    @media screen and (max-width: 768px) {
+      input, select, textarea {
+        font-size: 16px; /* Prevents zoom on focus */
+      }
     }
   </style>
 </head>
