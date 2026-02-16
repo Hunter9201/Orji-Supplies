@@ -236,5 +236,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/bedsheets-1771227710951-1.jpg"
     ]
+  },
+  {
+    "id": "bedsheets-1771227986479",
+    "name": "Bedsheets",
+    "category": "office-supplies",
+    "retailPrice": 100000,
+    "wholesalePrice": 95000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Flat and fitted bedsheets.\n5*6, 6*6 available in different colors",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/bedsheets-1771227986479-1.jpg"
+    ]
   }
 ]
