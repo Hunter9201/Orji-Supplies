@@ -212,19 +212,6 @@
     ]
   },
   {
-    "id": "ladies-flat-shoes-1771095951736",
-    "name": "Ladies flat shoes",
-    "category": "other",
-    "retailPrice": 25000,
-    "wholesalePrice": 20000,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "Ladies flat shoes",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771095951736-1.jpg"
-    ]
-  },
-  {
     "id": "ladies-original-flat-shoes-1771218738336",
     "name": "Ladies original flat shoes",
     "category": "office-supplies",
