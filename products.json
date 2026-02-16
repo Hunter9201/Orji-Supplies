@@ -291,5 +291,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/flat-bed-sheets-king-size-1771228944030-1.jpg"
     ]
+  },
+  {
+    "id": "shoe-rack-1771229261091",
+    "name": "Shoe rack",
+    "category": "furniture",
+    "retailPrice": 70000,
+    "wholesalePrice": 65000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Easy to assemble.\nFor the best organsation of your living room",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/shoe-rack-1771229261091-1.jpg"
+    ]
   }
 ]
