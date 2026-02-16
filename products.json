@@ -249,5 +249,21 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/bedsheets-1771227986479-1.jpg"
     ]
+  },
+  {
+    "id": "velvet-duvets-1771228387992",
+    "name": "Velvet duvets",
+    "category": "other",
+    "retailPrice": 120000,
+    "wholesalePrice": 110000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Soft and comfortable .Available in different sizes and colors",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/velvet-duvets-1771228387992-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/velvet-duvets-1771228387992-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/velvet-duvets-1771228387992-3.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/velvet-duvets-1771228387992-4.jpg"
+    ]
   }
 ]
