@@ -223,5 +223,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771095951736-1.jpg"
     ]
+  },
+  {
+    "id": "ladies-original-flat-shoes-1771218738336",
+    "name": "Ladies original flat shoes",
+    "category": "office-supplies",
+    "retailPrice": 50000,
+    "wholesalePrice": 45000,
+    "unit": "Piece",
+    "moq": 1,
+    "desc": "Offers the best comfort n luxurious looks",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-original-flat-shoes-1771218738336-1.jpg"
+    ]
   }
 ]
