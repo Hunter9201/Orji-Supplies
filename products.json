@@ -304,5 +304,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/shoe-rack-1771229261091-1.jpg"
     ]
+  },
+  {
+    "id": "shoe-rack-10-tier-1771229527476",
+    "name": "Shoe rack 10 tier",
+    "category": "furniture",
+    "retailPrice": 100000,
+    "wholesalePrice": 95000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "10 tier offer lots of space for the best organisation",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/shoe-rack-10-tier-1771229527476-1.jpg"
+    ]
   }
 ]
