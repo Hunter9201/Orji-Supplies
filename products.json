@@ -278,5 +278,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/purple-home-blankets-1771228678339-1.jpg"
     ]
+  },
+  {
+    "id": "flat-bed-sheets-king-size-1771228944030",
+    "name": "Flat bed sheets king size",
+    "category": "other",
+    "retailPrice": 60000,
+    "wholesalePrice": 55000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Soft king size bedsheets for your comfort available in all sizes and different colors",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/flat-bed-sheets-king-size-1771228944030-1.jpg"
+    ]
   }
 ]
