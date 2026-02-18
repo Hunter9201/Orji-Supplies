@@ -798,5 +798,21 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771433189860-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771433189860-4.jpg"
     ]
+  },
+  {
+    "id": "ladies-flat-shoes-1771433511539",
+    "name": "Ladies flat shoes",
+    "category": "other",
+    "retailPrice": 50000,
+    "wholesalePrice": 48000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Original piece available in different colors",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771433511539-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771433511539-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771433511539-3.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771433511539-4.jpg"
+    ]
   }
 ]
