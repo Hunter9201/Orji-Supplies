@@ -540,5 +540,18 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-office-shoes-1771430361770-1.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-office-shoes-1771430361770-2.jpg"
     ]
+  },
+  {
+    "id": "ladies-heel-covered-shoes-1771430504920",
+    "name": "Ladies heel covered shoes",
+    "category": "other",
+    "retailPrice": 90000,
+    "wholesalePrice": 85000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Quality 100%",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-covered-shoes-1771430504920-1.jpg"
+    ]
   }
 ]
