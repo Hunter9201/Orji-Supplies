@@ -305,5 +305,21 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771336576962-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771336576962-4.jpg"
     ]
+  },
+  {
+    "id": "ladies-heels-1771425092842",
+    "name": "Ladies heels",
+    "category": "other",
+    "retailPrice": 90000,
+    "wholesalePrice": 85000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Classy and elegant ladies'heels.not too high",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heels-1771425092842-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heels-1771425092842-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heels-1771425092842-3.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heels-1771425092842-4.jpg"
+    ]
   }
 ]
