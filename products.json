@@ -335,5 +335,20 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771425274215-1.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771425274215-2.jpg"
     ]
+  },
+  {
+    "id": "ladies-original-flat-sandals-1771426330838",
+    "name": "Ladies original flat sandals",
+    "category": "other",
+    "retailPrice": 50000,
+    "wholesalePrice": 45000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Original flat shoes offers comfort and durability",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-original-flat-sandals-1771426330838-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-original-flat-sandals-1771426330838-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-original-flat-sandals-1771426330838-3.jpg"
+    ]
   }
 ]
