@@ -352,5 +352,16 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-original-flat-sandals-1771426330838-2.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-original-flat-sandals-1771426330838-3.jpg"
     ]
+  },
+  {
+    "id": "ladies-flat-shoes-1771426663059",
+    "name": "Ladies flat shoes",
+    "category": "other",
+    "retailPrice": 50000,
+    "wholesalePrice": 45000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Original n classy ladies sandals",
+    "imgs": []
   }
 ]
