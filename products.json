@@ -424,5 +424,20 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771427509598-2.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771427509598-3.jpg"
     ]
+  },
+  {
+    "id": "ladies-heel-shoes-1771427820405",
+    "name": "Ladies heel shoes",
+    "category": "other",
+    "retailPrice": 90000,
+    "wholesalePrice": 85000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Classy,original and elegant ladies foot wear.",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771427820405-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771427820405-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771427820405-3.jpg"
+    ]
   }
 ]
