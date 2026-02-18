@@ -641,5 +641,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771431361225-1.jpg"
     ]
+  },
+  {
+    "id": "ladies-heel-shoes-1771431445977",
+    "name": "Ladies heel shoes",
+    "category": "other",
+    "retailPrice": 80000,
+    "wholesalePrice": 75000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Comfort and durability 100%",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771431445977-1.jpg"
+    ]
   }
 ]
