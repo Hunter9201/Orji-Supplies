@@ -680,5 +680,20 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771431672461-1.jpg"
     ]
+  },
+  {
+    "id": "ladies-heel-shoe-1771431779396",
+    "name": "Ladies heel shoe",
+    "category": "other",
+    "retailPrice": 85000,
+    "wholesalePrice": 80000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Original 100%",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoe-1771431779396-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoe-1771431779396-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoe-1771431779396-3.jpg"
+    ]
   }
 ]
