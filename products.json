@@ -568,5 +568,18 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771430670770-2.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771430670770-3.jpg"
     ]
+  },
+  {
+    "id": "ladies-heel-shoes-1771430764275",
+    "name": "Ladies heel shoes",
+    "category": "office-supplies",
+    "retailPrice": 75000,
+    "wholesalePrice": 70000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Elegance 100%",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771430764275-1.jpg"
+    ]
   }
 ]
