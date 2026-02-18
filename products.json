@@ -814,5 +814,18 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771433511539-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771433511539-4.jpg"
     ]
+  },
+  {
+    "id": "ladies-jean-jackets-1771433984641",
+    "name": "Ladies jean jackets",
+    "category": "other",
+    "retailPrice": 50000,
+    "wholesalePrice": 45000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Quality 100% available in different size",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-jean-jackets-1771433984641-1.jpg"
+    ]
   }
 ]
