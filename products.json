@@ -881,5 +881,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-jean-skirts-long-1771435782219-1.jpg"
     ]
+  },
+  {
+    "id": "ladies-jean-pant-1771435905665",
+    "name": "Ladies jean pant",
+    "category": "other",
+    "retailPrice": 50000,
+    "wholesalePrice": 45000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Original 100%",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-jean-pant-1771435905665-1.jpg"
+    ]
   }
 ]
