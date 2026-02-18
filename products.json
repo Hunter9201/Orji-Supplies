@@ -553,5 +553,20 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-covered-shoes-1771430504920-1.jpg"
     ]
+  },
+  {
+    "id": "ladies-heel-shoes-1771430670770",
+    "name": "Ladies heel shoes",
+    "category": "other",
+    "retailPrice": 85000,
+    "wholesalePrice": 80000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Class 100% quality 100% available in differnt colors\nGold and black too",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771430670770-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771430670770-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771430670770-3.jpg"
+    ]
   }
 ]
