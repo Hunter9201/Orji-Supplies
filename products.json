@@ -708,5 +708,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-heel-shoes-1771431877970-1.jpg"
     ]
+  },
+  {
+    "id": "ladies-flat-shoes-1771431971367",
+    "name": "Ladies flat shoes",
+    "category": "other",
+    "retailPrice": 60000,
+    "wholesalePrice": 55000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Classy and comfortable",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771431971367-1.jpg"
+    ]
   }
 ]
