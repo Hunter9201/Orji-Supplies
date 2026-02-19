@@ -1024,5 +1024,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/kids-school-shoes-crab-kids-1771482660090-1.jpg"
     ]
+  },
+  {
+    "id": "kids-school-shoes-crab-kids-1771482765472",
+    "name": "Kids school shoes (crab kids)",
+    "category": "other",
+    "retailPrice": 120000,
+    "wholesalePrice": 115000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Kids school shoes (crab kids) girl foot wear",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/kids-school-shoes-crab-kids-1771482765472-1.jpg"
+    ]
   }
 ]
