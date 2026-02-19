@@ -907,5 +907,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/kids-school-shoes-crab-kids-1771481497246-1.jpg"
     ]
+  },
+  {
+    "id": "kids-school-shoes-crab-kids-1771481609646",
+    "name": "Kids school shoes (crab kids)",
+    "category": "other",
+    "retailPrice": 120000,
+    "wholesalePrice": 115000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Original 100%",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/kids-school-shoes-crab-kids-1771481609646-1.jpg"
+    ]
   }
 ]
