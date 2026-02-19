@@ -1180,5 +1180,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/kids-school-shoes-fiti-kids-1771483927730-1.jpg"
     ]
+  },
+  {
+    "id": "kids-school-shoes-fit-kids-1771484013774",
+    "name": "Kids school shoes (fit kids)",
+    "category": "other",
+    "retailPrice": 120000,
+    "wholesalePrice": 115000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Girls' foot wear,orignal piece",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/kids-school-shoes-fit-kids-1771484013774-1.jpg"
+    ]
   }
 ]
