@@ -30,20 +30,6 @@
     ]
   },
   {
-    "id": "black-hair-shampoo-1767474122095",
-    "name": "Black hair shampoo",
-    "category": "laundry",
-    "retailPrice": 10000,
-    "wholesalePrice": 8000,
-    "unit": "Box",
-    "moq": 10,
-    "desc": "Makes your hair Black",
-    "imgs": [
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767474122095-1.jpeg",
-      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-hair-shampoo-1767474122095-2.jpeg"
-    ]
-  },
-  {
     "id": "product-1767510236150",
     "name": "Dexe Black hair shampoo",
     "category": "personal",
