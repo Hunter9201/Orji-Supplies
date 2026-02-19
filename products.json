@@ -1167,5 +1167,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/kids-school-shoes-conoli-1771483822984-1.jpg"
     ]
+  },
+  {
+    "id": "kids-school-shoes-fiti-kids-1771483927730",
+    "name": "Kids school shoes (fiti kids)",
+    "category": "other",
+    "retailPrice": 120000,
+    "wholesalePrice": 115000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Boys' original foot wear",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/kids-school-shoes-fiti-kids-1771483927730-1.jpg"
+    ]
   }
 ]
