@@ -1186,5 +1186,19 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-s-gentle-shoes-1771572195023-1.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-s-gentle-shoes-1771572195023-2.jpg"
     ]
+  },
+  {
+    "id": "men-s-gentle-shoes-1771572309067",
+    "name": "Men's gentle shoes",
+    "category": "other",
+    "retailPrice": 150000,
+    "wholesalePrice": 140000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Original quality",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-s-gentle-shoes-1771572309067-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-s-gentle-shoes-1771572309067-2.jpg"
+    ]
   }
 ]
