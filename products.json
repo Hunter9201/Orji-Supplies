@@ -1483,5 +1483,19 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-open-shoes-1771579853195-2.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-open-shoes-1771579853195-3.jpg"
     ]
+  },
+  {
+    "id": "men-open-shoes-1771579941426",
+    "name": "Men open shoes",
+    "category": "other",
+    "retailPrice": 150000,
+    "wholesalePrice": 140000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Authentic. size 40-45 available in different colors",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-open-shoes-1771579941426-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-open-shoes-1771579941426-2.jpg"
+    ]
   }
 ]
