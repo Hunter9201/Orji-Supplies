@@ -1627,5 +1627,21 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-openshoes-1771607998353-1.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-openshoes-1771607998353-2.jpg"
     ]
+  },
+  {
+    "id": "men-sneakers-1771609168098",
+    "name": "Men sneakers",
+    "category": "other",
+    "retailPrice": 150000,
+    "wholesalePrice": 140000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Authentic. Available in all size 39-45",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-sneakers-1771609168098-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-sneakers-1771609168098-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-sneakers-1771609168098-3.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/men-sneakers-1771609168098-4.jpg"
+    ]
   }
 ]
