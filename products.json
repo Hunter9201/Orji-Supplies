@@ -1708,5 +1708,19 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-office-shoes-1771675048650-1.jpg"
     ]
+  },
+  {
+    "id": "ladies-office-shoes-1771675113036",
+    "name": "Ladies office shoes",
+    "category": "other",
+    "retailPrice": 50000,
+    "wholesalePrice": 45000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Available in all size 36-42",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-office-shoes-1771675113036-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-office-shoes-1771675113036-2.jpg"
+    ]
   }
 ]
