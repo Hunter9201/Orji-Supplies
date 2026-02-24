@@ -1748,5 +1748,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771937102325-1.jpg"
     ]
+  },
+  {
+    "id": "ladies-flat-shoes-1771937166443",
+    "name": "Ladies flat shoes",
+    "category": "other",
+    "retailPrice": 45000,
+    "wholesalePrice": 40000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Available in all sizes",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771937166443-1.jpg"
+    ]
   }
 ]
