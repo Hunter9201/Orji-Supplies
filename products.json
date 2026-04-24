@@ -1051,17 +1051,6 @@
     ]
   },
   {
-    "id": "t-1771537463168",
-    "name": "T",
-    "category": "office-supplies",
-    "retailPrice": 4,
-    "wholesalePrice": 0,
-    "unit": "piece",
-    "moq": 1,
-    "desc": "",
-    "imgs": []
-  },
-  {
     "id": "men-s-gentle-shoes-1771572195023",
     "name": "Men's Gentle shoes",
     "category": "other",
