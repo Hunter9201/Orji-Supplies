@@ -1625,5 +1625,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/ladies-flat-shoes-1771937166443-1.jpg"
     ]
+  },
+  {
+    "id": "softbroom-dust-span-1777062916995",
+    "name": "SOFTBROOM & DUST SPAN",
+    "category": "cleaning",
+    "retailPrice": 18000,
+    "wholesalePrice": 10000,
+    "unit": "CARTOON",
+    "moq": 50,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/softbroom-dust-span-1777062916995-1.jpg"
+    ]
   }
 ]
