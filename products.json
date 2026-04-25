@@ -1751,5 +1751,20 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-henna-1777148138147-1777148138148-1.jpg"
     ]
+  },
+  {
+    "id": "toilet-brushes-1777148684151",
+    "name": "Toilet Brushes መጥረጊ ቤት ሽንቲ ማጽዳት",
+    "category": "cleaning",
+    "retailPrice": 5000,
+    "wholesalePrice": 4500,
+    "unit": "Piece",
+    "moq": 10,
+    "desc": "መጥረጊ ቤት ሽንቲ ማጽዳት",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/toilet-brushes-1777148684151-1777148684152-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/toilet-brushes-1777148684151-1777148685791-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/toilet-brushes-1777148684151-1777148687249-3.jpg"
+    ]
   }
 ]
