@@ -1766,5 +1766,19 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/toilet-brushes-1777148684151-1777148685791-2.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/toilet-brushes-1777148684151-1777148687249-3.jpg"
     ]
+  },
+  {
+    "id": "floor-wiper-1777149275944",
+    "name": "Floor wiper(  መጥረጊ መሬት ማጽዳት መሳሪያ",
+    "category": "cleaning",
+    "retailPrice": 5000,
+    "wholesalePrice": 4500,
+    "unit": "piece",
+    "moq": 14,
+    "desc": "Wipes Clean wet floor",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/floor-wiper-1777149275944-1777149275944-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/floor-wiper-1777149275944-1777149277063-2.jpg"
+    ]
   }
 ]
