@@ -1780,5 +1780,18 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/floor-wiper-1777149275944-1777149275944-1.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/floor-wiper-1777149275944-1777149277063-2.jpg"
     ]
+  },
+  {
+    "id": "playing-cards-1777150204252",
+    "name": "Playing Cards",
+    "category": "Shop Supplies",
+    "retailPrice": 10000,
+    "wholesalePrice": 8500,
+    "unit": "Unit",
+    "moq": 1,
+    "desc": "",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/playing-cards-1777150204252-1777150204252-1.jpg"
+    ]
   }
 ]
