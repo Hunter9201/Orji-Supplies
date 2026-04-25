@@ -1679,5 +1679,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/aluminum-see-through-dustin-bin-1777138976183-1777138976183-1.jpg"
     ]
+  },
+  {
+    "id": "dust-span-1777143505351",
+    "name": "Dust Span (መጥረጊያ ዓቃሊ)",
+    "category": "cleaning",
+    "retailPrice": 1500,
+    "wholesalePrice": 1300,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Handheld tool for collecting dust",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/dust-span-1777143505351-1777143505351-1.jpg"
+    ]
   }
 ]
