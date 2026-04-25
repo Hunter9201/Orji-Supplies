@@ -1666,5 +1666,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/dexe-black-hair-shampoo-1777138360426-1777138360427-1.jpg"
     ]
+  },
+  {
+    "id": "aluminum-see-through-dustin-bin-1777138976183",
+    "name": "Aluminum see through Dustin Bin",
+    "category": "cleaning",
+    "retailPrice": 28000,
+    "wholesalePrice": 25000,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Aluminum see through Dustin Bin",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/aluminum-see-through-dustin-bin-1777138976183-1777138976183-1.jpg"
+    ]
   }
 ]
