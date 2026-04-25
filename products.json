@@ -1638,5 +1638,20 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/softbroom-dust-span-1777062916995-1.jpg"
     ]
+  },
+  {
+    "id": "spin-mop-and-bucket-system-1777135554960",
+    "name": "Spin mop and Bucket system",
+    "category": "cleaning",
+    "retailPrice": 120000,
+    "wholesalePrice": 105000,
+    "unit": "piece",
+    "moq": 10,
+    "desc": "The system allows you to rinse the microfiber mop head and dry it without touching it.( Self Cleaning)",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/spin-mop-and-bucket-system-1777135554960-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/spin-mop-and-bucket-system-1777135554960-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/spin-mop-and-bucket-system-1777135554960-3.jpg"
+    ]
   }
 ]
