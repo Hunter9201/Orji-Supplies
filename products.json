@@ -1692,5 +1692,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/dust-span-1777143505351-1777143505351-1.jpg"
     ]
+  },
+  {
+    "id": "soft-brooms-1777143931292",
+    "name": "Soft Brooms (ልስሉስ መጥረጊታት)",
+    "category": "cleaning",
+    "retailPrice": 5000,
+    "wholesalePrice": 54000,
+    "unit": "Donzen",
+    "moq": 12,
+    "desc": "Soft brooms for gentle cleaning (ልስሉስ መጥረጊታት ንለስላሳ ምጽራይ)",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/soft-brooms-1777143931292-1777143931292-1.jpg"
+    ]
   }
 ]
