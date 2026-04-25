@@ -1722,5 +1722,21 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/cob-web-1777145412789-1777145412789-1.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/cob-web-1777145412789-1777145414353-2.jpg"
     ]
+  },
+  {
+    "id": "barber-salon-neck-paper-1777147494566",
+    "name": "Barber Salon Neck Paper  ወረቐት ክሳድ",
+    "category": "Cosmetics (መሳርሒ ሽቶ)",
+    "retailPrice": 17000,
+    "wholesalePrice": 15000,
+    "unit": "Pieces",
+    "moq": 12,
+    "desc": "Disposable paper protects neck during haircut\n ወረቐት ክሳድ ኣብ ጸጉሪ ይከላኸል",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/barber-salon-neck-paper-1777147494566-1777147494566-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/barber-salon-neck-paper-1777147494566-1777147495840-2.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/barber-salon-neck-paper-1777147494566-1777147497159-3.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/barber-salon-neck-paper-1777147494566-1777147498472-4.jpg"
+    ]
   }
 ]
