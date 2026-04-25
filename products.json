@@ -1708,5 +1708,19 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/soft-brooms-1777143931292-1777143931292-1.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/soft-brooms-1777143931292-1777143931292-1.jpg"
     ]
+  },
+  {
+    "id": "cob-web-1777145412789",
+    "name": "Cob Web  ድር",
+    "category": "other",
+    "retailPrice": 7000,
+    "wholesalePrice": 72000,
+    "unit": "Dozen",
+    "moq": 12,
+    "desc": "ኮብወብ እና ንኡስ ድርድር ይእልም \nRemoves cobwebs and fine dust",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/cob-web-1777145412789-1777145412789-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/cob-web-1777145412789-1777145414353-2.jpg"
+    ]
   }
 ]
