@@ -1738,5 +1738,18 @@
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/barber-salon-neck-paper-1777147494566-1777147497159-3.jpg",
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/barber-salon-neck-paper-1777147494566-1777147498472-4.jpg"
     ]
+  },
+  {
+    "id": "black-henna-1777148138147",
+    "name": "Black Henna",
+    "category": "Cosmetics (መሳርሒ ሽቶ)",
+    "retailPrice": 16000,
+    "wholesalePrice": 15000,
+    "unit": "box",
+    "moq": 10,
+    "desc": "Natural dye for hair coloring ባህላዊ ሕብሪ ጸጉሪ ጸሊም",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/black-henna-1777148138147-1777148138148-1.jpg"
+    ]
   }
 ]
