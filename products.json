@@ -1862,5 +1862,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/jik-colours-1777173147344-1777173147344-1.jpg"
     ]
+  },
+  {
+    "id": "jik-small-regular-1777234623287",
+    "name": "Jik ጂክ Small Regular (",
+    "category": "cleaning",
+    "retailPrice": 4500,
+    "wholesalePrice": 4300,
+    "unit": "piece",
+    "moq": 1,
+    "desc": "Powerful bleach for killing germs, removing stains, and keeping surfaces clean, bright, and hygiene\nሓይለኛ ፈሳሲ ማጽዳት፣ ጀርሞች ይገድል፣ ነገራት ይኣጥፍእ፣ ኣቕሓት ንጹሕን ብሩህን ይገብሮ።",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/jik-small-regular-1777234623287-1777234623288-1.jpg"
+    ]
   }
 ]
