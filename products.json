@@ -1849,5 +1849,18 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/jik-750-mls-1777172474116-1777172474116-1.jpg"
     ]
+  },
+  {
+    "id": "jik-colours-1777173147344",
+    "name": "JIK COLOURS( ጂክ ሕብራት)",
+    "category": "cleaning",
+    "retailPrice": 12000,
+    "wholesalePrice": 6500,
+    "unit": "Boxes",
+    "moq": 20,
+    "desc": "Protects colors while removing stains, keeping clothes bright, fresh, and clean with every wash.ሕብራት ይከላኸል፣ ነገራት ይኣጥፍእ፣ ልብሲ ብሩህ፣ ንጹሕን ዝሓሸ ሽታ ይህብ ንኹሉ ምጽራይ",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/jik-colours-1777173147344-1777173147344-1.jpg"
+    ]
   }
 ]
