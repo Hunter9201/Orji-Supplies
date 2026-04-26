@@ -1793,5 +1793,19 @@
     "imgs": [
       "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/playing-cards-1777150204252-1777150204252-1.jpg"
     ]
+  },
+  {
+    "id": "toilet-blocks-cubes-1777168027679",
+    "name": "toilet blocks/cubes ኩባት ሽንቲ ማጽዳት",
+    "category": "cleaning",
+    "retailPrice": 6000,
+    "wholesalePrice": 5700,
+    "unit": "set",
+    "moq": 25,
+    "desc": "Powerful toilet blocks that keep your toilet fresh, clean, and germ-free with every flush. Long-lasting fragrance and effective stain removal for a sparkling finish.እዚ ኩባት ሽንቲ ማጽዳት ሓይለኛ እዩ፣ ቤት ሽንትኻ ንጹሕ፣ ዝሓሸ ሽታ ዘለዎን ካብ ባክቴርያ ዝተኣለየን ይገብሮ። ነዊሕ ጊዜ ዝነብር ሽታን ቀላል ማጽዳትን ይህብ።",
+    "imgs": [
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/toilet-blocks-cubes-1777168027679-1777168027679-1.jpg",
+      "https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/images/toilet-blocks-cubes-1777168027679-1777168028979-2.jpg"
+    ]
   }
 ]
