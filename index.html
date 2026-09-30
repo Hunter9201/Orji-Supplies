@@ -1,723 +1,434 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
-  <title>Orji Supplies – Complete Marketplace | Uncapped Original Images</title>
-  <meta name="description" content="Everything from electronics to groceries, fashion to furniture. Uganda's #1 wholesale & retail marketplace. Original product photos, full & uncropped." />
-  <meta name="keywords" content="Uganda marketplace, wholesale Uganda, retail Kampala, electronics Uganda, groceries delivery" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Orji Supplies – Shop Kampala, Delivered</title>
+<meta name="description" content="Groceries, electronics, fashion, furniture. Retail and wholesale in Uganda. Order on WhatsApp.">
+<link rel="icon" href="https://i.postimg.cc/Kjyz2mXg/Chat-GPT-Image-Sep-9-2025-08-55-57-AM.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14231b;--leaf:#1f7a4d;--leaf-d:#155c39;--mango:#f5a524;--paper:#fbfaf7;--card:#fff;--line:#e6e2d8;--mute:#6b7469;--red:#c8372d;--r:14px}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Bricolage Grotesque',system-ui,sans-serif;background:var(--paper);color:var(--ink);line-height:1.45;padding-bottom:calc(88px + env(safe-area-inset-bottom))}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea{font:inherit;font-size:16px}
+:focus-visible{outline:3px solid var(--mango);outline-offset:2px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 14px}
 
-  <link rel="icon" type="image/x-icon" href="https://i.postimg.cc/Kjyz2mXg/Chat-GPT-Image-Sep-9-2025-08-55-57-AM.png" />
-  <link rel="shortcut icon" href="https://i.postimg.cc/Kjyz2mXg/Chat-GPT-Image-Sep-9-2025-08-55-57-AM.png" />
-  <link rel="apple-touch-icon" href="https://i.postimg.cc/Kjyz2mXg/Chat-GPT-Image-Sep-9-2025-08-55-57-AM.png" />
+/* top bar */
+.top{position:sticky;top:0;z-index:20;background:var(--paper);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+.top-row{display:flex;align-items:center;gap:10px;padding:10px 0}
+.brand{font-weight:800;font-size:1.25rem;color:var(--leaf);white-space:nowrap}
+.search{flex:1;display:flex;align-items:center;background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:0 14px;min-height:48px}
+.search:focus-within{border-color:var(--leaf)}
+.search input{flex:1;border:0;outline:0;background:none;min-width:0;padding:10px 0}
+.wa-top{display:none;background:#25D366;color:#fff;font-weight:600;padding:12px 16px;border-radius:999px;text-decoration:none;white-space:nowrap}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:0 0 10px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;padding:9px 16px;border-radius:999px;background:#fff;border:1.5px solid var(--line);font-weight:600;font-size:.92rem;min-height:40px;text-transform:capitalize}
+.chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#fff}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+/* intro strip */
+.strip{display:flex;gap:18px;flex-wrap:wrap;padding:14px 0 4px;font-size:.9rem;color:var(--mute)}
+.strip b{color:var(--ink)}
+.bar{display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+.bar h1{font-size:1.15rem;font-weight:800}
+.bar select{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:8px 10px;min-height:44px}
 
-  <style>
-    /* ===== RESET & VARIABLES ===== */
-    :root {
-      --primary: #2563eb; --primary-dark: #1d4ed8; --primary-light: #dbeafe;
-      --accent: #7c3aed; --success: #16a34a; --warning: #f59e0b; --danger: #dc2626;
-      --dark: #0f172a; --gray-dark: #334155; --gray: #64748b; --gray-light: #e2e8f0;
-      --light: #f8fafc; --white: #ffffff;
-      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
-      --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.05);
-      --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.05);
-      --shadow-xl: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.05);
-      --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px; --radius-xl: 24px; --radius-full: 9999px;
-      --transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
-    html { scroll-behavior:smooth; scroll-padding-top:80px; }
-    body { font-family:'Inter',system-ui,-apple-system,sans-serif; background:var(--light); color:var(--dark); line-height:1.5; font-size:15px; overflow-x:hidden; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; }
-    body.no-scroll { overflow:hidden; }
-    .container { max-width:1280px; margin:0 auto; padding:0 16px; }
-    .btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:12px 24px; border:none; border-radius:var(--radius-md); font-weight:600; font-size:0.95rem; cursor:pointer; transition:var(--transition); background:var(--white); color:var(--dark); box-shadow:var(--shadow-sm); touch-action:manipulation; min-height:48px; }
-    .btn-primary { background:var(--primary); color:white; box-shadow:0 4px 12px rgba(37,99,235,0.3); }
-    .btn-primary:hover { background:var(--primary-dark); transform:translateY(-2px); }
-    .btn-outline { background:transparent; border:1px solid var(--gray-light); color:var(--dark); }
-    .btn-outline:hover { background:var(--light); }
-    .btn-whatsapp { background:#25D366; color:white; }
-    .btn-whatsapp:hover { background:#128C7E; }
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:640px){.grid{grid-template-columns:repeat(3,1fr);gap:16px}.wa-top{display:inline-block}}
+@media(min-width:960px){.grid{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1180px){.grid{grid-template-columns:repeat(5,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
+.pic{position:relative;aspect-ratio:1/1;background:#f2f0ea;width:100%}
+.pic img{width:100%;height:100%;object-fit:contain;display:block}
+.tag{position:absolute;top:8px;left:8px;background:var(--mango);color:var(--ink);font-weight:800;font-size:.72rem;padding:3px 9px;border-radius:999px}
+.tag.sale{background:var(--red);color:#fff}
+.info{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px;flex:1}
+.name{font-weight:600;font-size:.95rem;line-height:1.25;text-align:left;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:2.5em}
+.price{font-weight:800;font-size:1.1rem;color:var(--leaf)}
+.price small{font-weight:400;color:var(--mute);font-size:.78rem}
+.old{color:var(--mute);text-decoration:line-through;font-size:.82rem;font-weight:400;margin-left:4px}
+.bulk{font-size:.78rem;color:var(--mute)}
+.bulk b{color:var(--leaf-d)}
+.low{font-size:.78rem;color:var(--red);font-weight:600}
+.buy{margin-top:auto;padding-top:8px}
+.add{width:100%;min-height:46px;background:var(--leaf);color:#fff;border-radius:11px;font-weight:700}
+.add:hover{background:var(--leaf-d)}
+.add:disabled{background:#cfcfc8;cursor:not-allowed}
+.step{display:flex;align-items:center;justify-content:space-between;min-height:46px;border:2px solid var(--leaf);border-radius:11px;overflow:hidden}
+.step button{width:52px;height:46px;font-size:1.4rem;font-weight:700;color:var(--leaf)}
+.step button:active{background:#e5f3ec}
+.step span{font-weight:800}
+.empty{grid-column:1/-1;text-align:center;padding:48px 16px;color:var(--mute)}
+.empty button{margin-top:12px;color:var(--leaf);font-weight:700;text-decoration:underline}
+.skel{height:280px;border-radius:var(--r);background:linear-gradient(90deg,#eeece5 25%,#f6f4ee 50%,#eeece5 75%);background-size:200% 100%;animation:sk 1.2s infinite}
+@keyframes sk{to{background-position:-200% 0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
 
-    .header { position:sticky; top:0; z-index:100; background:rgba(255,255,255,0.9); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--gray-light); box-shadow:var(--shadow-sm); }
-    .header-container { display:flex; align-items:center; justify-content:space-between; height:70px; padding:0 16px; max-width:1280px; margin:0 auto; }
-    .logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
-    .logo-icon { width:44px; height:44px; background:linear-gradient(135deg,var(--primary),var(--accent)); border-radius:var(--radius-md); display:flex; align-items:center; justify-content:center; color:white; font-weight:800; font-size:1.5rem; }
-    .logo-text { font-weight:700; font-size:1.3rem; background:linear-gradient(135deg,var(--primary),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-    .nav-links { display:none; gap:24px; list-style:none; }
-    .nav-links a { text-decoration:none; color:var(--dark); font-weight:500; transition:var(--transition); padding:8px 0; }
-    .nav-links a:hover { color:var(--primary); }
-    .header-actions { display:flex; align-items:center; gap:12px; }
-    .search-container { position:relative; display:none; }
-    .search-bar { width:240px; padding:12px 40px 12px 16px; border:1px solid var(--gray-light); border-radius:var(--radius-full); background:var(--white); font-size:0.95rem; transition:var(--transition); }
-    .search-bar:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(37,99,235,0.15); }
-    .search-btn { position:absolute; right:8px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--gray); cursor:pointer; font-size:1.1rem; width:44px; height:44px; display:flex; align-items:center; justify-content:center; }
-    .cart-btn, .user-btn, .menu-toggle { background:none; border:none; font-size:1.3rem; color:var(--dark); cursor:pointer; width:44px; height:44px; border-radius:50%; display:flex; align-items:center; justify-content:center; transition:var(--transition); position:relative; }
-    .cart-btn:hover, .user-btn:hover, .menu-toggle:hover { background:var(--primary-light); color:var(--primary); }
-    .cart-count { position:absolute; top:-2px; right:-2px; background:var(--danger); color:white; font-size:0.7rem; font-weight:700; width:20px; height:20px; border-radius:50%; display:flex; align-items:center; justify-content:center; }
-    .mobile-menu { position:fixed; top:70px; left:0; right:0; background:white; z-index:99; box-shadow:var(--shadow-lg); transform:translateY(-100%); opacity:0; transition:var(--transition); border-top:1px solid var(--gray-light); max-height:calc(100vh - 70px); overflow-y:auto; }
-    .mobile-menu.active { transform:translateY(0); opacity:1; }
-    .mobile-menu-content { padding:20px; }
-    .mobile-nav-link { display:flex; align-items:center; gap:12px; padding:16px; text-decoration:none; color:var(--dark); font-weight:600; border-radius:var(--radius-md); transition:var(--transition); min-height:56px; }
-    .mobile-nav-link:hover { background:var(--primary-light); color:var(--primary); }
+/* cart bar */
+.cartbar{position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:30;max-width:560px;margin:0 auto;background:var(--ink);color:#fff;border-radius:16px;padding:14px 18px;display:none;justify-content:space-between;align-items:center;width:calc(100% - 24px);min-height:58px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.cartbar.on{display:flex}
+.cartbar b{font-size:1.05rem}
+.cartbar .go{background:var(--mango);color:var(--ink);font-weight:800;padding:9px 16px;border-radius:10px}
 
-    .language-switcher { position:fixed; top:80px; right:16px; z-index:101; background:white; border-radius:var(--radius-full); padding:4px; box-shadow:var(--shadow-md); border:1px solid var(--gray-light); }
-    .language-btn { padding:8px 16px; border:none; background:transparent; border-radius:var(--radius-full); font-weight:600; font-size:0.9rem; cursor:pointer; transition:var(--transition); color:var(--gray); min-height:44px; }
-    .language-btn.active { background:var(--primary); color:white; }
-
-    .hero { background:linear-gradient(135deg,rgba(0,0,0,0.8),rgba(0,0,0,0.6)),url('https://i.postimg.cc/Kjyz2mXg/Chat-GPT-Image-Sep-9-2025-08-55-57-AM.png') center/cover; color:white; padding:80px 0; text-align:center; }
-    .hero h1 { font-size:2.2rem; font-weight:800; margin-bottom:16px; text-shadow:0 2px 10px rgba(0,0,0,0.3); line-height:1.2; }
-    .hero-subtitle { font-size:1.1rem; max-width:600px; margin:0 auto 32px; opacity:0.9; }
-    .hero-cta { display:flex; gap:16px; justify-content:center; flex-wrap:wrap; }
-    .hero-cta .btn { width:auto; min-width:200px; }
-
-    .filter-bar { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; margin:20px 0; }
-    .filter-group { display:flex; gap:10px; flex-wrap:wrap; }
-    .filter-select { padding:12px 16px; border:1px solid var(--gray-light); border-radius:var(--radius-md); background:var(--white); font-size:0.95rem; cursor:pointer; min-height:48px; }
-    .prominent-search { flex:1 1 100%; display:flex; gap:8px; margin-bottom:8px; }
-    .prominent-search .search-bar { flex:1; width:auto; padding:14px 16px; font-size:1rem; min-height:52px; }
-    .prominent-search .search-btn { position:static; transform:none; width:52px; height:52px; border-radius:var(--radius-md); background:var(--primary); color:white; font-size:1.3rem; display:flex; align-items:center; justify-content:center; }
-    @media (min-width:640px) { .prominent-search { flex:1 1 auto; margin-bottom:0; } }
-
-    .category-section { margin-bottom:3rem; }
-    .category-title { font-size:1.8rem; font-weight:700; margin:1.5rem 0 1rem; padding-left:0.5rem; border-left:6px solid var(--primary); text-transform:capitalize; color:var(--dark); }
-    .products-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:20px; }
-    .product-card { background:white; border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow-sm); transition:var(--transition); position:relative; display:flex; flex-direction:column; }
-    .product-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-lg); }
-    .product-badges { position:absolute; top:8px; left:8px; z-index:2; display:flex; flex-direction:column; gap:4px; }
-    .badge { padding:4px 8px; font-size:0.7rem; font-weight:700; border-radius:var(--radius-full); text-transform:uppercase; }
-    .badge.sale { background:var(--danger); color:white; }
-    .badge.new { background:var(--success); color:white; }
-    .badge.popular { background:var(--warning); color:white; }
-
-    .product-image-slider { position:relative; height:200px; background:#f1f5f9; overflow:hidden; cursor:pointer; }
-    .product-image-slider .swiper-slide img { width:100%; height:100%; object-fit:contain; transition:transform 0.2s; background:#f8fafc; }
-    .product-card:hover .product-image-slider .swiper-slide img { transform:scale(1.02); }
-    .product-image-slider .swiper-button-next, .product-image-slider .swiper-button-prev { display:none; }
-    .product-image-slider .swiper-pagination-bullet { background:white; opacity:0.6; }
-    .product-image-slider .swiper-pagination-bullet-active { background:var(--primary); opacity:1; }
-    .image-zoom-hint { position:absolute; bottom:6px; right:6px; background:rgba(0,0,0,0.55); backdrop-filter:blur(4px); color:white; font-size:10px; padding:3px 8px; border-radius:20px; pointer-events:none; z-index:5; }
-
-    .product-actions { position:absolute; top:8px; right:8px; display:flex; flex-direction:column; gap:6px; z-index:3; }
-    .action-btn { width:44px; height:44px; border-radius:50%; background:white; border:none; box-shadow:var(--shadow-md); display:flex; align-items:center; justify-content:center; cursor:pointer; transition:var(--transition); color:var(--dark); font-size:1.2rem; }
-    .action-btn:hover { background:var(--primary); color:white; }
-    .action-btn.wishlist.active { color:var(--danger); }
-    .product-info { padding:12px; flex:1; display:flex; flex-direction:column; }
-    .product-category { color:var(--gray); font-size:0.7rem; text-transform:uppercase; letter-spacing:0.5px; }
-    .product-name { font-weight:600; font-size:0.95rem; margin:4px 0 8px; line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
-    .product-rating { display:flex; align-items:center; gap:4px; margin-bottom:8px; }
-    .stars { color:#fbbf24; font-size:0.8rem; }
-    .rating-count { color:var(--gray); font-size:0.7rem; }
-    .product-price { margin-top:auto; display:flex; align-items:baseline; gap:6px; flex-wrap:wrap; }
-    .current-price { font-size:1.2rem; font-weight:800; color:var(--primary); }
-    .original-price { font-size:0.9rem; color:var(--gray); text-decoration:line-through; }
-    .price-unit { font-size:0.8rem; color:var(--gray); }
-    .stock-status { font-size:0.75rem; margin-top:6px; display:flex; align-items:center; gap:4px; }
-    .in-stock { color:var(--success); }
-    .low-stock { color:var(--warning); }
-    .out-of-stock { color:var(--danger); }
-    .add-to-cart { margin-top:12px; width:100%; padding:12px; background:var(--primary); color:white; border:none; border-radius:var(--radius-md); font-weight:600; cursor:pointer; transition:var(--transition); min-height:48px; font-size:0.95rem; }
-    .add-to-cart:hover { background:var(--primary-dark); }
-    @media (min-width:768px) {
-      .nav-links { display:flex; }
-      .search-container { display:block; }
-      .menu-toggle { display:none; }
-      .products-grid { grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); }
-      .product-image-slider { height:220px; }
-    }
-    @media (min-width:1024px) { .product-image-slider { height:250px; } }
-
-    .cart-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:199; opacity:0; visibility:hidden; transition:var(--transition); backdrop-filter:blur(4px); }
-    .cart-overlay.active { opacity:1; visibility:visible; }
-    .cart-sidebar { position:fixed; top:0; right:-100%; width:100%; max-width:380px; height:100vh; background:white; z-index:200; transition:var(--transition); box-shadow:var(--shadow-xl); display:flex; flex-direction:column; }
-    .cart-sidebar.open { right:0; }
-    .cart-header { padding:16px; border-bottom:1px solid var(--gray-light); display:flex; justify-content:space-between; align-items:center; }
-    .cart-close { background:none; border:none; font-size:1.2rem; cursor:pointer; width:44px; height:44px; border-radius:50%; }
-    .cart-body { flex:1; overflow-y:auto; padding:16px; }
-    .cart-empty { text-align:center; padding:40px 16px; color:var(--gray); }
-    .cart-item { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--gray-light); }
-    .cart-item-image { width:70px; height:70px; border-radius:var(--radius-sm); overflow:hidden; flex-shrink:0; background:#f1f5f9; }
-    .cart-item-image img { width:100%; height:100%; object-fit:contain; background:#f1f5f9; }
-    .cart-item-info { flex:1; }
-    .cart-item-name { font-weight:600; margin-bottom:4px; }
-    .cart-item-price { color:var(--primary); font-weight:700; font-size:0.9rem; }
-    .cart-item-actions { display:flex; align-items:center; gap:12px; margin-top:8px; flex-wrap:wrap; }
-    .qty-btn { width:36px; height:36px; border-radius:50%; border:1px solid var(--gray-light); background:white; cursor:pointer; font-size:1.1rem; }
-    .remove-item { color:var(--danger); background:none; border:none; cursor:pointer; margin-left:auto; padding:8px; }
-    .cart-footer { padding:16px; border-top:1px solid var(--gray-light); background:white; }
-    .summary-row { display:flex; justify-content:space-between; margin-bottom:8px; }
-    .summary-total { font-size:1.1rem; font-weight:800; color:var(--primary); border-top:1px solid var(--gray-light); padding-top:8px; margin-top:8px; }
-    .whatsapp-checkout { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:14px; background:#25D366; color:white; border:none; border-radius:var(--radius-md); font-weight:600; margin-top:16px; text-decoration:none; min-height:52px; }
-
-    .quick-view-modal { position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:300; display:flex; align-items:center; justify-content:center; padding:16px; opacity:0; visibility:hidden; transition:var(--transition); }
-    .quick-view-modal.active { opacity:1; visibility:visible; }
-    .quick-view-content { background:white; border-radius:var(--radius-lg); max-width:600px; width:100%; max-height:90vh; overflow-y:auto; }
-    .quick-view-header { padding:16px; border-bottom:1px solid var(--gray-light); display:flex; justify-content:space-between; align-items:center; }
-    .quick-view-close { background:none; border:none; font-size:1.2rem; cursor:pointer; width:44px; height:44px; border-radius:50%; }
-    .quick-view-body { padding:16px; }
-    .quick-view-slider { height:280px; background:#f1f5f9; }
-    .quick-view-slider .swiper-slide img { width:100%; height:100%; object-fit:contain; }
-
-    .toast-container { position:fixed; bottom:20px; left:16px; right:16px; z-index:400; display:flex; flex-direction:column; gap:8px; pointer-events:none; }
-    .toast { background:var(--dark); color:white; padding:14px 18px; border-radius:var(--radius-md); box-shadow:var(--shadow-lg); display:flex; align-items:center; gap:10px; animation:slideIn 0.3s ease-out; }
-    .toast.success { background:var(--success); }
-    .toast.error { background:var(--danger); }
-    .toast.warning { background:var(--warning); }
-    .toast.info { background:var(--primary); }
-    @keyframes slideIn { from { transform:translateX(100%); opacity:0; } to { transform:translateX(0); opacity:1; } }
-
-    .footer { background:var(--dark); color:white; padding:40px 0 20px; margin-top:40px; }
-    .footer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:32px; }
-    .footer-section h3 { font-size:1rem; margin-bottom:16px; position:relative; padding-bottom:8px; }
-    .footer-section h3::after { content:''; position:absolute; bottom:0; left:0; width:30px; height:2px; background:var(--primary); }
-    .footer-links { list-style:none; }
-    .footer-links li { margin-bottom:8px; }
-    .footer-links a { color:#cbd5e1; text-decoration:none; transition:var(--transition); display:flex; align-items:center; gap:8px; padding:8px 0; min-height:44px; }
-    .footer-links a:hover { color:white; padding-left:4px; }
-    .newsletter-form { display:flex; flex-direction:column; gap:10px; margin-top:12px; }
-    .newsletter-input { padding:14px 12px; border:1px solid #475569; border-radius:var(--radius-md); background:#1e293b; color:white; width:100%; min-height:48px; }
-    .newsletter-btn { background:var(--primary); color:white; border:none; padding:14px; border-radius:var(--radius-md); cursor:pointer; font-weight:600; min-height:48px; }
-    .footer-bottom { border-top:1px solid #334155; padding-top:16px; margin-top:32px; text-align:center; color:#94a3b8; font-size:0.8rem; }
-    body.tigrinya { font-family:'Inter','Noto Sans Ethiopic',sans-serif; }
-    @media screen and (max-width:768px) { input, select, textarea { font-size:16px; } }
-
-    /* ===== AUTH MODAL & ACCOUNT MENU ===== */
-    .auth-modal { position:fixed; inset:0; background:rgba(15,23,42,.6); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px); z-index:500; display:flex; align-items:center; justify-content:center; padding:16px; opacity:0; visibility:hidden; transition:var(--transition); }
-    .auth-modal.active { opacity:1; visibility:visible; }
-    .auth-card { background:#fff; border-radius:var(--radius-lg); width:100%; max-width:420px; max-height:92vh; overflow-y:auto; padding:28px 24px; position:relative; box-shadow:var(--shadow-xl); transform:translateY(12px); transition:var(--transition); }
-    .auth-modal.active .auth-card { transform:translateY(0); }
-    .auth-close { position:absolute; top:12px; right:12px; width:44px; height:44px; border:none; background:none; border-radius:50%; cursor:pointer; font-size:1.1rem; color:var(--gray); transition:var(--transition); }
-    .auth-close:hover { background:var(--light); color:var(--dark); }
-    .auth-logo { width:52px; height:52px; border-radius:var(--radius-md); background:linear-gradient(135deg,var(--primary),var(--accent)); color:#fff; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:1.6rem; margin:0 auto 12px; }
-    .auth-title { text-align:center; font-size:1.35rem; font-weight:800; margin-bottom:4px; }
-    .auth-sub { text-align:center; color:var(--gray); font-size:.9rem; margin-bottom:20px; }
-    .auth-tabs { display:flex; background:var(--light); border-radius:var(--radius-md); padding:4px; margin-bottom:20px; }
-    .auth-tab { flex:1; border:none; background:none; padding:12px; border-radius:var(--radius-sm); font-weight:600; font-size:.95rem; cursor:pointer; color:var(--gray); min-height:44px; transition:var(--transition); }
-    .auth-tab.active { background:#fff; color:var(--primary); box-shadow:var(--shadow-sm); }
-    .field { margin-bottom:14px; }
-    .field label { display:block; font-size:.82rem; font-weight:600; margin-bottom:6px; color:var(--gray-dark); }
-    .field input { width:100%; padding:14px; border:1px solid var(--gray-light); border-radius:var(--radius-md); font-size:16px; background:#fff; transition:var(--transition); font-family:inherit; }
-    .field input:focus { outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(37,99,235,.15); }
-    .auth-submit { width:100%; padding:14px; border:none; border-radius:var(--radius-md); background:var(--primary); color:#fff; font-weight:700; font-size:1rem; cursor:pointer; min-height:52px; transition:var(--transition); font-family:inherit; }
-    .auth-submit:hover { background:var(--primary-dark); }
-    .auth-submit:disabled { opacity:.6; cursor:not-allowed; }
-    .auth-error { background:#fef2f2; color:var(--danger); border:1px solid #fecaca; border-radius:var(--radius-md); padding:10px 12px; font-size:.85rem; margin-bottom:14px; display:none; }
-    .auth-error.show { display:block; }
-    .auth-switch { text-align:center; font-size:.85rem; color:var(--gray); margin-top:16px; }
-    .auth-switch a { color:var(--primary); font-weight:600; cursor:pointer; text-decoration:none; }
-    .auth-switch a:hover { text-decoration:underline; }
-
-    .account-menu { position:fixed; top:78px; right:16px; width:260px; background:#fff; border-radius:var(--radius-md); box-shadow:var(--shadow-xl); border:1px solid var(--gray-light); z-index:150; overflow:hidden; opacity:0; visibility:hidden; transform:translateY(-8px); transition:var(--transition); }
-    .account-menu.active { opacity:1; visibility:visible; transform:translateY(0); }
-    .account-head { padding:16px; border-bottom:1px solid var(--gray-light); }
-    .account-name { font-weight:700; }
-    .account-email { font-size:.8rem; color:var(--gray); word-break:break-all; }
-    .account-role { display:inline-block; margin-top:6px; font-size:.68rem; font-weight:700; text-transform:uppercase; letter-spacing:.5px; background:var(--primary-light); color:var(--primary); padding:2px 8px; border-radius:var(--radius-full); }
-    .account-item { display:flex; align-items:center; gap:10px; width:100%; padding:14px 16px; border:none; background:none; text-align:left; font-size:.92rem; font-weight:500; cursor:pointer; color:var(--dark); transition:var(--transition); font-family:inherit; }
-    .account-item:hover { background:var(--light); color:var(--primary); }
-    .account-item.danger { color:var(--danger); }
-    .account-item.danger:hover { background:#fef2f2; }
-    .order-card { border:1px solid var(--gray-light); border-radius:var(--radius-md); padding:14px; margin-bottom:12px; }
-    .order-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; gap:8px; }
-    .order-id { font-weight:700; font-size:.9rem; }
-    .order-status { font-size:.7rem; font-weight:700; text-transform:uppercase; padding:3px 9px; border-radius:var(--radius-full); background:#fef3c7; color:#92400e; }
-    .order-lines { font-size:.82rem; color:var(--gray-dark); line-height:1.6; }
-    .order-total { font-weight:800; color:var(--primary); margin-top:8px; font-size:.95rem; }
-  </style>
+/* sheets */
+.veil{position:fixed;inset:0;background:rgba(10,20,14,.55);z-index:40;display:none}
+.veil.on{display:block}
+.sheet{position:fixed;z-index:41;background:#fff;left:0;right:0;bottom:0;max-height:92vh;border-radius:22px 22px 0 0;display:none;flex-direction:column;padding-bottom:env(safe-area-inset-bottom)}
+.sheet.on{display:flex}
+@media(min-width:720px){.sheet{left:auto;top:0;right:0;bottom:0;width:440px;max-height:none;border-radius:0}.sheet.center{left:50%;top:50%;right:auto;bottom:auto;transform:translate(-50%,-50%);width:520px;max-height:90vh;border-radius:20px}}
+.sh-head{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+.sh-head h2{font-size:1.15rem}
+.x{width:44px;height:44px;border-radius:50%;font-size:1.3rem}
+.x:hover{background:#f1efe8}
+.sh-body{overflow-y:auto;padding:14px 16px;flex:1}
+.sh-foot{padding:14px 16px;border-top:1px solid var(--line)}
+.line{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.line img{width:64px;height:64px;object-fit:contain;background:#f2f0ea;border-radius:10px;flex:none}
+.line .m{flex:1;min-width:0}
+.line .n{font-weight:600;font-size:.92rem}
+.line .step{min-height:38px;width:120px;margin-top:6px}
+.line .step button{height:38px;width:38px}
+.line .t{font-weight:800;white-space:nowrap}
+.sum{display:flex;justify-content:space-between;font-size:1.15rem;font-weight:800;margin-bottom:12px}
+.saved{color:var(--leaf-d);font-size:.85rem;font-weight:600;margin:-6px 0 10px}
+.field{display:block;margin-bottom:10px}
+.field span{display:block;font-size:.82rem;color:var(--mute);margin-bottom:3px}
+.field input,.field textarea{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:12px}
+.send{display:flex;align-items:center;justify-content:center;width:100%;min-height:54px;background:#25D366;color:#fff;font-weight:800;border-radius:13px;text-decoration:none;font-size:1.02rem}
+.note{text-align:center;color:var(--mute);font-size:.8rem;margin-top:8px}
+.gal{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:8px;margin-bottom:12px}
+.gal img{flex:none;width:100%;scroll-snap-align:center;max-height:340px;object-fit:contain;background:#f2f0ea;border-radius:12px}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0;font-size:.9rem}
+.facts div{background:var(--paper);border-radius:10px;padding:10px}
+.facts b{display:block;font-size:.75rem;color:var(--mute);font-weight:600}
+.acct{flex:none;min-height:44px;padding:0 14px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:600;white-space:nowrap}
+.acct[hidden]{display:none}
+.toast{max-width:90vw;text-align:center}
+.toast{position:fixed;left:50%;bottom:calc(86px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:999px;z-index:60;font-size:.9rem;opacity:0;pointer-events:none;transition:opacity .2s}
+.toast.on{opacity:1}
+footer{margin-top:40px;padding:28px 0;border-top:1px solid var(--line);color:var(--mute);font-size:.88rem;text-align:center}
+footer a{color:var(--leaf);font-weight:600}
+</style>
 </head>
 <body>
-  <div class="language-switcher">
-    <button class="language-btn active" data-lang="en">EN</button>
-    <button class="language-btn" data-lang="ti">TI</button>
-  </div>
-  <header class="header">
-    <div class="header-container">
-      <a href="#" class="logo"><div class="logo-icon">O</div><span class="logo-text" data-en="Orji Supplies" data-ti="ኦርጂ ኣቑሑት">Orji Supplies</span></a>
-      <nav class="nav-main"><ul class="nav-links"><li><a href="#home" data-en="Home" data-ti="ቤት">Home</a></li><li><a href="#products" data-en="Products" data-ti="ዕብየትታት">Products</a></li><li><a href="#wholesale" data-en="Wholesale" data-ti="ጅምላ">Wholesale</a></li><li><a href="#about" data-en="About" data-ti="ብዛዕባ">About</a></li></ul></nav>
-      <div class="header-actions">
-        <div class="search-container"><input type="text" class="search-bar" id="headerSearchInput" placeholder="Search..." data-en="Search..." data-ti="ምድላይ..." /><button class="search-btn" id="headerSearchBtn"><i class="fas fa-search"></i></button></div>
-        <button class="cart-btn" id="cartBtn"><i class="fas fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span></button>
-        <button class="user-btn" id="userBtn"><i class="fas fa-user"></i></button>
-        <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-      </div>
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <span class="brand">Orji Supplies</span>
+      <label class="search"><span aria-hidden="true">🔍</span>
+        <input id="q" type="search" placeholder="Search products" aria-label="Search products" autocomplete="off"></label>
+      <a class="wa-top" id="waTop" target="_blank" rel="noopener">Chat on WhatsApp</a>
+      <button class="acct" id="acct">Sign in</button>
     </div>
-  </header>
-  <div class="mobile-menu" id="mobileMenu"><div class="mobile-menu-content"><a href="#home" class="mobile-nav-link"><i class="fas fa-home"></i><span>Home</span></a><a href="#products" class="mobile-nav-link"><i class="fas fa-shopping-bag"></i><span>Products</span></a><a href="#wholesale" class="mobile-nav-link"><i class="fas fa-building"></i><span>Wholesale</span></a><a href="#about" class="mobile-nav-link"><i class="fas fa-info-circle"></i><span>About</span></a></div></div>
-  <main>
-    <section class="hero" id="home"><div class="hero-content container"><h1 data-en="Everything You Need, Delivered" data-ti="ኩሉ እትደልዮ ኣብ ደርቢኻ">Everything You Need, Delivered</h1><p class="hero-subtitle" data-en="Uganda's #1 wholesale & retail marketplace. From groceries to electronics, home goods to industrial supplies." data-ti="ኡጋንዳ ቀዳማይ ጅምላን ሸቃሎን ዕዳጋ። ካብ መግብታት ናብ ኤሌክትሮኒክስ።">Uganda's #1 wholesale & retail marketplace. From groceries to electronics, home goods to industrial supplies.</p><div class="hero-cta"><a href="#products" class="btn btn-primary" data-en="Shop Now" data-ti="ሕጂ ይግዝኡ"><i class="fas fa-shopping-basket"></i><span>Shop Now</span></a><a href="https://wa.me/256783501222" class="btn btn-whatsapp" data-en="Chat on WhatsApp" data-ti="በይ WhatsApp ቃለ"><i class="fab fa-whatsapp"></i><span>Chat on WhatsApp</span></a></div></div></section>
-    <div class="container"><div class="filter-bar"><div class="prominent-search"><input type="text" class="search-bar" id="prominentSearchInput" placeholder="Search for anything..." data-en="Search for anything..." data-ti="ምድላይ..." /><button class="search-btn" id="prominentSearchBtn"><i class="fas fa-search"></i></button></div><div class="filter-group"><select class="filter-select" id="sortSelect"><option value="popular" data-en="Most Popular" data-ti="ዝዓበየ">Most Popular</option><option value="price-low" data-en="Price: Low to High" data-ti="ዋጋ: ትሑት ናብ ልዕሊ">Price: Low to High</option><option value="price-high" data-en="Price: High to Low" data-ti="ዋጋ: ልዕሊ ናብ ትሑት">Price: High to Low</option><option value="newest" data-en="Newest" data-ti="ሓደስቲ">Newest</option></select><select class="filter-select" id="stockFilter"><option value="all" data-en="All Stock" data-ti="ኩሉ ስቶክ">All Stock</option><option value="in-stock" data-en="In Stock" data-ti="ኣብ ስቶክ">In Stock</option><option value="low-stock" data-en="Low Stock" data-ti="ትሑት ስቶክ">Low Stock</option></select></div><button class="btn btn-outline" id="filterBtn" data-en="Filters" data-ti="ፊልተር"><i class="fas fa-sliders-h"></i><span>Filters</span></button></div></div>
-    <section class="section" id="products"><div class="container"><h2 class="section-title" data-en="Products" data-ti="ዕብየትታት">Products</h2><div id="productsLoading" class="loading" style="display: none; text-align: center; padding: 40px;"><i class="fas fa-spinner fa-spin fa-2x"></i><p data-en="Loading products..." data-ti="ዕብየትታት ይመጽእ...">Loading products...</p></div><div id="productsGrid"></div></div></section>
-    <section class="section" id="wholesale"><div class="container"><h2 class="section-title" data-en="Wholesale Advantages" data-ti="ጅምላ ጥቕሚታት">Wholesale Advantages</h2><div class="products-grid"><div class="product-card"><div class="product-info"><h3 data-en="Bulk Discounts" data-ti="ጅምላ ሽልማት">Bulk Discounts</h3><div class="current-price" data-en="Save up to 40%" data-ti="ክሳብ 40% ዓቢ">Save up to 40%</div></div></div><div class="product-card"><div class="product-info"><h3 data-en="Free Delivery" data-ti="ነጻ ደርቢ">Free Delivery</h3><div class="current-price" data-en="Orders above 500,000 UGX" data-ti="ትእዛዝ ካብ 500,000 ሻሂ">Orders above 500,000 UGX</div></div></div><div class="product-card"><div class="product-info"><h3 data-en="Dedicated Support" data-ti="ብቕዓት ደገፍ">Dedicated Support</h3><div class="current-price" data-en="Personal Account Manager" data-ti="ብቕዓት ሒሳብ ኣማኸር">Personal Account Manager</div></div></div><div class="product-card"><div class="product-info"><h3 data-en="Custom Packaging" data-ti="ብቕዓት ምልጣፍ">Custom Packaging</h3><div class="current-price" data-en="Brand your products" data-ti="ፕሮዳክትታትካ ብራንድ ኣቕርብ">Brand your products</div></div></div></div></div></section>
-  </main>
-  <div class="cart-overlay" id="cartOverlay"></div><div class="cart-sidebar" id="cartSidebar"><div class="cart-header"><h3 data-en="Your Cart" data-ti="ካርትካ">Your Cart</h3><button class="cart-close" id="cartClose"><i class="fas fa-times"></i></button></div><div class="cart-body" id="cartBody"></div><div class="cart-footer" id="cartFooter"><div class="summary-row"><span data-en="Subtotal:" data-ti="ንኡስ ጠቕላላ:">Subtotal:</span><span id="cartSubtotal">USh 0</span></div><div class="summary-row summary-total"><span data-en="Total:" data-ti="ጠቕላላ:">Total:</span><span id="cartTotal">USh 0</span></div><a href="https://wa.me/256783501222" class="whatsapp-checkout" id="whatsappCheckout" target="_blank"><i class="fab fa-whatsapp"></i><span>Checkout on WhatsApp</span></a><button class="btn btn-outline" id="clearCartBtn" style="width:100%; margin-top:10px;"><i class="fas fa-trash"></i><span>Clear Cart</span></button></div></div>
-  <div class="quick-view-modal" id="quickViewModal"><div class="quick-view-content"><div class="quick-view-header"><h3 data-en="Product Details" data-ti="ዝርዝር ዕብየት">Product Details</h3><button class="quick-view-close" id="quickViewClose"><i class="fas fa-times"></i></button></div><div class="quick-view-body" id="quickViewBody"></div></div></div>
-  <div class="toast-container" id="toastContainer"></div>
-  <footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-section"><h3 data-en="Orji Supplies" data-ti="ኦርጂ ኣቑሑት">Orji Supplies</h3><p data-en="Uganda's complete marketplace for all your needs." data-ti="ኡጋንዳ ንኩሉ ድሌታትካ ምሉእ ዕዳጋ።">Uganda's complete marketplace for all your needs.</p><div class="contact-info"><div><i class="fas fa-map-marker-alt"></i><span data-en="Discover Plaza, Kampala" data-ti="ዲስካቨር ፕላዛ፣ ካምፓላ">Discover Plaza, Kampala</span></div><div><i class="fas fa-phone"></i> +256 783 501 222</div><div><i class="fab fa-whatsapp"></i> +256 783 501 222</div></div></div><div class="footer-section"><h3 data-en="Quick Links" data-ti="ቅልጡፍ ሊንካት">Quick Links</h3><ul class="footer-links"><li><a href="#home" data-en="Home" data-ti="ቤት">Home</a></li><li><a href="#products" data-en="Products" data-ti="ዕብየትታት">Products</a></li><li><a href="#wholesale" data-en="Wholesale" data-ti="ጅምላ">Wholesale</a></li></ul></div><div class="footer-section"><h3 data-en="Customer Service" data-ti="ኣገልግሎት ዓሚል">Customer Service</h3><ul class="footer-links"><li><a href="#" data-en="Contact Us" data-ti="ርኸብና">Contact Us</a></li><li><a href="#" data-en="FAQ" data-ti="ተደጋጋሚ ሕቶታት">FAQ</a></li><li><a href="#" data-en="Shipping Policy" data-ti="ፖሊሲ ደርቢ">Shipping Policy</a></li><li><a href="#" data-en="Returns & Refunds" data-ti="ምምላስ & ምምላስ ገንዘብ">Returns & Refunds</a></li></ul></div><div class="footer-section"><h3 data-en="Newsletter" data-ti="ዜና መጽሔት">Newsletter</h3><p data-en="Subscribe to get updates" data-ti="ምእንቲ ኽትረክብ ምዝገባ ግበር">Subscribe to get updates</p><form class="newsletter-form" id="newsletterForm"><input type="email" class="newsletter-input" placeholder="Your email" required /><button type="submit" class="newsletter-btn" data-en="Subscribe" data-ti="ምዝገባ">Subscribe</button></form></div></div><div class="footer-bottom"><p data-en="&copy; 2024 Orji Supplies. All rights reserved. | Kampala, Uganda" data-ti="&copy; 2024 ኦርጂ ኣቑሑት። ኩሉ መሰላት ይዕቀብ። | ካምፓላ፣ ኡጋንዳ">&copy; 2024 Orji Supplies. All rights reserved. | Kampala, Uganda</p></div></div></footer>
-
-  <!-- ===== AUTH MODAL ===== -->
-  <div class="auth-modal" id="authModal">
-    <div class="auth-card">
-      <button class="auth-close" id="authClose" aria-label="Close"><i class="fas fa-times"></i></button>
-      <div class="auth-logo">O</div>
-      <h2 class="auth-title" id="authTitle">Welcome back</h2>
-      <p class="auth-sub" id="authSub">Log in to your Orji Supplies account</p>
-      <div class="auth-tabs">
-        <button class="auth-tab active" data-tab="login" type="button">Login</button>
-        <button class="auth-tab" data-tab="signup" type="button">Sign Up</button>
-      </div>
-
-      <form class="auth-form" id="loginForm" autocomplete="on">
-        <div class="auth-error" id="loginError"></div>
-        <div class="field"><label for="loginEmail">Email address</label><input type="email" id="loginEmail" name="email" placeholder="you@example.com" autocomplete="email" required /></div>
-        <div class="field"><label for="loginPassword">Password</label><input type="password" id="loginPassword" name="password" placeholder="••••••••" autocomplete="current-password" required /></div>
-        <button type="submit" class="auth-submit" id="loginSubmit">Log In</button>
-        <p class="auth-switch">Don't have an account? <a data-goto="signup">Sign up</a></p>
-      </form>
-
-      <form class="auth-form" id="signupForm" style="display:none" autocomplete="on">
-        <div class="auth-error" id="signupError"></div>
-        <div class="field"><label for="signupName">Full name</label><input type="text" id="signupName" name="name" placeholder="Jane Doe" autocomplete="name" required /></div>
-        <div class="field"><label for="signupEmail">Email address</label><input type="email" id="signupEmail" name="email" placeholder="you@example.com" autocomplete="email" required /></div>
-        <div class="field"><label for="signupPhone">Phone / WhatsApp</label><input type="tel" id="signupPhone" name="phone" placeholder="+256 7XX XXX XXX" autocomplete="tel" /></div>
-        <div class="field"><label for="signupPassword">Password</label><input type="password" id="signupPassword" name="password" placeholder="At least 6 characters" autocomplete="new-password" required minlength="6" /></div>
-        <button type="submit" class="auth-submit" id="signupSubmit">Create Account</button>
-        <p class="auth-switch">Already registered? <a data-goto="login">Log in</a></p>
-      </form>
-    </div>
+    <div class="chips" id="chips" role="group" aria-label="Categories"></div>
   </div>
+</header>
 
-  <!-- ===== ACCOUNT MENU ===== -->
-  <div class="account-menu" id="accountMenu">
-    <div class="account-head">
-      <div class="account-name" id="acctName">—</div>
-      <div class="account-email" id="acctEmail">—</div>
-      <span class="account-role" id="acctRole">customer</span>
-    </div>
-    <button class="account-item" id="acctOrders" type="button"><i class="fas fa-receipt"></i> My Orders</button>
-    <button class="account-item" id="acctWishlist" type="button"><i class="fas fa-heart"></i> My Wishlist</button>
-    <button class="account-item danger" id="acctLogout" type="button"><i class="fas fa-sign-out-alt"></i> Log Out</button>
-  </div>
+<main class="wrap">
+  <div class="strip"><span><b>Cash on delivery</b> in Kampala</span><span><b>Free delivery</b> over USh 500,000</span><span><b>Wholesale prices</b> apply automatically</span></div>
+  <div class="bar"><h1 id="count">Products</h1>
+    <select id="sort" aria-label="Sort products">
+      <option value="popular">Popular first</option><option value="low">Price: low to high</option><option value="high">Price: high to low</option><option value="new">Newest</option>
+    </select></div>
+  <div class="grid" id="grid" aria-live="polite"></div>
+</main>
 
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<footer><div class="wrap">Orji Supplies · Discover Plaza, Kampala · <a id="waFoot" target="_blank" rel="noopener">+256 783 501 222</a></div></footer>
 
-  <!-- ===== ORJI BACKEND CLIENT ===== -->
-  <script>
-    /* =========================================================
-       ORJI SUPPLIES — BACKEND CLIENT (Google Apps Script)
-       ========================================================= */
-    const ORJI_API_URL = 'https://script.google.com/macros/s/AKfycbxFbr080oreZkZsdW2TOGMRxX85hWlNuR6gsM8fjKdNshgMXRKiML3qkUPf_mrI1jqs/exec';
+<div class="cartbar" id="cartbar"><span><b id="cbCount">0 items</b> · <span id="cbTotal"></span></span><button class="go" id="openCart">View cart</button></div>
+<div class="veil" id="veil"></div>
 
-    const OrjiAPI = (function () {
-      const TOKEN_KEY = 'orji_token';
-      const USER_KEY  = 'orji_user';
+<aside class="sheet" id="cart" aria-label="Your cart">
+  <div class="sh-head"><h2>Your cart</h2><button class="x" data-close aria-label="Close cart">✕</button></div>
+  <div class="sh-body" id="cartBody"></div>
+  <div class="sh-foot" id="cartFoot"></div>
+</aside>
+<aside class="sheet center" id="detail" aria-label="Product details">
+  <div class="sh-head"><h2 id="dTitle"></h2><button class="x" data-close aria-label="Close">✕</button></div>
+  <div class="sh-body" id="dBody"></div>
+  <div class="sh-foot" id="dFoot"></div>
+</aside>
+<aside class="sheet center" id="auth" aria-label="Account">
+  <div class="sh-head"><h2 id="aTitle">Sign in</h2><button class="x" data-close aria-label="Close">✕</button></div>
+  <div class="sh-body" id="aBody"></div>
+</aside>
+<div class="toast" id="toast" role="status"></div>
 
-      function getToken() { return localStorage.getItem(TOKEN_KEY) || ''; }
-      function getUser() {
-        try { return JSON.parse(localStorage.getItem(USER_KEY) || 'null'); } catch (e) { return null; }
-      }
-      function saveSession(token, user) {
-        localStorage.setItem(TOKEN_KEY, token);
-        localStorage.setItem(USER_KEY, JSON.stringify(user || {}));
-      }
-      function clearSession() {
-        localStorage.removeItem(TOKEN_KEY);
-        localStorage.removeItem(USER_KEY);
-      }
+<script>
+const WA = '256783501222';
+// ▼ Paste your Google Apps Script web app address here (ends in /exec). Leave as is to run without a backend.
+const CFG = {url: 'https://script.google.com/macros/s/AKfycbxFbr080oreZkZsdW2TOGMRxX85hWlNuR6gsM8fjKdNshgMXRKiML3qkUPf_mrI1jqs/exec'};
+const LIVE = CFG.url && CFG.url.startsWith('https://script.google.com/');
+const NOPIC = 'data:image/svg+xml;utf8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"><rect width="200" height="200" fill="#f2f0ea"/><text x="100" y="108" font-size="14" text-anchor="middle" fill="#9a9a90" font-family="sans-serif">No photo yet</text></svg>');
+const $ = id => document.getElementById(id);
+const S = {products: [], cat: 'all', q: '', sort: 'popular', cart: {}};
+const money = n => 'USh ' + Math.round(n).toLocaleString('en-UG');
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const store = {
+  get(k, d){ try { return JSON.parse(localStorage.getItem(k)) ?? d } catch(e){ return d } },
+  set(k, v){ try { localStorage.setItem(k, JSON.stringify(v)) } catch(e){} }
+};
 
-      async function post(action, payload) {
-        if (!ORJI_API_URL || ORJI_API_URL.indexOf('PASTE_') === 0) {
-          throw new Error('Backend URL is not configured yet.');
-        }
-        const res = await fetch(ORJI_API_URL, {
-          method: 'POST',
-          // text/plain → "simple request" → avoids CORS preflight that Apps Script cannot answer
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-          body: JSON.stringify({ action: action, payload: payload || {} }),
-          redirect: 'follow'
-        });
-        if (!res.ok) throw new Error('Network error (' + res.status + ')');
-        return res.json();
-      }
+/* Price for a quantity: wholesale price kicks in automatically at the minimum bulk quantity */
+const bulkOn = (p, q) => p.moq > 1 && p.wholesale < p.retail && q >= p.moq;
+const unitPrice = (p, q) => bulkOn(p, q) ? p.wholesale : p.retail;
+const find = id => S.products.find(p => p.id === id);
 
-      async function api(action, payload) {
-        const p = Object.assign({}, payload || {});
-        const t = getToken();
-        if (t && p.token === undefined) p.token = t;
-        const out = await post(action, p);
-        if (out && out.ok === false && out.code === 'AUTH_EXPIRED') {
-          clearSession();
-          window.dispatchEvent(new Event('orji:logout'));
-        }
-        return out;
-      }
-
-      return {
-        api: api, post: post,
-        getToken: getToken, getUser: getUser,
-        saveSession: saveSession, clearSession: clearSession,
-        isLoggedIn: function () { return !!getToken(); },
-
-        signup:      function (d) { return api('signup', d); },
-        login:       function (d) { return api('login', d); },
-        me:          function ()  { return api('me', {}); },
-        getProducts: function ()  { return api('getProducts', {}); },
-        placeOrder:  function (d) { return api('placeOrder', d); },
-        myOrders:    function ()  { return api('myOrders', {}); },
-        logout: async function () {
-          try { await api('logout', {}); } catch (e) {}
-          clearSession();
-        }
-      };
-    })();
-
-    /* =========================================================
-       AUTH UI
-       ========================================================= */
-    (function () {
-      const $ = function (id) { return document.getElementById(id); };
-      const authModal   = $('authModal');
-      const accountMenu = $('accountMenu');
-      const loginForm   = $('loginForm');
-      const signupForm  = $('signupForm');
-      const userBtn     = $('userBtn');
-
-      function toast(msg, type) {
-        try { utils.showToast(msg, type || 'info'); } catch (e) { console.log('[toast]', msg); }
-      }
-      function showError(el, msg) { el.textContent = msg; el.classList.add('show'); }
-      function clearError(el) { el.textContent = ''; el.classList.remove('show'); }
-
-      function switchTab(tab) {
-        document.querySelectorAll('.auth-tab').forEach(function (b) {
-          b.classList.toggle('active', b.dataset.tab === tab);
-        });
-        loginForm.style.display  = tab === 'login'  ? 'block' : 'none';
-        signupForm.style.display = tab === 'signup' ? 'block' : 'none';
-        $('authTitle').textContent = tab === 'login' ? 'Welcome back' : 'Create your account';
-        $('authSub').textContent   = tab === 'login'
-          ? 'Log in to your Orji Supplies account'
-          : 'Join thousands of shoppers across Uganda';
-        clearError($('loginError')); clearError($('signupError'));
-      }
-
-      function openAuth(tab) {
-        switchTab(tab || 'login');
-        authModal.classList.add('active');
-        document.body.classList.add('no-scroll');
-      }
-      function closeAuth() {
-        authModal.classList.remove('active');
-        document.body.classList.remove('no-scroll');
-      }
-
-      window.OrjiAuth = { open: openAuth, close: closeAuth, switchTab: switchTab };
-
-      document.querySelectorAll('.auth-tab').forEach(function (b) {
-        b.addEventListener('click', function () { switchTab(b.dataset.tab); });
-      });
-      document.querySelectorAll('[data-goto]').forEach(function (a) {
-        a.addEventListener('click', function (e) { e.preventDefault(); switchTab(a.dataset.goto); });
-      });
-      $('authClose').addEventListener('click', closeAuth);
-      authModal.addEventListener('click', function (e) { if (e.target === authModal) closeAuth(); });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') { closeAuth(); accountMenu.classList.remove('active'); }
-      });
-
-      loginForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const btn = $('loginSubmit'), err = $('loginError');
-        clearError(err);
-        btn.disabled = true; btn.textContent = 'Logging in…';
-        try {
-          const res = await OrjiAPI.login({
-            email: $('loginEmail').value.trim(),
-            password: $('loginPassword').value
-          });
-          if (!res.ok) throw new Error(res.error || 'Login failed');
-          OrjiAPI.saveSession(res.token, res.user);
-          loginForm.reset(); closeAuth(); refreshAuthUI();
-          toast('Welcome back, ' + res.user.name + '!', 'success');
-        } catch (ex) { showError(err, ex.message); }
-        finally { btn.disabled = false; btn.textContent = 'Log In'; }
-      });
-
-      signupForm.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        const btn = $('signupSubmit'), err = $('signupError');
-        clearError(err);
-        btn.disabled = true; btn.textContent = 'Creating account…';
-        try {
-          const res = await OrjiAPI.signup({
-            name: $('signupName').value.trim(),
-            email: $('signupEmail').value.trim(),
-            phone: $('signupPhone').value.trim(),
-            password: $('signupPassword').value
-          });
-          if (!res.ok) throw new Error(res.error || 'Sign up failed');
-          OrjiAPI.saveSession(res.token, res.user);
-          signupForm.reset(); closeAuth(); refreshAuthUI();
-          toast('Account created. Welcome, ' + res.user.name + '!', 'success');
-        } catch (ex) { showError(err, ex.message); }
-        finally { btn.disabled = false; btn.textContent = 'Create Account'; }
-      });
-
-      userBtn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        if (OrjiAPI.isLoggedIn()) accountMenu.classList.toggle('active');
-        else openAuth('login');
-      });
-      document.addEventListener('click', function (e) {
-        if (!accountMenu.contains(e.target) && e.target !== userBtn) accountMenu.classList.remove('active');
-      });
-
-      $('acctLogout').addEventListener('click', async function () {
-        await OrjiAPI.logout();
-        accountMenu.classList.remove('active');
-        refreshAuthUI();
-        toast('You have been logged out', 'info');
-      });
-
-      $('acctOrders').addEventListener('click', async function () {
-        accountMenu.classList.remove('active');
-        const modal = $('quickViewModal'), body = $('quickViewBody');
-        body.innerHTML = '<p style="text-align:center;padding:40px;"><i class="fas fa-spinner fa-spin fa-2x"></i></p>';
-        modal.classList.add('active'); document.body.classList.add('no-scroll');
-        try {
-          const res = await OrjiAPI.myOrders();
-          if (!res.ok) throw new Error(res.error || 'Could not load orders');
-          if (!res.orders.length) {
-            body.innerHTML = '<div style="text-align:center;padding:40px;color:var(--gray)"><i class="fas fa-receipt fa-3x"></i><h3 style="margin:12px 0 6px;">No orders yet</h3><p>Your orders will appear here once you place one.</p></div>';
-            return;
-          }
-          body.innerHTML = res.orders.map(function (o) {
-            const lines = o.items.map(function (i) { return '<div>' + i.quantity + ' × ' + i.name + '</div>'; }).join('');
-            const date = o.createdAt ? new Date(o.createdAt).toLocaleDateString() : '';
-            return '<div class="order-card"><div class="order-top"><span class="order-id">' + o.orderId + '</span><span class="order-status">' + o.status + '</span></div><div class="order-lines">' + lines + '</div><div class="order-total">USh ' + Number(o.total).toLocaleString('en-UG') + '</div><div style="font-size:.75rem;color:var(--gray);margin-top:4px;">' + date + '</div></div>';
-          }).join('');
-        } catch (ex) {
-          body.innerHTML = '<div style="text-align:center;padding:40px;color:var(--danger)">' + ex.message + '</div>';
-        }
-      });
-
-      $('acctWishlist').addEventListener('click', function () {
-        accountMenu.classList.remove('active');
-        toast('Your saved items are marked with a ❤️ on the product grid', 'info');
-      });
-
-      function refreshAuthUI() {
-        const user = OrjiAPI.getUser();
-        if (user && OrjiAPI.isLoggedIn()) {
-          userBtn.innerHTML = '<i class="fas fa-user-check"></i>';
-          userBtn.title = user.name || '';
-          $('acctName').textContent  = user.name  || 'Customer';
-          $('acctEmail').textContent = user.email || '';
-          $('acctRole').textContent  = user.role  || 'customer';
-        } else {
-          userBtn.innerHTML = '<i class="fas fa-user"></i>';
-          userBtn.title = '';
-        }
-      }
-      window.refreshAuthUI = refreshAuthUI;
-      window.addEventListener('orji:logout', refreshAuthUI);
-
-      (async function restore() {
-        refreshAuthUI();
-        if (!OrjiAPI.isLoggedIn()) return;
-        try {
-          const res = await OrjiAPI.me();
-          if (res.ok) OrjiAPI.saveSession(OrjiAPI.getToken(), res.user);
-          else OrjiAPI.clearSession();
-        } catch (e) {}
-        refreshAuthUI();
-      })();
-    })();
-  </script>
-
-  <script>
-    const CONFIG = { whatsappNumber: '256783501222', productsSource: 'https://raw.githubusercontent.com/hunter9201/Orji-Supplies/main/products.json' };
-    let state = { allProducts: [], filteredProducts: [], sortBy: 'popular', stockFilter: 'all', cart: new Map(), wishlist: new Set(), searchTerm: '', language: 'en' };
-    const elements = {
-      cartBtn: document.getElementById('cartBtn'), cartCount: document.getElementById('cartCount'), cartSidebar: document.getElementById('cartSidebar'),
-      cartOverlay: document.getElementById('cartOverlay'), cartClose: document.getElementById('cartClose'), cartBody: document.getElementById('cartBody'),
-      cartSubtotal: document.getElementById('cartSubtotal'), cartTotal: document.getElementById('cartTotal'), clearCartBtn: document.getElementById('clearCartBtn'),
-      whatsappCheckout: document.getElementById('whatsappCheckout'), prominentSearchInput: document.getElementById('prominentSearchInput'),
-      prominentSearchBtn: document.getElementById('prominentSearchBtn'), headerSearchInput: document.getElementById('headerSearchInput'),
-      headerSearchBtn: document.getElementById('headerSearchBtn'), menuToggle: document.getElementById('menuToggle'), mobileMenu: document.getElementById('mobileMenu'),
-      productsGrid: document.getElementById('productsGrid'), productsLoading: document.getElementById('productsLoading'), sortSelect: document.getElementById('sortSelect'),
-      stockFilter: document.getElementById('stockFilter'), filterBtn: document.getElementById('filterBtn'), quickViewModal: document.getElementById('quickViewModal'),
-      quickViewClose: document.getElementById('quickViewClose'), quickViewBody: document.getElementById('quickViewBody'), toastContainer: document.getElementById('toastContainer'),
-      newsletterForm: document.getElementById('newsletterForm')
+function normalise(list){
+  return list.map((p, i) => {
+    const retail = Number(p.retailPrice) || 0;
+    return {
+      id: String(p.id || 'p' + i), name: p.name || 'Product', desc: p.desc || p.description || '',
+      cat: (p.category || 'other').toLowerCase(), retail,
+      wholesale: Number(p.wholesalePrice) || retail, moq: Number(p.moq) || 1,
+      unit: p.unit || 'piece', stock: p.stock ?? 50, popular: !!p.popular, sale: !!p.sale, isNew: !!p.new,
+      imgs: Array.isArray(p.imgs) && p.imgs.length ? p.imgs : [NOPIC], order: i
     };
-    const utils = {
-      formatCurrency: (a) => 'USh ' + Math.round(a).toLocaleString('en-UG'),
-      showToast: (msg, type='info') => { let t=document.createElement('div'); t.className=`toast ${type}`; t.innerHTML=`<i class="fas fa-${type==='success'?'check-circle':type==='error'?'exclamation-circle':'info-circle'}"></i><span>${msg}</span>`; elements.toastContainer.appendChild(t); setTimeout(()=>t.remove(),4000); },
-      debounce: (fn,delay)=>{ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args),delay); }; },
-      getPrice: (p) => p.retailPrice,
-      saveCart: () => localStorage.setItem('orji_cart', JSON.stringify(Array.from(state.cart.entries()).map(([k,i])=>({key:k,productId:i.product.id,quantity:i.quantity,price:i.price})))),
-      loadCart: () => { let saved = localStorage.getItem('orji_cart'); if(saved) try { JSON.parse(saved).forEach(item=>{ let p = state.allProducts.find(pr=>pr.id===item.productId); if(p) state.cart.set(item.key,{product:p,quantity:item.quantity,price:item.price}); }); } catch(e){} },
-      saveWishlist: () => localStorage.setItem('orji_wishlist', JSON.stringify(Array.from(state.wishlist))),
-      loadWishlist: () => { let saved = localStorage.getItem('orji_wishlist'); if(saved) try { state.wishlist = new Set(JSON.parse(saved)); } catch(e){} }
-    };
+  });
+}
+function samples(){
+  const cats = ['groceries','electronics','clothes','shoes','furniture','cosmetics','books'], out = [];
+  cats.forEach((c, ci) => { for(let i = 1; i <= 4; i++) out.push({id:`s_${c}_${i}`, name:`${c[0].toUpperCase()+c.slice(1)} item ${i}`, category:c, retailPrice:20000 + ci*7000 + i*9000, wholesalePrice:17000 + ci*6000 + i*7500, moq:10, stock:i===4?6:40, popular:i===1, sale:i===2, new:i===3}); });
+  return out;
+}
 
-    /* ===== PRODUCTS: Google Sheets ▸ GitHub JSON ▸ samples ===== */
-    async function loadProducts() {
-      elements.productsLoading.style.display = 'block';
-      let products = null;
+async function load(){
+  $('grid').innerHTML = '<div class="skel"></div>'.repeat(8);
+  let raw;
+  try {
+    if(!LIVE) throw 0;
+    const r = await fetch(CFG.url);
+    if(!r.ok) throw new Error('server ' + r.status);
+    const data = await r.json();
+    if(!Array.isArray(data)) throw new Error(data.error || 'unexpected reply');
+    raw = data.map(p => ({id: p.id, name: p.name, desc: p.description, category: p.category, retailPrice: p.retail_price, wholesalePrice: p.wholesale_price,
+      moq: p.moq, unit: p.unit, stock: p.stock, popular: p.popular, sale: p.sale, new: p.is_new, imgs: p.imgs}));
+  } catch(e){ raw = samples(); toast(LIVE ? 'Could not load your sheet: ' + (e instanceof SyntaxError ? 'set Who has access to Anyone when deploying' : e.message) + '. Showing samples.' : 'Showing sample products', 7000); }
+  S.products = normalise(raw);
+  const saved = store.get('orji_cart2', {});
+  Object.keys(saved).forEach(id => { if(find(id)) S.cart[id] = saved[id]; });
+  drawChips(); draw(); drawCart();
+}
 
-      try {
-        const res = await OrjiAPI.getProducts();
-        if (res && res.ok && Array.isArray(res.products) && res.products.length) products = res.products;
-      } catch (err) { console.warn('Backend unavailable, falling back:', err.message); }
+function drawChips(){
+  const cats = ['all', ...new Set(S.products.map(p => p.cat))];
+  $('chips').innerHTML = cats.map(c => `<button class="chip" data-cat="${esc(c)}" aria-pressed="${c===S.cat}">${c==='all'?'All':esc(c)}</button>`).join('');
+}
 
-      if (!products) {
-        try {
-          const r = await fetch(CONFIG.productsSource + '?t=' + Date.now());
-          if (r.ok) { const j = await r.json(); if (Array.isArray(j) && j.length) products = j; }
-        } catch (err) {}
-      }
+function visible(){
+  const t = S.q.toLowerCase();
+  let l = S.products.filter(p => (S.cat === 'all' || p.cat === S.cat) && (!t || (p.name + ' ' + p.desc + ' ' + p.cat).toLowerCase().includes(t)));
+  const s = S.sort;
+  l.sort(s==='low' ? (a,b)=>a.retail-b.retail : s==='high' ? (a,b)=>b.retail-a.retail : s==='new' ? (a,b)=>(b.isNew-a.isNew)||(a.order-b.order) : (a,b)=>(b.popular-a.popular)||(a.order-b.order));
+  return l;
+}
 
-      if (!products) {
-        products = (function () {
-          let cats = ['books','shoes','clothes','cosmetics','furniture','electronics','groceries'], arr = [];
-          cats.forEach(c => { for (let i = 1; i <= 4; i++) arr.push({
-            id:`sample_${c}_${i}`, name:`${c.charAt(0).toUpperCase()+c.slice(1)} Item ${i}`,
-            desc:'High quality', category:c,
-            retailPrice: Math.floor(Math.random()*100000)+20000,
-            wholesalePrice: Math.floor(Math.random()*80000)+15000,
-            moq:5, unit:'piece', stock: Math.floor(Math.random()*100),
-            popular: i===1, sale: i===2, new: i===3,
-            rating: (Math.random()*2+3).toFixed(1),
-            imgs:['https://images.unsplash.com/photo-1584824486509-112e4181ff6b?w=1000&auto=format']
-          }); });
-          return arr;
-        })();
-        utils.showToast('Using sample products', 'info');
-      }
+function buyControl(p){
+  const q = S.cart[p.id] || 0;
+  if(p.stock <= 0) return '<button class="add" disabled>Sold out</button>';
+  if(!q) return `<button class="add" data-add="${p.id}">Add to cart</button>`;
+  return `<div class="step"><button data-dec="${p.id}" aria-label="Remove one">−</button><span>${q}</span><button data-inc="${p.id}" aria-label="Add one">+</button></div>`;
+}
 
-      state.allProducts = products.map(p => ({
-        id: p.id || 'prod_' + Math.random().toString(36).substr(2, 9),
-        name: p.name || 'Unnamed',
-        description: p.desc || p.description || '',
-        category: p.category || 'other',
-        retailPrice: Number(p.retailPrice) || 0,
-        wholesalePrice: Number(p.wholesalePrice) || Number(p.retailPrice) || 0,
-        moq: p.moq || 1,
-        unit: p.unit || 'piece',
-        stock: p.stock || 50,
-        popular: p.popular || false,
-        sale: p.sale || false,
-        new: p.new || false,
-        rating: p.rating || 4.0,
-        images: (Array.isArray(p.imgs) && p.imgs.length)
-          ? p.imgs
-          : (Array.isArray(p.images) && p.images.length)
-            ? p.images
-            : ['https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=800&auto=format&fit=crop']
-      }));
+function card(p){
+  const q = S.cart[p.id] || 0;
+  const bulk = p.moq > 1 && p.wholesale < p.retail ? `<div class="bulk">Buy ${p.moq}+ : <b>${money(p.wholesale)}</b> each</div>` : '';
+  const low = p.stock > 0 && p.stock <= 10 ? `<div class="low">Only ${p.stock} left</div>` : '';
+  const tag = p.sale ? '<span class="tag sale">Sale</span>' : p.isNew ? '<span class="tag">New</span>' : '';
+  return `<article class="card" data-id="${p.id}">
+    <button class="pic" data-open="${p.id}" aria-label="View ${esc(p.name)}">${tag}<img src="${esc(p.imgs[0])}" alt="${esc(p.name)}" loading="lazy" onerror="this.onerror=null;this.src='${NOPIC}'"></button>
+    <div class="info"><button class="name" data-open="${p.id}">${esc(p.name)}</button>
+    <div class="price">${money(unitPrice(p, q))}<small> / ${esc(p.unit)}</small></div>${bulk}${low}
+    <div class="buy" id="buy-${p.id}">${buyControl(p)}</div></div></article>`;
+}
 
-      elements.productsLoading.style.display = 'none';
-      applyFilters();
-    }
+function draw(){
+  const l = visible();
+  $('count').textContent = (S.cat === 'all' ? 'All products' : S.cat[0].toUpperCase() + S.cat.slice(1)) + ' (' + l.length + ')';
+  $('grid').innerHTML = l.length ? l.map(card).join('') : `<div class="empty"><p>Nothing matches “${esc(S.q)}”.</p><button data-reset>Show all products</button></div>`;
+}
 
-    function applyFilters() {
-      let filtered = [...state.allProducts];
-      if(state.searchTerm) { let t=state.searchTerm.toLowerCase(); filtered = filtered.filter(p=>p.name.toLowerCase().includes(t)||p.description.toLowerCase().includes(t)||p.category.toLowerCase().includes(t)); }
-      if(state.stockFilter==='in-stock') filtered = filtered.filter(p=>p.stock>20);
-      else if(state.stockFilter==='low-stock') filtered = filtered.filter(p=>p.stock>0 && p.stock<=20);
-      const sort = state.sortBy;
-      if(sort==='price-low') filtered.sort((a,b)=>utils.getPrice(a)-utils.getPrice(b));
-      else if(sort==='price-high') filtered.sort((a,b)=>utils.getPrice(b)-utils.getPrice(a));
-      else if(sort==='newest') filtered.sort((a,b)=> (b.new?1:0)-(a.new?1:0));
-      else filtered.sort((a,b)=> (b.popular?1:0)-(a.popular?1:0));
-      state.filteredProducts = filtered;
-      renderProductsByCategory();
-    }
-    function createProductCard(p) {
-      const price = utils.getPrice(p), original = p.sale ? p.retailPrice*1.2 : null, inWishlist = state.wishlist.has(p.id);
-      const stockClass = p.stock>20?'in-stock':p.stock>0?'low-stock':'out-of-stock', stockText = p.stock>20?'In Stock':p.stock>0?`Low Stock (${p.stock})`:'Out of Stock';
-      return `<div class="product-card" data-id="${p.id}"><div class="product-badges">${p.popular?'<span class="badge popular">Popular</span>':''}${p.new?'<span class="badge new">New</span>':''}${p.sale?'<span class="badge sale">Sale</span>':''}</div><div class="product-image-slider"><div class="swiper"><div class="swiper-wrapper">${p.images.map(img=>`<div class="swiper-slide"><img src="${img}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400?text=No+Image'"></div>`).join('')}</div>${p.images.length>1?'<div class="swiper-pagination"></div>':''}</div><div class="image-zoom-hint"><i class="fas fa-search-plus"></i></div></div><div class="product-actions"><button class="action-btn wishlist ${inWishlist?'active':''}" onclick="toggleWishlist('${p.id}')"><i class="fa${inWishlist?'s':'r'} fa-heart"></i></button><button class="action-btn" onclick="quickView('${p.id}')"><i class="fas fa-eye"></i></button></div><div class="product-info"><div class="product-category">${p.category}</div><div class="product-name">${p.name}</div><div class="product-rating"><span class="stars">★★★★★</span><span class="rating-count">(${p.rating})</span></div><div class="product-price"><span class="current-price">${utils.formatCurrency(price)}</span>${original?`<span class="original-price">${utils.formatCurrency(original)}</span>`:''}<span class="price-unit">/${p.unit}</span></div><div class="stock-status ${stockClass}"><i class="fas fa-${p.stock>20?'check-circle':p.stock>0?'exclamation-circle':'times-circle'}"></i> ${stockText}</div><button class="add-to-cart" onclick="addToCart('${p.id}')" ${p.stock===0?'disabled':''}><i class="fas fa-cart-plus"></i> Add to Cart</button></div></div>`;
-    }
-    function renderProductsByCategory() {
-      if(state.filteredProducts.length===0) { elements.productsGrid.innerHTML = '<div style="text-align:center; padding:40px;"><i class="fas fa-search fa-3x"></i><h3>No products found</h3></div>'; return; }
-      const grouped = new Map();
-      state.filteredProducts.forEach(p => { let cat = p.category || 'other'; if(!grouped.has(cat)) grouped.set(cat, []); grouped.get(cat).push(p); });
-      let html = '';
-      for(let [cat, prods] of grouped.entries()) { html += `<div class="category-section"><div class="category-title">${cat.charAt(0).toUpperCase()+cat.slice(1)}</div><div class="products-grid">`; prods.forEach(p => { html += createProductCard(p); }); html += `</div></div>`; }
-      elements.productsGrid.innerHTML = html;
-      setTimeout(()=>{ document.querySelectorAll('.product-image-slider .swiper').forEach(swiperContainer=>{ new Swiper(swiperContainer, { slidesPerView:1, loop:true, autoplay:{delay:3000,disableOnInteraction:false}, pagination:{el:swiperContainer.querySelector('.swiper-pagination'), clickable:true} }); }); }, 100);
-    }
-    window.addToCart = (id)=>{ let p=state.allProducts.find(pr=>pr.id===id); if(!p||p.stock===0) return; let key=id, price=utils.getPrice(p); if(state.cart.has(key)) state.cart.get(key).quantity++; else state.cart.set(key,{product:p,quantity:1,price}); utils.saveCart(); updateCartUI(); utils.showToast(`${p.name} added to cart`,'success'); };
-    function updateCartUI() { let totalItems=0, subtotal=0; state.cart.forEach(i=>{ totalItems+=i.quantity; subtotal+=i.quantity*i.price; }); elements.cartCount.textContent=totalItems; elements.cartCount.style.display=totalItems?'flex':'none'; if(!totalItems) elements.cartBody.innerHTML='<div class="cart-empty"><i class="fas fa-shopping-cart fa-3x"></i><h3>Your cart is empty</h3></div>'; else { let html=''; state.cart.forEach((item,key)=>{ let it=item.price*item.quantity; html+=`<div class="cart-item"><div class="cart-item-image"><img src="${item.product.images[0]}" onerror="this.src='https://via.placeholder.com/70'"></div><div class="cart-item-info"><div class="cart-item-name">${item.product.name}</div><div class="cart-item-price">${utils.formatCurrency(item.price)} × ${item.quantity} ${item.product.unit}</div><div class="cart-item-actions"><button class="qty-btn" onclick="updateCartQty('${key}',-1)">-</button><span>${item.quantity}</span><button class="qty-btn" onclick="updateCartQty('${key}',1)">+</button><button class="remove-item" onclick="removeFromCart('${key}')"><i class="fas fa-trash"></i> Remove</button></div></div><div style="font-weight:700;">${utils.formatCurrency(it)}</div></div>`; }); elements.cartBody.innerHTML=html; } elements.cartSubtotal.textContent=utils.formatCurrency(subtotal); elements.cartTotal.textContent=utils.formatCurrency(subtotal); updateWhatsAppLink(subtotal); }
-    window.updateCartQty = (key,delta)=>{ let i=state.cart.get(key); if(i){ i.quantity+=delta; if(i.quantity<=0) state.cart.delete(key); utils.saveCart(); updateCartUI(); } };
-    window.removeFromCart = (key)=>{ state.cart.delete(key); utils.saveCart(); updateCartUI(); utils.showToast('Item removed','warning'); };
-    elements.clearCartBtn.addEventListener('click',()=>{ if(state.cart.size && confirm('Clear cart?')){ state.cart.clear(); utils.saveCart(); updateCartUI(); utils.showToast('Cart cleared','info'); } });
-    window.toggleWishlist = (id)=>{ if(state.wishlist.has(id)) state.wishlist.delete(id); else state.wishlist.add(id); utils.saveWishlist(); if(state.filteredProducts.find(p=>p.id===id)) renderProductsByCategory(); };
-    window.quickView = (id)=>{ let p=state.allProducts.find(pr=>pr.id===id); if(!p) return; let price=utils.getPrice(p), minQty=p.moq||1, stockClass=p.stock>20?'in-stock':p.stock>0?'low-stock':'out-of-stock', stockText=p.stock>20?'In Stock':p.stock>0?`Low Stock (${p.stock})`:'Out of Stock'; let imgHtml = p.images.length>1?`<div class="swiper quick-view-slider" style="height:280px;"><div class="swiper-wrapper">${p.images.map(img=>`<div class="swiper-slide"><img src="${img}" style="object-fit:contain; width:100%;height:100%;"></div>`).join('')}</div><div class="swiper-pagination"></div></div>`:`<img src="${p.images[0]}" style="width:100%; max-height:280px; object-fit:contain; border-radius:var(--radius-md); margin-bottom:16px;">`; elements.quickViewBody.innerHTML=`${imgHtml}<h3 style="font-size:1.4rem;">${p.name}</h3><div style="color:var(--gray); margin-bottom:12px;">${p.category}</div><p>${p.description}</p><div style="display:flex; align-items:center; gap:8px; margin:16px 0;"><span style="font-size:1.8rem; font-weight:800; color:var(--primary);">${utils.formatCurrency(price)}</span><span>/${p.unit}</span></div><div style="background:var(--light); padding:16px; border-radius:var(--radius-md); margin-bottom:20px;"><div><strong>Stock:</strong> ${p.stock} ${p.unit}s</div><div><strong>MOQ:</strong> ${minQty} ${p.unit}s</div><div><strong>Rating:</strong> ${p.rating}/5</div><div><strong>Status:</strong> <span class="${stockClass}">${stockText}</span></div></div><div style="display:flex; gap:12px;"><button class="btn btn-primary" style="flex:1;" onclick="addToCart('${p.id}'); closeQuickView();">Add to Cart</button><button class="btn btn-outline" style="flex:1;" onclick="buyNow('${p.id}')">Buy Now</button></div>`; if(p.images.length>1) setTimeout(()=>new Swiper('.quick-view-slider',{slidesPerView:1,loop:true,pagination:{el:'.swiper-pagination',clickable:true}}),100); elements.quickViewModal.classList.add('active'); document.body.classList.add('no-scroll'); };
-    window.closeQuickView = ()=>{ elements.quickViewModal.classList.remove('active'); document.body.classList.remove('no-scroll'); };
-    elements.quickViewClose.addEventListener('click',closeQuickView);
-    window.buyNow = (id)=>{ let p=state.allProducts.find(pr=>pr.id===id); if(!p) return; let price=utils.getPrice(p), minQty=p.moq||1, total=price*minQty; window.open(`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(`Hi Orji Supplies, I want to order:\nProduct: ${p.name}\nQuantity: ${minQty} ${p.unit}\nPrice: ${utils.formatCurrency(price)}/${p.unit}\nTotal: ${utils.formatCurrency(total)}\nI prefer Cash on Delivery.`)}`,'_blank'); closeQuickView(); };
-    function handleSearch(term){ state.searchTerm=term; applyFilters(); if(elements.headerSearchInput) elements.headerSearchInput.value=term; if(term) utils.showToast(`Searching for "${term}"`,'info'); }
-    elements.prominentSearchBtn.addEventListener('click',()=>handleSearch(elements.prominentSearchInput.value.trim()));
-    elements.prominentSearchInput.addEventListener('keypress',e=>{ if(e.key==='Enter') handleSearch(e.target.value.trim()); });
-    elements.prominentSearchInput.addEventListener('input', utils.debounce(()=>handleSearch(elements.prominentSearchInput.value.trim()),400));
-    if(elements.headerSearchBtn){ elements.headerSearchBtn.addEventListener('click',()=>{ let term=elements.headerSearchInput.value.trim(); handleSearch(term); if(elements.prominentSearchInput) elements.prominentSearchInput.value=term; }); elements.headerSearchInput.addEventListener('keypress',e=>{ if(e.key==='Enter'){ let term=elements.headerSearchInput.value.trim(); handleSearch(term); if(elements.prominentSearchInput) elements.prominentSearchInput.value=term; } }); }
-    elements.cartBtn.addEventListener('click',()=>{ elements.cartSidebar.classList.add('open'); elements.cartOverlay.classList.add('active'); document.body.classList.add('no-scroll'); });
-    const closeCart=()=>{ elements.cartSidebar.classList.remove('open'); elements.cartOverlay.classList.remove('active'); document.body.classList.remove('no-scroll'); };
-    elements.cartClose.addEventListener('click',closeCart); elements.cartOverlay.addEventListener('click',closeCart);
-    elements.menuToggle.addEventListener('click',()=>{ elements.mobileMenu.classList.toggle('active'); });
-    document.querySelectorAll('.mobile-nav-link').forEach(l=>l.addEventListener('click',()=>elements.mobileMenu.classList.remove('active')));
-    elements.sortSelect.addEventListener('change',e=>{ state.sortBy=e.target.value; applyFilters(); });
-    elements.stockFilter.addEventListener('change',e=>{ state.stockFilter=e.target.value; applyFilters(); });
-    elements.newsletterForm.addEventListener('submit',(e)=>{ e.preventDefault(); let email=e.target.querySelector('input').value; window.location.href=`mailto:orjiisupplies@gmail.com?subject=Newsletter%20Subscription&body=Email:%20${encodeURIComponent(email)}%0A%0APlease%20add%20me%20to%20your%20newsletter.`; utils.showToast('Subscription email opened','success'); e.target.reset(); });
-    function setLanguage(lang){ state.language=lang; document.body.classList.toggle('tigrinya',lang==='ti'); document.querySelectorAll('.language-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.lang===lang)); document.querySelectorAll('[data-en]').forEach(el=>{ let key=el.dataset[lang]||el.dataset.en; if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'||el.tagName==='SELECT'){ if(el.placeholder!==undefined) el.placeholder=key; } else if(el.tagName==='OPTION') el.textContent=key; else el.innerHTML=key; }); document.querySelectorAll('.btn span, .mobile-nav-link span, .cart-header h3, .summary-row span:first-child, .footer-section h3, .footer-links a, .contact-info span').forEach(el=>{ let p=el.closest('[data-en]')||el; if(p.dataset&&p.dataset[lang]) el.textContent=p.dataset[lang]; }); document.querySelectorAll('select option[data-en]').forEach(opt=>opt.textContent=opt.dataset[lang]||opt.dataset.en); utils.showToast(lang==='en'?'Language changed':'ቋንቋ ተለወጠ','success'); }
-    document.querySelectorAll('.language-btn').forEach(btn=>btn.addEventListener('click',()=>setLanguage(btn.dataset.lang)));
-    function generateWhatsAppOrderMessage(subtotal){ let msg=`Hi Orji Supplies, I would like to place an order:\n\nOrder Details:\n====================\n`; state.cart.forEach(item=>{ let it=item.price*item.quantity; msg+=`• ${item.product.name}\n  Quantity: ${item.quantity} ${item.product.unit}\n  Price: ${utils.formatCurrency(item.price)}/${item.product.unit}\n  Total: ${utils.formatCurrency(it)}\n\n`; }); msg+=`====================\nSubtotal: ${utils.formatCurrency(subtotal)}\nTOTAL: ${utils.formatCurrency(subtotal)}\n\nThank you!`; return msg; }
-    function updateWhatsAppLink(subtotal){ let msg=generateWhatsAppOrderMessage(subtotal); elements.whatsappCheckout.href=`https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(msg)}`; }
+/* cart */
+function setQty(id, n){
+  const p = find(id); if(!p) return;
+  n = Math.max(0, Math.min(n, p.stock));
+  if(n) S.cart[id] = n; else delete S.cart[id];
+  store.set('orji_cart2', S.cart);
+  const card_ = document.querySelector(`.card[data-id="${id}"]`);
+  if(card_){ $('buy-' + id).innerHTML = buyControl(p); card_.querySelector('.price').firstChild.textContent = money(unitPrice(p, n)); }
+  drawCart();
+  if(detailId === id) drawDetail(id);
+}
+function totals(){
+  let count = 0, total = 0, saved = 0;
+  Object.entries(S.cart).forEach(([id, q]) => { const p = find(id); if(!p) return; count += q; total += q * unitPrice(p, q); saved += q * (p.retail - unitPrice(p, q)); });
+  return {count, total, saved};
+}
+function drawCart(){
+  const t = totals();
+  $('cartbar').classList.toggle('on', t.count > 0);
+  $('cbCount').textContent = t.count + (t.count === 1 ? ' item' : ' items');
+  $('cbTotal').textContent = money(t.total);
+  const ids = Object.keys(S.cart);
+  $('cartBody').innerHTML = ids.length ? ids.map(id => { const p = find(id), q = S.cart[id], u = unitPrice(p, q);
+    return `<div class="line"><img src="${esc(p.imgs[0])}" alt="" onerror="this.onerror=null;this.src='${NOPIC}'"><div class="m"><div class="n">${esc(p.name)}</div><div class="bulk">${money(u)} / ${esc(p.unit)}${bulkOn(p,q)?' · wholesale price':''}</div>
+    <div class="step"><button data-dec="${id}" aria-label="Remove one">−</button><span>${q}</span><button data-inc="${id}" aria-label="Add one">+</button></div></div><div class="t">${money(q*u)}</div></div>`; }).join('')
+    : '<div class="empty"><p>Your cart is empty.</p></div>';
+  if(!ids.length){ $('cartFoot').innerHTML = ''; return; }
+  const me = store.get('orji_me', {name:'', phone:'', place:''});
+  $('cartFoot').innerHTML = `${t.saved > 0 ? `<div class="saved">You save ${money(t.saved)} with wholesale prices</div>` : ''}
+    <label class="field"><span>Your name</span><input id="fName" value="${esc(me.name)}" autocomplete="name"></label>
+    <label class="field"><span>Phone number</span><input id="fPhone" type="tel" value="${esc(me.phone || '')}" placeholder="07..." autocomplete="tel"></label>
+    <label class="field"><span>Delivery location</span><input id="fPlace" value="${esc(me.place)}" placeholder="Area, street or landmark" autocomplete="street-address"></label>
+    <div class="sum"><span>Total</span><span>${money(t.total)}</span></div>
+    <a class="send" id="send" target="_blank" rel="noopener">Order on WhatsApp</a>
+    <p class="note">Pay cash on delivery. We confirm on WhatsApp.</p>`;
+  ['fName','fPhone','fPlace'].forEach(i => $(i).addEventListener('input', linkOrder));
+  linkOrder();
+  $('send').addEventListener('click', submitOrder);
+}
+function linkOrder(){
+  const t = totals(), name = $('fName').value.trim(), place = $('fPlace').value.trim();
+  store.set('orji_me', {name, place, phone: $('fPhone').value.trim()});
+  let m = 'Hi Orji Supplies, I would like to order:\n\n';
+  Object.entries(S.cart).forEach(([id, q]) => { const p = find(id), u = unitPrice(p, q); m += `• ${p.name} × ${q} ${p.unit} @ ${money(u)} = ${money(q*u)}\n`; });
+  m += `\nTotal: ${money(t.total)}\n`;
+  if(name) m += `Name: ${name}\n`;
+  if(place) m += `Deliver to: ${place}\n`;
+  m += 'Payment: cash on delivery';
+  $('send').href = `https://wa.me/${WA}?text=${encodeURIComponent(m)}`;
+}
 
-    /* ===== Checkout: record the order to Sheets, then open WhatsApp ===== */
-    elements.whatsappCheckout.addEventListener('click', async function (e) {
-      if (!state.cart.size) return;
-      if (!OrjiAPI.isLoggedIn()) {
-        e.preventDefault();
-        utils.showToast('Please log in to place an order', 'warning');
-        try { OrjiAuth.open('login'); } catch (err) {}
-        return;
-      }
-      e.preventDefault();
-      let subtotal = 0, items = [];
-      state.cart.forEach(i => {
-        subtotal += i.quantity * i.price;
-        items.push({
-          productId: i.product.id,
-          name: i.product.name,
-          quantity: i.quantity,
-          price: i.price,
-          unit: i.product.unit
-        });
-      });
-      const waUrl = elements.whatsappCheckout.getAttribute('href');
-      try {
-        const res = await OrjiAPI.placeOrder({ items: items, total: subtotal, channel: 'whatsapp' });
-        if (res.ok) utils.showToast('Order saved: ' + res.orderId, 'success');
-        else utils.showToast(res.error || 'Could not save order', 'warning');
-      } catch (err) {
-        utils.showToast('Order not saved: ' + err.message, 'warning');
-      }
-      window.open(waUrl, '_blank');
-      state.cart.clear();
-      utils.saveCart();
-      updateCartUI();
-      closeCart();
-    });
+async function submitOrder(e){
+  if(!LIVE) return; // no backend: the plain WhatsApp link runs instead
+  e.preventDefault();
+  const name = $('fName').value.trim(), phone = $('fPhone').value.trim(), place = $('fPlace').value.trim();
+  if(!name || !phone || !place){ toast('Add your name, phone and location'); return; }
+  const btn = $('send'), label = btn.textContent; btn.textContent = 'Placing your order…';
+  try {
+    let d;
+    try {
+      const r = await fetch(CFG.url, {method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'},
+        body: JSON.stringify({token: S.token || '', name, phone, place, items: Object.entries(S.cart).map(([id, qty]) => ({id, qty}))})});
+      d = await r.json();
+    } catch(x){ toast('Could not save online, sending on WhatsApp instead', 4000); location.href = btn.href; return; }
+    if(d.error) throw new Error(d.error);
+    let m = `Hi Orji Supplies, my order #${d.ref}:\n\n`;
+    d.lines.forEach(l => { m += `• ${l.name} × ${l.qty} ${l.unit} = ${money(l.qty * l.unit_price)}\n`; });
+    m += `\nTotal: ${money(d.total)}\nName: ${name}\nPhone: ${phone}\nDeliver to: ${place}\nPayment: cash on delivery`;
+    S.cart = {}; store.set('orji_cart2', S.cart);
+    location.href = `https://wa.me/${WA}?text=${encodeURIComponent(m)}`;
+  } catch(err){
+    btn.textContent = label; toast(err.message);
+    load(); // refresh stock so the cart matches what is really available
+  }
+}
 
-    async function init(){ utils.loadWishlist(); await loadProducts(); utils.loadCart(); updateCartUI(); setLanguage('en'); elements.filterBtn.addEventListener('click',()=>utils.showToast('Advanced filters coming soon','info')); }
-    init();
-  </script>
+/* product detail */
+let detailId = null;
+function openDetail(id){ detailId = id; drawDetail(id); show('detail'); }
+function drawDetail(id){
+  const p = find(id), q = S.cart[id] || 0;
+  $('dTitle').textContent = p.name;
+  $('dBody').innerHTML = `<div class="gal">${p.imgs.map(i => `<img src="${esc(i)}" alt="${esc(p.name)}" onerror="this.onerror=null;this.src='${NOPIC}'">`).join('')}</div>
+    <div class="price" style="font-size:1.5rem">${money(unitPrice(p, q))}<small> / ${esc(p.unit)}</small></div>
+    ${p.desc ? `<p style="margin-top:8px">${esc(p.desc)}</p>` : ''}
+    <div class="facts"><div><b>Availability</b>${p.stock<=0?'Sold out':p.stock<=10?'Only '+p.stock+' left':'In stock'}</div>
+    <div><b>Wholesale</b>${p.moq>1&&p.wholesale<p.retail?money(p.wholesale)+' from '+p.moq:'Not offered'}</div></div>`;
+  $('dFoot').innerHTML = `<div class="buy">${buyControl(p).replace(/data-(add|inc|dec)/g, 'data-$1')}</div>`;
+}
+
+/* accounts */
+S.token = store.get('orji_token', ''); S.user = null;
+let authMode = 'in';
+async function acctCall(body){
+  let d;
+  try {
+    const r = await fetch(CFG.url, {method: 'POST', headers: {'Content-Type': 'text/plain;charset=utf-8'}, body: JSON.stringify(body)});
+    d = await r.json();
+  } catch(e){ throw new Error('Could not reach the shop. Check your internet and try again.'); }
+  if(d.error) throw new Error(d.error);
+  return d;
+}
+function drawAcct(){ $('acct').textContent = S.user ? 'Hi, ' + String(S.user.name).split(' ')[0] : 'Sign in'; }
+async function initAuth(){
+  if(!LIVE){ $('acct').hidden = true; return; }
+  if(S.token){ try { S.user = await acctCall({action: 'me', token: S.token}); } catch(e){ if(/sign in again/i.test(e.message)){ S.token = ''; store.set('orji_token', ''); } } }
+  drawAcct();
+}
+function openAuth(){ authMode = 'in'; drawAuth(); show('auth'); }
+function drawAuth(){
+  if(S.user){
+    $('aTitle').textContent = 'My account';
+    $('aBody').innerHTML = `<p><b>${esc(S.user.name)}</b><br><small>${esc(S.user.phone)}</small></p><h3 style="margin:14px 0 4px">My orders</h3><div id="myOrders"><p class="bulk">Loading…</p></div>
+      <button class="add" id="logout" style="margin-top:16px;background:#fff;color:var(--ink);border:2px solid var(--line)">Sign out</button>`;
+    acctCall({action: 'orders', token: S.token}).then(d => {
+      $('myOrders').innerHTML = d.orders.length ? d.orders.map(o => `<div class="line"><div class="m"><div class="n">#${esc(o.ref)} · ${esc(o.status)}</div><div class="bulk">${esc(o.date)} · ${esc(o.items)}</div></div><div class="t">${money(o.total)}</div></div>`).join('') : '<p class="bulk">No orders yet.</p>';
+    }).catch(e => { $('myOrders').innerHTML = `<p class="bulk">${esc(e.message)}</p>`; });
+    return;
+  }
+  const up = authMode === 'up';
+  $('aTitle').textContent = up ? 'Create account' : 'Sign in';
+  $('aBody').innerHTML = `<div class="chips" style="margin-bottom:10px"><button class="chip" data-mode="in" aria-pressed="${!up}">Sign in</button><button class="chip" data-mode="up" aria-pressed="${up}">Create account</button></div>
+    ${up ? '<label class="field"><span>Your name</span><input id="aName" autocomplete="name"></label>' : ''}
+    <label class="field"><span>Phone number</span><input id="aPhone" type="tel" placeholder="07..." autocomplete="username"></label>
+    <label class="field"><span>Password${up ? ' (at least 6 characters)' : ''}</span><input id="aPass" type="password" autocomplete="${up ? 'new-password' : 'current-password'}"></label>
+    <p class="low" id="aMsg"></p><button class="add" id="aGo">${up ? 'Create account' : 'Sign in'}</button>
+    <p class="note">You can also order without an account.</p>`;
+}
+async function submitAuth(){
+  const up = authMode === 'up', btn = $('aGo'), msg = $('aMsg'); msg.textContent = '';
+  const body = {action: up ? 'register' : 'login', phone: $('aPhone').value.trim(), password: $('aPass').value};
+  if(up) body.name = $('aName').value.trim();
+  btn.disabled = true; btn.textContent = 'Please wait…';
+  try {
+    const d = await acctCall(body);
+    S.token = d.token; S.user = {name: d.name, phone: d.phone}; store.set('orji_token', d.token);
+    store.set('orji_me', {...store.get('orji_me', {}), name: d.name, phone: d.phone});
+    drawAcct(); drawCart(); toast('Welcome, ' + String(d.name).split(' ')[0]); drawAuth();
+  } catch(e){ msg.textContent = e.message; btn.disabled = false; btn.textContent = up ? 'Create account' : 'Sign in'; }
+}
+async function logout(){
+  try { await acctCall({action: 'logout', token: S.token}); } catch(e){}
+  S.token = ''; S.user = null; store.set('orji_token', ''); drawAcct(); hide(); toast('Signed out');
+}
+$('auth').addEventListener('keydown', e => { if(e.key === 'Enter' && $('aGo')) submitAuth(); });
+
+/* sheets */
+function show(id){ $(id).classList.add('on'); $('veil').classList.add('on'); document.body.style.overflow = 'hidden'; }
+function hide(){ document.querySelectorAll('.sheet').forEach(s => s.classList.remove('on')); $('veil').classList.remove('on'); document.body.style.overflow = ''; detailId = null; }
+let tt; function toast(m, ms = 2200){ const t = $('toast'); t.textContent = m; t.classList.add('on'); clearTimeout(tt); tt = setTimeout(() => t.classList.remove('on'), ms); }
+
+/* events (one delegated listener) */
+document.addEventListener('click', e => {
+  const b = e.target.closest('button, a'); if(!b) return;
+  const d = b.dataset;
+  if(d.add){ setQty(d.add, 1); toast('Added to cart'); }
+  else if(d.inc) setQty(d.inc, (S.cart[d.inc] || 0) + 1);
+  else if(d.dec) setQty(d.dec, (S.cart[d.dec] || 0) - 1);
+  else if(d.open) openDetail(d.open);
+  else if(d.mode){ authMode = d.mode; drawAuth(); }
+  else if(b.id === 'acct') openAuth();
+  else if(b.id === 'aGo') submitAuth();
+  else if(b.id === 'logout') logout();
+  else if(d.cat){ S.cat = d.cat; drawChips(); draw(); }
+  else if(d.reset !== undefined){ S.q = ''; S.cat = 'all'; $('q').value = ''; drawChips(); draw(); }
+  else if(d.close !== undefined) hide();
+  else if(b.id === 'openCart') show('cart');
+});
+$('veil').addEventListener('click', hide);
+document.addEventListener('keydown', e => { if(e.key === 'Escape') hide(); });
+let st; $('q').addEventListener('input', e => { clearTimeout(st); st = setTimeout(() => { S.q = e.target.value.trim(); draw(); }, 200); });
+$('sort').addEventListener('change', e => { S.sort = e.target.value; draw(); });
+$('waTop').href = $('waFoot').href = `https://wa.me/${WA}`;
+load(); initAuth();
+</script>
 </body>
 </html>
